@@ -1,0 +1,38 @@
+[
+{
+    "model": "app.node",
+    "pk": "11fbdf58-d33d-4058-acbf-a55799b8a88f",
+    "fields": {
+        "name": "Walkill River 2 (sim bad)",
+        "active": true,
+        "long": "-74.090468",
+        "lat": "41.746419",
+        "devicealias": "walkill2_bad",
+        "sourcetype": "sim",
+        "commtype": null,
+        "deviceaddress": "",
+        "hostip": "",
+        "proxy_url": "",
+        "notes": "",
+        "created": "2016-04-10T19:42:05.922Z"
+    }
+},
+{
+    "model": "app.node",
+    "pk": "e674edf3-3480-4ea6-8a7d-339245e10a37",
+    "fields": {
+        "name": "Walkill River 1 (sim good)",
+        "active": true,
+        "long": "-74.090468",
+        "lat": "41.746419",
+        "devicealias": "walkill1_good",
+        "sourcetype": "sim",
+        "commtype": null,
+        "deviceaddress": "",
+        "hostip": "",
+        "proxy_url": "",
+        "notes": "",
+        "created": "2016-04-10T19:40:10.832Z"
+    }
+}
+]

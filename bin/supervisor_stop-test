@@ -1,0 +1,1 @@
+./manage.py supervisor shutdown --settings=settings.test

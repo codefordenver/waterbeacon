@@ -1,0 +1,60 @@
+{% if data|length %}
+<script type="text/javascript">
+
+$(function () {
+
+    $('#{{chart_div}}_chart_div').highcharts({
+        chart: {
+            type: 'areaspline'
+        },
+        title: {
+            text: '{{title}}'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b',
+        		hour: '%l %p',
+        		minute: '%l:%M %p'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: '{{units}}'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f} {{units}}'
+        },
+
+        plotOptions: {
+            spline: {
+                marker: {
+                    enabled: true
+                }
+            }
+        },
+
+        series: [{
+            name: '{{label}}',
+            data: [
+            	{% for datum in data %}
+                	[Date.UTC({{datum.time|date:"Y"}}, {{datum.time|date:"n-1"}},{{datum.time|date:"j"}} , {{datum.time|date:"G"}}, 
+			{{datum.time|date:"i"}}, {{datum.time|date:"s"}}), {{datum.value}}],
+                {% endfor %}
+    
+            ]
+        }
+        ]
+    });
+});
+
+</script>
+<div id="{{chart_div}}_chart_div" ></div>
+{% endif %}

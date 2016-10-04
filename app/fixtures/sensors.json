@@ -1,0 +1,102 @@
+[
+{
+    "model": "app.sensor",
+    "pk": 1,
+    "fields": {
+        "name": "pH (good)",
+        "type": "ph",
+        "mean": "7.000",
+        "std": "0.500"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 2,
+    "fields": {
+        "name": "ph (bad)",
+        "type": "ph",
+        "mean": "10.000",
+        "std": "0.500"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 3,
+    "fields": {
+        "name": "conductivity (good)",
+        "type": "conductivity",
+        "mean": "600.000",
+        "std": "10.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 4,
+    "fields": {
+        "name": "conductivity (bad)",
+        "type": "conductivity",
+        "mean": "1300.000",
+        "std": "10.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 5,
+    "fields": {
+        "name": "turbidity (good)",
+        "type": "turbidity",
+        "mean": "0.600",
+        "std": "1.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 6,
+    "fields": {
+        "name": "turbidity (bad)",
+        "type": "turbidity",
+        "mean": "6.000",
+        "std": "1.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 7,
+    "fields": {
+        "name": "oxygen reduction potential (good)",
+        "type": "orp",
+        "mean": "630.000",
+        "std": "15.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 8,
+    "fields": {
+        "name": "oxygen reduction potential (bad)",
+        "type": "orp",
+        "mean": "800.000",
+        "std": "15.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 9,
+    "fields": {
+        "name": "temperature (good)",
+        "type": "temperature",
+        "mean": "13.000",
+        "std": "10.000"
+    }
+},
+{
+    "model": "app.sensor",
+    "pk": 10,
+    "fields": {
+        "name": "temperature (bad)",
+        "type": "temperature",
+        "mean": "0.000",
+        "std": "10.000"
+    }
+}
+]

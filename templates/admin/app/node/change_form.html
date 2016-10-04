@@ -1,0 +1,11 @@
+{% extends "admin/change_form.html" %}
+
+
+{% block extrahead %}{{ block.super }}
+{% url 'admin:jsi18n' as jsi18nurl %}
+{{ media }}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+{% endblock %}

@@ -1,0 +1,1 @@
+./manage.py supervisor --daemonize --settings=settings.test

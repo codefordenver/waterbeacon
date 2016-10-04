@@ -1,0 +1,1 @@
+python manage.py celerycam --frequency=10.0 --settings=settings.test
