@@ -2,6 +2,7 @@ _COMM_TYPE = (
 	('',''),
         ('weave','weave'),
         ('konekt','konekt'),
+        ('redbear','RedBear Duo')
 )
 
 _SOURCE_TYPE = (
@@ -16,6 +17,7 @@ _SENSOR_TYPE = (
 	('turbidity','Turbidity'),
 	('temperature','temperature'),
 	('ph','Ph'),
+	('hall','Hall Effect Sensor'),
 
 )
 
