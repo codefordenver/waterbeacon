@@ -4,4 +4,5 @@ import views
 
 urlpatterns = [
 	url(r'^data/$', views.NodeListView.as_view()),
+	url(r'^news/$',views.NewsListView.as_view()),
 ]

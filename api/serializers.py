@@ -26,3 +26,8 @@ def NodeSerializer(objs, request = None):
 		data['results']['nodes'].append(node)
 
 	return data
+
+def NewsSerializer(objs, request = None):
+	data = {'results':{'nodes':[]},'meta':{'number_of_articles':0}}
+
+	return data

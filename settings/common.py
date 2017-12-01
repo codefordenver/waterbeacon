@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'djsupervisor',
     'djcelery',
-    'app'
+    'app',
+    'news'
 ]
 
 MIDDLEWARE_CLASSES = [
