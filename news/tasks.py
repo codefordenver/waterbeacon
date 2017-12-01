@@ -12,11 +12,11 @@ from utils.log import log
 
 import tweepy
 
-def save_twitter_data(tweet, searchObj  ):
+def save_twitter_data(tweet, location  ):
     # ref: https://dev.twitter.com/overview/api/tweets
 
     tw = models.tweet()
-    tw.account = searchObj
+    tw.location = location
     tw.text = tweet.text
     tw.sourceId = tweet.id_str
 
@@ -35,7 +35,7 @@ def save_twitter_data(tweet, searchObj  ):
     #log(tweet.text, 'success')
 
 @app.task
-def tweetreader(
+def TweetWaterAdvisoryReader(
             consumer_key = 'JCoLgJS4SFK4ErLyTPxrshzdJ',
             consumer_secret = 'ZgEM4iw6YOX2B11k7d7QPYIHshivaXr9ZJUYaeZ4jh7LYCCJed',
             access_token = '2438688577-F9iaLScxyvm4Bq6irsCOdX95gPMsJc4KRA0c1V8',
@@ -43,6 +43,13 @@ def tweetreader(
             frequency_minutes = 5,
             max_tweets = 100,
             days_ago = 5):
+
+    WATER_ADVISORY_KEYWORDS = [
+        'boil advisory',
+        'do not drink',
+        'do not use',
+        'informational'
+    ]
 
     # get today's date
     today = datetime.now().date()
@@ -54,7 +61,11 @@ def tweetreader(
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    for searchObj in models.twitter_search.objects.filter( active = True):
-        for tweet in tweepy.Cursor(api.search,q=searchObj.keywords, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+    for advisory in WATER_ADVISORY_KEYWORDS:
+        for location in models.location.objects.all():
+            query = "%s %s %s" % (advisory, location.city, location.keywords)
+            geocode = location.geocode
 
-            save_twitter_data(tweet, searchObj)
+            for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+
+                save_twitter_data(tweet, location)

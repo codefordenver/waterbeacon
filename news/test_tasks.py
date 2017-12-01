@@ -22,13 +22,6 @@ class TaskViews(TestCase):
         location.status = 'info'
         location.save()
 
-        tw_account = models.twitter_search()
-        tw_account.active = True
-        tw_account.location = location
-        tw_account.title = "Saint Louis Boil Notice"
-        tw_account.keywords = "st louis boil advisory"
-        tw_account.save()
-
     def test_twitter_crawler(self):
         # ./manage.py test news.test_tasks.TaskViews.test_twitter_crawler --settings=settings.dev
-        tasks.tweetreader()
+        tasks.TweetWaterAdvisoryReader()

@@ -17,3 +17,10 @@ CITY = (
     ('houston','Houston'),
     ('phoenix','Phoenix'),
 )
+
+WATER_ADVISORIES = (
+    'boil advisory',
+    'do not drink',
+    'do not use',
+    'informational'
+)

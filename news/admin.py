@@ -13,19 +13,13 @@ def register_admin(model):
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('city','status','zipcode')
 
-
-@admin.register(models.twitter_search)
-class TwitterSearchAdmin(admin.ModelAdmin):
-    list_display = ('title','location','active')
-    list_filter = ('active',)
-
 class URLInline(admin.TabularInline):
     model = models.url
     exclude = ()
 
 @admin.register(models.tweet)
 class TweetAdmin(admin.ModelAdmin):
-    list_displat = ('text','source','ignore','account')
+    list_displat = ('text','source','location','ignore')
     list_filter = ('ignore',)
     inlines = [
     	URLInline,
