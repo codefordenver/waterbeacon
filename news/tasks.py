@@ -37,10 +37,10 @@ def save_twitter_data(tweet, location  ):
 
 @app.task
 def TweetWaterAdvisoryReader(
-            consumer_key = 'JCoLgJS4SFK4ErLyTPxrshzdJ',
-            consumer_secret = 'ZgEM4iw6YOX2B11k7d7QPYIHshivaXr9ZJUYaeZ4jh7LYCCJed',
-            access_token = '2438688577-F9iaLScxyvm4Bq6irsCOdX95gPMsJc4KRA0c1V8',
-            access_token_secret = 'D5RIThJdgipTejcp3GQ4RVdPhnbiiy2IAN4AZDrYy7QtS',
+            consumer_key = '',
+            consumer_secret = '',
+            access_token = '',
+            access_token_secret = '',
             frequency_minutes = 5,
             max_tweets = 100,
             days_ago = 5):
