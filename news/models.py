@@ -1,3 +1,4 @@
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -15,6 +16,7 @@ from geopy.geocoders import Nominatim
 class location(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True, default="")
     state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
+    zipcode = models.CharField(max_length=255, null=True, blank=True,default='')
     geocode = models.CharField(max_length=255, null=True, blank=True,default='')
     status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
     keywords = models.CharField(max_length=255, null=True, blank=True,default='')
@@ -40,3 +42,12 @@ class tweet(models.Model):
 class url(models.Model):
     tweet = models.ForeignKey(tweet, null=True, blank=True)
     links = models.CharField(max_length=255, null=True, blank=True,default='')
+
+class utility(model.Model):
+    geocode = models.CharField(max_length=255, null=True, blank=True,default='')
+    name  = models.CharField(max_length=255, null=True, blank=True,default='')
+    link =  models.CharField(max_length=255, null=True, blank=True,default='')
+    location = models.ForeignKey(location, null=True, blank=True)
+    population =  models.IntegerField( blank=True, default = 0)
+    violation_points =  models.IntegerField( blank=True, default = 0)
+    last_updated = models.DateTimeField(auto_now= True )

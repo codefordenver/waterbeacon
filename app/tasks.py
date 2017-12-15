@@ -71,7 +71,7 @@ def remote_water_quality_monitoring_network_task():
 				data.value = round(float(node[sensor_type]), 2)
 			else:
 				data.value = 0.0
-				
+
 			data.save()
 		log('Station: %s data updated' % (station.name),'info')
 	log('Done','success')

@@ -1,4 +1,6 @@
-
+import requests
+from lxml import html
+from datetime import datetime, timedelta
 from waterquality.celery import app
 from datetime import datetime, timedelta
 from utils.log import log
@@ -69,3 +71,41 @@ def TweetWaterAdvisoryReader(
 
             for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
                 save_twitter_data(tweet, location)
+
+
+@app.task
+def EWG_TapwaterReader(stale_updated_days = 30):
+
+    # delete the database
+    states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
+              "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+              "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+              "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+              "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+
+    for state in states:
+
+
+        response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ))
+        if response.status_code != 200:
+            return []
+
+        parsed = html.fromstring(response.text)
+        for utility in parsed.xpath('//div[@id="all-utilities-table"]/table/tbody/tr'):
+
+            # save to database
+            o_utility = models.utility()
+
+            # parse utility data
+            o_utility.name = utility.xpath('td[@data-label="Utility"]/a/text()')[0].strip()
+            o_utility.link = utility.xpath('td[@data-label="Utility"]/a/@href')[0].strip()
+            o_utility.location = utility.xpath('td[@data-label="Location"]/text()')[0].strip()
+            o_utility.population = utility.xpath('td[@data-label="Population"]/text()')[0].strip()
+            o_utility.violation_points = utility.xpath('td[@data-label="Violation Points"]/text()')[0].strip()
+            o_utility.save()
+
+            # delete all other utility last updated greater than
+
+    # remove utilities that haven't been updated since the stale_updated_days
+    past = datetime.now() - timedelta(days = stale_updated_days)
+    models.utility.objects.filter(last_updated__lt = past).delete()
