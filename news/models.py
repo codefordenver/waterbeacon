@@ -43,7 +43,7 @@ class url(models.Model):
     tweet = models.ForeignKey(tweet, null=True, blank=True)
     links = models.CharField(max_length=255, null=True, blank=True,default='')
 
-class utility(model.Model):
+class utility(models.Model):
     geocode = models.CharField(max_length=255, null=True, blank=True,default='')
     name  = models.CharField(max_length=255, null=True, blank=True,default='')
     link =  models.CharField(max_length=255, null=True, blank=True,default='')
