@@ -1,0 +1,1250 @@
+[
+{
+    "model": "news.location",
+    "pk": 1,
+    "fields": {
+        "city": "washington",
+        "state": "DC",
+        "geocode": "longitude=38.8949549, latitude=-77.0366456, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-01T03:56:46.985Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 2,
+    "fields": {
+        "city": "new york",
+        "state": "NY",
+        "geocode": "longitude=40.7306458, latitude=-73.9866136, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:45:54.697Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 3,
+    "fields": {
+        "city": "los angeles",
+        "state": "CA",
+        "geocode": "longitude=34.054935, latitude=-118.244476, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:48:13.353Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 4,
+    "fields": {
+        "city": "chicago",
+        "state": "IL",
+        "geocode": "longitude=41.8755546, latitude=-87.6244212, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:48:56.771Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 5,
+    "fields": {
+        "city": "houston",
+        "state": "TX",
+        "geocode": "longitude=29.7589382, latitude=-95.3676974, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:50:07.189Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 6,
+    "fields": {
+        "city": "phoenix",
+        "state": "AZ",
+        "geocode": "",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:51:08.918Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 7,
+    "fields": {
+        "city": "philadelphia",
+        "state": "PA",
+        "geocode": "longitude=39.9523993, latitude=-75.1635899, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:52:45.586Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 8,
+    "fields": {
+        "city": "san antonio",
+        "state": "TX",
+        "geocode": "longitude=29.4246002, latitude=-98.4951405, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:53:36.341Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 9,
+    "fields": {
+        "city": "san diego",
+        "state": "CA",
+        "geocode": "longitude=32.7174209, latitude=-117.1627714, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-05T02:54:43.578Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 10,
+    "fields": {
+        "city": "dallas",
+        "state": "TX",
+        "geocode": "longitude=32.7762719, latitude=-96.7968559, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:03:36.926Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 11,
+    "fields": {
+        "city": "san jose",
+        "state": "CA",
+        "geocode": "longitude=37.3297085, latitude=-121.9031599, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:03:55.283Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 12,
+    "fields": {
+        "city": "austin",
+        "state": "TX",
+        "geocode": "longitude=30.2711286, latitude=-97.7436995, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:04:12.833Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 13,
+    "fields": {
+        "city": "jacksonville",
+        "state": "FL",
+        "geocode": "longitude=30.3321838, latitude=-81.655651, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:04:24.949Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 14,
+    "fields": {
+        "city": "indianapolis",
+        "state": "IN",
+        "geocode": "longitude=39.7683331, latitude=-86.1583502, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:04:39.406Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 15,
+    "fields": {
+        "city": "san francisco",
+        "state": "CA",
+        "geocode": "longitude=46.8443248, latitude=-71.2743272, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:04:56.766Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 16,
+    "fields": {
+        "city": "columbus",
+        "state": "OH",
+        "geocode": "longitude=39.9622601, latitude=-83.0007065, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:05:09.475Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 17,
+    "fields": {
+        "city": "fort worth",
+        "state": "TX",
+        "geocode": "longitude=32.753177, latitude=-97.3327459, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:05:24.760Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 18,
+    "fields": {
+        "city": "charlotte",
+        "state": "NC",
+        "geocode": "longitude=35.2270869, latitude=-80.8431268, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:05:37.969Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 19,
+    "fields": {
+        "city": "detroit",
+        "state": "MI",
+        "geocode": "longitude=42.3486635, latitude=-83.0567375, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:05:55.062Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 20,
+    "fields": {
+        "city": "el paso",
+        "state": "TX",
+        "geocode": "longitude=31.8111305, latitude=-106.501349396, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:06:09.787Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 21,
+    "fields": {
+        "city": "memphis",
+        "state": "TN",
+        "geocode": "longitude=35.1490215, latitude=-90.0516285, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:06:21.076Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 22,
+    "fields": {
+        "city": "boston",
+        "state": "MA",
+        "geocode": "longitude=42.3604823, latitude=-71.0595678, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:06:37.688Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 23,
+    "fields": {
+        "city": "seattle",
+        "state": "WA",
+        "geocode": "longitude=47.6038321, latitude=-122.3300624, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:06:56.725Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 24,
+    "fields": {
+        "city": "denver",
+        "state": "CO",
+        "geocode": "longitude=39.7348381, latitude=-104.9653271, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:07:16.130Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 25,
+    "fields": {
+        "city": "Nashville",
+        "state": "TN",
+        "geocode": "longitude=36.1622296, latitude=-86.7743531, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:07:41.878Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 26,
+    "fields": {
+        "city": "baltimore",
+        "state": "MD",
+        "geocode": "longitude=39.2908816, latitude=-76.610759, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:07:57.512Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 27,
+    "fields": {
+        "city": "louisville",
+        "state": "KY",
+        "geocode": "longitude=38.2542376, latitude=-85.759407, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:08:20.954Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 28,
+    "fields": {
+        "city": "jefferson",
+        "state": "KY",
+        "geocode": "longitude=38.1787175, latitude=-85.664528, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:08:33.980Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 29,
+    "fields": {
+        "city": "davidson",
+        "state": "TN",
+        "geocode": "longitude=36.189724, latitude=-86.7857862, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:08:54.028Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 30,
+    "fields": {
+        "city": "Portland",
+        "state": "OR",
+        "geocode": "longitude=45.5202471, latitude=-122.6741949, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:09:04.245Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 31,
+    "fields": {
+        "city": "Oklahoma",
+        "state": "OK",
+        "geocode": "longitude=35.5533328, latitude=-97.4367741, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:09:12.680Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 32,
+    "fields": {
+        "city": "Milwaukee",
+        "state": "WI",
+        "geocode": "longitude=43.0349931, latitude=-87.922497, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:09:27.028Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 33,
+    "fields": {
+        "city": "Las Vegas",
+        "state": "NV",
+        "geocode": "longitude=36.1662859, latitude=-115.149225, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:09:58.490Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 34,
+    "fields": {
+        "city": "Albuquerque",
+        "state": "NM",
+        "geocode": "longitude=35.0841034, latitude=-106.6509851, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:10:13.966Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 35,
+    "fields": {
+        "city": "Tucson",
+        "state": "AZ",
+        "geocode": "longitude=32.2218917, latitude=-110.9262353, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:11:14.407Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 36,
+    "fields": {
+        "city": "Fresno",
+        "state": "CA",
+        "geocode": "longitude=36.7295295, latitude=-119.708861261, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:11:24.171Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 37,
+    "fields": {
+        "city": "Sacramento",
+        "state": "CA",
+        "geocode": "longitude=38.5815719, latitude=-121.4943996, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:11:35.610Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 38,
+    "fields": {
+        "city": "Long Beach",
+        "state": "CA",
+        "geocode": "longitude=44.4567705, latitude=-78.7359702, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:11:54.498Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 39,
+    "fields": {
+        "city": "Kansas",
+        "state": "MO",
+        "geocode": "longitude=34.0474531, latitude=-106.8948253, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:12:09.579Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 40,
+    "fields": {
+        "city": "Mesa",
+        "state": "AZ",
+        "geocode": "longitude=34.2700153, latitude=-114.0824451, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:12:19.781Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 41,
+    "fields": {
+        "city": "Virginia Beach",
+        "state": "VA",
+        "geocode": "longitude=36.7953025, latitude=-76.0509251226, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:12:34.167Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 42,
+    "fields": {
+        "city": "Atlanta",
+        "state": "GA",
+        "geocode": "longitude=33.7490987, latitude=-84.3901849, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:12:45.985Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 43,
+    "fields": {
+        "city": "Colorado Springs",
+        "state": "CO",
+        "geocode": "longitude=38.8339578, latitude=-104.8253485, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:12:57.083Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 44,
+    "fields": {
+        "city": "Raleigh",
+        "state": "NC",
+        "geocode": "longitude=35.7803977, latitude=-78.6390989, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:13:04.726Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 45,
+    "fields": {
+        "city": "Omaha",
+        "state": "NE",
+        "geocode": "longitude=41.2587317, latitude=-95.9378732, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:13:17.744Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 46,
+    "fields": {
+        "city": "Miami",
+        "state": "FL",
+        "geocode": "longitude=25.7742658, latitude=-80.1936589, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:13:28.064Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 47,
+    "fields": {
+        "city": "Oakland",
+        "state": "CA",
+        "geocode": "longitude=43.0317491, latitude=-80.3310713, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:13:36.054Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 48,
+    "fields": {
+        "city": "Tulsa",
+        "state": "OK",
+        "geocode": "longitude=36.1556805, latitude=-95.9929113, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:13:50.432Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 49,
+    "fields": {
+        "city": "Minneapolis",
+        "state": "MN",
+        "geocode": "longitude=44.9772995, latitude=-93.2654692, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:00.966Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 50,
+    "fields": {
+        "city": "Cleveland",
+        "state": "OH",
+        "geocode": "longitude=41.5051613, latitude=-81.6934446, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:11.877Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 51,
+    "fields": {
+        "city": "Wichita",
+        "state": "KS",
+        "geocode": "longitude=37.6922361, latitude=-97.3375448, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:24.919Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 52,
+    "fields": {
+        "city": "Arlington",
+        "state": "TX",
+        "geocode": "longitude=32.701939, latitude=-97.1057149358, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:36.845Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 53,
+    "fields": {
+        "city": "New Orleans",
+        "state": "LA",
+        "geocode": "longitude=51.90491615, latitude=4.48745086188, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:49.696Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 54,
+    "fields": {
+        "city": "Bakersfield",
+        "state": "CA",
+        "geocode": "longitude=35.3738712, latitude=-119.0194639, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:14:59.556Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 55,
+    "fields": {
+        "city": "Tampa",
+        "state": "FL",
+        "geocode": "longitude=27.9518491, latitude=-82.4563972, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:15:09.285Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 56,
+    "fields": {
+        "city": "Honolulu",
+        "state": "HI",
+        "geocode": "longitude=21.3250785, latitude=-157.846644179, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:15:20.039Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 57,
+    "fields": {
+        "city": "Anaheim",
+        "state": "CA",
+        "geocode": "longitude=33.8347516, latitude=-117.911732, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:15:29.443Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 58,
+    "fields": {
+        "city": "Aurora",
+        "state": "CO",
+        "geocode": "longitude=43.6963371, latitude=-98.5722461, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:15:39.219Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 59,
+    "fields": {
+        "city": "Santa Ana",
+        "state": "CA",
+        "geocode": "longitude=33.7494951, latitude=-117.8732213, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:15:50.622Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 60,
+    "fields": {
+        "city": "St Louis",
+        "state": "MO",
+        "geocode": "longitude=38.6272733, latitude=-90.1978889, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:16:06.426Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 61,
+    "fields": {
+        "city": "Riverside",
+        "state": "CA",
+        "geocode": "longitude=49.122193, latitude=-122.2971512, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:16:16.592Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 62,
+    "fields": {
+        "city": "Corpus Christi",
+        "state": "TX",
+        "geocode": "longitude=27.8002542, latitude=-97.3955744, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:16:27.879Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 63,
+    "fields": {
+        "city": "Pittsburgh",
+        "state": "PA",
+        "geocode": "longitude=40.4416941, latitude=-79.9900861, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:16:40.460Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 64,
+    "fields": {
+        "city": "lexington",
+        "state": "KY",
+        "geocode": "longitude=38.0464066, latitude=-84.4970393, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:16:58.912Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 65,
+    "fields": {
+        "city": "fayette",
+        "state": "KY",
+        "geocode": "longitude=38.0280648, latitude=-84.4722444, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:17:11.819Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 66,
+    "fields": {
+        "city": "anchorage",
+        "state": "AK",
+        "geocode": "longitude=61.2163129, latitude=-149.8948523, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:17:22.033Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 67,
+    "fields": {
+        "city": "Stockton",
+        "state": "CA",
+        "geocode": "longitude=49.583333, latitude=-99.45, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:17:36.399Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 68,
+    "fields": {
+        "city": "Cincinnati",
+        "state": "OH",
+        "geocode": "longitude=39.1014537, latitude=-84.5124602, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:17:50.826Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 69,
+    "fields": {
+        "city": "St Paul",
+        "state": "MN",
+        "geocode": "longitude=44.9504037, latitude=-93.1015026, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:18:35.553Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 70,
+    "fields": {
+        "city": "toledo",
+        "state": "OH",
+        "geocode": "longitude=41.6786754, latitude=-83.5127283, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:19:05.700Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 71,
+    "fields": {
+        "city": "newark",
+        "state": "NJ",
+        "geocode": "longitude=40.735657, latitude=-74.1723667, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:19:29.601Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 72,
+    "fields": {
+        "city": "greensboro",
+        "state": "NC",
+        "geocode": "longitude=36.0726355, latitude=-79.7919754, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:19:49.835Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 73,
+    "fields": {
+        "city": "Plano",
+        "state": "TX",
+        "geocode": "longitude=33.0136764, latitude=-96.6925096, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:20:00.692Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 74,
+    "fields": {
+        "city": "Henderson",
+        "state": "NV",
+        "geocode": "longitude=36.0391456, latitude=-114.9819235, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:20:16.121Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 75,
+    "fields": {
+        "city": "Lincoln",
+        "state": "NE",
+        "geocode": "longitude=40.8, latitude=-96.667821, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:00.148Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 76,
+    "fields": {
+        "city": "Buffalo",
+        "state": "NY",
+        "geocode": "longitude=42.8867166, latitude=-78.8783922, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:09.010Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 77,
+    "fields": {
+        "city": "Fort Wayne",
+        "state": "IN",
+        "geocode": "longitude=41.0799898, latitude=-85.1386015, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:22.473Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 78,
+    "fields": {
+        "city": "Jersey",
+        "state": "NJ",
+        "geocode": "longitude=40.8599873158, latitude=-74.2765768764, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:35.459Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 79,
+    "fields": {
+        "city": "Chula Vista",
+        "state": "CA",
+        "geocode": "longitude=32.6400541, latitude=-117.0841955, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:45.163Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 80,
+    "fields": {
+        "city": "Orlando",
+        "state": "FL",
+        "geocode": "longitude=28.5479786, latitude=-81.4127841856, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:21:57.500Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 81,
+    "fields": {
+        "city": "St Petersburg",
+        "state": "FL",
+        "geocode": "longitude=27.77330515, latitude=-82.6469934, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:22:18.420Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 82,
+    "fields": {
+        "city": "Norfolk",
+        "state": "VA",
+        "geocode": "longitude=36.8889933, latitude=-76.2481624, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:23:57.983Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 83,
+    "fields": {
+        "city": "Chandler",
+        "state": "AZ",
+        "geocode": "longitude=33.3067132, latitude=-111.8408489, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:24:12.057Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 84,
+    "fields": {
+        "city": "Laredo",
+        "state": "TX",
+        "geocode": "longitude=27.5060991, latitude=-99.5088979, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:24:31.445Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 85,
+    "fields": {
+        "city": "Madison",
+        "state": "WI",
+        "geocode": "longitude=43.074761, latitude=-89.3837613, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:24:40.899Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 86,
+    "fields": {
+        "city": "Durham",
+        "state": "NC",
+        "geocode": "longitude=35.9966551, latitude=-78.9018115, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:24:51.073Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 87,
+    "fields": {
+        "city": "Lubbock",
+        "state": "TX",
+        "geocode": "longitude=33.5778631, latitude=-101.8551665, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:25:07.963Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 88,
+    "fields": {
+        "city": "Winston",
+        "state": "NC",
+        "geocode": "longitude=36.106031, latitude=-80.245136, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:25:17.985Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 89,
+    "fields": {
+        "city": "Garland",
+        "state": "TX",
+        "geocode": "longitude=32.912624, latitude=-96.6388833, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:25:43.145Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 90,
+    "fields": {
+        "city": "Salem",
+        "state": "NC",
+        "geocode": "longitude=35.4340236, latitude=-81.1953572, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:25:55.287Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 91,
+    "fields": {
+        "city": "Glendale",
+        "state": "AZ",
+        "geocode": "longitude=33.5389854, latitude=-112.1858157, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:26:03.767Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 92,
+    "fields": {
+        "city": "Hialeah",
+        "state": "FL",
+        "geocode": "longitude=25.8575963, latitude=-80.2781057, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:26:16.497Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 93,
+    "fields": {
+        "city": "Reno",
+        "state": "NV",
+        "geocode": "longitude=39.52927, latitude=-119.8136744, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:26:23.738Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 94,
+    "fields": {
+        "city": "Baton Rouge",
+        "state": "LA",
+        "geocode": "longitude=30.4507462, latitude=-91.154551, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:26:35.406Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 95,
+    "fields": {
+        "city": "Irvine",
+        "state": "CA",
+        "geocode": "longitude=49.9584438, latitude=-110.2732606, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:26:46.874Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 96,
+    "fields": {
+        "city": "Chesapeake",
+        "state": "VA",
+        "geocode": "longitude=36.7183708, latitude=-76.2466798, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:27:01.162Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 97,
+    "fields": {
+        "city": "Irving",
+        "state": "TX",
+        "geocode": "longitude=32.8295183, latitude=-96.9442177, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:27:12.170Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 98,
+    "fields": {
+        "city": "Scottsdale",
+        "state": "AZ",
+        "geocode": "longitude=33.5091215, latitude=-111.8992365, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:27:25.195Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 99,
+    "fields": {
+        "city": "North Las Vegas",
+        "state": "NV",
+        "geocode": "longitude=36.2008371, latitude=-115.1120958, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:27:43.131Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 100,
+    "fields": {
+        "city": "Fremont",
+        "state": "CA",
+        "geocode": "longitude=49.2850624, latitude=-123.135817451, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:27:56.904Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 101,
+    "fields": {
+        "city": "Gilbert town",
+        "state": "AZ",
+        "geocode": "longitude=33.3699821, latitude=-111.7900711, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:28:06.490Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 102,
+    "fields": {
+        "city": "San Bernardino",
+        "state": "CA",
+        "geocode": "longitude=34.1083449, latitude=-117.2897652, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:28:18.879Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 103,
+    "fields": {
+        "city": "Boise",
+        "state": "ID",
+        "geocode": "longitude=43.61656, latitude=-116.200835, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:28:28.559Z"
+    }
+},
+{
+    "model": "news.location",
+    "pk": 104,
+    "fields": {
+        "city": "Birmingham",
+        "state": "AL",
+        "geocode": "longitude=33.570499, latitude=-86.765783, radius=5",
+        "status": "info",
+        "keywords": "",
+        "created": "2017-12-15T02:28:37.365Z"
+    }
+}
+]

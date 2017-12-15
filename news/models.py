@@ -4,19 +4,31 @@ from django.db import models
 from .choice import (
     FEED_SOURCE,
     WATER_STATUS,
-    CITY
 )
+from localflavor.us.us_states import STATE_CHOICES
+from localflavor.us.models import USStateField
+from geopy.geocoders import Nominatim
 
 # top us cities
 # https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population
 
 class location(models.Model):
-    city = models.CharField(max_length=255, null=True, blank=True,choices=CITY, default="info")
-    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
-    zipcode = models.CharField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=255, null=True, blank=True, default="")
+    state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
     geocode = models.CharField(max_length=255, null=True, blank=True,default='')
+    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
     keywords = models.CharField(max_length=255, null=True, blank=True,default='')
     created = models.DateTimeField( null=True, auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+
+        geolocator = Nominatim()
+        geoc = geolocator.geocode("%s %s" % (self.city, self.state.lower() ), timeout=10)
+        self.geocode = 'longitude=%s, latitude=%s, radius=5' % (geoc.latitude, geoc.longitude )
+        return super(location, self ).save(*args, **kwargs)
+
+	def __unicode__(self):
+	    return '%s,%s' % (self.city,  self.state)
 
 class tweet(models.Model):
     location = models.ForeignKey(location, null=True, blank=True)

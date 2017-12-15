@@ -12,6 +12,7 @@ from utils.log import log
 
 import tweepy
 
+
 def save_twitter_data(tweet, location  ):
     # ref: https://dev.twitter.com/overview/api/tweets
 
@@ -67,5 +68,4 @@ def TweetWaterAdvisoryReader(
             geocode = location.geocode
 
             for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
-
                 save_twitter_data(tweet, location)

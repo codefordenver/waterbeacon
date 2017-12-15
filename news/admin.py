@@ -11,7 +11,7 @@ def register_admin(model):
 
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('city','status','zipcode')
+    list_display = ('city','state','status','keywords')
 
 class URLInline(admin.TabularInline):
     model = models.url
