@@ -49,5 +49,6 @@ class utility(models.Model):
     link =  models.CharField(max_length=255, null=True, blank=True,default='')
     location = models.ForeignKey(location, null=True, blank=True)
     population =  models.IntegerField( blank=True, default = 0)
+    violation = models.BooleanField(default=True)
     violation_points =  models.IntegerField( blank=True, default = 0)
     last_updated = models.DateTimeField(auto_now= True )

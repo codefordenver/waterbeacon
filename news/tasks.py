@@ -16,6 +16,7 @@ import tweepy
 
 
 def save_twitter_data(tweet, location  ):
+    # https://www.ewg.org/tapwater/index.php#results-by-state-map
     # ref: https://dev.twitter.com/overview/api/tweets
 
     tw = models.tweet()
@@ -39,10 +40,10 @@ def save_twitter_data(tweet, location  ):
 
 @app.task
 def TweetWaterAdvisoryReader(
-            consumer_key = '',
-            consumer_secret = '',
-            access_token = '',
-            access_token_secret = '',
+            consumer_key = 'JCoLgJS4SFK4ErLyTPxrshzdJ',
+            consumer_secret = 'ZgEM4iw6YOX2B11k7d7QPYIHshivaXr9ZJUYaeZ4jh7LYCCJed',
+            access_token = '2438688577-F9iaLScxyvm4Bq6irsCOdX95gPMsJc4KRA0c1V8',
+            access_token_secret = 'D5RIThJdgipTejcp3GQ4RVdPhnbiiy2IAN4AZDrYy7QtS',
             frequency_minutes = 5,
             max_tweets = 100,
             days_ago = 5):
@@ -76,7 +77,7 @@ def TweetWaterAdvisoryReader(
 @app.task
 def EWG_TapwaterReader(stale_updated_days = 30):
 
-    # delete the database
+
     states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
               "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
               "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
@@ -84,7 +85,6 @@ def EWG_TapwaterReader(stale_updated_days = 30):
               "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
     for state in states:
-
 
         response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ))
         if response.status_code != 200:
@@ -106,6 +106,6 @@ def EWG_TapwaterReader(stale_updated_days = 30):
 
             # delete all other utility last updated greater than
 
-    # remove utilities that haven't been updated since the stale_updated_days
+    #  utilities that haven't been updated since the stale_updated_days to violation as false
     past = datetime.now() - timedelta(days = stale_updated_days)
-    models.utility.objects.filter(last_updated__lt = past).delete()
+    models.utility.objects.filter(last_updated__lt = past).update(violation = False)
