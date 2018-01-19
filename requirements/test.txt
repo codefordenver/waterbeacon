@@ -1,6 +1,0 @@
--r common.txt
-
-psycopg2==2.6.1
-contextlib2==0.4.0
-raven==5.9.2
-gunicorn==19.4.5
