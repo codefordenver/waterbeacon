@@ -27,7 +27,7 @@ class data(models.Model):
 	sensor_type = models.CharField(max_length=255, null=True, blank=True,default='')
 	sensor_units = models.CharField(max_length=255, null=True, blank=True,default='')
 	def __unicode__(self):
-	    return '%s - %s (%s) ' % (self.node_name, self.sensor_name, self.timestamp) 
+	    return '%s - %s (%s) ' % (self.node_name, self.sensor_name, self.timestamp)
 
 # Create your models here.
 class node(models.Model):
@@ -97,7 +97,7 @@ class sensor(models.Model):
 	type = models.CharField(max_length=255, null=True, blank=True,choices=_SENSOR_TYPE)
 	mean = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	std = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
-	
+
 	def __unicode__(self):
 		return self.name
 
@@ -119,7 +119,7 @@ class sim_node(models.Model):
 	@property
 	def measurement_count(self):
 		sensor_count = self.sensors.all().count()
-		total_measurement_count = data.objects.filter(node_alias = self.devicealias).count() 
+		total_measurement_count = data.objects.filter(node_alias = self.devicealias).count()
 		if sensor_count:
 			return total_measurement_count / sensor_count
 		return 0

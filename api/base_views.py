@@ -2,8 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from utils.numbers import int_or_none
-
+from utils.utils import int_or_none
 
 def add_envelope(request, data, meta={}):
     env = {}

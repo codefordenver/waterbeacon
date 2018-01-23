@@ -75,3 +75,7 @@ def remote_water_quality_monitoring_network_task():
 			data.save()
 		log('Station: %s data updated' % (station.name),'info')
 	log('Done','success')
+
+
+@app.task
+def crawl_usgs_waterdata( daysago = 7):

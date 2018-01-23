@@ -1,12 +1,12 @@
 _COMM_TYPE = (
-	('',''),
+		('',''),
         ('weave','weave'),
         ('konekt','konekt'),
         ('redbear','RedBear Duo')
 )
 
 _SOURCE_TYPE = (
-		('live','live'),
+		('usgs','usgs'),
         ('sim','simulator')
     )
 
@@ -20,5 +20,3 @@ _SENSOR_TYPE = (
 	('hall','Hall Effect Sensor'),
 
 )
-
-
