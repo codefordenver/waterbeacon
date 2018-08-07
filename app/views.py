@@ -1,8 +1,14 @@
+from datetime import datetime
 from django.shortcuts import render
-from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 # Create your views here.
 def index(request):
-	resp_dic = {}
-	return render_to_response('index.html',resp_dic,context_instance=RequestContext(request))
+	now = datetime.now()
+
+	resp_dic = {
+		'years': range(now.year -10, now.year),
+		'months': [ datetime(1900, monthNum, 1).strftime('%b') for monthNum in range(1, now.month + 1 ) ]
+	}
+
+	return render(request, 'index.html' , resp_dic)

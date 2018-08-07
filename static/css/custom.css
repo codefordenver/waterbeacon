@@ -1,0 +1,32 @@
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
+
+.year-block {
+  height: 1.5rem;
+  background-color: #1a4e6e;
+  border: 2px solid white;
+border-radius: .35rem;
+}
+
+.month-block {
+
+  height: 1.5rem;
+  background-color: #2b7aa8;
+  border: 2px solid white;
+  border-radius: .35rem;
+}
+
+.block-active {
+  height: 1.5rem;
+  background-color: #52b6ff;
+  border: 2px solid white;
+  border-radius: .35rem;
+}
+
+.timelineText {
+  font-size: .8em;
+  color: #565656;
+}

@@ -1,1 +1,158 @@
-Nothing here to see, Move along.
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/custom.css" %}" type="text/css"/>
+  </head>
+  <style>
+
+  .counties {
+    fill: none;
+  }
+
+  .states {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+  }
+
+  </style>
+
+  <body>
+
+    <header>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <h4 class="my-0 font-weight-normal" style="color:#17a6ff">Water&nbsp;</h4>
+            <h4 class="my-0 font-weight-normal" style="color:#1a4e6e">Beacon</h4>
+          </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+
+          <table >
+              <tr>
+                {% for year in years %}
+                <th class='year-block' width="50"></th>
+                {% endfor %}
+              </tr>
+              <tr>
+                {% for year in years %}
+                  <td class="text-center timelineText">{{ year }}</td>
+                {% endfor %}
+              </tr>
+          </table>
+        </div>
+        <div class="col-md-7">
+          <table >
+              <tr>
+                {% for month in months %}
+                <th class='month-block' width="50"></th>
+                {% endfor %}
+              </tr>
+              <tr>
+                {% for month in months %}
+                  <td class="text-center timelineText">{{ month }}</td>
+                {% endfor %}
+              </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row" >
+
+        <!-- insert left control -->
+        <div class="col-md-3">
+            <input type="text" name="city">
+        </div>
+
+        <!-- insert cloropleth map -->
+        <div class="col-md-9" >
+            <svg width="800" height="500" viewBox="0 0 960 600" preserveAspectRatio="xMinYMin meet"></svg>
+        </div>
+      </div>
+      <div>
+    </div>
+
+    <!-- javascript d3 file -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script>
+
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+
+    var unemployment = d3.map();
+
+    var path = d3.geoPath();
+
+    var x = d3.scaleLinear()
+        .domain([1, 10])
+        .rangeRound([400, 860]);
+
+    var color = d3.scaleThreshold()
+        .domain(d3.range(2, 10))
+        .range(d3.schemeBlues[9]);
+
+    var g = svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(0,40)");
+
+    g.selectAll("rect")
+      .data(color.range().map(function(d) {
+          d = color.invertExtent(d);
+          if (d[0] == null) d[0] = x.domain()[0];
+          if (d[1] == null) d[1] = x.domain()[1];
+          return d;
+        }))
+
+
+
+
+
+
+    d3.queue()
+        .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+        .defer(d3.tsv, "/static/unemployment.tsv", function(d) { unemployment.set(d.id, +d.rate); })
+        .await(ready);
+
+    function ready(error, us) {
+      if (error) throw error;
+
+      svg.append("g")
+          .attr("class", "counties")
+        .selectAll("path")
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter().append("path")
+          .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
+          .attr("d", path)
+        .append("title")
+          .text(function(d) { return d.rate + "%"; });
+
+      svg.append("path")
+          .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+          .attr("class", "states")
+          .attr("d", path);
+    }
+
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
