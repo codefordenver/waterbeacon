@@ -30,3 +30,30 @@ border-radius: .35rem;
   font-size: .8em;
   color: #565656;
 }
+
+.table-center {
+  margin: 0 auto;
+}
+
+.play {
+  font-size: 25px;
+  padding-top: 5px;
+
+}
+
+.open {
+  font-size: 13px;
+}
+
+.parameter {
+  background: #25a6eb;
+  color: white;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.rank {
+  background: #25a6eb;
+  color: white;
+  border: 2px solid white;
+}
