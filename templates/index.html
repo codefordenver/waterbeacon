@@ -24,6 +24,12 @@
     stroke-linejoin: round;
   }
 
+  .river {
+  fill: none;   /* country colour */
+  stroke: #2A2C39; /* country border colour */
+  stroke-width: 1; /* country border width */
+}
+
   </style>
 
   <body>
@@ -36,39 +42,6 @@
     </header>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-
-          <table class="table-center">
-
-              <tr>
-                <th width="30">
-                    <span class="glyphicon glyphicon-play-circle play"></span>
-                </th>
-                {% for year in years %}
-                <th class='year-block' width="50"></th>
-                {% endfor %}
-
-                <th width="50"></th>
-                {% for month in months %}
-                <th class='month-block' width="50"></th>
-                {% endfor %}
-              </tr>
-              <tr>
-                <td>&nbsp; </td>
-                {% for year in years %}
-                  <td class="text-center timelineText">{{ year }}</td>
-                {% endfor %}
-                  <td ></td>
-                {% for month in months %}
-                  <td class="text-center timelineText">{{ month }}</td>
-                {% endfor %}
-              </tr>
-          </table>
-
-        </div>
-
-      </div>
       <div class="row" style="margin-top: 20px;">
 
         <!-- insert left control -->
@@ -79,7 +52,7 @@
             <div class='col-md-12'>
               <b>State / City / County</b>
               <p>
-              <input type="text" name="city" size="31">
+              <input type="text" name="city" size="30">
             </p>
             </div>
             <div class='col-md-12'>
@@ -120,37 +93,6 @@
 
 
            </div>
-            </div>
-            <div class='col-md-12'>
-              <div class='parameter'>
-                <b><span class="glyphicon glyphicon glyphicon-plus-sign open"></span> Physical Parameters</b>
-              </div>
-              <div>
-                <div class="pretty p-default">
-                  <input type="checkbox" />
-                  <div class="state p-primary">
-                      <label>Conductivity</label>
-                  </div>
-                </div><br>
-                  <div class="pretty p-default">
-                    <input type="checkbox" />
-                    <div class="state p-primary">
-                        <label>Dissolved Oxygen</label>
-                    </div>
-                </div><br>
-                <div class="pretty p-default">
-                  <input type="checkbox" />
-                  <div class="state p-primary">
-                      <label>pH</label>
-                  </div>
-              </div><br>
-              <div class="pretty p-default">
-                <input type="checkbox" />
-                <div class="state p-primary">
-                    <label>Temperature Change</label>
-                </div>
-            </div>
-               </div>
             </div>
           </div>
           <div class="row" >
@@ -193,7 +135,7 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script>
-
+    // https://macwright.org/2015/03/23/geojson-second-bite.html
     // retrieve svg object from html DOM
 
     var svg = d3.select("svg");
@@ -232,8 +174,30 @@
 
 
     // load data
+
     d3.queue()
         .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+/*
+        .defer(d3.json, "/static/geojson/esri_us_rivers.geo.json", function(json) {
+
+          // https://bl.ocks.org/andybarefoot/765c937c8599ef540e1e0b394ca89dc5
+          //riverGroup = svg.append("g").attr("id", "map");
+
+          riverGroup = g
+
+          // draw a path for each river
+          rivers = riverGroup
+            .selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr("id", function(d, i) {
+              return d.properties.NAME.toLowerCase().split(' ').join('_');
+            }).attr("class", "river")
+
+        })
+*/
         .defer(d3.tsv, "/static/unemployment.tsv", function(d) { unemployment.set(d.id, +d.rate); })
         .await(ready);
 
