@@ -1,0 +1,8 @@
+.rank-list {
+  margin: 30px 0 15px 0;
+}
+
+h4:first-child.rank-list-header {
+  color: #1a4e6e;
+  margin-bottom: 12px;
+}

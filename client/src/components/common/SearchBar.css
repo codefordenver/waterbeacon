@@ -1,0 +1,16 @@
+.search-bar {
+  position: relative;
+  margin: 16px 0;
+}
+
+.search-bar .icon-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  height: calc(100% - 10px);
+  width: 36;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  z-index: 10;
+}

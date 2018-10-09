@@ -1,0 +1,18 @@
+.map-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.map {
+  outline: 1px solid black;
+  padding: 0.5rem 1rem;
+  width: 800px;
+  height: 500px;
+}
+
+.map center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

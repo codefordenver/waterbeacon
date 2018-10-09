@@ -1,0 +1,26 @@
+.content {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.content-inner {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  width: 100%;
+  /*max-width: 1090px;*/
+  max-width: 800px;
+}
+
+.main-search-bar {
+  margin-top: 28px;
+  margin-bottom: 16px;
+}
+
+.main-map-wrapper {
+  margin-bottom: 50px;
+}
+
+.main-rank-list {
+  margin-bottom: 80px;
+}

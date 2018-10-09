@@ -1,0 +1,14 @@
+h4 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+}
+
+h4:first-child {
+  color: #17a6ff;
+  /*margin-right: */
+}
+
+h4:last-child {
+  color: #1a4e6e;
+}

@@ -1,0 +1,23 @@
+.icon-button {
+  display: inline-block;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+}
+
+.icon-button span {
+  color: #3c3c3c;
+}
+
+.icon-button span {
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  margin: 0 8px;
+}
+
+.icon-button:hover span {
+  color: #6f6f6f;
+}

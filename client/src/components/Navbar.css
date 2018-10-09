@@ -1,0 +1,28 @@
+.navbar-shadow {
+  border-bottom: solid 1px rgb(222, 226, 230);
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.navbar {
+  /*height: 45px;*/
+}
+
+.navbar .container {
+  width: 100%;
+  height: auto;
+  /*max-width: 1090px;*/
+  max-width: 800px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-brand {
+  color: #212529;
+  display: inline-block;
+  padding: 0;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: inherit;
+}
