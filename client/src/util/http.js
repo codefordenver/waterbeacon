@@ -60,6 +60,6 @@ function makeRequest(method) {
 };
 
 export default Object.keys(httpMethods).reduce((expObj, method) => {
-  expObj[method] = config => makeRequest(method)(config);
+  expObj[method] = makeRequest(method);
   return expObj
 }, {});
