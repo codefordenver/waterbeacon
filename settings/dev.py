@@ -4,7 +4,7 @@ from common import *
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'waterbeacon',
         'USER': 'postgres',
         'PASSWORD': '',

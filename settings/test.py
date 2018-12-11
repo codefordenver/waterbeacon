@@ -3,7 +3,7 @@ import raven
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'test',
         'USER': 'aquauser',
         'PASSWORD': 'gQ&*Fk!WJp5z',
