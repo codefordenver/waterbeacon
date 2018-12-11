@@ -1,16 +1,9 @@
-_COMM_TYPE = (
-		('',''),
-        ('weave','weave'),
-        ('konekt','konekt'),
-        ('redbear','RedBear Duo')
-)
 
 _SOURCE_TYPE = (
 		('usgs','usgs'),
-        ('sim','simulator')
-    )
+)
 
-_SENSOR_TYPE = (
+_METRIC = (
 	('conductivity','Conductivity'),
 	('orp','Oxygen Reduction Potential'),
 	('odo','Dissolved Oxygen'),
