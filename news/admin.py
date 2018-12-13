@@ -11,7 +11,7 @@ def register_admin(model):
 
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('city','state','status','keywords')
+    list_display = ('city','state','keywords')
 
 class URLInline(admin.TabularInline):
     model = models.url
@@ -19,7 +19,7 @@ class URLInline(admin.TabularInline):
 
 @admin.register(models.tweet)
 class TweetAdmin(admin.ModelAdmin):
-    list_displat = ('text','source','location','ignore')
+    list_displat = ('text','status','source','location','ignore')
     list_filter = ('ignore',)
     inlines = [
     	URLInline,

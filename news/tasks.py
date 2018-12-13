@@ -14,7 +14,6 @@ from utils.log import log
 
 import tweepy
 
-
 def save_twitter_data(tweet, location  ):
     # https://www.ewg.org/tapwater/index.php#results-by-state-map
     # ref: https://dev.twitter.com/overview/api/tweets
@@ -23,6 +22,7 @@ def save_twitter_data(tweet, location  ):
     tw.location = location
     tw.text = tweet.text
     tw.sourceId = tweet.id_str
+    tw.status = 
 
     #tw.url =
     tw.created =  tweet.created_at
@@ -40,10 +40,10 @@ def save_twitter_data(tweet, location  ):
 
 @app.task
 def TweetWaterAdvisoryReader(
-            consumer_key = 'JCoLgJS4SFK4ErLyTPxrshzdJ',
-            consumer_secret = 'ZgEM4iw6YOX2B11k7d7QPYIHshivaXr9ZJUYaeZ4jh7LYCCJed',
-            access_token = '2438688577-F9iaLScxyvm4Bq6irsCOdX95gPMsJc4KRA0c1V8',
-            access_token_secret = 'D5RIThJdgipTejcp3GQ4RVdPhnbiiy2IAN4AZDrYy7QtS',
+            consumer_key = '',
+            consumer_secret = '',
+            access_token = '',
+            access_token_secret = '',
             frequency_minutes = 5,
             max_tweets = 100,
             days_ago = 5):

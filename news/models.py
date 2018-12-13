@@ -18,7 +18,6 @@ class location(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True, default="")
     state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True,default='')
-    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
     keywords = models.CharField(max_length=255, null=True, blank=True,default='')
     created = models.DateTimeField( null=True, auto_now_add=True)
 
@@ -30,6 +29,7 @@ class location(models.Model):
 
 class tweet(models.Model):
     location = models.ForeignKey(location, null=True, blank=True)
+    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
     ignore = models.BooleanField(default=True)
     source = models.CharField(max_length=255, null=True, blank=True,default='')
     text = models.CharField(max_length=255, null=True, blank=True,default='')
