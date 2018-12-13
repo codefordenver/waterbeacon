@@ -22,7 +22,7 @@ def save_twitter_data(tweet, location  ):
     tw.location = location
     tw.text = tweet.text
     tw.sourceId = tweet.id_str
-    tw.status = 
+    tw.status = ''
 
     #tw.url =
     tw.created =  tweet.created_at
