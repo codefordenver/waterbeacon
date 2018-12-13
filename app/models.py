@@ -15,12 +15,6 @@ from .const import (
 	_SENSOR_UNITS
 )
 
-# location
-class location(models.Model):
-	position = models.PointField(null=True, blank=True)
-	name = models.CharField(max_length=255, null=True, blank=True,default='')
-	status = models.CharField(max_length=255, null=True, blank=True,default='')
-
 # Create your models here.
 class node(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
