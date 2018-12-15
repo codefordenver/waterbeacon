@@ -26,14 +26,40 @@ class AdvisoryFeedAdmin(admin.ModelAdmin):
 class AdvisoryKeywordAdmin(admin.ModelAdmin):
     list_display = ('source','keyword',)
 
+def safe(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'safe'
+        alert.save()
+
+safe.short_description = 'Set Safe for Consumption status'
+
+def notdrink(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'notdrink'
+        alert.save()
+notdrink.short_description = 'Set Do Not Drink status'
+
+def boil(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'boil'
+        alert.save()
+boil.short_description = 'Set Boil Water status'
+
+def notuse(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'notuse'
+        alert.save()
+notuse.short_description = 'Set Do Not Use status'
+
 @admin.register(models.alert)
 class AlertAdmin(admin.ModelAdmin):
     list_display = ('sourceId','text','status','source','location','ignore')
-    list_filter = ('ignore','source','created')
+    list_filter = ('ignore','source','status','created')
     inlines = [
     	URLInline,
     ]
 
+    actions = [safe, notdrink, boil, notuse]
 
 class ServedInline(admin.TabularInline):
     model = models.county_served

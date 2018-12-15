@@ -16,6 +16,15 @@ import tweepy
 
 def status(text):
 
+    if 'lift' in text:
+        return 'safe'
+    elif 'do not use' in text:
+        return 'notuse'
+    elif 'do not drink' in text:
+        return 'notdrink'
+    elif 'boil' in text:
+        return 'boil'
+
     return 'unknown'
 
 def save_twitter_data(tweet, location = None ):
