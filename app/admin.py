@@ -13,8 +13,9 @@ def register_admin(model):
 
 @admin.register(models.node)
 class NodeAdmin(admin.ModelAdmin):
-    list_display = ('name','position','source','notes')
+    list_display = ('name','state','county','source','notes')
     search_fields = ['name']
+    list_filter = ('state',)
 
 #    readonly_fields = ('ph_chart', 'temperature_chart','conductivity_chart','turbidity_chart','orp_chart','odo_chart')
 #    fieldsets = [
@@ -31,3 +32,9 @@ class NodeAdmin(admin.ModelAdmin):
 
 #    class Media:
 #        js = ("js/node.js",)
+
+
+@admin.register(models.data)
+class DataAdmin(admin.ModelAdmin):
+    list_display = ('id','node','value','metric','timestamp')
+    list_filter = ('metric','timestamp')

@@ -42,6 +42,7 @@ class advisory_feed(models.Model):
 
     class Meta:
         verbose_name_plural = "Advisory Feeds"
+        verbose_name = "Advisory Feed"
 
 class advisory_keyword(models.Model):
     source = models.CharField(max_length=255, null=True, blank=True,choices=SOURCE, default="")
@@ -52,6 +53,7 @@ class advisory_keyword(models.Model):
 
     class Meta:
         verbose_name_plural = "Advisory Keywords"
+        verbose_name = "Advisory Keyword"
 
 class alert(models.Model):
     location = models.ForeignKey(location, null=True, blank=True)

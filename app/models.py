@@ -9,6 +9,7 @@ from django.contrib.postgres.fields import JSONField
 
 from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
+from django_pandas.managers import DataFrameManager
 
 from .choice import (
 	_SOURCE_TYPE,
@@ -78,6 +79,10 @@ class data(models.Model):
 	timestamp = models.DateTimeField( auto_now_add=True)
 	value = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	metric = models.CharField(max_length=255, null=True, blank=True,choices=_METRIC, default="")
+	objects = DataFrameManager()
 
 	def __unicode__(self):
 		return '%s - %s (%s) ' % (self.node.name, self.timestamp)
+
+	class Meta:
+		verbose_name_plural = "Data"
