@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.contrib.gis.db import models
 from .choice import (
-    FEED_SOURCE,
     WATER_STATUS,
 )
 from localflavor.us.us_states import STATE_CHOICES
@@ -18,6 +17,7 @@ class location(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True, default="")
     state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True,default='')
+    geocode = models.CharField(max_length=255, null=True, blank=True,default='')
     keywords = models.CharField(max_length=255, null=True, blank=True,default='')
     created = models.DateTimeField( null=True, auto_now_add=True)
 
@@ -29,7 +29,7 @@ class location(models.Model):
 
 class tweet(models.Model):
     location = models.ForeignKey(location, null=True, blank=True)
-    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="info")
+    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
     ignore = models.BooleanField(default=True)
     source = models.CharField(max_length=255, null=True, blank=True,default='')
     text = models.CharField(max_length=255, null=True, blank=True,default='')
@@ -45,8 +45,5 @@ class utility(models.Model):
     has_contaminats =  models.BooleanField(default=True)
     position = models.PointField(null=True, blank=True)
     name = models.CharField(max_length=255, null=True, blank=True,default='')
+    violation = models.BooleanField(default=False)
     last_updated = models.DateTimeField(auto_now= True )
-
-class violation(models.Model):
-    utility =  models.ForeignKey(utility)
-    text = models.CharField(max_length=255, null=True, blank=True,default='')

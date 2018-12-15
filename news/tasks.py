@@ -14,6 +14,11 @@ from utils.log import log
 
 import tweepy
 
+def tweet_status(tweet):
+
+
+    return 'unknown'
+
 def save_twitter_data(tweet, location  ):
     # https://www.ewg.org/tapwater/index.php#results-by-state-map
     # ref: https://dev.twitter.com/overview/api/tweets
@@ -22,9 +27,8 @@ def save_twitter_data(tweet, location  ):
     tw.location = location
     tw.text = tweet.text
     tw.sourceId = tweet.id_str
-    tw.status = ''
+    tw.status = tweet_status()
 
-    #tw.url =
     tw.created =  tweet.created_at
     tw.save()
 
