@@ -12,15 +12,28 @@ def register_admin(model):
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('city','state','keywords')
+    exclude = ('position',)
 
 class URLInline(admin.TabularInline):
     model = models.url
     exclude = ()
 
-@admin.register(models.tweet)
-class TweetAdmin(admin.ModelAdmin):
-    list_displat = ('text','status','source','location','ignore')
-    list_filter = ('ignore',)
+@admin.register(models.advisory_feed)
+class AdvisoryFeedAdmin(admin.ModelAdmin):
+    list_display = ('source','feed',)
+
+@admin.register(models.advisory_keyword)
+class AdvisoryKeywordAdmin(admin.ModelAdmin):
+    list_display = ('source','keyword',)
+
+@admin.register(models.alert)
+class AlertAdmin(admin.ModelAdmin):
+    list_display = ('sourceId','text','status','source','location','ignore')
+    list_filter = ('ignore','source')
     inlines = [
     	URLInline,
     ]
+
+@admin.register(models.utility)
+class UtilityAdmin(admin.ModelAdmin):
+    list_display = ('name','has_contaminats','violation')

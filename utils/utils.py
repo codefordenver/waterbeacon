@@ -1,3 +1,4 @@
+import re
 from nltk.corpus import stopwords
 
 def remove_stopwords(input):
@@ -13,3 +14,11 @@ def int_or_none(value):
     except (ValueError, TypeError):
         val = None
     return val
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext.replace("&nbsp;", "")
+
+def removeNonAscii(s):
+    return "".join(i for i in s if ord(i)<128)

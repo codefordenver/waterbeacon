@@ -1,4 +1,11 @@
 
+SOURCE = (
+    ('goog','Google News Feed'),
+    ('twitter','Twitter'),
+    ('',''),
+)
+
+
 WATER_STATUS = (
     ('info','Informational'),
     ('boil','Boil Water'),
