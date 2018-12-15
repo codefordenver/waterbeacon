@@ -50,7 +50,7 @@ class usgs_water_data(object):
         df = df.set_index('datetime')
 
         # resample data to days
-        df = df.resample('D', how='mean')
+        df = df.resample('D').mean()
 
         return df
 
