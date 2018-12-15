@@ -130,7 +130,7 @@ def TweetWaterAdvisoryReader(
                     save_twitter_data(tweet, location)
 
         # search for advisory generally
-        for tweet in tweepy.Cursor(api.search,q="\"%s\"" % (advisory.keyword.strip()), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+        for tweet in tweepy.Cursor(api.search,q="\"%s\" near:\"United States\"" % (advisory.keyword.strip()), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
             save_twitter_data(tweet)
 
 @app.task
