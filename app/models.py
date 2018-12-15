@@ -31,7 +31,7 @@ class node(models.Model):
 		out = []
 		now = datetime.today()
 		date = datetime.now() - settings.MAXIMUM_CHART_DAYS
-		for datum in data.objects.filter(metric = sensor_type, timestamp__gte = date):
+		for datum in data.objects.filter(node = self,metric = sensor_type, timestamp__gte = date):
 			out.append({
 				'time':datum.timestamp,
 				'value': int(datum.value)
