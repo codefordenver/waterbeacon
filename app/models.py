@@ -5,6 +5,10 @@ import uuid
 from django.db import models
 from django.template.loader import render_to_string
 from django.contrib.gis.db import models
+from django.contrib.postgres.fields import JSONField
+
+from localflavor.us.us_states import STATE_CHOICES
+from localflavor.us.models import USStateField
 
 from .choice import (
 	_SOURCE_TYPE,
@@ -20,9 +24,15 @@ class node(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	name = models.CharField(max_length=255, null=True, blank=True,default='')
 	position = models.PointField(null=True, blank=True)
+	county = models.CharField(max_length=255, null=True, blank=True, default="")
+	state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
+	fips_state = models.CharField(max_length=255, null=True, blank=True,default='')
+	fips_county = models.CharField(max_length=255, null=True, blank=True,default='')
 	source = models.CharField(max_length=255, null=True, blank=True,choices=_SOURCE_TYPE, default="usgs")
+	meta = JSONField()
 	notes = models.TextField(null=True, blank=True,default='')
 	created = models.DateTimeField( auto_now_add=True)
+
 
 	def __unicode__(self):
 		return self.name
