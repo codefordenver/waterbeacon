@@ -1,0 +1,10 @@
+[
+{
+    "model": "news.advisory_feed",
+    "pk": 1,
+    "fields": {
+        "source": "goog",
+        "feed": "https://www.google.com/alerts/feeds/08966076892725477175/13883181635165243708"
+    }
+}
+]

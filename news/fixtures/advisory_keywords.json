@@ -1,0 +1,18 @@
+[
+{
+    "model": "news.advisory_keyword",
+    "pk": 2,
+    "fields": {
+        "source": "twitter",
+        "keyword": "water advisory"
+    }
+},
+{
+    "model": "news.advisory_keyword",
+    "pk": 3,
+    "fields": {
+        "source": "twitter",
+        "keyword": "drink advisory"
+    }
+}
+]

@@ -8,52 +8,105 @@ from news import models
 from annoying.functions import get_object_or_None
 import feedparser
 from utils.utils import (
-    remove_stopwords,
+    remove_stopwords, cleanhtml
 )
 from utils.log import log
 
 import tweepy
 
+def status(text):
 
-def save_twitter_data(tweet, location  ):
+    if 'lift' in text:
+        return 'safe'
+    elif 'do not use' in text:
+        return 'notuse'
+    elif 'do not drink' in text:
+        return 'notdrink'
+    elif 'boil' in text:
+        return 'boil'
+
+    return 'unknown'
+
+def save_twitter_data(tweet, location = None ):
     # https://www.ewg.org/tapwater/index.php#results-by-state-map
     # ref: https://dev.twitter.com/overview/api/tweets
 
-    tw = models.tweet()
-    tw.location = location
-    tw.text = tweet.text
-    tw.sourceId = tweet.id_str
+    if models.alert.objects.filter(sourceId = tweet.id_str ).exists():
+        print "%s - exists" % ( tweet.text )
+        #log(tweet.text, 'success')
+        return
 
-    #tw.url =
-    tw.created =  tweet.created_at
+    tw = models.alert()
+
+    if location:
+        tw.location = location
+
+    tw.text = tweet.text
+    tw.text_wo_stopwords =  remove_stopwords( tweet.text )
+    tw.sourceId = tweet.id_str
+    tw.source = 'twitter'
+    tw.status = status(tweet.text)
     tw.save()
 
     if tweet.entities.get('urls'):
         for item in tweet.entities['urls']:
             url = models.url()
-            url.tweet = tw
+            url.alert = tw
             url.link = item['url']
             url.save()
 
     print tweet.text
     #log(tweet.text, 'success')
 
+def save_feed_data(item, location = None):
+
+    sourceId = item['id']
+    if models.alert.objects.filter(sourceId = sourceId ).exists():
+        print "%s - exists" % ( sourceId )
+        #log(sourceId, 'success')
+        return
+
+    title = cleanhtml(item['title'])
+    summary = cleanhtml(item['summary'])
+
+    published = datetime.strptime(item['published'], '%Y-%m-%dT%H:%M:%SZ')
+    link = item['link']
+
+    concat_text = "%s :: %s" % (title, summary )
+
+    alert = models.alert()
+    alert.source = 'goog'
+    alert.text = concat_text
+    alert.text_wo_stopwords =  remove_stopwords( concat_text )
+    alert.sourceId = sourceId
+    alert.status = status(concat_text)
+    alert.save()
+
+    url = models.url()
+    url.alert = alert
+    url.link = link
+    url.save()
+
+    print sourceId
+    #log(sourceId, 'success')
+
+@app.task
+def NewsFeedReader():
+
+    for advisory in models.advisory_feed.objects.all():
+        for item in feedparser.parse(advisory.feed)['entries']:
+            save_feed_data(item)
+
 @app.task
 def TweetWaterAdvisoryReader(
-            consumer_key = 'JCoLgJS4SFK4ErLyTPxrshzdJ',
-            consumer_secret = 'ZgEM4iw6YOX2B11k7d7QPYIHshivaXr9ZJUYaeZ4jh7LYCCJed',
-            access_token = '2438688577-F9iaLScxyvm4Bq6irsCOdX95gPMsJc4KRA0c1V8',
-            access_token_secret = 'D5RIThJdgipTejcp3GQ4RVdPhnbiiy2IAN4AZDrYy7QtS',
-            frequency_minutes = 5,
+            consumer_key,
+            consumer_secret,
+            access_token,
+            access_token_secret,
             max_tweets = 100,
-            days_ago = 5):
-
-    WATER_ADVISORY_KEYWORDS = [
-        'boil advisory',
-        'do not drink',
-        'do not use',
-        'informational'
-    ]
+            days_ago = 5,
+            skip_locations=False
+            ):
 
     # get today's date
     today = datetime.now().date()
@@ -65,14 +118,20 @@ def TweetWaterAdvisoryReader(
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    for advisory in WATER_ADVISORY_KEYWORDS:
-        for location in models.location.objects.all():
-            query = "%s %s %s" % (advisory, location.city, location.keywords)
-            geocode = location.geocode
+    for advisory in models.advisory_keyword.objects.filter( source = 'twitter'):
 
-            for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
-                save_twitter_data(tweet, location)
+        # search for advisory in locations
+        if not skip_locations:
+            for location in models.location.objects.all():
+                query = "\"%s\" %s %s" % (advisory.keyword, location.city, location.keywords)
+                geocode = location.geocode
 
+                for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+                    save_twitter_data(tweet, location)
+
+        # search for advisory generally
+        for tweet in tweepy.Cursor(api.search,q="\"%s\"" % (advisory.keyword.strip()), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+            save_twitter_data(tweet)
 
 @app.task
 def EWG_TapwaterReader(stale_updated_days = 30):

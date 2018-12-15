@@ -3,41 +3,19 @@ from __future__ import absolute_import
 from waterquality.celery import app
 from app import models
 from annoying.functions import get_object_or_None
-from utils.noise import noise
 from utils.log import log
 from datetime import datetime, timedelta
 from utils.crawlers.remote_water_quality_monitoring_network import remote_water_quality_monitoring_network
+
 
 from app.const import (
 	_SENSOR_UNITS
 )
 
 @app.task
-def nodesim():
-	log('Running Node Sim','info')
-	for node in models.node.objects.filter(active = True):
-		nodesim = get_object_or_None(models.sim_node, devicealias = node.devicealias)
-		if nodesim:
-			for sensor in nodesim.sensors.all():
-				d = noise(mean = sensor.mean , std = sensor.std, samples = 1)
-				data = models.data()
-				data.source = 'sim'
-				data.value = d.next()
-				data.node_name = nodesim.name
-				data.node_alias = node.devicealias
-				data.sensor_name = sensor.name
-				data.sensor_type = sensor.type
-				data.sensor_units = sensor.units
-				data.lat = node.lat
-				data.long = node.long
-				data.save()
-				log('Sampled Node %s, Sensor %s, Value %s' % (nodesim.name, sensor.name, data.value) ,'success')
+def crawl_usgs_waterdata( daysago = 7):
+	pass
 
-@app.task
-def delete_simdata(daysago = 30):
-	now = datetime.today()
-	date = datetime.now() - timedelta(days=daysago)
-	models.data.objects.filter(timestamp__lt = date, source= "sim").delete()
 
 @app.task
 def remote_water_quality_monitoring_network_task():
@@ -75,7 +53,3 @@ def remote_water_quality_monitoring_network_task():
 			data.save()
 		log('Station: %s data updated' % (station.name),'info')
 	log('Done','success')
-
-
-@app.task
-def crawl_usgs_waterdata( daysago = 7):

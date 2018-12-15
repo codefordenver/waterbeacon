@@ -11,16 +11,63 @@ def register_admin(model):
 
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('city','state','status','keywords')
+    list_display = ('city','state','keywords')
+    exclude = ('position',)
 
 class URLInline(admin.TabularInline):
     model = models.url
     exclude = ()
 
-@admin.register(models.tweet)
-class TweetAdmin(admin.ModelAdmin):
-    list_displat = ('text','source','location','ignore')
-    list_filter = ('ignore',)
+@admin.register(models.advisory_feed)
+class AdvisoryFeedAdmin(admin.ModelAdmin):
+    list_display = ('source','feed',)
+
+@admin.register(models.advisory_keyword)
+class AdvisoryKeywordAdmin(admin.ModelAdmin):
+    list_display = ('source','keyword',)
+
+def safe(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'safe'
+        alert.save()
+
+safe.short_description = 'Set Safe for Consumption status'
+
+def notdrink(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'notdrink'
+        alert.save()
+notdrink.short_description = 'Set Do Not Drink status'
+
+def boil(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'boil'
+        alert.save()
+boil.short_description = 'Set Boil Water status'
+
+def notuse(modeladmin, request, queryset):
+    for alert in queryset:
+        alert.status = 'notuse'
+        alert.save()
+notuse.short_description = 'Set Do Not Use status'
+
+@admin.register(models.alert)
+class AlertAdmin(admin.ModelAdmin):
+    list_display = ('sourceId','text','status','source','location','ignore')
+    list_filter = ('ignore','source','status','created')
     inlines = [
     	URLInline,
+    ]
+
+    actions = [safe, notdrink, boil, notuse]
+
+class ServedInline(admin.TabularInline):
+    model = models.county_served
+    exclude = ()
+
+@admin.register(models.utility)
+class UtilityAdmin(admin.ModelAdmin):
+    list_display = ('name','has_contaminats','violation')
+    inlines = [
+    	ServedInline,
     ]

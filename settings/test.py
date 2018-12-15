@@ -3,17 +3,17 @@ import raven
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'test',
         'USER': 'aquauser',
         'PASSWORD': 'gQ&*Fk!WJp5z',
-        'HOST': 'localhost',   
-        'PORT': '5432',   
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
-STATIC_ROOT = '/home/aquauser/statics/' 
-MEDIA_ROOT = '/home/aquauser/waterquality/media/' 
+STATIC_ROOT = '/home/aquauser/statics/'
+MEDIA_ROOT = '/home/aquauser/waterquality/media/'
 INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
 RAVEN_CONFIG = {

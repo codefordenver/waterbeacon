@@ -50,3 +50,4 @@ class remote_water_quality_monitoring_network(object):
 if __name__ == "__main__":
 	crawler = remote_water_quality_monitoring_network()
 	data = crawler.get()
+ No newline at end of file
