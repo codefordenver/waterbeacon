@@ -29,11 +29,19 @@ class AdvisoryKeywordAdmin(admin.ModelAdmin):
 @admin.register(models.alert)
 class AlertAdmin(admin.ModelAdmin):
     list_display = ('sourceId','text','status','source','location','ignore')
-    list_filter = ('ignore','source')
+    list_filter = ('ignore','source','created')
     inlines = [
     	URLInline,
     ]
 
+
+class ServedInline(admin.TabularInline):
+    model = models.county_served
+    exclude = ()
+
 @admin.register(models.utility)
 class UtilityAdmin(admin.ModelAdmin):
     list_display = ('name','has_contaminats','violation')
+    inlines = [
+    	ServedInline,
+    ]

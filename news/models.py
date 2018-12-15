@@ -59,7 +59,6 @@ class alert(models.Model):
     sourceId = models.CharField(max_length=255, null=True, blank=True, default="")
     status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
     ignore = models.BooleanField(default=True)
-    source = models.CharField(max_length=255, null=True, blank=True,default='')
     text = models.TextField(null=True, blank=True,default='')
     text_wo_stopwords = models.TextField(null=True, blank=True,default='')
     published = models.DateTimeField( null=True, blank = True )
@@ -89,6 +88,6 @@ class utility(models.Model):
     class Meta:
         verbose_name_plural = "Utilities"
 
-class utility_served(models.Model):
+class county_served(models.Model):
     utility = models.ForeignKey(utility, null=True, blank=True)
     location = models.ForeignKey(location, null=True, blank=True)
