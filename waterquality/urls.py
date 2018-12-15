@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
-    url(r'^v1/', include('api.urls')),
+    url(r'^v1/', include('api.v1.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'', include('app.urls')),
 ]
