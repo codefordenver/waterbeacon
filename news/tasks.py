@@ -114,14 +114,14 @@ def TweetWaterAdvisoryReader(
         # search for advisory in locations
         if not skip_locations:
             for location in models.location.objects.all():
-                query = "%s %s %s" % (advisory.keyword, location.city, location.keywords)
+                query = "\"%s\" %s %s" % (advisory.keyword, location.city, location.keywords)
                 geocode = location.geocode
 
                 for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
                     save_twitter_data(tweet, location)
 
         # search for advisory generally
-        for tweet in tweepy.Cursor(api.search,q=advisory.keyword.strip(), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+        for tweet in tweepy.Cursor(api.search,q="\"%s\"" % (advisory.keyword.strip()), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
             save_twitter_data(tweet)
 
 @app.task
