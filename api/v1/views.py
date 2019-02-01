@@ -37,13 +37,13 @@ class nodeData(APIView):
                 "fips_county_id": news.fips_county,
                 "zipcode": news.zipcode,
                 "name": news.city,
-                "county": news.status,
+                "county": news.county,
                 "status":news.status,
-                "long": news.position.x,
-                "lat": news.position.y,
+                "long": news.position.x if news.position else '',
+                "lat": news.position.y if news.position else '',
             })
 
-        queryset = news_models.utility.objects.filter(delete =False, status="publish")
+        queryset = news_models.utility.objects.all()
 
         if request.query_params.get('violation'):
             queryset.filter( voilation = request.query_params.get('violation') )
@@ -63,8 +63,8 @@ class nodeData(APIView):
                 "name": utility.name,
                 "has_contaminats": utility.has_contaminats,
                 "url": utility.link,
-                "long": utility.position.x,
-                "lat":  utility.position.y,
+                "long": utility.position.x if utility.position else '',
+                "lat":  utility.position.y if utility.position else '',
                 "violation": utility.violation,
                 "violation_points": utility.voilation_points,
                 "people_served": utility.people_served,
