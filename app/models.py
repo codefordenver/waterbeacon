@@ -11,14 +11,9 @@ from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
 
-from .choice import (
-	_SOURCE_TYPE,
-	_METRIC
-)
+import choice
 
-from .const import (
-	_SENSOR_UNITS
-)
+import const
 
 # Create your models here.
 class node(models.Model):
@@ -29,7 +24,9 @@ class node(models.Model):
 	state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
 	fips_state = models.CharField(max_length=255, null=True, blank=True,default='')
 	fips_county = models.CharField(max_length=255, null=True, blank=True,default='')
-	source = models.CharField(max_length=255, null=True, blank=True,choices=_SOURCE_TYPE, default="usgs")
+	source = models.CharField(max_length=255, null=True, blank=True,choices=choice.SOURCE_TYPE, default="usgs")
+	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
+	status = models.CharField(max_length=255, null=True, blank=True, choices= choice.NODE_STATUS ,default='')
 	meta = JSONField()
 	notes = models.TextField(null=True, blank=True,default='')
 	created = models.DateTimeField( auto_now_add=True)
@@ -48,7 +45,7 @@ class node(models.Model):
 				'value': int(datum.value)
 				})
 
-		return render_to_string('admin/app/node/chart.html', {'data':out,'chart_div':sensor_type,'title':title,'label':label,'units':_SENSOR_UNITS[sensor_type] })
+		return render_to_string('admin/app/node/chart.html', {'data':out,'chart_div':sensor_type,'title':title,'label':label,'units': const.SENSOR_UNITS[sensor_type] })
 
 	def ph_chart(self):
 		return self._chart('ph','Ph Chart','Ph')

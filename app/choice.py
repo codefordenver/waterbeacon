@@ -1,9 +1,9 @@
 
-_SOURCE_TYPE = (
+SOURCE_TYPE = (
 		('usgs','usgs'),
 )
 
-_METRIC = (
+METRIC = (
 	('conductivity','Conductivity'),
 	('orp','Oxygen Reduction Potential'),
 	('odo','Dissolved Oxygen'),
@@ -12,4 +12,8 @@ _METRIC = (
 	('ph','Ph'),
 	('hall','Hall Effect Sensor'),
 
+)
+
+NODE_STATUS = (
+	('good','good'),
 )

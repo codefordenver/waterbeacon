@@ -13,12 +13,18 @@ from app import models as app_models
 from news import models as news_models
 
 from api.v1 import ( serializers )
+from utils.utils import ( str2bool )
 
 
 class nodeData(APIView):
+    # /v1/data/?status=true&violation=true
+
 
     def get(self, request):
         response = {"meta":{"sensors": 0, "cities": 0, "utilities": 0},"cities":[], "data":[],"utilities" :[]}
+
+        
+
 
         queryset = news_models.location.objects.all()
         if request.query_params.get('fips_state'):
@@ -28,7 +34,7 @@ class nodeData(APIView):
             queryset.filter( fips_state = request.query_params.get('fips_county') )
 
         if request.query_params.get('status'):
-            queryset.filter( status = request.query_params.get('status') )
+            queryset.filter( status = str2bool(request.query_params.get('status')) )
 
         response["meta"]["cities"] = queryset.count()
         for news in queryset:
@@ -46,7 +52,7 @@ class nodeData(APIView):
         queryset = news_models.utility.objects.all()
 
         if request.query_params.get('violation'):
-            queryset.filter( voilation = request.query_params.get('violation') )
+            queryset.filter( violation = str2bool(request.query_params.get('violation')) )
 
         response["meta"]["utilities"] = queryset.count()
         for utility in queryset:
