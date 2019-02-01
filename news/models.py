@@ -16,12 +16,14 @@ from localflavor.us.models import USStateField
 class location(models.Model):
     position = models.PointField(null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True, default="")
+    county = models.CharField(max_length=255, null=True, blank=True, default="")
     state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True,default='')
     fips_state = models.CharField(max_length=255, null=True, blank=True,default='')
     fips_county = models.CharField(max_length=255, null=True, blank=True,default='')
     geocode = models.CharField(max_length=255, null=True, blank=True,default='')
     keywords = models.CharField(max_length=255, null=True, blank=True,default='')
+    status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
     created = models.DateTimeField( null=True, auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -85,6 +87,7 @@ class utility(models.Model):
     fips_state = models.CharField(max_length=255, null=True, blank=True,default='')
     fips_county = models.CharField(max_length=255, null=True, blank=True,default='')
     violation = models.BooleanField(default=False)
+    voilation_points = models.IntegerField( blank=True, default = 0)
     last_updated = models.DateTimeField(auto_now= True )
 
     class Meta:

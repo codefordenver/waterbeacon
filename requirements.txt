@@ -16,7 +16,7 @@ botocore==1.9.0
 bs4==0.0.1
 CacheControl==0.12.4
 celery==3.1.23
-certifi==2017.11.5
+certifi==2018.11.29
 channels==2.1.2
 chardet==3.0.4
 click==6.7
@@ -72,7 +72,7 @@ python-dateutil==2.5.2
 pytz==2018.4
 PyYAML==3.11
 redis==2.10.5
-requests==2.18.4
+requests==2.21.0
 requests-oauthlib==0.8.0
 s3transfer==0.1.13
 six==1.11.0

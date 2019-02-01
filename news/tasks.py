@@ -38,15 +38,17 @@ def save_twitter_data(tweet, location = None ):
 
     tw = models.alert()
 
-    if location:
-        tw.location = location
-
     tw.text = tweet.text
     tw.text_wo_stopwords =  remove_stopwords( tweet.text )
     tw.sourceId = tweet.id_str
     tw.source = 'twitter'
     tw.status = status(tweet.text)
     tw.save()
+
+    if location:
+        tw.location = location
+        location.status = tw.status
+        location.save()
 
     if tweet.entities.get('urls'):
         for item in tweet.entities['urls']:

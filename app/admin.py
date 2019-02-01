@@ -36,5 +36,5 @@ class NodeAdmin(admin.ModelAdmin):
 
 @admin.register(models.data)
 class DataAdmin(admin.ModelAdmin):
-    list_display = ('id','node','value','metric','timestamp')
-    list_filter = ('metric','timestamp')
+    list_display = ('id','node','timestamp')
+    list_filter = ('timestamp',)

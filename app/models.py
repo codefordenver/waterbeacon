@@ -77,8 +77,7 @@ class node(models.Model):
 class data(models.Model):
 	node =  models.ForeignKey(node)
 	timestamp = models.DateTimeField( auto_now_add=True)
-	value = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
-	metric = models.CharField(max_length=255, null=True, blank=True,choices=_METRIC, default="")
+	metrics = JSONField(null = True, blank = True)
 	objects = DataFrameManager()
 
 	def __unicode__(self):
