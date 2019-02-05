@@ -20,6 +20,15 @@ Now, activate a python virtual environment by running `mkvirtualenv ${ENV_NAME}`
 
 Finally, run `pip install -r requirements.txt` to install necessarry dependencies.
 
+Before moving forward, make sure that you have postgresql installed and running. Run `brew install postgresql`
+
+Make sure you have the folling tools are installed:
+* [Postgres](https://postgresapp.com/downloads.html)
+* [pgAdmin](https://www.postgresql.org/ftp/pgadmin/pgadmin4)
+* [PSequel](http://www.psequel.com/)
+
+Create the waterbeacon database by running `createdb waterbeacon`
+
 When that completes, run `./manage.py migrate --settings=settings.dev` to create a local SQLite db instance for developnent.
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
