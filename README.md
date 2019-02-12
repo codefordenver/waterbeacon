@@ -10,7 +10,7 @@ https://www.waterqualitydata.us/
 
 http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
 
-# Installation Guide
+# Django Installation Guide
 
 You'll need to install `python2` along with `pip`.
 
@@ -36,3 +36,21 @@ Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev s
 The dev server will run on `localhost:8000` by default. If you prefer another port, just pass the desired port number following the previous command. That is `./manage.py migrate --settings=settings.dev ${PORT}`
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
+
+# React Installation Guide
+
+React is installed as a standalone app created using `django-admin startapp` within the Django framework called 'frontend' using the following versions:
+
+* npm: 6.7.0
+* node: 9.11.2
+
+Make sure that you are in the 'frontend' directory:
+* install webpack `npm i webpack webpack-cli --save-dev`
+* install babel `npm i @babel/core babel-loader @babel/preset-env @babel/preset-react babel-plugin-transform-class-properties --save-dev`
+* install React and prop-types: `npm i react react-dom prop-types --save-dev`
+
+For development, you must run webpack within the frontend folder, which will also download and update all the necessary node_modules on execution:
+
+`npm run dev`
+
+This command will watch for changes to the React files and re-run webpack when files are updated. 
