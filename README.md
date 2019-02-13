@@ -45,6 +45,7 @@ React is installed as a standalone app created using `django-admin startapp` wit
 * node: 9.11.2
 
 Make sure that you are in the 'frontend' directory:
+* base installation: `npm install`
 * install webpack `npm i webpack webpack-cli --save-dev`
 * install babel `npm i @babel/core babel-loader @babel/preset-env @babel/preset-react babel-plugin-transform-class-properties --save-dev`
 * install React and prop-types: `npm i react react-dom prop-types --save-dev`
@@ -53,4 +54,4 @@ For development, you must run webpack within the frontend folder, which will als
 
 `npm run dev`
 
-This command will watch for changes to the React files and re-run webpack when files are updated. 
+This command will watch for changes to the React files and re-run webpack when files are updated.
