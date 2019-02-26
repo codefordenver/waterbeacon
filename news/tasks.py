@@ -27,7 +27,7 @@ def status(text):
 
     return 'unknown'
 
-def save_twitter_data(tweet, location = None ):
+def save_twitter_data(tweet, location = None, print_test = False ):
     # https://www.ewg.org/tapwater/index.php#results-by-state-map
     # ref: https://dev.twitter.com/overview/api/tweets
 
@@ -107,7 +107,8 @@ def TweetWaterAdvisoryReader(
             access_token_secret,
             max_tweets = 100,
             days_ago = 5,
-            skip_locations=False
+            skip_locations=False,
+            print_test = False
             ):
 
     # get today's date
@@ -129,11 +130,13 @@ def TweetWaterAdvisoryReader(
                 geocode = location.geocode
 
                 for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
-                    save_twitter_data(tweet, location)
+                    save_twitter_data(tweet, location, print_test)
 
         # search for advisory generally
-        for tweet in tweepy.Cursor(api.search,q="\"%s\" near:\"United States\"" % (advisory.keyword.strip()), since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
-            save_twitter_data(tweet)
+        query = "\"%s\"" % (advisory.keyword.strip())
+        geocode="39.39,-99.06,2800km"   # limit query to lower 48 in united status
+        for tweet in tweepy.Cursor(api.search,q= query.strip(), geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+            save_twitter_data(tweet, print_test = print_test)
 
 @app.task
 def EWG_TapwaterReader(stale_updated_days = 30):
