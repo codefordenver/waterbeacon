@@ -39,10 +39,10 @@ def save_twitter_data(tweet, location = None, print_test = False ):
     tw = models.alert()
 
     tw.text = tweet.text
-    tw.text_wo_stopwords =  remove_stopwords( tweet.text )
+    tw.text_wo_stopwords =  remove_stopwords( tweet.text.lower() )
     tw.sourceId = tweet.id_str
     tw.source = 'twitter'
-    tw.status = status(tweet.text)
+    tw.status = status(tweet.text.lower())
     tw.published = tweet.created_at
     tw.save()
 

@@ -6,7 +6,7 @@ def remove_stopwords(input):
     return ' '.join([word.lower() for word in word_list if word.lower() not in stopwords.words('english')]) # remove stop words
 
 def hasPhrase(phrases = [], text = ''):
-    return any([phrase for phrase in phrases if phrase in text])
+    return any([phrase for phrase in phrases if phrase.lower() in text.lower() ])
 
 def str2bool(value):
     valid = {'true': True, 't': True, '1': True,
