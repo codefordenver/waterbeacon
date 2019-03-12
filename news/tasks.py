@@ -16,13 +16,13 @@ import tweepy
 
 def status(text):
 
-    if hasPhrase(['lift'], text):
+    if hasPhrase(['lift','lifted'], text):
         return 'safe'
     elif hasPhrase(['do not use'], text):
         return 'notuse'
     elif hasPhrase(['do not drink'], text):
         return 'notdrink'
-    elif hasPhrase(['boil'], text):
+    elif hasPhrase(['boil water'], text):
         return 'boil'
 
     return 'unknown'
