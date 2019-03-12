@@ -8,7 +8,7 @@ class Command(BaseCommand):
         parser.add_argument('--skip_locations',
             action='store_true',
             dest='skip_locations',
-            default=False,
+            default=True,
             help='Skip Searching Specific Locations')
 
     def handle(self, *args, **options):

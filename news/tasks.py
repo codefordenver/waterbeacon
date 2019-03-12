@@ -8,7 +8,7 @@ from news import models
 from annoying.functions import get_object_or_None
 import feedparser
 from utils.utils import (
-    remove_stopwords, cleanhtml
+    remove_stopwords, cleanhtml, hasPhrase
 )
 from utils.log import log
 
@@ -16,13 +16,13 @@ import tweepy
 
 def status(text):
 
-    if 'lift' in text:
+    if hasPhrase(['lift'], text):
         return 'safe'
-    elif 'do not use' in text:
+    elif hasPhrase(['do not use'], text):
         return 'notuse'
-    elif 'do not drink' in text:
+    elif hasPhrase(['do not drink'], text):
         return 'notdrink'
-    elif 'boil' in text:
+    elif hasPhrase(['boil'], text):
         return 'boil'
 
     return 'unknown'
@@ -43,6 +43,7 @@ def save_twitter_data(tweet, location = None, print_test = False ):
     tw.sourceId = tweet.id_str
     tw.source = 'twitter'
     tw.status = status(tweet.text)
+    tw.published = tweet.created_at
     tw.save()
 
     if location:
@@ -106,8 +107,8 @@ def TweetWaterAdvisoryReader(
             access_token,
             access_token_secret,
             max_tweets = 100,
-            days_ago = 5,
-            skip_locations=False,
+            days_ago = 1,
+            skip_locations=True,
             print_test = False
             ):
 
@@ -121,21 +122,49 @@ def TweetWaterAdvisoryReader(
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
+    latest_tweet = None
+    if models.alert.objects.filter( source = 'twitter').count():
+        latest_tweet = models.alert.objects.filter( source = 'twitter').latest('published')
+
     for advisory in models.advisory_keyword.objects.filter( source = 'twitter'):
 
         # search for advisory in locations
         if not skip_locations:
             for location in models.location.objects.all():
+
                 query = "\"%s\" %s %s" % (advisory.keyword, location.city, location.keywords)
                 geocode = location.geocode
 
-                for tweet in tweepy.Cursor(api.search,q=query.strip(),geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+                query_params = {
+                    'q': query.strip(),
+                    'geocode': geocode,
+                    'lang':'en',
+                    'wait_on_rate_limit': True,
+                    'since': past.strftime('%Y-%m-%d')
+                }
+
+                if latest_tweet:
+                    query_params['since_id'] = latest_tweet.sourceId
+
+                for tweet in tweepy.Cursor(api.search, **query_params).items(max_tweets):
                     save_twitter_data(tweet, location, print_test)
 
         # search for advisory generally
         query = "\"%s\"" % (advisory.keyword.strip())
         geocode="39.39,-99.06,2800km"   # limit query to lower 48 in united status
-        for tweet in tweepy.Cursor(api.search,q= query.strip(), geocode = geocode, since= past.strftime('%Y-%m-%d'), lang='en').items(max_tweets):
+
+        query_params = {
+            'q': query.strip(),
+            'geocode': geocode,
+            'lang':'en',
+            'wait_on_rate_limit': True,
+            'since': past.strftime('%Y-%m-%d')
+        }
+
+        if latest_tweet:
+            query_params['since_id'] = latest_tweet.sourceId
+
+        for tweet in tweepy.Cursor(api.search, **query_params ).items(max_tweets):
             save_twitter_data(tweet, print_test = print_test)
 
 @app.task

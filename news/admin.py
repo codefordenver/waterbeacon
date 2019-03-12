@@ -53,8 +53,8 @@ notuse.short_description = 'Set Do Not Use status'
 
 @admin.register(models.alert)
 class AlertAdmin(admin.ModelAdmin):
-    list_display = ('sourceId','text','status','source','location','ignore')
-    list_filter = ('ignore','source','status','created')
+    list_display = ('sourceId','text','status','source','location','published','ignore')
+    list_filter = ('ignore','source','status','created','published')
     inlines = [
     	URLInline,
     ]
