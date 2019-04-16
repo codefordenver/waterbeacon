@@ -7,6 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <WbHeader />
         <svg width="960" height="600">
           <DefaultD3 width={960} height={600} />
         </svg>
