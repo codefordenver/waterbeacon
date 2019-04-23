@@ -37,7 +37,9 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
-# API Installation Guide
+
+# Frontend Installation Guide
+
 Navigate to the frontend directory where the react app is located and run install
 
 * `cd frontend`
