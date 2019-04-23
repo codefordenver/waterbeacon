@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'djsupervisor',
     'djcelery',
     'app',
-    'news'
+    'news',
+    'subscribers'
 ]
 
 MIDDLEWARE_CLASSES = [
