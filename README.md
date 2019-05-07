@@ -10,7 +10,7 @@ https://www.waterqualitydata.us/
 
 http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
 
-# Installation Guide
+# API Installation Guide
 
 You'll need to install `python2` along with `pip`.
 
@@ -39,4 +39,12 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
-A comment about editors, if you're using VSCode, it appears there is [an issue](https://github.com/Microsoft/ptvsd/issues/943) that prevents running in debug mode. 
+# Frontend Installation Guide
+
+Navigate to the frontend directory where the react app is located and run install
+
+* `cd frontend`
+* `npm install`
+
+After installation you can run `npm start` which will run the react app on localhost:3000 with "hot reload" enabled.
+
