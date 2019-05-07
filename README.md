@@ -2,15 +2,15 @@
 
 waterbeacon
 
-# Resources
+## Resources
 
 https://www.waterqualitydata.us/
 
-# NSF Water Quality Index
+## NSF Water Quality Index
 
 http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
 
-# API Installation Guide
+## API Installation Guide
 
 You'll need to install `python2` along with `pip`.
 
@@ -31,7 +31,11 @@ Make sure you have the folling tools are installed:
 
 Create the waterbeacon database by running `createdb waterbeacon`
 
-When that completes, run `./manage.py migrate --settings=settings.dev` to create a local SQLite db instance for developnent.
+When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
+
+(skip) To get all the new data from the EPA, you can run ./manage.py get_epa_state_data --settings=settings.dev. This needs to be updated to truncate/handle updates.
+
+Optionally populate the rawdata app with EPA data by running ./manage.py import_epa_state_data --settings=settings.dev.
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
 
@@ -39,7 +43,7 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
-# Frontend Installation Guide
+## Frontend Installation Guide
 
 Navigate to the frontend directory where the react app is located and run install
 
@@ -47,4 +51,3 @@ Navigate to the frontend directory where the react app is located and run instal
 * `npm install`
 
 After installation you can run `npm start` which will run the react app on localhost:3000 with "hot reload" enabled.
-

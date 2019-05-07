@@ -409,7 +409,7 @@ val_xpaths['activity'] = {
     'ActivityDepthHeightMeasure/MeasureUnitCode': 'wqx:ActivityDescription/wqx:ActivityDepthHeightMeasure/wqx:MeasureUnitCode'}
 
 # item-specific (i.e. single-row-specific) column defs descended from /WQX/Organization/MonitoringLocation.
-# # These column defs apply to station mappings and not to results.
+# These column defs apply to station mappings and not to results.
 # The column name is the key. The value is the RELATIVE XPath from
 # /WQX/Organization/MonitoringLocation, obeying the convention that "wqx" is the 
 #  XPath expression's expected alias for the WQX namespace.

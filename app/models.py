@@ -78,7 +78,7 @@ class data(models.Model):
 	objects = DataFrameManager()
 
 	def __unicode__(self):
-		return '%s - %s (%s) ' % (self.node.name, self.timestamp)
+		return '%s - %s' % (self.node.name, self.timestamp)
 
 	class Meta:
 		verbose_name_plural = "Data"
