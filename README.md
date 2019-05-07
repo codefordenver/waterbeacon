@@ -23,9 +23,11 @@ Finally, run `pip install -r requirements.txt` to install necessarry dependencie
 Before moving forward, make sure that you have postgresql installed and running. Run `brew install postgresql`
 
 Make sure you have the folling tools are installed:
+
 * [Postgres](https://postgresapp.com/downloads.html)
 * [pgAdmin](https://www.postgresql.org/ftp/pgadmin/pgadmin4)
 * [PSequel](http://www.psequel.com/)
+* You may need to manually install [GeoDjango](https://docs.djangoproject.com/en/1.11/ref/contrib/gis/install/#homebrew). If you have trouble with it, consider using brew.
 
 Create the waterbeacon database by running `createdb waterbeacon`
 
@@ -37,7 +39,6 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
-
 # Frontend Installation Guide
 
 Navigate to the frontend directory where the react app is located and run install
@@ -46,3 +47,4 @@ Navigate to the frontend directory where the react app is located and run instal
 * `npm install`
 
 After installation you can run `npm start` which will run the react app on localhost:3000 with "hot reload" enabled.
+
