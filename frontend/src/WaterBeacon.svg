@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="158px" height="25px" viewBox="0 0 158 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>WaterBeacon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="WaterBeacon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="HelveticaNeue, Helvetica Neue" font-size="25" font-weight="normal" letter-spacing="-0.600000024" line-spacing="30">
+        <text id="Water" fill="#17A6FF">
+            <tspan x="3" y="20">Wate</tspan>
+            <tspan x="57.5499999" y="20">r</tspan>
+        </text>
+        <text id="Beacon" fill="#1A4E6E">
+            <tspan x="72" y="20">Beaco</tspan>
+            <tspan x="140.75" y="20">n</tspan>
+        </text>
+    </g>
+</svg>
