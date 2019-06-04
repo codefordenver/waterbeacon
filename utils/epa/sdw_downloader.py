@@ -172,7 +172,7 @@ class EpaWaterDataGetter(EpaDataGetter):
         self.states.append(('01',  '02',  '03',  '04',  '05',
                             '06',  '07',  '08', '09',  '10'))
 
-class EPA_SDW_Downloader(object):
+class SDW_Downloader(object):
 
     def __init__(self):
         pass

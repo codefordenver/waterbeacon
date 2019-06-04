@@ -3,7 +3,7 @@ from django.db import utils
 import unicodecsv as csv
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from utils.epa.epa_sdw_importer import ( EPA_SDW_Importer )
+from utils.epa.sdw_importer import ( SDW_Importer )
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -13,7 +13,7 @@ class Command(BaseCommand):
             settings.BASE_DIR, settings.EPA_DATA_DIRECTORY, 'WaterSystems')
         processed_rows = 0
 
-        importer = EPA_SDW_Importer()
+        importer = SDW_Importer()
         for filename in os.listdir(jsonDirectory):
             with open(os.path.join(jsonDirectory, filename)) as f:
                 data = csv.reader(f)

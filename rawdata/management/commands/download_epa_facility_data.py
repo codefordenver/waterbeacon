@@ -1,7 +1,7 @@
 import os
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from utils.epa.epa_sdw_downloader import ( EPA_SDW_Downloader )
+from utils.epa.sdw_downloader import ( SDW_Downloader )
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -10,5 +10,5 @@ class Command(BaseCommand):
             settings.BASE_DIR, settings.EPA_DATA_DIRECTORY)
 
 
-        downloader = EPA_SDW_Downloader()
+        downloader = SDW_Downloader()
         downloader.get_facility_data(target_dir)

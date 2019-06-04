@@ -1,7 +1,7 @@
 from rawdata.models import EpaSystem
 from datetime import datetime
 
-class EPA_SDW_Importer(object):
+class SDW_Importer(object):
 
     def _format_date(self, date_string):
         '''convert the dd/mm/yyyy format into a datetime object'''
