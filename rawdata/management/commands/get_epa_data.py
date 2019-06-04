@@ -24,6 +24,7 @@ class EpaDataGetter(object):
         self.query_url = ''
         self.columns_query_param = ''
         self.failed_requests = []
+        self.get_queryid_request_parameters = ''
 
         #TODO figure out CA as it's too big for facilities currently
         self.states = [
@@ -65,7 +66,7 @@ class EpaDataGetter(object):
         The assummption about query parameter names hopefully holds true for all endpoints like it has so far.
         """
         self.rate_limit_requests()
-        url = '%s?output=JSON&p_st=%s&p_act=Y' % (self.system_url, state)
+        url = '%s?output=JSON&p_st=%s&p_act=Y%s' % (self.system_url, state, self.get_queryid_request_parameters)
         print(url)
         data = self.get_json_data_from_url(url)
         print(data)
@@ -159,12 +160,15 @@ class EpaFacilityDataGetter(EpaDataGetter):
         self.query_url = '%s/echo_rest_services.get_qid' % self.hostname
         # there are tons of columns and we don't need them all. This list was found using the metadata URL and then picking out interesting items
         # https://ofmpub.epa.gov/echo/echo_rest_services.metadata?output=JSON
-        self.columns_query_param = r'&qcolumns=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C16%2C17%2C23%2C63%2C64%2C69%2C70%2C71%2C72%2C73%2C89%2C91%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C110%2C156%2C158%2C167%2C168%2C185%2C188'
-
+        # 16, 17, 31, 
+        # lat, lng, types
+        self.columns_query_param = r'&qcolumns=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C16%2C17%2C23%2C31%2C58%2C63%2C64%2C69%2C70%2C71%2C72%2C73%2C83%2C89%2C91%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C110%2C156%2C158%2C167%2C168%2C185%2C188%2C190'
+        self.get_queryid_request_parameters = '&p_med=S' # filter for water only facilities
     
     def should_write_row(self, row):
         # Indicates whether the facility has a Safe Drinking Water Information System (SDWIS) ID
         # We don't care about any facilities that aren't water related (could look for watershed info someday)
+        # Figured out parameter for this so it should probably be removed
         return row["SDWISFlag"] == 'Y'
 
 

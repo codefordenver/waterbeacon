@@ -1,4 +1,4 @@
-from rawdata.models import EpaSystem
+from rawdata.models import EpaWaterSystem
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from django.db import utils
@@ -37,8 +37,8 @@ class Command(BaseCommand):
 
     def add_watersystem_to_db(self, system):
         # TODO use object.get_or_add? need to make sure this doesn't duplicate each time
-        # just truncate the table and reimport? or maybe EpaSystem.objects.all().delete() if FK matters
-        obj = EpaSystem(
+        # just truncate the table and reimport? or maybe EpaWaterSystem.objects.all().delete() if FK matters
+        obj = EpaWaterSystem(
             FacDerivedStctyFIPS
             SDWAFormalActionCount
             FacDateLastPenalty

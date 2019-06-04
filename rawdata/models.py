@@ -6,9 +6,9 @@ from django.db import models
 # Create your models here.
 
 
-class EpaSystem(models.Model):
+class EpaWaterSystem(models.Model):
 	PWSName = models.CharField(max_length=255)
-	PWSId = models.CharField(max_length=255)   # TODO , unique=True?? not sure how to not duplicate
+	PWSId = models.CharField(max_length=255, unique=True) # this is unique in the EPA system
 	CitiesServed = models.CharField(max_length=4000, null=True)
 	StateCode = models.CharField(max_length=10, null=True, db_index=True)
 	# this should be a many to many FK with a zipcode table
@@ -78,3 +78,41 @@ class EpaSystem(models.Model):
 	SiteVisits5yrInspections = models.IntegerField(null=True)
 	SiteVisits5yrOther = models.IntegerField(null=True)
 	MaxScore = models.IntegerField(null=True)
+
+
+class EpaFacilitySystem(models.Model):
+	FacName = models.CharField(max_length=255)
+	PWSId = models.CharField(max_length=255, unique=True) #comes from SDWAIDs
+	RegistryID = models.CharField(max_length=12)
+	FacStreet = models.CharField(max_length=200)
+	FacCity = models.CharField(max_length=100)
+	FacState = models.CharField(max_length=2)
+	FacZip = models.CharField(max_length=10)
+	FacCounty = models.CharField(max_length=100)
+	FacFIPSCode = models.CharField(max_length=15)
+	FacDerivedZip = models.CharField(max_length=5) # derived from lat/lng
+	FacEPARegion = models.CharField(max_length=2)
+	FacLat = models.DecimalField()
+	FacLong = models.DecimalField()
+	FacAccuracyMeters = models.DecimalField()
+	FacReferencePoint = models.CharField(max_length=750)
+	FacTotalPenalties = models.DecimalField()
+	FacDateLastPenalty = models.DateField()
+	FacLastPenaltyAmt = models.DecimalField()
+	SDWAFormalActionCount = models.DecimalField()
+	SDWASystemTypes = models.CharField(max_length=4000)
+	FacDerivedStctyFIPS = models.CharField(max_length=5)
+	FacPercentMinority = models.DecimalField()
+	FacMajorFlag = models.CharField(max_length=1)
+	ViolFlag = models.DecimalField()
+	CurrVioFlag = models.DecimalField()
+	FacPenaltyCount = models.DecimalField()
+	FacFormalActionCount = models.DecimalField()
+	SDWA3yrComplQtrsHistory = models.CharField(max_length=15)
+	SDWAInspections5yr = models.DecimalField()
+	SDWAInformalCount = models.DecimalField() # Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
+	FacCollectionMethod = models.CharField(max_length=750) # Indicates the collection method used (GPS, Photo Interpolation, Address Geocode, etc) to determine a facility's spatial coodinate.
+	FacStdCountyName = models.CharField(max_length=300)
+	SDWISFlag = models.CharField(max_length=1)
+	FacImpWaterFlg =  models.CharField(max_length=1) # Indicates whether or not the facility discharges directly into category 4 or 5 impaired water, as designated under section 303(d) of the Clean Water Act
+	Score = models.DecimalField()
