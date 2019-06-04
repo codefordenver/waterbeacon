@@ -1,84 +1,50 @@
-from rawdata.models import EpaWaterSystem
+from rawdata.models import EpaFacilitySystem
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from django.db import utils
-import json
-import sys
+import unicodecsv as csv
 import os
-from datetime import datetime
+from django.core.management.base import BaseCommand
+from django.conf import settings
+from utils.epa.sdw_importer import (SDW_Importer)
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        #TODO all of this... so ignore for now
-        # TODO make this a setting not property in EpaDataGetter class 
+        # TODO make this a setting not property in EpaDataGetter class FACILITY_TYPE = 'Facilities'
         jsonDirectory = os.path.join(
             settings.BASE_DIR, settings.EPA_DATA_DIRECTORY, 'Facilities')
         processed_rows = 0
 
+        importer = SDW_Importer()
         for filename in os.listdir(jsonDirectory):
             with open(os.path.join(jsonDirectory, filename)) as f:
-                data = json.loads(f.read())
+                data = csv.reader(f)
 
-            for system in data["Results"]["WaterSystems"]:
-                if system['PWSActivityCode'] != 'A':
-                    continue # we only want active sites so skip others
-                try:
-                    processed_rows += 1 
-                    self.add_watersystem_to_db(system)
-                    if (processed_rows % 10000 == 0):
-                        self.stdout.write('Processed row %s...' %processed_rows)
-                except utils.IntegrityError:
-                    self.stdout.write('%s already in the db' % system["PWSId"])
-                except:
-                    self.stdout.write(system)
-                    raise
-
-
-    def add_watersystem_to_db(self, system):
-        # TODO use object.get_or_add? need to make sure this doesn't duplicate each time
-        # just truncate the table and reimport? or maybe EpaWaterSystem.objects.all().delete() if FK matters
-        obj = EpaWaterSystem(
-            FacDerivedStctyFIPS
-            SDWAFormalActionCount
-            FacDateLastPenalty
-            SDWISFlag
-            FacState
-            FacDerivedHuc
-            FacTotalPenalties
-            SDWAInspections5yr
-            SDWAIDs
-            FacLastPenaltyAmt
-            FacName
-            FacZip
-            FacEPARegion
-            FacDerivedZip
-            NC
-            FacFormalActionCount
-            ViolFlag
-            FacReferencePoint
-            FacCity
-            FacImpWaterFlg
-            FacPenaltyCount
-            FacFIPSCode
-            SDWA3yrComplQtrsHistory
-            FacDerivedWBD
-            FacLat
-            FacCollectionMethod
-            CurrVioFlag
-            FacStdCountyName
-            SDWAInformalCount
-            RegistryID
-            FacStreet
-            FacAccuracyMeters
-            FacCounty
-            FacLong
-        )
-        obj.save()
-
-
-def format_date(date_string):
-    '''convert the dd/mm/yyyy format into a datetime object'''
-    if date_string:
-        return datetime.strptime(date_string, '%m/%d/%Y')
-    return None
+                columns = []
+                line_cnt = -1
+                for system in data:
+                    line_cnt += 1
+                    if line_cnt == 0:
+                        columns = system
+                        continue
+                    try:
+                        processed_rows += 1
+                        if len(system[columns.index("SDWAIDs")]) > 9:
+                            # multiple water facilities included
+                            full_id_list = system[columns.index(
+                                "SDWAIDs")].split(' ')
+                            for sdwa_id in full_id_list:
+                                system[columns.index("SDWAIDs")] = sdwa_id
+                                importer.add_epafacility_to_db(system, columns)
+                        else:
+                            importer.add_epafacility_to_db(system, columns)
+                        if (processed_rows % 10000 == 0):
+                            self.stdout.write(
+                                'Processed row %s...' % processed_rows)
+                    except utils.IntegrityError:
+                        self.stdout.write('%s already in the db' %
+                                          system[columns.index("RegistryID")])
+                    except:
+                        self.stdout.write('%s' % system)
+                        raise

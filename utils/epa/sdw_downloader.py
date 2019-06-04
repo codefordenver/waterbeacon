@@ -26,7 +26,6 @@ class EpaDataGetter(object):
         self.failed_requests = []
         self.get_queryid_request_parameters = ''
 
-        #TODO figure out CA as it's too big for facilities currently
         self.states = [
             "AL",  "AK",  "AS",  "AZ",  "AR",  "CA",  "CO",  "CT",
             "DE",  "DC",  "FM",  "FL",  "GA",  "GU",  "HI",  "ID",
