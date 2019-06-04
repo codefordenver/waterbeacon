@@ -8,7 +8,8 @@ from django.db import models
 
 class EpaWaterSystem(models.Model):
 	PWSName = models.CharField(max_length=255)
-	PWSId = models.CharField(max_length=255, unique=True) # this is unique in the EPA system
+	# should probably define one of the PWSId values as a FK to the other table, but they will still join without it being enforced
+	PWSId = models.CharField(max_length=255, unique=True) # this is unique in the EPA system.
 	CitiesServed = models.CharField(max_length=4000, null=True)
 	StateCode = models.CharField(max_length=10, null=True, db_index=True)
 	# this should be a many to many FK with a zipcode table

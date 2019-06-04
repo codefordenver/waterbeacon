@@ -14,14 +14,14 @@ class SDW_Importer(object):
 
 
     def _format_int(self, int_string):
-        '''deal with the annoying emptry string to int exception'''
+        '''deal with the annoying empty string to int exception'''
         if not int_string:
             return 0
         return int(int_string)
 
 
     def _format_decimal(self, decimal_string):
-        '''deal with the annoying emptry string exception'''
+        '''deal with the annoying empty string exception'''
         if not decimal_string:
             return Decimal(0)
         return Decimal(decimal_string)
