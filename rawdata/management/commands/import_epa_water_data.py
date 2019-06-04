@@ -3,22 +3,23 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from django.db import utils
 import unicodecsv as csv
-import sys
-import os
-from datetime import datetime
-
+from django.core.management.base import BaseCommand
+from django.conf import settings
+from utils.epa.sdw_importer import ( SDW_Importer )
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        # TODO make this a setting not property in EpaDataGetter class WATER_TYPE = 'WaterSystems'
         # TODO make this a setting not property in EpaDataGetter class WATER_TYPE = 'WaterSystems'
         jsonDirectory = os.path.join(
             settings.BASE_DIR, settings.EPA_DATA_DIRECTORY, 'WaterSystems')
         processed_rows = 0
 
+        importer = SDW_Importer()
         for filename in os.listdir(jsonDirectory):
             with open(os.path.join(jsonDirectory, filename)) as f:
                 data = csv.reader(f)
-            
+
                 columns = []
                 line_cnt = -1
                 for system in data:
@@ -29,8 +30,8 @@ class Command(BaseCommand):
                     if system[columns.index('PWSActivityCode')] != 'A':
                         continue # we only want active sites so skip others
                     try:
-                        processed_rows += 1 
-                        self.add_watersystem_to_db(system, columns)
+                        processed_rows += 1
+                        importer.add_watersystem_to_db(system, columns)
                         if (processed_rows % 10000 == 0):
                             self.stdout.write('Processed row %s...' %processed_rows)
                     except utils.IntegrityError:
