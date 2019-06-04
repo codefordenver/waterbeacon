@@ -3,6 +3,7 @@ import './App.css';
 import DefaultD3 from './components/DefaultD3';
 import WbHeader from './components/WbHeader';
 import WbHeaderBsNav from './components/WbHeaderBsNav';
+import ApiData from './components/ApiData';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <svg width="960" height="600">
           <DefaultD3 width={960} height={600} />
         </svg>
+        <ApiData />
       </div>
     );
   }

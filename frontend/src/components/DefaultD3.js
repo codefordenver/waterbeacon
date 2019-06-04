@@ -5,7 +5,7 @@ import * as topojson from 'topojson';
 class DetaultD3 extends Component {
 
   constructor(props) {
-    console.log("constructor()")
+    console.log("DetaultD3.constructor()")
     super(props)
     this.state = {
       topologyData: null,
@@ -14,7 +14,7 @@ class DetaultD3 extends Component {
   }
 
   componentWillMount() {
-    console.log("componentWillMount()")
+    console.log("DetaultD3.componentWillMount()")
 
     Promise.all(
       [d3.json("https://d3js.org/us-10m.v1.json"),
@@ -29,7 +29,7 @@ class DetaultD3 extends Component {
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate()")
+    console.log("DetaultD3.componentDidUpdate()")
 
     const svg = d3.select(this.refs.anchor),
       { width, height } = this.props;
@@ -81,7 +81,7 @@ class DetaultD3 extends Component {
   }
 
   render () {
-    console.log("render()")
+    console.log("DetaultD3.render()")
     const { topologyData, unemploymentData } = this.state;
 
     if(!topologyData || !unemploymentData) {
