@@ -73,6 +73,7 @@ pyparsing==2.1.1
 python-dateutil==2.5.2
 pytz==2018.4
 PyYAML==3.11
+pyzipcode==1.0
 redis==2.10.5
 requests==2.21.0
 requests-oauthlib==0.8.0
