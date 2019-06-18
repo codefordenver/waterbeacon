@@ -56,13 +56,16 @@ class SDW_Data_Cruncher(object):
                 other_population += system.PopulationServedCount
                 other_score += self._calc_facility_score(system.Viopaccr, system.Vioremain, system.PopulationServedCount) * system.PopulationServedCount
 
-        cumulative_cws_score = 0
+
         if cws_population:
             cumulative_cws_score = (cws_score / cws_population) * self._COMMUNITY_WATER_SYSTEM_WEIGHT
+        else:
+            cumulative_cws_score = 0
 
-        cumlative_other_score = 0
         if other_population:
             cumlative_other_score =  (other_score / other_population) * self._OTHER_WATER_SYSTEM_WEIGHT
+        else:
+            cumlative_other_score = 0
 
         return ( cumulative_cws_score, cumlative_other_score )
 
