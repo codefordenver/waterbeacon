@@ -1,6 +1,9 @@
-import os
+from rawdata.models import EpaWaterSystem
+from django.core.management.base import BaseCommand
+from django.conf import settings
 from django.db import utils
 import unicodecsv as csv
+import os
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from utils.epa.sdw_importer import ( SDW_Importer )

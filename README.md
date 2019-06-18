@@ -33,9 +33,14 @@ Create the waterbeacon database by running `createdb waterbeacon`
 
 When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
 
-(skip) To get all the new data from the EPA, you can run ./manage.py get_epa_state_data --settings=settings.dev. This needs to be updated to truncate/handle updates.
+(Optional - never necessary if csvs exist) To get all the new facility location data from the EPA, you can run `./manage.py download_epa_facility_data --settings=settings.dev`
 
-Optionally populate the rawdata app with EPA data by running ./manage.py import_epa_state_data --settings=settings.dev.
+(Optional - never necessary if csvs exist) To get all the new SDWA data from the EPA, you can run `./manage.py download_epa_water_data --settings=settings.dev`
+
+(Optional) Populate the rawdata app with EPA data by running the following:
+
+    ./manage.py import_epa_facility_data --settings=settings.dev
+    ./manage.py import_epa_water_data --settings=settings.dev
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
 
