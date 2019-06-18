@@ -40,7 +40,7 @@ class SDW_Data_Cruncher(object):
         historical_score = self._calc_historical_score(viopaccr)
         current_score = self._calc_current_score(voiremain)
 
-        return (historical_score * self._HISTORICAL_SCORE_WEIGHT) + (current_score * self._CURRENT_SCORE_WEIGHT) * pop_served
+        return (historical_score * self._HISTORICAL_SCORE_WEIGHT) + (current_score * self._CURRENT_SCORE_WEIGHT)
 
     def _pws_type_score(self, systems):
         # for every facility there is one system
