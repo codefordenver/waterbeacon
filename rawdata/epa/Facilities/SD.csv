@@ -1,0 +1,638 @@
+FacDerivedStctyFIPS,SDWAFormalActionCount,FacDateLastPenalty,SDWISFlag,FacState,FacDerivedHuc,FacTotalPenalties,Score,SDWASystemTypes,SDWAInspections5yr,FacFIPSCode,FacLastPenaltyAmt,FacName,FacZip,FacEPARegion,FacMajorFlag,NC,FacFormalActionCount,ViolFlag,FacReferencePoint,FacCity,FacImpWaterFlg,FacPenaltyCount,SDWAIDs,SDWA3yrComplQtrsHistory,FacPercentMinority,FacDerivedWBD,FacLat,FacCollectionMethod,CurrVioFlag,FacStdCountyName,SDWAInformalCount,FacDerivedZip,RegistryID,FacStreet,FacAccuracyMeters,FacCounty,FacLong
+,,,Y,SD,,$0,1,Community water system,,46093,,76 RANCH ESTATES,57785,08,,N,0,0,,STURGIS,,,SD4602259,_____________,,,44.409462,Zip Code Centroid,0,MEADE COUNTY,,,110048590182,UNK,10000,MEADE,-103.518474
+46013,,,Y,SD,10160004,$0,1,Community water system,,46013,,ABERDEEN WATER WORKS,57401,08,,N,0,0,CENTER OF A FACILITY OR STATION,ABERDEEN,,,SD4600020,_____________,3.815,101600040803,45.55139,ADDRESS MATCHING-HOUSE NUMBER,0,BROWN COUNTY,1,57401,110000578884,12668 391ST AVE.,30,BROWN,-98.4128
+,,,Y,SD,,$0,1,Community water system,,,,ALCESTER,,08,,N,0,1,,,,,SD4600004,_______V_____,,,42.831106,County Centroid,0,,1,,110013015218,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,ALEXANDRIA,,08,,N,0,0,,,,,SD4600062,_____________,,,43.680612,County Centroid,0,,1,,110012956514,,30000,HANSON,-97.796845
+,,,Y,SD,,$0,1,Community water system,,46007,,ALLEN WATER SYSTEM,57714,08,,N,0,1,,ALLEN,,,084690481,VVVVVV______U,,,43.317405,Zip Code Centroid,0,BENNETT COUNTY,,,110012928957,UNKNOWN,10000,SHANNON,-102.023767
+,,,Y,SD,,$0,1,Community water system,,,,ALPENA,,08,,N,0,0,,,,,SD4600025,_____________,,,44.063416,County Centroid,0,,5,,110013012738,,30000,JERAULD,-98.623188
+46007,,,Y,SD,10140202,$0,1,Community water system,,46007,,AMERICAN HORSE DAY SCHOOL WWTF,57714,08,,N,0,1,,ALLEN,,,084690466,__VVVV______U,95.292,101402020301,43.277417,,0,BENNETT COUNTY,,57714,110020661746,"100 MAIN STREET, PO BOX 660",99999999,BENNETT,-101.922639
+,,,Y,SD,,$0,1,Community water system,,,,AMHERST WATER COMPANY,,08,,N,0,0,,,,,SD4600030,_____________,,,45.737054,County Centroid,0,,2,,110013012854,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,ARLINGTON,,08,,N,0,0,,,,,SD4600385,_____________,,,44.362969,County Centroid,0,,,,110012999407,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,ARMOUR,,08,,N,0,0,,,,,SD4600028,_____________,,,43.391506,County Centroid,0,,,,110013012792,,30000,DOUGLAS,-98.358433
+46047,,,Y,SD,10120109,$0,1,Transient non-community system,,46047,,ARMY CORPS OF ENGINEERS COLD BROOK DAM,57747,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,HOT SPRINGS,,,SD4680102 SD4680120 SD4680125,,15.158,101201090102,43.44815,ADDRESS MATCHING-HOUSE NUMBER,0,FALL RIVER COUNTY,,57747,110006869772,EVANS STREET,50,FALL RIVER,-103.48018
+,,,Y,SD,,$0,1,Community water system,,,,AURORA,,08,,N,0,0,,,,,SD4600058,_____________,,,44.376675,County Centroid,0,,,,110013013933,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,AURORA-BRULE RURAL WATER SYSTEM,,08,,N,0,1,,,,,SD4600621,VVVVV________,,,43.724719,County Centroid,0,,1,,110012863605,,30000,AURORA,-98.577587
+,,,Y,SD,,$0,1,Community water system,,,,AUTUMN MEADOWS,,08,,N,0,0,,,,,SD4602240,_____________,,,44.606792,County Centroid,0,,,,110020602187,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,46009,,AVON,57315,08,,N,0,0,,AVON,,,SD4600031,_____________,,,43.00277,Zip Code Centroid,0,BON HOMME COUNTY,,,110013012872,UNK,10000,BON HOMME,-98.05355
+,,,Y,SD,,$0,1,Community water system,,,,B & J MOBILE HOME PARK,,08,,N,0,0,,,,,SD4602122,_____________,,,44.606792,County Centroid,0,,1,,110012858149,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,BADGER,,08,,N,0,0,,,,,SD4600032,_____________,,,44.362969,County Centroid,0,,1,,110013012989,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Transient non-community system,,,,BADLANDS/WHITE RIVER KOA KAMPGROUND,57750,08,,N,0,1,,INTERIOR,,,SD4600646,_VV__________,,,43.748276,Zip Code Centroid,0,,2,,110052868857,,10000,JACKSON,-101.941602
+,,,Y,SD,,$0,1,Community water system,,,,BALTIC,,08,,N,0,0,,,,,SD4600034,_____________,,,43.667472,County Centroid,0,,,,110013013014,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,BATESLAND,,08,,Y,0,1,,,,,SD4600036,__VV__VV__VVV,,,43.341937,County Centroid,1,,8,,110013013112,,30000,SHANNON,-102.55948
+,,,Y,SD,,$0,1,Transient non-community system,,,,BEAR COUNTRY USA,,08,,N,0,0,,,,,SD4600528,_____________,,,44.002349,County Centroid,0,,,,110052824930,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,BEAVER LAKE CAMPGROUND,57730,08,,N,0,1,,CUSTER,,,SD4600529,VVVVVV___VV__,,,43.855937,Zip Code Centroid,0,,6,,110052784581,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,BELLE FOURCHE,,08,,N,0,1,,,,,SD4600037,_______VVVV__,,,44.896435,County Centroid,0,,2,,110013013176,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,BERESFORD,,08,,N,0,0,,,,,SD4600386,_____________,,,42.831106,County Centroid,0,,,,110012999504,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,BESTGEN WATER COMPANY,,08,,N,0,1,,,,,SD4600387,____VV_______,,,44.606792,County Centroid,0,,1,,110012999568,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Transient non-community system,,,,BHHEC-HILLSIDE SYSTEM,57744,08,,N,0,1,,HERMOSA,,,SD4600100,VV___VV_V____,,,43.83966,Zip Code Centroid,0,,6,,110052824770,,10000,CUSTER,-103.194124
+,,,Y,SD,,$0,1,Transient non-community system,,,,BHHEC-MAIN LODGE,57744,08,,N,0,1,,HERMOSA,,,SD4600095,V____VV_V____,,,43.83966,Zip Code Centroid,0,,4,,110052824761,,10000,CUSTER,-103.194124
+,,,Y,SD,,$0,1,Community water system,,,,BICENTENNIAL TRAILER COURT,,08,,N,0,1,,,,,SD4600426,________VV___,,,44.353669,County Centroid,0,,3,,110012862704,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,BIG PINE CAMPGROUND,57730,08,,N,0,0,,CUSTER,,,SD4600532,_____________,,,43.855937,Zip Code Centroid,0,,,,110052784634,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,BIG SIOUX COMMUNITY WATER SYSTEM,,08,,N,0,0,,,,,SD4600429,_____________,,,44.012429,County Centroid,0,,,,110012862740,,30000,MOODY,-96.676054
+,,,Y,SD,,$0,1,Community water system,,,,BIG STONE CITY,,08,,N,0,1,,,,,SD4600007,__________VV,,,45.172637,County Centroid,0,,3,,110013015361,,30000,GRANT,-96.772261
+,,,Y,SD,,$0,1,Community water system,,,,BISON,,08,,N,0,1,,,,,SD4600039,VVVVVV_______,,,45.483387,County Centroid,0,,11,,110013013292,,30000,PERKINS,-102.467995
+,,,Y,SD,,$0,1,Transient non-community system,,,,BJ'S HERMOSA,57744,08,,N,0,0,,,,,SD4602207,_____________,,,43.83966,Zip Code Centroid,0,,1,,110052627813,,10000,CUSTER,-103.194124
+,,,Y,SD,,$0,1,Community water system,,,,BLACK HAWK WATER USER DISTRICT,,08,,N,0,1,,,,,SD4600043,____VV_______,,,44.606792,County Centroid,0,,11,,110013013504,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Transient non-community system,,,,BLACK HILLS CABINS AND MOTEL @ QUAIL,57745,08,,N,0,0,,,,,SD4600906,_____________,,,43.933713,Zip Code Centroid,0,,,,110052830709,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Transient non-community system,,,,BLACK HILLS CHAIRLIFT,,08,,N,0,1,,,,,SD4600595,_V___________,,,44.353669,County Centroid,0,,1,,110052714719,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,BLACK HILLS CHILDREN'S HOME,,08,,Y,0,1,,,,,SD4602121,__VVVVVVVVVVV,,,44.002349,County Centroid,1,,9,,110052885320,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,46103,,BLACK HILLS MAZE,57709,08,,N,0,0,,RAPID CITY,,,SD4602104,_____________,,,44.079112,Zip Code Centroid,0,PENNINGTON COUNTY,,,110052667351,PO BOX 1509,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Transient non-community system,,,,BLACK HILLS NATIONAL CEMETERY,57785,08,,N,0,0,,STURGIS,,,SD4602227,_____________,,,44.409462,Zip Code Centroid,0,,,,110052844213,,10000,MEADE,-103.518474
+,,,Y,SD,,$0,1,Community water system,,,,BLACK HILLS WATER COMPANY,,08,,N,0,0,,,,,SD4602144,_____________,,,44.896435,County Centroid,0,,,,110012858470,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,BLUCKSBERG MOUNTAIN #2,57769,08,,N,0,0,,,,,SD4602366,_____________,,,44.245944,Zip Code Centroid,0,,,,SD4602366,,10000,Meade,-103.410993
+,,,Y,SD,,$0,1,Community water system,,,,BLUCKSBERG MTN WATER ASSOCIATION,,08,,N,0,0,,,,,SD4600324,_____________,,,44.606792,County Centroid,0,,,,110012953401,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Transient non-community system,,,,BLUE WING RECREATION AREA,,08,,N,0,0,,,,,SD4602196,_____________,,,44.002349,County Centroid,0,,,,110052791092,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,BLUMENGARD COLONY,,08,,N,0,0,,,,,SD4602057,_____________,,,45.065476,County Centroid,0,,,,110012861297,,30000,FAULK,-99.153564
+,,,Y,SD,,$0,1,Community water system,,,,BLUNT,,08,,N,0,0,,,,,SD4600044,_____________,,,44.392258,County Centroid,0,,,,110013013540,,30000,HUGHES,-99.985846
+,,,Y,SD,,$0,1,Community water system,,,,BON HOMME-YANKTON RWS,99999,08,,N,0,0,,UNK,,,SD4600865,_____________,,,42.986031,County Centroid,0,,2,,110012863972,UNK,30000,BON HOMME,-97.885613
+,,,Y,SD,,$0,1,Community water system,,,,BONESTEEL,,08,,N,0,0,,,,,SD4600045,_____________,,,43.179094,County Centroid,0,,1,,110013013620,,30000,GREGORY,-99.202158
+,,,Y,SD,,$0,1,Transient non-community system,,,,BOULDER CANYON COUNTRY CLUB,57785,08,,N,0,0,,STURGIS,,,SD4600534,_____________,,,44.409462,Zip Code Centroid,0,,,,110052784661,,10000,LAWRENCE,-103.518474
+,,,Y,SD,,$0,1,Community water system,,,,BOULDER PARK WATER USERS ASSOCIATION,,08,,N,0,0,,,,,SD4602005,_____________,,,44.606792,County Centroid,0,,1,,110012860500,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,BOWDLE,,08,,N,0,0,,,,,SD4600008,_____________,,,45.41168,County Centroid,0,,,,110013015450,,30000,EDMUNDS,-99.205362
+,,,Y,SD,,$0,1,Community water system,,,,BOX ELDER,,08,,N,0,0,,,,,SD4600046,_____________,,,44.002349,County Centroid,0,,,,110013013773,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,BOXELDER CIVILIAN CONSERVATION CTR,57759,08,,N,0,0,,NEMO,,,SD4680000,_____________,,,44.23501,Zip Code Centroid,0,,,,110051863630,,10000,LAWRENCE,-103.601138
+,,,Y,SD,,$0,1,Community water system,,,,BOXELDER HIGH COUNTRY ASSOCIATION,57702,08,,N,0,0,,RAPID CITY,,,SD4602276,_____________,,,44.067734,Zip Code Centroid,0,,,,110052629287,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,BRADLEY,,08,,N,0,0,,,,,SD4600047,_____________,,,44.855211,County Centroid,0,,,,110013013835,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Community water system,,,,BRANDON,,08,,N,0,0,,,,,SD4600048,_____________,,,43.667472,County Centroid,0,,,,110013013853,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,BRENTFORD,,08,,N,0,1,,,,,SD4600065,_VV__________,,,44.931034,County Centroid,0,,2,,110013014148,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,BRENTWOOD COLONY,,08,,N,0,0,,,,,SD4602066,_____________,,,45.065476,County Centroid,0,,,,110012861518,,30000,FAULK,-99.153564
+,,,Y,SD,,$0,1,Community water system,,,,BRIDGEWATER,,08,,N,0,0,,,,,SD4600066,_____________,,,43.678924,County Centroid,0,,,,110013014166,,30000,MCCOOK,-97.362036
+,,,Y,SD,,$0,1,Community water system,,,,BRISTOL,,08,,Y,0,1,,,,,SD4600067,_______VVV__V,,,45.362283,County Centroid,1,,5,,110012956621,,30000,DAY,-97.593734
+,,,Y,SD,,$0,1,Community water system,,,,BRITTON,,08,,N,0,0,,,,,SD4600388,_____________,,,45.737054,County Centroid,0,,,,110012999620,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Transient non-community system,,,,BROKEN ARROW HORSE CAMP,57730,08,,Y,0,1,,CUSTER,,,SD4602337,SVVVVVVVVVVVV,,,43.855937,Zip Code Centroid,1,,7,,110063360134,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,BROOKINGS MUNICIPAL UTILITIES,,08,,N,0,0,,,,,SD4600071,_____________,,,44.376675,County Centroid,0,,,,110013014282,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,BROOKINGS-DEUEL RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600430,_____________,,,44.376675,County Centroid,0,,,,110012862777,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,BROWN-DAY-MARSHALL RWS,,08,,N,0,0,,,,,SD4600882,_____________,,,45.589254,County Centroid,0,,,,110012864597,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,BRYANT,,08,,N,0,0,,,,,SD4600076,_____________,,,44.680619,County Centroid,0,,,,110013014362,,30000,HAMLIN,-97.178598
+,,,Y,SD,,$0,1,Community water system,,,,BUFFALO,,08,,N,0,0,,,,,SD4600078,_____________,,,45.596612,County Centroid,0,,,,110013014567,,30000,HARDING,-103.473867
+,,,Y,SD,,$0,1,Community water system,,,,BUFFALO GAP,,08,,Y,0,1,,,,,SD4600077,SVVVVV_VVVVVV,,,43.684943,County Centroid,1,,46,,110013014488,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Community water system,,,,BURKE,,08,,N,0,0,,,,,SD4600079,_____________,,,43.179094,County Centroid,0,,,,110012956694,,30000,GREGORY,-99.202158
+,,,Y,SD,,$0,1,Community water system,,,,BUTTE-MEADE SANITARY WATER DISTRICT,,08,,N,0,0,,,,,SD4600223,_____________,,,44.896435,County Centroid,0,,,,110013004783,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,BUTTE-MEADE SWD-VALE WELL,57760,08,,N,0,0,,NEWELL,,,SD4602314,_____________,,,44.714145,Zip Code Centroid,0,,,,110048745328,,10000,BUTTE,-103.423785
+,,,Y,SD,,$0,1,Community water system,,,,C&J SANDERS INC,,08,,N,0,0,,,,,SD4600271,_____________,,,44.002349,County Centroid,0,,,,110013001250,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CALAMITY PEAK LODGE,57730,08,,N,0,0,,CUSTER,,,SD4600537,_____________,,,43.855937,Zip Code Centroid,0,,,,110052784732,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CAMP BOB MARSHALL,,08,,Y,0,1,,,,,SD4680055,_____VVVVVVVV,,,43.684943,County Centroid,1,,4,,110052473792,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Transient non-community system,,,,CAMP JUDSON,,08,,N,0,0,,,,,SD4600964,_____________,,,44.002349,County Centroid,0,,,,110052715273,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CAMP RIMROCK - PRESBYTERY OF SOUTH D,,08,,N,0,0,,,,,SD4601036,_____________,,,44.002349,County Centroid,0,,1,,110052619421,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CAMP VOLUNTEER,57730,08,,N,0,1,,CUSTER,,,SD4602230,_V___________,,,43.855937,Zip Code Centroid,0,,1,,110052844268,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,CANISTOTA,,08,,N,0,0,,,,,SD4600080,_____________,,,43.678924,County Centroid,0,,,,110013014585,,30000,MCCOOK,-97.362036
+,1,,Y,SD,,$0,1,Community water system,,,,CANOVA,,08,,Y,1,1,,,,,SD4600081,VVSVVVVVVVVVV,,,44.017327,County Centroid,1,,12,,110013014601,,30000,MINER,-97.60979
+,,,Y,SD,,$0,1,Community water system,,,,CANTON,,08,,N,0,0,,,,,SD4600082,_____________,,,43.27942,County Centroid,0,,,,110013014647,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Transient non-community system,,,,CANYON LAKE RESORT,57702,08,,N,0,1,,RAPID CITY,,,SD4600908,_VVV_VV______,,,44.067734,Zip Code Centroid,0,,6,,110052830745,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,CANYON SPRINGS PRESERVE HOA,,08,,N,0,0,,,,,SD4602311,_____________,,,44.002349,County Centroid,0,,,,110048745159,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CARPENTER CAFE,57322,08,,N,0,1,,CARPENTER,,,SD4601004,___VV________,,,44.558897,Zip Code Centroid,0,,2,,110052878631,,10000,CLARK,-97.886596
+,,,Y,SD,,$0,1,Community water system,,,,CARRIAGE HILLS,,08,,N,0,0,,,,,SD4600265,_____________,,,44.002349,County Centroid,0,,1,,110012957817,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,CASTLEWOOD,,08,,N,0,0,,,,,SD4600002,_____________,,,44.680619,County Centroid,0,,,,110012956079,,30000,HAMLIN,-97.178598
+,,,Y,SD,,$0,1,Community water system,,,,CAVALRY TRAILS HOMEOWNER ASSOCIATION,,08,,N,0,1,,,,,SD4602106,__VVVVV______,,,44.002349,County Centroid,0,,12,,110012862571,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CEDAR CANYON WESLEYAN CAMP,57702,08,,N,0,1,,RAPID CITY,,,SD4601062,V______V_____,,,44.067734,Zip Code Centroid,0,,3,,110052845828,,10000,PENNINGTON,-103.310357
+,4,,Y,SD,,$0,1,Community water system,,,,CEDAR GULCH I,57703,08,,Y,4,1,,,,,SD4602301,_V_VVVVVVVVVV,,,44.054376,Zip Code Centroid,1,,78,,110048690797,,10000,PENNINGTON,-103.128805
+,42,,Y,SD,,$0,1,Community water system,,,,CEDAR GULCH II,,08,,Y,42,1,,,,,SD4602295,VVVVVVVVVVVVV,,,44.002349,County Centroid,1,,161,,110048690635,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,CENTENNIAL HILLS HOME ASSOCIATION,,08,,N,0,0,,,,,SD4602176,_____________,,,44.353669,County Centroid,0,,,,110012858808,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,CENTERVILLE,,08,,N,0,1,,,,,SD4600085,___VVV_VVVV__,,,43.30867,County Centroid,0,,5,,110013014709,,30000,TURNER,-97.150185
+,,,Y,SD,,$0,1,Community water system,,,,CHAMBERLAIN,,08,,N,0,0,,,,,SD4600086,_____________,,,43.72988,County Centroid,0,,,,110013014727,,30000,BRULE,-99.092941
+,,,Y,SD,,$0,1,Community water system,,,,CHANCELLOR,,08,,N,0,1,,,,,SD4600087,_VVVVVVV_____,,,43.30867,County Centroid,0,,1,,110013014763,,30000,TURNER,-97.150185
+,,,Y,SD,,$0,1,Transient non-community system,,,,CHAPEL IN THE HILLS,57702,08,,N,0,0,,RAPID CITY,,,SD4602221,_____________,,,44.067734,Zip Code Centroid,0,,,,110052844142,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,CHAPEL LANE WATER COMPANY,,08,,N,0,0,,,,,SD4600264,_____________,,,44.002349,County Centroid,0,,1,,110013001009,,30000,PENNINGTON,-102.823802
+46079,,,Y,SD,10170203,$0,1,Community water system,,46079,,CHESTER SANITARY DISTRICT,57016,08,,Y,0,1,POINT WHERE SUBSTANCE IS RELEASED,CHESTER,Y,,SD4600088,_____________,1.911,101702031001,43.894444,UNKNOWN,1,LAKE COUNTY,,57016,110009705373,"700FT W.OF TOWN SE1/4,SEC.15,T",17400,LAKE,-96.932083
+,,,Y,SD,,$0,1,Transient non-community system,,,,CHEYENNE CROSSING STORE,57754,08,,Y,0,1,,LEAD,,,SD4600540,VVVVVVV_VVVVV,,,44.354484,Zip Code Centroid,1,,21,,110052784796,,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Transient non-community system,,,,CHRIS' CAMP,57783,08,,N,0,0,,SPEARFISH,,,SD4600655,_____________,,,44.498478,Zip Code Centroid,0,,,,110052878604,,10000,LAWRENCE,-103.890276
+,,,Y,SD,,$0,1,Community water system,,,,CIMARRON PARK,,08,,N,0,0,,,,,SD4600257,_____________,,,44.002349,County Centroid,0,,,,110012957620,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CIRCLE B RANCH,57702,08,,N,0,0,,RAPID CITY,,,SD4600903,_____________,,,44.067734,Zip Code Centroid,0,,,,110052830638,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,CLAREMONT,,08,,N,0,0,,,,,SD4600090,_____________,,,45.589254,County Centroid,0,,,,110013014861,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,CLARK,,08,,N,0,1,,,,,SD4600091,VV___________,,,44.855211,County Centroid,0,,1,,110013014889,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Community water system,,46025,,CLARK RURAL WATER SYSTEM,57225,08,,N,0,0,,CLARK,,,SD4600881,_____________,,,44.880595,Zip Code Centroid,0,CLARK COUNTY,,,110012864542,W HWY 212,10000,CLARK,-97.72998
+,,,Y,SD,,$0,1,Community water system,,,,CLARK RURAL WATER-KAMPESKA,,08,,N,0,0,,,,,SD4602277,_____________,,,44.446796,State Centroid,0,,,,110048144165,,100000,,-100.238176
+,,,Y,SD,,$0,1,Community water system,,,,CLAY RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600626,_____________,,,42.912997,County Centroid,0,,,,110012863758,,30000,CLAY,-96.979795
+,,,Y,SD,,$0,1,Community water system,,,,CLEAR LAKE,,08,,N,0,0,,,,,SD4600092,_____________,,,44.75629,County Centroid,0,,,,110013014914,,30000,DEUEL,-96.690239
+,,,Y,SD,,$0,1,Community water system,,,,CLEARFIELD COLONY,,08,,N,0,0,,,,,SD4602020,_____________,,,43.391506,County Centroid,0,,,,110012860724,,30000,DOUGLAS,-98.358433
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,COCA COLA BOTTLING CO,57702,08,,N,0,0,,RAPID CITY,,,SD4602150,_____________,,,44.067734,Zip Code Centroid,0,,,,110052660269,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,COE-COTTONWOOD SPRINGS,,08,,N,0,0,,,,,SD4680103,_____________,,,43.221504,County Centroid,0,,,,110052541166,,30000,FALL RIVER,-103.512102
+,,,Y,SD,,$0,1,Transient non-community system,,,,COE-LK S/LEFT TAILRACE,57325,08,,N,0,1,,CHAMBERLAIN,,,SD4680036,_________VV__,,,43.793917,Zip Code Centroid,0,,1,,110052654490,,10000,BUFFALO,-99.32513
+,,,Y,SD,,$0,1,Community water system,,,,COLLINS COLONY,57353,08,,N,0,0,,,,,SD4602358,_____________,,,44.551395,Zip Code Centroid,0,,,,SD4602358,,10000,Clark,-97.674305
+,,,Y,SD,,$0,1,Community water system,,,,COLMAN,,08,,N,0,0,,,,,SD4600093,_____________,,,44.012429,County Centroid,0,,,,110013014969,,30000,MOODY,-96.676054
+,,,Y,SD,,$0,1,Community water system,,,,COLOME,,08,,N,0,0,,,,,SD4600094,_____________,,,43.349729,County Centroid,0,,21,,110012956836,,30000,TRIPP,-99.876219
+,,,Y,SD,,$0,1,Community water system,,,,COLONIAL PINE HILLS,,08,,N,0,0,,,,,SD4600263,_____________,,,44.002349,County Centroid,0,,,,110013000885,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,COLTON,,08,,N,0,0,,,,,SD4600390,_____________,,,43.667472,County Centroid,0,,,,110012999648,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,CONDE,,08,,N,0,0,,,,,SD4600096,_____________,,,44.931034,County Centroid,0,,,,110013015067,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,COPPER OAKS I,,08,,N,0,0,,,,,SD4602136,_____________,,,44.002349,County Centroid,0,,1,,110012858416,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,CORONA,,08,,Y,0,1,,,,,SD4600009,_____VVVVVVVV,,,45.623397,County Centroid,1,,3,,110012956248,,30000,ROBERTS,-96.947551
+,1,,Y,SD,,$0,1,Community water system,,,,CORSICA,,08,,N,1,1,,,,,SD4600097,VVVV_________,,,43.391506,County Centroid,0,,6,,110013015129,,30000,DOUGLAS,-98.358433
+,,,Y,SD,,$0,1,Transient non-community system,,,,COSMOS MYSTERY AREA,57702,08,,Y,0,1,,RAPID CITY,,,SD4602305,__V___VVVVVVV,,,44.067734,Zip Code Centroid,1,,7,,110052846097,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,COTTONWOOD GROVE,,08,,Y,0,1,,,,,SD4602225,____VVVVVVVVV,,,44.002349,County Centroid,1,,1,,110016613324,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,COUNTRY ACRES,,08,,Y,0,1,,,,,SD4600383,________VVVVV,,,43.006607,County Centroid,1,,5,,110012999336,,30000,YANKTON,-97.388339
+46099,,,Y,SD,10170203,$0,1,Community water system,,46099,,COUNTRY CLUB ESTATES,57105,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,SIOUX FALLS,,,SD4600629,_____________,13.948,101702031203,43.523099,ADDRESS MATCHING-HOUSE NUMBER,0,MINNEHAHA COUNTY,,57105,110012863838,2503 SOUTH KIWANIS AVENUE,50,MINNEHAHA,-96.761169
+,,,Y,SD,,$0,1,Transient non-community system,,,,COUNTRY STORE AT THE FORKS,57709,08,,Y,0,1,,,,,SD4602340,V_________VVV,,,44.079112,Zip Code Centroid,1,,6,,110063333922,,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Community water system,,,,COUNTRY VILLAGE PARK,,08,,N,0,0,,,,,SD4600021,_____________,,,45.589254,County Centroid,0,,,,110013012621,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,COUNTRY VILLAGE/NORTH,,08,,N,0,1,,,,,SD4600884,VVVVV________,,,44.002349,County Centroid,0,,3,,110012954730,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,COUNTRY VILLAGE/SOUTH,,08,,N,0,1,,,,,SD4600428,VVVVV________,,,44.002349,County Centroid,0,,3,,110012954053,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,CREATIVE KIDS TOO PRESCHOOL & DAYCAR,,08,,N,0,0,,,,,SD4602290,_____________,,,44.002349,County Centroid,0,,,,110052845908,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,CREEKSIDE COUNTRY RESORT,57745,08,,N,0,0,,HILL CITY,,,SD4602102,_____________,,,43.933713,Zip Code Centroid,0,,,,110052667306,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,CRESBARD,,08,,N,0,0,,,,,SD4600099,_____________,,,45.065476,County Centroid,0,,,,110013007824,,30000,FAULK,-99.153564
+,,,Y,SD,,$0,1,Transient non-community system,,,,CROOKED CREEK CAMPGROUND-NEW WELL,57745,08,,Y,0,1,,HILL CITY,,,SD4602171,VVVVVVVVVVVVV,,,43.933713,Zip Code Centroid,1,,5,,110052668680,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Transient non-community system,,,,CROOKED CREEK CAMPGROUND-OLD WELL,57745,08,,Y,0,1,,HILL CITY,,,SD4600527,____VVVVVVSSV,,,43.933713,Zip Code Centroid,1,,3,,110052824903,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,CROOKED OAK CANYON HOMEOWNERS,,08,,N,0,0,,,,,SD4600915,_____________,,,44.606792,County Centroid,0,,,,110012859978,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,CROOKS,57020,08,,N,0,0,,CROOKS,,,SD4600391,_____________,,,43.674146,Zip Code Centroid,0,,,,110009261832,,10000,MINNEHAHA,-96.805357
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-BLUE BELL,57730,08,,N,0,0,,CUSTER,,,SD4600771,_____________,,,43.855937,Zip Code Centroid,0,,,,110052700323,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-CENTER LAKE & PLAYHOUSE,57730,08,,N,0,0,,CUSTER,,,SD4600773,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865422,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-FRENCH CREEK HORSE CAMP,57730,08,,N,0,0,,CUSTER,,,SD4600136,_____________,,,43.855937,Zip Code Centroid,0,,,,110052591762,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,CSP-GAME LODGE,57730,08,,N,0,0,,CUSTER,,,SD4600774,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865459,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-LEGION LAKE,57730,08,,N,0,0,,CUSTER,,,SD4600775,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865468,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-PARK SHOP,57730,08,,N,0,0,,CUSTER,,,SD4600777,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865495,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-STAR ACADEMY EAST,57730,08,,N,0,0,,,,,SD4600049,_____________,,,43.855937,Zip Code Centroid,0,,,,110052857477,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-STOCKADE LAKE CG-NORTH,57730,08,,N,0,0,,CUSTER,,,SD4600779,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865529,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-STOCKADE LAKE CG-SOUTH,57730,08,,N,0,0,,CUSTER,,,SD4600778,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865510,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-SYLVAN LAKE,57730,08,,N,0,0,,CUSTER,,,SD4600780,_____________,,,43.855937,Zip Code Centroid,0,,,,110052865547,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CSP-WILDLIFE STATION VC,57730,08,,N,0,0,,CUSTER,,,SD4602087,_____________,,,43.855937,Zip Code Centroid,0,,,,110052667226,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,CUSTER,,08,,N,0,0,,,,,SD4600101,_____________,,,43.684943,County Centroid,0,,,,110013007628,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Transient non-community system,,,,CUSTER MOUNTAIN CAMPGROUND,57730,08,,N,0,0,,CUSTER,,,SD4600610,_____________,,,43.855937,Zip Code Centroid,0,,1,,110052715095,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CUSTER'S GULCH RV PARK,57730,08,,N,0,0,,CUSTER,,,SD4602243,_____________,,,43.855937,Zip Code Centroid,0,,1,,110052803365,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,CUSTER-MOUNT RUSHMORE KOA,57730,08,,N,0,1,,CUSTER,,,SD4600650,_VV__________,,,43.855937,Zip Code Centroid,0,,2,,110052869053,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,D & E WATER COMPANY,,08,,N,0,0,,,,,SD4600392,_____________,,,44.353669,County Centroid,0,,,,110012999675,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,D&J MOBILE HOME PARK,,08,,N,0,0,,,,,SD4602204,_____________,,,44.002349,County Centroid,0,,,,110012859219,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,DAKOTA DUNES,,08,,N,0,0,,,,,SD4602093,_____________,,,42.831106,County Centroid,0,,,,110012862312,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,DALLAS,,08,,N,0,0,,,,,SD4600102,_____________,,,43.179094,County Centroid,0,,,,110013007682,,30000,GREGORY,-99.202158
+,,,Y,SD,,$0,1,Community water system,,,,DAVISON RURAL WATER SYSTEM INC,,08,,N,0,0,,,,,SD4601090,_____________,,,43.680439,County Centroid,0,,,,110012954874,,30000,DAVISON,-98.155868
+,,,Y,SD,,$0,1,Community water system,,,,DEADWOOD,,08,,N,0,0,,,,,SD4600104,_____________,,,44.353669,County Centroid,0,,,,110013007897,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,DEBERG WELL USERS ASSOCIATION,,08,,N,0,0,,,,,SD4602095,_____________,,,44.353669,County Centroid,0,,1,,110012862376,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,DEER MOUNTAIN RESORT PROPERTIES,,08,,N,0,1,,,,,SD4600549,________VV___,,,44.353669,County Centroid,0,,3,,110012863400,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,DEERFIELD COLONY,,08,,N,0,0,,,,,SD4602056,_____________,,,45.41168,County Centroid,0,,1,,110012861279,,30000,EDMUNDS,-99.205362
+46099,,,Y,SD,10170203,$0,1,Community water system,,46099,,DELL RAPIDS,57022,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,DELL RAPIDS,,,SD4600105,VVV__________,3.245,101702030605,43.82152,ADDRESS MATCHING-NEAREST INTERSECTION,0,,6,57022,110009311477,,100,MINNEHAHA,-96.70863
+,,,Y,SD,,$0,1,Community water system,,,,DELMONT,,08,,N,0,1,,,,,SD4600106,___________VV,,,43.391506,County Centroid,0,,5,,110013007913,,30000,DOUGLAS,-98.358433
+,,,Y,SD,,$0,1,Community water system,,,,DESMET,,08,,Y,0,1,,,,,SD4600059,____________V,,,44.362969,County Centroid,1,,1,,110013013988,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Transient non-community system,,,,DINOSAUR MUSEUM,57702,08,,Y,0,1,,,,,SD4601061,VVVVVVVVVVVVV,,,44.067734,Zip Code Centroid,1,,10,,110052836204,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,DOLAND,,08,,N,0,1,,,,,SD4600108,_____VV______,,,44.931034,County Centroid,0,,1,,110013008011,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Transient non-community system,,,,DOT REST AREA 119-GLACIAL LAKES,,08,,N,0,0,,,,,SD4600789,_____________,,,45.623397,County Centroid,0,,,,110052773021,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Transient non-community system,,,,DOT REST AREA 517A-SPEARFISH,,08,,N,0,0,,,,,SD4600810,_____________,,,44.606792,County Centroid,0,,,,110052871781,,30000,MEADE,-102.715864
+,11,,Y,SD,,$0,1,Community water system,,,,DRY CREEK ESTATES,,08,,Y,11,1,,,,,SD4602241,___VVV_VVVVVV,,,44.606792,County Centroid,1,,12,,110020602196,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,DUPREE,,08,,Y,0,1,,,,,SD4600110,V____VVVVVVVV,,,44.981666,County Centroid,1,,3,,110013008057,,30000,ZIEBACH,-101.669225
+,,,Y,SD,,$0,1,Community water system,,46041,,EAGLE BUTTE WATER SUPPLY,57625,08,,Y,0,1,,EAGLE BUTTE,,,SD4600010,_______VVVVVV,,,45.06591,Zip Code Centroid,1,DEWEY COUNTY,3,,110040053928,WEST HIGHWAY 212,10000,DEWEY,-100.975855
+,,,Y,SD,,$0,1,Community water system,,,,EAGLE WATER COMPANY,57754,08,,N,0,0,,LEAD,,,SD4602307,_____________,,,44.354484,Zip Code Centroid,0,,1,,110052879701,,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Community water system,,,,EAST RIDGE ACRES,,08,,N,0,0,,,,,SD4601000,_____________,,,44.606792,County Centroid,0,,1,,110012860056,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,"EAST WINDS COURT, INC.",,08,,N,0,1,,,,,SD4602099,V__VVVV______,,,43.006607,County Centroid,0,,6,,110012862483,,30000,YANKTON,-97.388339
+,,,Y,SD,,$0,1,Community water system,,,,EDELWEISS MOUNTAIN IMPROVEMENT ASSOC,,08,,N,0,0,,,,,SD4600273,_____________,,,44.002349,County Centroid,0,,,,110012953349,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,EDEN,,08,,Y,0,1,,,,,SD4600113,VV__________V,,,45.737054,County Centroid,1,,9,,110013008191,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,EDGEMONT,99999,08,,N,0,0,,UNK,,,SD4600114,_____________,,,43.221504,County Centroid,0,,18,,110013008262,UNK,30000,FALL RIVER,-103.512102
+,,,Y,SD,,$0,1,Community water system,,,,EGAN,,08,,N,0,0,,,,,SD4600115,_____________,,,44.012429,County Centroid,0,,,,110013008280,,30000,MOODY,-96.676054
+,,,Y,SD,,$0,1,Transient non-community system,,,,ELK CREEK RESORT,57769,08,,Y,0,1,,,,,SD4600630,VVVVVVVVVVVVV,,,44.245944,Zip Code Centroid,1,,12,,110052607559,,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Transient non-community system,,,,ELK CREEK STEAKHOUSE,57769,08,,Y,0,1,,PIEDMONT,,,SD4600929,_____VV_VVVVV,,,44.245944,Zip Code Centroid,1,,5,,110052660045,,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Community water system,,46093,,ELK CREEK VILLAGE,57769,08,,N,0,0,,PIEDMONT,,,SD4602237,_____________,,,44.245944,Zip Code Centroid,0,MEADE COUNTY,1,,110017893500,HC 80 BOX 483,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Community water system,,,,ELK POINT,,08,,N,0,0,,,,,SD4600116,_____________,,,42.831106,County Centroid,0,,,,110013008342,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,ELK VALLEY RANCHETTES,,08,,N,0,0,,,,,SD4602189,_____________,,,44.002349,County Centroid,0,,1,,110012858988,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,ELKTON,,08,,N,0,1,,,,,SD4600117,______V______,,,44.376675,County Centroid,0,,1,,110013008422,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,EMERY,,08,,N,0,1,,,,,SD4600118,_______VVVVV,,,43.680612,County Centroid,0,,1,,110013008538,,30000,HANSON,-97.796845
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,ENNING ELEMENTARY SCHOOL,57785,08,,N,0,0,,STURGIS,,,SD4600640,_____________,,,44.409462,Zip Code Centroid,0,,,,110052868624,,10000,MEADE,-103.518474
+,,,Y,SD,,$0,1,Community water system,,,,ESTELLINE,,08,,N,0,0,,,,,SD4600119,_____________,,,44.680619,County Centroid,0,,2,,110013008583,,30000,HAMLIN,-97.178598
+,,,Y,SD,,$0,1,Community water system,,,,ETHAN,,08,,N,0,1,,,,,SD4600120,______VV_____,,,43.680439,County Centroid,0,,1,,110013008609,,30000,DAVISON,-98.155868
+,,,Y,SD,,$0,1,Community water system,,,,EUREKA,,08,,N,0,1,,,,,SD4600121,________VVVV,,,45.784249,County Centroid,0,,1,,110013008645,,30000,MCPHERSON,-99.211421
+,,,Y,SD,,$0,1,Community water system,,,,EVERGREEN COLONY,,08,,N,0,0,,,,,SD4602050,_____________,,,45.065476,County Centroid,0,,,,110012955276,,30000,FAULK,-99.153564
+,1,,Y,SD,,$0,1,Community water system,,,,FAIRBURN WATER ASSOCIATION,,08,,Y,1,1,,,,,SD4600877,VVV_______VVV,,,43.684943,County Centroid,1,,3,,110012864310,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Community water system,,,,FAITH,,08,,N,0,0,,,,,SD4600124,_____________,,,44.606792,County Centroid,0,,,,110013008805,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,FALL RIVER WATER USERS DISTRICT,99999,08,,Y,0,1,,UNK,,,SD4602201,VVVVVV__VVVVV,,,43.221504,County Centroid,1,,58,,110012955891,UNK,30000,FALL RIVER,-103.512102
+,,,Y,SD,,$0,1,Community water system,,,,FALL RIVER WUD-NORTH,57766,08,,Y,0,1,,ORAL,,,SD4602316,____VV__VVVVV,,,43.40503,Zip Code Centroid,1,,10,,110048745435,,10000,FALL RIVER,-103.27042
+,,,Y,SD,,$0,1,Community water system,,,,FAULKTON,,08,,N,0,1,,,,,SD4600125,____________V,,,45.065476,County Centroid,0,,1,,110013008903,,30000,FAULK,-99.153564
+,,,Y,SD,,$0,1,Transient non-community system,,,,FISH-N-FRY CAMPGROUND,,08,,N,0,0,,,,,SD4600645,_____________,,,44.353669,County Centroid,0,,,,110052868811,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,FLANDREAU,,08,,N,0,1,,,,,SD4600127,________VVV__,,,44.012429,County Centroid,0,,1,,110013008976,,30000,MOODY,-96.676054
+,,,Y,SD,,$0,1,Community water system,,,,FLORENCE,,08,,N,0,0,,,,,SD4600128,_____________,,,44.966324,County Centroid,0,,,,110013009029,,30000,CODINGTON,-97.198843
+,,,Y,SD,,$0,1,Transient non-community system,,,,FLYING J TRAVEL PLAZA,57709,08,,N,0,0,,,,,SD4600925,_____________,,,44.079112,Zip Code Centroid,0,,,,110052659976,,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Community water system,,46025,,FORDHAM COLONY,57322,08,,N,0,0,,CARPENTER,,,SD4602064,_____________,,,44.558897,Zip Code Centroid,0,CLARK COUNTY,,,110010671157,8 MILES NORTH OF CARPENTER,10000,BEADLE,-97.886596
+,,,Y,SD,,$0,1,Community water system,,,,FORT PIERRE,,08,,N,0,0,,,,,SD4600130,_____________,,,44.415547,County Centroid,0,,,,110013009109,,30000,STANLEY,-100.749163
+,,,Y,SD,,$0,1,Transient non-community system,,,,FORT WELIKIT FAMILY CAMPGROUND,57730,08,,N,0,0,,CUSTER,,,SD4602236,_____________,,,43.855937,Zip Code Centroid,0,,2,,110052844295,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,FOUR MILE OLD WEST TOWN,57730,08,,N,0,0,,,,,SD4602367,_____________,,,43.855937,Zip Code Centroid,0,,,,SD4602367,,10000,Custer,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,FREDERICK,,08,,N,0,0,,,,,SD4600133,_____________,,,45.589254,County Centroid,0,,1,,110013009136,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,FREEMAN,,08,,N,0,1,,,,,SD4600134,_VV__________,,,43.33671,County Centroid,0,,1,,110013009181,,30000,HUTCHINSON,-97.749383
+,,,Y,SD,,$0,1,Community water system,,,,FRUITDALE,,08,,N,0,0,,,,,SD4600135,_____________,,,44.896435,County Centroid,0,,,,110013009234,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,GARDEN CITY,,08,,Y,0,1,,,,,SD4600137,_______VVVVVV,,,44.855211,County Centroid,1,,8,,110013009243,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Community water system,,,,GARRETSON,,08,,N,0,0,,,,,SD4600138,_____________,,,43.667472,County Centroid,0,,1,,110013009270,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,GARY,,08,,N,0,0,,,,,SD4600139,_____________,,,44.75629,County Centroid,0,,,,110013009298,,30000,DEUEL,-96.690239
+,,,Y,SD,,$0,1,Transient non-community system,,,,GAS LIGHT,,08,,N,0,1,,,,,SD4602031,VVVVVV_______,,,44.002349,County Centroid,0,,1,,110052881217,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,GAYVILLE,,08,,N,0,0,,,,,SD4600140,_____________,,,43.006607,County Centroid,0,,,,110013009314,,30000,YANKTON,-97.388339
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,GCC DACOTAH - EAST/WEST/NORTH,57709,08,,N,0,0,,,,,SD4600643,V____________,,,44.079112,Zip Code Centroid,0,,2,,110052868740,,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,GCC DACOTAH-NORTH QUARRY WELL,57709,08,,N,0,0,,,,,SD4602070,_____________,,,44.079112,Zip Code Centroid,0,,,,110052774191,,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Community water system,,,,GEDDES,99999,08,,N,0,0,,UNK,,,SD4600141,_____________,,,43.206185,County Centroid,0,,,,110013009387,UNK,30000,CHARLES MIX,-98.595143
+,,,Y,SD,,$0,1,Community water system,,,,GETTYSBURG,,08,,N,0,0,,,,,SD4600142,_____________,,,45.064276,County Centroid,0,,2,,110012956989,,30000,POTTER,-99.949631
+,,,Y,SD,,$0,1,Transient non-community system,,,,GFP-BEAR BUTTE VISITOR'S CENTER,57785,08,,N,0,0,,,,,SD4600846,_____________,,,44.409462,Zip Code Centroid,0,,,,110052774039,,10000,MEADE,-103.518474
+,,,Y,SD,,$0,1,Transient non-community system,,,,GFP-OUTLET,57785,08,,N,0,1,,,,,SD4602107,_________V___,,,44.409462,Zip Code Centroid,0,,2,,110052884919,,10000,MEADE,-103.518474
+,,,Y,SD,,$0,1,Transient non-community system,,,,GFP-WEST BEND RECREATION AREA,57501,08,,N,0,1,,,,,SD4600921,______VV_____,,,44.386119,Zip Code Centroid,0,,3,,110052659903,,10000,HUGHES,-100.319166
+,,,Y,SD,,$0,1,Transient non-community system,,,,GILDED MOUNTAIN HOMEOWNERS ASSOCIATI,,08,,N,0,0,,,,,SD4602336,_____________,,,44.353669,County Centroid,0,,,,110063332914,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,GLENDALE COLONY,,08,,N,0,0,,,,,SD4602060,_____________,,,44.931034,County Centroid,0,,,,110012861322,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,GOLDEN HILLS HOMES,,08,,N,0,0,,,,,SD4602213,_____________,,,44.002349,County Centroid,0,,1,,110012859503,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,GOLDEN MEADOWS,,08,,N,0,0,,,,,SD4600516,_____________,,,44.606792,County Centroid,0,,,,110012863160,,30000,MEADE,-102.715864
+,9,,Y,SD,,$0,1,Community water system,,,,GOLDEN VALLEY WATER COMPANY,,08,,N,9,1,,,,,SD4602261,VVSSSVVVVVV__,,,44.606792,County Centroid,0,,22,,110048120083,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,GRANT-ROBERTS RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600864,_____________,,,45.172637,County Centroid,0,,1,,110012863927,,30000,GRANT,-96.772261
+,,,Y,SD,,$0,1,Community water system,,,,GRASS LAND COLONY,,08,,N,0,1,,,,,SD4602028,VV___________,,,45.589254,County Centroid,0,,1,,110012860984,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,GREEN ACRES ASSOCIATION,,08,,N,0,0,,,,,SD4600425,_____________,,,45.589254,County Centroid,0,,,,110012864613,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,GREEN ACRES ESTATES,99999,08,,N,0,0,,UNK,,,SD4602218,_____________,,,43.221504,County Centroid,0,,,,110016613315,UNK,30000,FALL RIVER,-103.512102
+,,,Y,SD,,$0,1,Community water system,,,,GREENWOOD COLONY,,08,,N,0,1,,,,,SD4602022,VVVVVVVVVVV_V,,,43.391506,County Centroid,0,,62,,110012860742,,30000,DOUGLAS,-98.358433
+,,,Y,SD,,$0,1,Community water system,,,,GREGORY,,08,,N,0,0,,,,,SD4600145,_____________,,,43.179094,County Centroid,0,,,,110012957005,,30000,GREGORY,-99.202158
+,,,Y,SD,,$0,1,Community water system,,,,GRENVILLE,,08,,N,0,1,,,,,SD4600146,VVV____VVVV__,,,45.362283,County Centroid,0,,10,,110013009591,,30000,DAY,-97.593734
+,,,Y,SD,,$0,1,Community water system,,,,GROTON,,08,,N,0,0,,,,,SD4600147,_____________,,,45.589254,County Centroid,0,,,,110013009626,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Transient non-community system,,,,GUADALAJARA MEXICAN RESTAURANT,57783,08,,N,0,1,,SPEARFISH,,,SD4600568,________V____,,,44.498478,Zip Code Centroid,0,,3,,110052659725,,10000,LAWRENCE,-103.890276
+,,,Y,SD,,$0,1,Community water system,,,,HANSON RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600878,_____________,,,43.680612,County Centroid,0,,,,110012954598,,30000,HANSON,-97.796845
+46103,,,Y,SD,10120109,$0,1,Community water system,,46103,,HAPPY HOLIDAY INC,57702,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4600669,_____________,8.132,101201090905,43.99012,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57702,110010674671,8990 S HWY 16,30,PENNINGTON,-103.26959
+,,,Y,SD,,$0,1,Transient non-community system,,,,"HARNEY CAMP, INC.",57730,08,,N,0,0,,CUSTER,,,SD4600963,_____________,,,43.855937,Zip Code Centroid,0,,,,110052715255,,10000,PENNINGTON,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,HARRISBURG,,08,,N,0,0,,,,,SD4600148,_____________,,,43.27942,County Centroid,0,,,,110013009671,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Community water system,,,,HART RANCH,,08,,N,0,0,,,,,SD4600910,_____________,,,44.002349,County Centroid,0,,,,110012862660,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,HARTFORD,,08,,N,0,0,,,,,SD4600150,_____________,,,43.667472,County Centroid,0,,,,110013009699,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,HAYTI,,08,,N,0,0,,,,,SD4600151,_____________,,,44.680619,County Centroid,0,,,,110012957014,,30000,HAMLIN,-97.178598
+,,,Y,SD,,$0,1,Transient non-community system,,,,HEARTLAND CAMPGROUND,,08,,N,0,0,,,,,SD4602229,_____________,,,43.684943,County Centroid,0,,,,110052844231,,30000,CUSTER,-103.46225
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,HEARTLAND COUNTRY RANCHETTES,57718,08,,N,0,0,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4602235,_____________,9.591,101201110305,44.15166,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57718,110016808506,7005 TIMBERLINE ROAD,30,MEADE,-103.32483
+,,,Y,SD,,$0,1,Community water system,,46013,,HECLA WATER,57446,08,,N,0,0,,HECLA,,,SD4600152,_____________,,,45.88092,Zip Code Centroid,0,BROWN COUNTY,,,110013009733,UNKNOWN,10000,BROWN,-98.15274
+,,,Y,SD,,$0,1,Community water system,,,,HENRY,,08,,Y,0,1,,,,,SD4600153,________VVVVV,,,44.966324,County Centroid,1,,2,,110013009831,,30000,CODINGTON,-97.198843
+,,,Y,SD,,$0,1,Community water system,,,,HERMOSA,,08,,N,0,0,,,,,SD4600154,_____________,,,43.684943,County Centroid,0,,,,110013009911,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Community water system,,,,HERMOSA WATER USERS ASSOCIATION,,08,,N,0,1,,,,,SD4602180,______VV_S___,,,43.684943,County Centroid,0,,1,,110012955711,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Community water system,,,,HERREID,,08,,N,0,1,,,,,SD4600155,______VV_____,,,45.782241,County Centroid,0,,2,,110012957023,,30000,CAMPBELL,-100.027951
+,,,Y,SD,,$0,1,Transient non-community system,,,,HIDDEN VALLEY CAMPGROUND,,08,,N,0,0,,,,,SD4600172,_____________,,,44.353669,County Centroid,0,,,,110052777385,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,HIDDEN VALLEY WATER ASSOCIATION INC,,08,,N,0,1,,,,,SD4600269,VV_____VVV___,,,44.002349,County Centroid,0,,8,,110013001205,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,HIGH COUNTRY GUEST RANCH,,08,,N,0,0,,,,,SD4602239,_____________,,,44.446796,State Centroid,0,,,,110052844348,,100000,,-100.238176
+,,,Y,SD,,$0,1,Transient non-community system,,,,HIGH COUNTRY GUEST RANCH,57745,08,,N,0,0,,,,,SD4602238,_____________,,,43.933713,Zip Code Centroid,0,,1,,110052844311,,10000,PENNINGTON,-103.570374
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,HIGH MEADOWS RANCHETTES,57702,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4600011,_____________,7.163,101201100202,44.08851,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57702,110010641243,8320 HIGHLAND LOOP,30,PENNINGTON,-103.3572
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,HIGH MEADOWS WATER COMPANY,57718,08,,N,0,0,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4600395,_____________,7.707,101201110603,44.18822,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57718,110012999719,11010 N HIGH MEADOWS DRIVE,30,MEADE,-103.37494
+,,,Y,SD,,$0,1,Community water system,,,,HIGH SHERIDAN RANCH,,08,,N,0,0,,,,,SD4602234,_____________,,,44.002349,County Centroid,0,,,,110020602178,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,HIGHLAND HILLS,,08,,N,0,0,,,,,SD4600050,_____________,,,44.002349,County Centroid,0,,,,110013013871,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,HIGHMORE,,08,,N,0,0,,,,,SD4600158,_____________,,,44.537301,County Centroid,0,,,,110013010008,,30000,HYDE,-99.492148
+,,,Y,SD,,$0,1,Community water system,,,,HILL CITY,,08,,Y,0,1,,,,,SD4600159,__________VVV,,,44.002349,County Centroid,1,,4,,110013010044,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,HILL CITY VISITOR CENTER,57745,08,,N,0,0,,HILL CITY,,,SD4680108,_____________,,,43.933713,Zip Code Centroid,0,,,,110052476557,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Transient non-community system,,,,HILLSIDE COUNTRY CABINS,57702,08,,N,0,0,,RAPID CITY,,,SD4601019,V____________,,,44.067734,Zip Code Centroid,0,,2,,110052803203,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,HITCHCOCK,,08,,N,0,0,,,,,SD4600161,_____________,,,44.418265,County Centroid,0,,,,110013010115,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Transient non-community system,,,,HOLY SMOKE CABINS,57751,08,,N,0,0,,KEYSTONE,,,SD4602273,_____________,,,43.890706,Zip Code Centroid,0,,,,110052629223,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,HORSE CREEK INN-CABIN WELL,57702,08,,N,0,0,,RAPID CITY,,,SD4602200,_____________,,,44.067734,Zip Code Centroid,0,,,,110052724147,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,HORSE CREEK INN-CG WELL,57702,08,,N,0,0,,RAPID CITY,,,SD4602199,_____________,,,44.067734,Zip Code Centroid,0,,,,110052724110,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,HORSE CREEK INN-RESTAURANT WELL,57702,08,,N,0,0,,RAPID CITY,,,SD4600904,_____________,,,44.067734,Zip Code Centroid,0,,,,110052830665,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,HORSE THIEF CAMPGROUND & RESORT,,08,,N,0,0,,,,,SD4602253,_____________,,,44.002349,County Centroid,0,,,,110052803515,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,HORSESHOE ACRES,,08,,Y,0,1,,,,,SD4602266,_______VVVVVV,,,44.606792,County Centroid,1,,3,,110048143656,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,HOSMER,,08,,N,0,0,,,,,SD4600162,_____________,,,45.41168,County Centroid,0,,,,110013010204,,30000,EDMUNDS,-99.205362
+,,,Y,SD,,$0,1,Community water system,,46047,,HOT SPRINGS,57747,08,,N,0,0,,HOT SPRINGS,,,SD4600163,_____________,,,43.433953,Zip Code Centroid,0,FALL RIVER COUNTY,,,110013010302,UNK,10000,FALL RIVER,-103.480193
+,,,Y,SD,,$0,1,Community water system,,,,HOVEN,,08,,N,0,1,,,,,SD4600164,VVVVVVV______,,,45.064276,County Centroid,0,,1,,110013010339,,30000,POTTER,-99.949631
+,,,Y,SD,,$0,1,Community water system,,,,HOWARD,,08,,N,0,1,,,,,SD4600165,____V________,,,44.017327,County Centroid,0,,2,,110012957041,,30000,MINER,-97.60979
+,,,Y,SD,,$0,1,Community water system,,,,HUDSON,,08,,N,0,0,,,,,SD4600166,_____________,,,43.27942,County Centroid,0,,,,110013010375,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Community water system,,,,HUMBOLDT,,08,,N,0,1,,,,,SD4600167,VVVV_VV______,,,43.667472,County Centroid,0,,5,,110013010384,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,HURLEY,,08,,N,0,1,,,,,SD4600168,_VVV_________,,,43.30867,County Centroid,0,,4,,110013010428,,30000,TURNER,-97.150185
+,,,Y,SD,,$0,1,Community water system,,,,HURON COLONY,,08,,N,0,0,,,,,SD4602042,_____________,,,44.418265,County Centroid,0,,,,110012861091,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Community water system,,,,HUTTERVILLE COLONY,,08,,Y,0,1,,,,,SD4602026,VVVVVVVVVVVVV,,,45.589254,County Centroid,1,,32,,110012954954,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,IPSWICH,,08,,N,0,0,,,,,SD4600397,_____________,,,45.41168,County Centroid,0,,,,110012999826,,30000,EDMUNDS,-99.205362
+,,,Y,SD,,$0,1,Community water system,,,,IRENE,,08,,N,0,0,,,,,SD4600173,_____________,,,42.912997,County Centroid,0,,2,,110013010464,,30000,CLAY,-96.979795
+,,,Y,SD,,$0,1,Transient non-community system,,,,IRON CREEK LAKE STORE,57783,08,,N,0,1,,SPEARFISH,,,SD4600672,_V___________,,,44.498478,Zip Code Centroid,0,,2,,110052716888,,10000,LAWRENCE,-103.890276
+,,,Y,SD,,$0,1,Community water system,,,,IROQUOIS,,08,,N,0,0,,,,,SD4600174,_____________,,,44.362969,County Centroid,0,,,,110013003043,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,ISABEL,,08,,N,0,0,,,,,SD4600175,V____________,,,45.150005,County Centroid,0,,2,,110013003089,,30000,DEWEY,-100.852218
+,1,,Y,SD,,$0,1,Community water system,,,,JAVA,,08,,Y,1,1,,,,,SD4600176,_VVVVVVVVVVVV,,,45.427605,County Centroid,1,,2,,110012957050,,30000,WALWORTH,-100.027856
+,,,Y,SD,,$0,1,Community water system,,,,JEFFERSON,,08,,N,0,1,,,,,SD4600060,VV___________,,,42.831106,County Centroid,0,,1,,110013014013,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,JOBEE ACRES,,08,,N,0,0,,,,,SD4600019,_____________,,,45.589254,County Centroid,0,,,,110013012499,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Transient non-community system,,,,JOHNSON SIDING/RIMROCK TAVERN,57702,08,,Y,0,1,,RAPID CITY,,,SD4600599,_V____VVVVVVV,,,44.067734,Zip Code Centroid,1,,5,,110052714844,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,JSBOONDOCKS LLC,57732,08,,N,0,1,,,,,SD4602246,_________VV__,,,44.321062,Zip Code Centroid,0,,1,,110052803445,,10000,LAWRENCE,-103.60779
+,,,Y,SD,,$0,1,Community water system,,,,KADOKA,,08,,N,0,0,,,,,SD4600181,_____________,,,43.677294,County Centroid,0,,,,110013003249,,30000,JACKSON,-101.626455
+,,,Y,SD,,$0,1,Transient non-community system,,,,KAMP KINSHIP 1,,08,,Y,0,1,,,,,SD4601049,_VV___VV__VVV,,,44.353669,County Centroid,1,,3,,110052835848,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,KAMP KINSHIP 2,,08,,Y,0,1,,,,,SD4602297,_VV___VV__VVV,,,44.353669,County Centroid,1,,3,,110052846015,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,KEMP'S KAMP EAST,57751,08,,N,0,1,,KEYSTONE,,,SD4600562,VV___________,,,43.890706,Zip Code Centroid,0,,2,,110052601172,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,KEMP'S KAMP MIDDLE,57751,08,,N,0,1,,KEYSTONE,,,SD4602312,VV___________,,,43.890706,Zip Code Centroid,0,,2,,110052879756,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,KEMP'S KAMP UPPER,57751,08,,N,0,0,,,,,SD4602350,_____________,,,43.890706,Zip Code Centroid,0,,,,SD4602350,,10000,Pennington,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,KEMP'S KAMP WEST,57751,08,,N,0,1,,KEYSTONE,,,SD4602315,VV___________,,,43.890706,Zip Code Centroid,0,,2,,110052879827,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Community water system,,,,KEN'S TRAILER COURT,,08,,N,0,0,,,,,SD4600314,_____________,,,44.353669,County Centroid,0,,,,110013002419,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,KENNEBEC,,08,,N,0,0,,,,,SD4600182,_____________,,,43.894812,County Centroid,0,,,,110012957130,,30000,LYMAN,-99.841925
+,,,Y,SD,,$0,1,Community water system,,,,KEYSTONE,,08,,N,0,0,,,,,SD4601082,_____________,,,44.002349,County Centroid,0,,8,,110012860172,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,KIMBALL,,08,,N,0,1,,,,,SD4600184,_______VVVV__,,,43.72988,County Centroid,0,,2,,110013003267,,30000,BRULE,-99.092941
+,,,Y,SD,,$0,1,Community water system,,,,KINGBROOK I RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600431,_____________,,,44.376675,County Centroid,0,,,,110012954071,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,KINGBROOK II RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600511,_____________,,,44.362969,County Centroid,0,,,,110012863026,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,KINGBROOK III RURAL WATER SYSTEM,99999,08,,N,0,0,,UNK,,,SD4600874,_____________,,,44.02845,County Centroid,0,,,,110012864150,UNK,30000,LAKE,-97.123223
+,,,Y,SD,,$0,1,Transient non-community system,,,,KLEIN RANCH,57273,08,,Y,0,1,,,,,SD4601039,_VVVVVVVVVVVV,,,45.369885,Zip Code Centroid,1,,11,,110052619500,,10000,CORSON,-97.219614
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,KLEIN SCHOOL,57555,08,,Y,0,1,,MISSION,,,SD4602308,VVV_____V__VV,,,43.30919,Zip Code Centroid,1,,7,,110052879738,,10000,TODD,-100.658542
+,,,Y,SD,,$0,1,Community water system,,,,LAKE ANDES,99999,08,,N,0,0,,UNK,,,SD4600185,_____________,,,43.206185,County Centroid,0,,,,110013003347,UNK,30000,CHARLES MIX,-98.595143
+,,,Y,SD,,$0,1,Community water system,,,,LAKE CITY,,08,,N,0,0,,,,,SD4600186,_____________,,,45.737054,County Centroid,0,,,,110013003374,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,LAKE NORDEN,,08,,N,0,0,,,,,SD4600187,_____________,,,44.680619,County Centroid,0,,,,110012957210,,30000,HAMLIN,-97.178598
+,,,Y,SD,,$0,1,Transient non-community system,,,,LAKE PARK CAMPGROUND,57702,08,,N,0,0,,RAPID CITY,,,SD4600679,_____________,,,44.067734,Zip Code Centroid,0,,,,110052788505,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,LAKE POINSETT ESTATES,57212,08,,Y,0,1,,ARLINGTON,,,SD4601009,______VVVVVVV,,,44.363759,Zip Code Centroid,1,,50,,110052878757,,10000,HAMLIN,-97.141434
+,,,Y,SD,,$0,1,Community water system,,,,LAKE PRESTON,,08,,N,0,1,,,,,SD4600398,_____VVV_____,,,44.362969,County Centroid,0,,1,,110012999844,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,LAKESIDE ESTATES,,08,,N,0,0,,,,,SD4600022,_____________,,,45.589254,County Centroid,0,,,,110013012694,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,LAKESIDE WATER USERS DISTRICT,,08,,N,0,1,,,,,SD4602108,________VVVV,,,44.002349,County Centroid,0,,31,,110012859905,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,LAKEVIEW COLONY,99999,08,,N,0,0,,UNK,,,SD4602017,V____________,,,43.206185,County Centroid,0,,1,,110012860582,UNK,30000,CHARLES MIX,-98.595143
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,LAKEVIEW ELEMENTARY SCHOOL,57555,08,,Y,0,1,,MISSION,,,SD4600939,VVSSVVVVVVVVV,,,43.30919,Zip Code Centroid,1,,45,,110052876722,,10000,TODD,-100.658542
+,,,Y,SD,,$0,1,Community water system,,,,LANGFORD,,08,,N,0,0,,,,,SD4600189,_____________,,,45.737054,County Centroid,0,,,,110013003427,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,LANTERN ESTATES,,08,,N,0,0,,,,,SD4600315,_____________,,,44.353669,County Centroid,0,,,,110013002428,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,LAUGHING WATER RESTAURANT AT CRAZY H,57730,08,,N,0,0,,CUSTER,,,SD4600547,_____________,,,43.855937,Zip Code Centroid,0,,,,110052784910,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,LEAD,,08,,N,0,0,,,,,SD4602164,_____________,,,44.353669,County Centroid,0,,,,110012955579,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,LEAD-DEADWOOD SANITARY DISTRICT,,08,,N,0,0,,,,,SD4600190,_____________,,,44.353669,County Centroid,0,,,,110013003481,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,LEMMON,,08,,N,0,0,,,,,SD4600192,_____________,,,45.483387,County Centroid,0,,,,110013003560,,30000,PERKINS,-102.467995
+,,,Y,SD,,$0,1,Community water system,,,,LENNOX,,08,,N,0,0,,,,,SD4600193,_____________,,,43.27942,County Centroid,0,,2,,110013003597,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Community water system,,,,LEOLA,,08,,N,0,1,,,,,SD4600194,_VV__________,,,45.784249,County Centroid,0,,2,,110013003622,,30000,MCPHERSON,-99.211421
+,,,Y,SD,,$0,1,Community water system,,,,LESTERVILLE,,08,,N,0,0,,,,,SD4600195,V____________,,,43.006607,County Centroid,0,,4,,110013003640,,30000,YANKTON,-97.388339
+,,,Y,SD,,$0,1,Community water system,,,,LETCHER,,08,,N,0,1,,,,,SD4600196,VVVVVVV______,,,44.021032,County Centroid,0,,10,,110013003695,,30000,SANBORN,-98.092105
+,,,Y,SD,,$0,1,Transient non-community system,,,,LEWIE'S SALOON AND EATERY,,08,,N,0,0,,,,,SD4602114,_____________,,,44.353669,County Centroid,0,,,,110052885017,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,LEWIS AND CLARK REGIONAL WATER SYSTE,,08,,N,0,0,,,,,SD4602288,_____________,,,43.667472,County Centroid,0,,,,110048690403,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,LINCOLN COUNTY RURAL WATER SYSTEM,,08,,N,0,0,,,,,SD4600304,_____________,,,43.27942,County Centroid,0,,,,110013002142,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Community water system,,,,LOFTY PINES II,,08,,N,0,0,,,,,SD4602250,_____________,,,44.606792,County Centroid,0,,4,,110020602212,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,LONG LAKE COLONY,,08,,N,0,0,,,,,SD4602051,_____________,,,45.589254,County Centroid,0,,,,110012861199,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,LONG VALLEY ELEMENTARY SCHOOL,57543,08,,N,0,0,,KADOKA,,,SD4600940,_____________,,,43.840613,Zip Code Centroid,0,,2,,110052876786,,10000,JACKSON,-101.505611
+,,,Y,SD,,$0,1,Community water system,,,,LOURIE LANE HOMEOWNERS ASSOC,,08,,Y,0,1,,,,,SD4600416,_________VV_V,,,44.353669,County Centroid,1,,2,,110012953875,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,M-T CORNER,57385,08,,Y,0,1,,WOONSOCKET,,,SD4601096,SVVVVVVVVVVVV,,,44.051416,Zip Code Centroid,1,,29,,110052708183,,10000,SANBORN,-98.274305
+,,,Y,SD,,$0,1,Community water system,,,,MADISON,,08,,N,0,0,,,,,SD4600199,_____________,,,44.02845,County Centroid,0,,1,,110013003846,,30000,LAKE,-97.123223
+,,,Y,SD,,$0,1,Community water system,,,,MARION,,08,,N,0,0,,,,,SD4600201,_____________,,,43.30867,County Centroid,0,,,,110013003935,,30000,TURNER,-97.150185
+,,,Y,SD,,$0,1,Community water system,,,,MARTIN,,08,,N,0,0,,,,,SD4600202,_____________,,,43.184826,County Centroid,0,,,,110013003962,,30000,BENNETT,-101.676426
+,,,Y,SD,,$0,1,Community water system,,,,MARVIN,,08,,N,0,1,,,,,SD4600203,VV__________V,,,45.172637,County Centroid,0,,7,,110013003980,,30000,GRANT,-96.772261
+,,,Y,SD,,$0,1,Community water system,,,,MAXWELL COLONY,,08,,N,0,1,,,,,SD4602023,_VV_V___VVVVV,,,42.986031,County Centroid,0,,54,,110012860760,,30000,BON HOMME,-97.885613
+,,,Y,SD,,$0,1,Community water system,,,,MCINTOSH,,08,,Y,0,1,,,,,SD4600197,________VVSVV,,,45.69834,County Centroid,1,,9,,110013003784,,30000,CORSON,-101.176017
+,,,Y,SD,,$0,1,Community water system,,,,MCLAUGHLIN,,08,,N,0,0,,,,,SD4600198,_____________,,,45.69834,County Centroid,0,,,,110013003800,,30000,CORSON,-101.176017
+,16,,Y,SD,,$0,1,Community water system,,,,MEADOW CREST HOMEOWNERS ASSOCIATION,57783,08,,Y,16,1,,SPEARFISH,,,SD4602258,____VVSSSSVVV,,,44.498478,Zip Code Centroid,1,,34,,110048590146,,10000,LAWRENCE,-103.890276
+,,,Y,SD,,$0,1,Transient non-community system,,,,MEDICINE MOUNTAIN SCOUT CAMP,,08,,N,0,1,,,,,SD4601031,VVVV_________,,,44.002349,County Centroid,0,,11,,110052619305,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,MELLETTE,,08,,N,0,0,,,,,SD4600204,_____________,,,44.931034,County Centroid,0,,,,110013004042,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,MENNO,,08,,N,0,0,,,,,SD4600205,_____________,,,43.33671,County Centroid,0,,,,110013004186,,30000,HUTCHINSON,-97.749383
+,,,Y,SD,,$0,1,Community water system,,46047,,MERCHEN'S MOBILE HOME ACRES,57747,08,,N,0,1,,HOT SPRINGS,,,SD4600518,________VV___,,,43.433953,Zip Code Centroid,0,FALL RIVER COUNTY,1,,110012954222,,10000,FALL RIVER,-103.480193
+,,,Y,SD,,$0,1,Community water system,,,,MID-DAKOTA RURAL WATER,,08,,N,0,0,,,,,SD4602175,_____________,,,44.392258,County Centroid,0,,,,110012955668,,30000,HUGHES,-99.985846
+,,,Y,SD,,$0,1,Community water system,,,,MIDLAND,,08,,N,0,0,,,,,SD4600012,_____________,,,44.284312,County Centroid,0,,7,,110012956337,,30000,HAAKON,-101.59179
+,,,Y,SD,,$0,1,Community water system,,,,MIDLAND HEIGHTS,,08,,N,0,0,,,,,SD4600515,_____________,,,44.606792,County Centroid,0,,1,,110012863133,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,MILBANK,,08,,N,0,0,,,,,SD4600207,_____________,,,45.172637,County Centroid,0,,,,110013004202,,30000,GRANT,-96.772261
+,,,Y,SD,,$0,1,Community water system,,,,MILLER,,08,,N,0,0,,,,,SD4600211,_____________,,,44.546713,County Centroid,0,,,,110013004293,,30000,HAND,-99.004575
+46045,,,Y,SD,10160008,$0,1,Community water system,,46045,,MINA LAKE SANITARY DISTRICT,57451,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,MINA,,,SD4600501,V____________,1.695,101600080109,45.461358,ADDRESS MATCHING-HOUSE NUMBER,0,EDMUNDS COUNTY,2,57451,110039703158,105 N. SUNSET DR.,50,BROWN,-98.734472
+,,,Y,SD,,$0,1,Community water system,,,,MINNEHAHA COMMUNITY WATER CORP,57022,08,,Y,0,1,,DELL RAPIDS,,,SD4600432,__________VVV,,,43.899105,Zip Code Centroid,1,,3,,110009792741,,10000,MINNEHAHA,-96.74845
+,,,Y,SD,,$0,1,Community water system,,,,MISSION HILL,,08,,Y,0,1,,,,,SD4600212,____________V,,,43.006607,County Centroid,1,,2,,110013004337,,30000,YANKTON,-97.388339
+,,,Y,SD,,$0,1,Community water system,,46121,,MISSION WATER SYSTEM,57570,08,,N,0,1,,ROSEBUD,,,084690532,VVVVVV______U,,,43.23269,Zip Code Centroid,0,TODD COUNTY,1,,110025335439,NEAR ROSEBUD,10000,TODD,-100.85299
+,,,Y,SD,,$0,1,Community water system,,,,MITCHELL,,08,,N,0,0,,,,,SD4600214,_____________,,,43.680439,County Centroid,0,,,,110013004373,,30000,DAVISON,-98.155868
+,,,Y,SD,,$0,1,Community water system,,,,MOBRIDGE,,08,,N,0,0,,,,,SD4600215,V____________,,,45.427605,County Centroid,0,,3,,110013004391,,30000,WALWORTH,-100.027856
+,,,Y,SD,,$0,1,Community water system,,,,MONTROSE,,08,,N,0,1,,,,,SD4600217,V_______VVV__,,,43.678924,County Centroid,0,,5,,110013004505,,30000,MCCOOK,-97.362036
+,,,Y,SD,,$0,1,Transient non-community system,,,,MOONSHINE GULCH SALOON,57745,08,,N,0,0,,HILL CITY,,,SD4601033,_____________,,,43.933713,Zip Code Centroid,0,,,,110052619369,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,MORRISTOWN,,08,,N,0,1,,,,,SD4600218,VVVVV________,,,45.69834,County Centroid,0,,2,,110013004550,,30000,CORSON,-101.176017
+,,,Y,SD,,$0,1,Community water system,,,,MOUNT VERNON,,08,,N,0,0,,,,,SD4600220,_____________,,,43.680439,County Centroid,0,,,,110013004603,,30000,DAVISON,-98.155868
+,,,Y,SD,,$0,1,Transient non-community system,,,,MOUNTAIN MEADOW RESORT,57745,08,,N,0,1,,HILL CITY,,,SD4600695,__VVV________,,,43.933713,Zip Code Centroid,0,,4,,110052788729,,10000,PENNINGTON,-103.570374
+46093,,,Y,SD,10120202,$0,1,Community water system,,46093,,MOUNTAIN PLAINS II HOMEOWNERS ASSOC,57785,08,,Y,0,1,CENTER OF A FACILITY OR STATION,STURGIS,,,SD4602169,_______VVVVVV,7.838,101202020702,44.3992,ADDRESS MATCHING-HOUSE NUMBER,1,MEADE COUNTY,1,57785,110012858675,801 GLOVER STREET,30,MEADE,-103.50687
+,,,Y,SD,,$0,1,Transient non-community system,,,,MOUNTAIN VIEW LODGE,57745,08,,N,0,0,,HILL CITY,,,SD4600580,_____________,,,43.933713,Zip Code Centroid,0,,,,110052826867,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,MURDO,,08,,N,0,0,,,,,SD4600221,_____________,,,43.95199,County Centroid,0,,,,110013004658,,30000,JONES,-100.686139
+,,,Y,SD,,$0,1,Transient non-community system,,,,MYSTERY MOUNTAIN RESORT,57702,08,,N,0,0,,RAPID CITY,,,SD4600615,_____________,,,44.067734,Zip Code Centroid,0,,,,110052607531,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,MYSTIC HILLS HIDEAWAY,57732,08,,N,0,1,,DEADWOOD,,,SD4602296,_________V___,,,44.321062,Zip Code Centroid,0,,2,,110052845999,,10000,LAWRENCE,-103.60779
+,,,Y,SD,,$0,1,Transient non-community system,,,,MYSTIC HILLS HIDEAWAY WEST,57732,08,,N,0,0,,,,,SD4602360,_____________,,,44.321062,Zip Code Centroid,0,,,,SD4602360,,10000,Lawrence,-103.60779
+,,,Y,SD,,$0,1,Transient non-community system,,,,MYSTIC VALLEY INN,57730,08,,Y,0,1,,,,,SD4600606,____VVVVVVVVV,,,43.855937,Zip Code Centroid,1,,10,,110052715013,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,NEMO GUEST RANCH,57759,08,,N,0,1,,NEMO,,,SD4600535,_VV__________,,,44.23501,Zip Code Centroid,0,,2,,110052784698,,10000,LAWRENCE,-103.601138
+,1,,Y,SD,,$0,1,Community water system,,,,NEW EFFINGTON,,08,,Y,1,1,,,,,SD4600013,VVVVVVVVVVVVV,,,45.623397,County Centroid,1,,17,,110013015584,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Community water system,,,,NEW UNDERWOOD,,08,,N,0,0,,,,,SD4600224,_____________,,,44.002349,County Centroid,0,,1,,110012957327,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,NEWDALE COLONY,,08,,N,0,0,,,,,SD4602081,_____________,,,44.376675,County Centroid,0,,6,,110012862036,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,NEWELL,,08,,N,0,0,,,,,SD4600222,_____________,,,44.896435,County Centroid,0,,,,110013004676,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,NEWPORT COLONY,,08,,N,0,1,,,,,SD4602029,VV___________,,,45.589254,County Centroid,0,,35,,110012955007,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,NISLAND,,08,,N,0,1,,,,,SD4600225,VVVVVVVVSSV__,,,44.896435,County Centroid,0,,7,,110013004863,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Community water system,,,,NORTH SIOUX CITY,,08,,N,0,0,,,,,SD4600226,_____________,,,42.831106,County Centroid,0,,,,110013004881,,30000,UNION,-96.650829
+,,,Y,SD,,$0,1,Community water system,,,,NORTHDALE SANITARY DISTRICT,,08,,N,0,1,,,,,SD4600514,__________VV,,,44.606792,County Centroid,0,,3,,110012863115,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,NORTHERN LIGHTS MOBILE HOME PARK,57078,08,,Y,0,1,,YANKTON,,,SD4602289,___VVVVVVVVVV,,,42.887955,Zip Code Centroid,1,,8,,110048690467,,10000,YANKTON,-97.39349
+,,,Y,SD,,$0,1,Community water system,,,,NORTHVILLE,,08,,N,0,1,,,,,SD4600227,____________V,,,44.931034,County Centroid,0,,2,,110013004998,,30000,SPINK,-98.339644
+46005,,,Y,SD,10160006,$0,1,Community water system,,46005,,NORTHWESTERN PUBLIC SERVICE,57350,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,HURON,,,SD4600169,_____________,17.793,101600061012,44.36751,ADDRESS MATCHING-HOUSE NUMBER,0,BEADLE COUNTY,,57350,110004950964,600 MARKET STREET WEST,50,BEADLE,-98.224
+,,,Y,SD,,$0,1,Community water system,,,,NORTHWOOD FIRST SUBDIVISION,,08,,N,0,0,,,,,SD4602342,_____________,,,45.589254,County Centroid,0,,1,,110063343699,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Transient non-community system,,,,NPS-JEWEL CAVE NATIONAL MONUMENT,57730,08,,N,0,0,,CUSTER,,,SD4680044,_____________,,,43.855937,Zip Code Centroid,0,,,,110052654640,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,NPS-MOUNT RUSHMORE NATIONAL MEMORIAL,57751,08,,N,0,0,,KEYSTONE,,,SD4680046,_____________,,,43.890706,Zip Code Centroid,0,,,,110051874762,,10000,PENNINGTON,-103.427286
+46033,,,Y,SD,10120109,$0,1,Non-Transient non-community system,,46047,,NPS-WIND CAVE NATIONAL PARK,57747,08,,N,0,0,CENTER OF FACILITY,HOT SPRINGS,,,SD4680047,_____________,2.703,101201090202,43.554162,INTERPOLATION-PHOTO,0,FALL RIVER COUNTY,,57747,110028184364,26611 US HWY 385,10,FALL RIVER,-103.477521
+,,,Y,SD,,$0,1,Community water system,,,,NUNDA,,08,,N,0,0,,,,,SD4600228,V____________,,,44.02845,County Centroid,0,,6,,110013005023,,30000,LAKE,-97.123223
+,,,Y,SD,,$0,1,Community water system,,,,OACOMA,,08,,N,0,0,,,,,SD4600229,_____________,,,43.894812,County Centroid,0,,1,,110012957381,,30000,LYMAN,-99.841925
+,,,Y,SD,,$0,1,Community water system,,,,OAHE ACRES,,08,,N,0,0,,,,,SD4602154,_____________,,,44.392258,County Centroid,0,,,,110012858577,,30000,HUGHES,-99.985846
+,,,Y,SD,,$0,1,Community water system,,,,OAK MOUNTAIN COUNTRY ESTATES,,08,,N,0,1,,,,,SD4602151,VVVVVVVV_____,,,44.353669,County Centroid,0,,51,,110012858522,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,46093,,OAKS WATER USERS ASSOCIATION,57769,08,,N,0,0,,PIEDMONT,,,SD4602135,_____________,,,44.245944,Zip Code Centroid,0,MEADE COUNTY,1,,110012955436,HC 80 BOX 483,10000,MEADE,-103.410993
+,10,,Y,SD,,$0,1,Community water system,,,,OELRICHS,,08,,N,10,0,,,,,SD4600230,_____________,,,43.221504,County Centroid,0,,25,,110013005050,,30000,FALL RIVER,-103.512102
+,,,Y,SD,,$0,1,Community water system,,46109,,OLD AGENCY WATER SYSTEM,57262,08,,Y,0,1,,AGENCY VILLAGE,,,084690458,_V____VVVVVVU,,,45.66391,Zip Code Centroid,1,ROBERTS COUNTY,,,110025335607,NEAR AGENCY VILLAGE,10000,ROBERTS,-97.049572
+,5,,Y,SD,,$0,1,Community water system,,,,OLDHAM,,08,,N,5,1,,,,,SD4600231,VSSVVV_______,,,44.362969,County Centroid,0,,9,,110013005087,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,ONIDA,,08,,N,0,0,,,,,SD4600233,_____________,,,44.722325,County Centroid,0,,,,110012957434,,30000,SULLY,-100.131399
+,,,Y,SD,,$0,1,Transient non-community system,,,,OUTLAW RANCH,,08,,N,0,0,,,,,SD4601014,_____________,,,43.684943,County Centroid,0,,,,110052878855,,30000,CUSTER,-103.46225
+,12,,Y,SD,,$0,1,Community water system,,,,OWANKA RURAL WATER SYSTEM,,08,,Y,12,1,,,,,SD4602310,VVSSSVVVVVVVV,,,44.002349,County Centroid,1,,24,,110048745104,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,PACTOLA PINES STORE,,08,,Y,0,1,,,,,SD4601069,VVVVVVVVVVVVV,,,44.002349,County Centroid,1,,9,,110052811604,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,PACTOLA WATER ASSOCIATION,,08,,N,0,0,,,,,SD4600902,_____________,,,44.002349,County Centroid,0,,,,110052830629,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,PALMER GULCH LODGE/MT RUSHMORE KOA,57745,08,,N,0,0,,,,,SD4600697,_____________,,,43.933713,Zip Code Centroid,0,,,,110052788783,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,PARADISE WATER COMPANY LLC,,08,,N,0,0,,,,,SD4602323,_____________,,,44.353669,County Centroid,0,,,,110048745694,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,PARAMOUNT POINT,57747,08,,N,0,0,,,,,SD4602351,_____________,,,43.433953,Zip Code Centroid,0,,,,SD4602351,,10000,Custer,-103.480193
+,,,Y,SD,,$0,1,Community water system,,,,PARKER,,08,,N,0,0,,,,,SD4600235,_____________,,,43.30867,County Centroid,0,,,,110013005149,,30000,TURNER,-97.150185
+,,,Y,SD,,$0,1,Community water system,,,,PARKSTON,,08,,N,0,1,,,,,SD4600236,_VVVV________,,,43.33671,County Centroid,0,,1,,110013005176,,30000,HUTCHINSON,-97.749383
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,PEACEFUL PINES II,57718,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,BLACK HAWK,,,SD4602000,_____________,9.463,101201110305,44.154435,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,2,57718,110012860298,6811 RIDGEVIEW,50,MEADE,-103.331925
+,,,Y,SD,,$0,1,Community water system,,,,PEARL CREEK COLONY,,08,,N,0,0,,,,,SD4602073,V____________,,,44.418265,County Centroid,0,,2,,110012861821,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Community water system,,,,PEEVER,,08,,N,0,0,,,,,SD4600237,_____________,,,45.623397,County Centroid,0,,,,110013005256,,30000,ROBERTS,-96.947551
+46029,,,Y,SD,10170202,$0,1,Community water system,,46029,,PELICAN PLAZA,57201,08,,Y,0,1,CENTER OF A FACILITY OR STATION,WATERTOWN,,,SD4600354,_V_________VV,4.154,101702010801,44.88279,ADDRESS MATCHING-HOUSE NUMBER,1,CODINGTON COUNTY,3,57201,110012998658,17257 464TH AVENUE,30,CODINGTON,-96.92523
+,,,Y,SD,,$0,1,Community water system,,46031,,PERKINS COUNTY RURAL WATER,57620,08,,N,0,0,,BISON,,,SD4602228,_____________,,,45.52237,Zip Code Centroid,0,CORSON COUNTY,,,110021040853,104 MAIN STREET,10000,PERKINS,-102.45942
+,,,Y,SD,,$0,1,Community water system,,,,PHILIP,,08,,N,0,0,,,,,SD4600238,_____________,,,44.284312,County Centroid,0,,,,110012957461,,30000,HAAKON,-101.59179
+,,,Y,SD,,$0,1,Community water system,,46023,,PICKSTOWN,57367,08,,N,0,0,,PICKSTOWN,,,SD4680001,_____________,,,43.069084,Zip Code Centroid,0,CHARLES MIX COUNTY,1,,110012859601,UNK,10000,CHARLES MIX,-98.532028
+,,,Y,SD,,$0,1,Community water system,,,,PIEDMONT,,08,,N,0,0,,,,,SD4602303,_____________,,,44.606792,County Centroid,0,,,,110048690859,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,PIERPONT,,08,,N,0,0,,,,,SD4600241,_____________,,,45.362283,County Centroid,0,,,,110013005390,,30000,DAY,-97.593734
+,,,Y,SD,,$0,1,Community water system,,,,PIERRE,,08,,N,0,0,,,,,SD4600242,_____________,,,44.392258,County Centroid,0,,,,110013005416,,30000,HUGHES,-99.985846
+46065,,,Y,SD,10140101,$0,1,Community water system,,46065,,PIERRE INDIAN LEARNING CENTER,57501,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,PIERRE,,,084690027,VVVVVV______U,16.3,101401010302,44.35331,ADDRESS MATCHING-HOUSE NUMBER,0,HUGHES COUNTY,1,57501,110011671262,3001 EAST SULLY AVENUE,50,HUGHES,-100.311058
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,PINE CLIFF ESTATES,57718,08,,N,0,0,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4600270,_____________,9.591,101201110305,44.15166,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57718,110012955123,7005 TIMBERLINE ROAD,30,MEADE,-103.32483
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,PINE CONE ESTATES,57769,08,,N,0,0,CENTER OF A FACILITY OR STATION,PIEDMONT,,,SD4602179,_____________,8.004,101201110606,44.1966,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57769,110012858915,5310 EBONY PLACE,30,MEADE,-103.3074
+,,,Y,SD,,$0,1,Community water system,,,,PINE GROVE,,08,,N,0,0,,,,,SD4600948,_____________,,,44.002349,County Centroid,0,,,,110012954776,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,PINE HILLS PARK,,08,,Y,0,1,,,,,SD4600041,VVVVVV___VVSV,,,44.606792,County Centroid,1,,12,,110013013390,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,PINE LAKE HILLS,,08,,N,0,1,,,,,SD4600624,____VV_______,,,43.667472,County Centroid,0,,6,,110012863623,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Transient non-community system,,,,PINE REST CABINS,57745,08,,N,0,0,,HILL CITY,,,SD4600909,_____________,,,43.933713,Zip Code Centroid,0,,,,110052830754,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,PINE RIDGE WATER SYSTEM,57770,08,,N,0,0,,PINE RIDGE,,,084690475,____________U,,,43.18799,Zip Code Centroid,0,,,,110012355913,BOX 325,10000,SHANNON,-102.74493
+,,,Y,SD,,$0,1,Community water system,,,,PINEVIEW WATER ASSOCIATION,,08,,N,0,0,,,,,SD4602153,_____________,,,44.002349,County Centroid,0,,1,,110012955551,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,PLACERVILLE CAMP,57702,08,,N,0,0,,RAPID CITY,,,SD4601067,_____________,,,44.067734,Zip Code Centroid,0,,,,110052811542,,10000,PENNINGTON,-103.310357
+46103,,,Y,SD,10120111,$0,1,Community water system,,46103,,PLAINSVIEW MOBILE MANOR,57719,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,BOX ELDER,,,SD4600259,_____________,22.704,101201110401,44.12105,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,1,57719,110013000698,125 WESTGATE RD,50,PENNINGTON,-103.11091
+,,,Y,SD,,$0,1,Community water system,,,,PLANKINTON,,08,,N,0,0,,,,,SD4600245,_____________,,,43.724719,County Centroid,0,,,,110012957498,,30000,AURORA,-98.577587
+,,,Y,SD,,$0,1,Community water system,,,,PLATTE,99999,08,,N,0,1,,UNK,,,SD4600246,____V________,,,43.206185,County Centroid,0,,1,,110013005443,UNK,30000,CHARLES MIX,-98.595143
+,,,Y,SD,,$0,1,Community water system,,46101,,PLEASANT VALLEY COLONY,,08,,N,0,0,,,,,SD4602086,_____________,,,44.012429,County Centroid,0,MOODY COUNTY,22,,110021478569,,30000,MOODY,-96.676054
+46013,,,Y,SD,10160003,$0,1,Community water system,,46013,,PLEASANT VALLEY ESTATES,57401,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,ABERDEEN,,,SD4600404,_____________,6.106,101600031906,45.519439,ADDRESS MATCHING-HOUSE NUMBER,0,BROWN COUNTY,,57401,110012999951,12887 PLEASANT VALLEY DRIVE,50,BROWN,-98.583559
+,,,Y,SD,,$0,1,Community water system,,,,PLEASANT VALLEY HOMEOWNERS ASSOCIATI,,08,,N,0,0,,,,,SD4602172,_____________,,,44.606792,County Centroid,0,,2,,110012955604,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,POLLOCK,,08,,N,0,0,,,,,SD4600247,_____________,,,45.782241,County Centroid,0,,,,110013005470,,30000,CAMPBELL,-100.027951
+,,,Y,SD,,$0,1,Community water system,,46103,,PONDEROSA MOBILE HOME RANCH,57701,08,,Y,0,1,,RAPID CITY,,,SD4600260,_______VVVSVV,,,44.198633,Zip Code Centroid,1,PENNINGTON COUNTY,55,,110012957675,STURGIS ROAD,10000,PENNINGTON,-103.247793
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,PONDEROSA PARK,57702,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4600405,_____________,6.463,101201090905,44.00459,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57702,110012999979,6013 MOUNTAIN PINE LANE,30,PENNINGTON,-103.31976
+,,,Y,SD,,$0,1,Community water system,,,,PONDEROSA RIDGE,,08,,N,0,0,,,,,SD4600863,V____________,,,44.002349,County Centroid,0,,2,,110012863892,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,46093,,PONDEROSA WATER COMPANY,57769,08,,N,0,0,,PIEDMONT,,,SD4602134,_____________,,,44.245944,Zip Code Centroid,0,MEADE COUNTY,1,,110012858363,HC 80 BOX 483,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Transient non-community system,,,,POWDER HOUSE LODGE,,08,,N,0,0,,,,,SD4600581,_____________,,,44.002349,County Centroid,0,,,,110052876456,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,POWDER HOUSE PASS,57101,08,,N,0,0,,,,,SD4602357,_____________,,,43.544362,Zip Code Centroid,0,,,,SD4602357,,10000,Lawrence,-96.723773
+46103,,,Y,SD,10120111,$0,1,Community water system,,46103,,PRAIRIE ACRE ESTATES,57701,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,RAPID CITY,,,SD4600014,_____________,36.172,101201110306,44.11115,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57701,110013015646,1550 SEGER DR LOT 80,50,PENNINGTON,-103.188578
+,,,Y,SD,,$0,1,Transient non-community system,,,,PRAIRIE BERRY WINERY,,08,,N,0,1,,,,,SD4602274,_VV__________,,,44.002349,County Centroid,0,,1,,110052629250,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,46013,,PRAIRIEWOOD SANITARY SEWER DISTRICT,57402,08,,N,0,0,,ABERDEEN,,,SD4602125,_____________,,,45.4522,Zip Code Centroid,0,BROWN COUNTY,,,110012955374,PO BOX 1237,10000,BROWN,-98.4953
+,,,Y,SD,,$0,1,Community water system,,,,PRESHO,,08,,N,0,0,,,,,SD4600248,_____________,,,43.894812,County Centroid,0,,,,110013005540,,30000,LYMAN,-99.841925
+,,,Y,SD,,$0,1,Transient non-community system,,,,PRINGLE,57773,08,,Y,0,1,,PRINGLE,,,SD4602206,VVVVVVVVVVVVV,,,43.607966,Zip Code Centroid,1,,20,,110052724174,,10000,CUSTER,-103.591965
+,3,,Y,SD,,$0,1,Community water system,,46047,,PROVO AREA WATER SYSTEM,57735,08,,Y,3,1,,EDGEMONT,,,SD4600396,_VSSSVVV__VVV,,,43.297425,Zip Code Centroid,1,FALL RIVER COUNTY,14,,110012999746,,10000,FALL RIVER,-103.82942
+,,,Y,SD,,$0,1,Community water system,,,,PUKWANA,,08,,N,0,0,,,,,SD4600250,_____________,,,43.72988,County Centroid,0,,1,,110012957568,,30000,BRULE,-99.092941
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,QUAAL WATER ASSOCIATION,57718,08,,N,0,0,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4602127,_____________,8.016,101201110305,44.19202,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57718,110012858185,11500 CROOKED CANYON ROAD,30,MEADE,-103.31924
+,,,Y,SD,,$0,1,Transient non-community system,,,,R BAR AND GRILL,57551,08,,Y,0,1,,MARTIN,,,SD4602247,VVVSSSSSVVVVV,,,43.156508,Zip Code Centroid,1,,56,,110052803463,,10000,BENNETT,-102.029846
+,,,Y,SD,,$0,1,Transient non-community system,,,,RAFTER-J BAR RANCH,57745,08,,N,0,0,,HILL CITY,,,SD4600582,_____________,,,43.933713,Zip Code Centroid,0,,,,110052876474,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Transient non-community system,,,,RAINBOW BIBLE RANCH,57785,08,,N,0,0,,STURGIS,,,SD4602304,_____________,,,44.409462,Zip Code Centroid,0,,17,,110052846079,,10000,MEADE,-103.518474
+,,,Y,SD,,$0,1,Transient non-community system,,,,RAMADA INN,57718,08,,N,0,1,,BLACK HAWK,,,SD4602205,___VV________,,,44.179163,Zip Code Centroid,0,,2,,110052724156,,10000,MEADE,-103.336656
+,12,,Y,SD,,$0,1,Community water system,,,,RAMONA,,08,,Y,12,1,,,,,SD4600252,SSVVVVVVVVSSV,,,44.02845,County Centroid,1,,63,,110013000545,,30000,LAKE,-97.123223
+,,,Y,SD,,$0,1,Community water system,,,,RANDALL COMMUNITY WATER DISTRICT,99999,08,,N,0,1,,UNK,,,SD4600433,___VV________,,,43.206185,County Centroid,0,,2,,110012862795,UNK,30000,CHARLES MIX,-98.595143
+,,,Y,SD,,$0,1,Community water system,,,,RAPID CITY,,08,,N,0,0,,,,,SD4600406,_____________,,,44.002349,County Centroid,0,,,,110013000000,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,RAPID CITY ATHLETIC CLUB,57702,08,,N,0,1,,RAPID CITY,,,SD4602222,_VV__________,,,44.067734,Zip Code Centroid,0,,1,,110052844188,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Transient non-community system,,,,RAPID CITY RV PARK AND CG,57701,08,,Y,0,1,,RAPID CITY,,,SD4600563,_____VVVVVVVV,,,44.198633,Zip Code Centroid,1,,2,,110052601181,,10000,PENNINGTON,-103.247793
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,RAPID VALLEY SANITARY DISTRICT - WATER SERVICE,57703,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4600274,_____________,15.04,101201100204,44.05596,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57703,110013001321,4611 TEAK DR,30,PENNINGTON,-103.14209
+,,,Y,SD,,$0,1,Community water system,,,,RAYMOND,,08,,N,0,0,,,,,SD4600276,_____________,,,44.855211,County Centroid,0,,,,110013001394,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Community water system,,,,RED WILLOW COLONY,57276,08,,N,0,1,,,,,SD4602352,__VVV________,,,44.419675,Zip Code Centroid,0,,7,,SD4602352,,10000,Brookings,-96.666418
+,,,Y,SD,,$0,1,Community water system,,,,REDFIELD,,08,,N,0,0,,,,,SD4600277,_____________,,,44.931034,County Centroid,0,,,,110013001429,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,REE HEIGHTS,,08,,Y,0,1,,,,,SD4600278,VVVVVVVVVVVVV,,,44.546713,County Centroid,1,,10,,110013001517,,30000,HAND,-99.004575
+,,,Y,SD,,$0,1,Community water system,,,,RENDEZVOUS RANCH,,08,,N,0,0,,,,,SD4602210,_____________,,,44.353669,County Centroid,0,,,,110012859380,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,REPTILE GARDENS INC,57709,08,,N,0,0,,,,,SD4600890,_____________,,,44.079112,Zip Code Centroid,0,,,,110052884731,,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Community water system,,,,REYNOLDS COURT,,08,,N,0,1,,,,,SD4600160,VV___V___V___,,,44.002349,County Centroid,0,,5,,110012957032,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,RICHMOND HEIGHTS,,08,,N,0,0,,,,,SD4600504,_____________,,,45.589254,County Centroid,0,,,,110012862884,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,RIMROCK HEIGHTS HOMEOWNERS ASSOCIATI,57701,08,,N,0,0,,,,,SD4602356,_____________,,,44.198633,Zip Code Centroid,0,,,,SD4602356,,10000,Pennington,-103.247793
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,RIMROCK HIGHLAND ESTATES,57769,08,,N,0,0,CENTER OF A FACILITY OR STATION,PIEDMONT,,,SD4602231,_____________,8.004,101201110606,44.1966,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57769,110020602515,5310 EBONY PLACE,30,MEADE,-103.3074
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,RIMROCK RIDGE WATER ASSOCIATION,57702,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4602084,_____________,9.026,101201100202,44.04859,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57702,110012862054,3742 N LORETTA DR,30,PENNINGTON,-103.32174
+,,,Y,SD,,$0,1,Community water system,,46005,,RIVERSIDE COLONY,,08,,Y,0,1,,,,,SD4602040,____VVVVVVVVV,,,44.418265,County Centroid,1,BEADLE COUNTY,30,,110012861055,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Community water system,,,,RIVERSIDE TRAILER COURT,,08,,N,0,0,,,,,SD4600508,_____________,,,44.896435,County Centroid,0,,,,110012862991,,30000,BUTTE,-103.501762
+,,,Y,SD,,$0,1,Transient non-community system,,,,ROBIN'S ROOST CABINS,57745,08,,Y,0,1,,HILL CITY,,,SD4600583,VVVVVVVVVVVVV,,,43.933713,Zip Code Centroid,1,,5,,110052876508,,10000,PENNINGTON,-103.570374
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,ROLLING DICE SUBDIVISION,57769,08,,N,0,0,CENTER OF A FACILITY OR STATION,PIEDMONT,,,SD4602249,_____________,8.004,101201110606,44.1966,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,2,57769,110020602203,5310 EBONY PLACE,30,MEADE,-103.3074
+,,,Y,SD,,$0,1,Community water system,,,,ROLLING MEADOWS,,08,,N,0,0,,,,,SD4600620,_____________,,,45.589254,County Centroid,0,,,,110012863570,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Transient non-community system,,,,ROOST RESORT - CAMPGROUND WELL,57730,08,,N,0,0,,CUSTER,,,SD4602298,_____________,,,43.855937,Zip Code Centroid,0,,,,110052846033,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,ROOST RESORT - EAST WELL,57730,08,,N,0,0,,CUSTER,,,SD4602293,_____________,,,43.855937,Zip Code Centroid,0,,,,110052845953,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,ROSCOE,,08,,N,0,0,,,,,SD4600282,_____________,,,45.41168,County Centroid,0,,,,110013001562,,30000,EDMUNDS,-99.205362
+,,,Y,SD,,$0,1,Community water system,,,,ROSHOLT,,08,,Y,0,1,,,,,SD4600283,VVVVVVVVVVVVV,,,45.623397,County Centroid,1,,38,,110013001633,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Community water system,,,,ROSLYN,,08,,N,0,0,,,,,SD4600284,_____________,,,45.362283,County Centroid,0,,,,110013001688,,30000,DAY,-97.593734
+,,,Y,SD,,$0,1,Transient non-community system,,,,RUSHMORE CAVE,57751,08,,N,0,0,,KEYSTONE,,,SD4601038,_____________,,,43.890706,Zip Code Centroid,0,,,,110052619494,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,RUSHMORE MOUNTAIN COASTER,57751,08,,N,0,0,,,,,SD4602359,_____________,,,43.890706,Zip Code Centroid,0,,,,SD4602359,,10000,Pennington,-103.427286
+,,,Y,SD,,$0,1,Community water system,,46103,,RUSHMORE RANCH ESTATES,57709,08,,N,0,1,,RAPID CITY,,,SD4602212,__VVVVV______,,,44.079112,Zip Code Centroid,0,PENNINGTON COUNTY,12,,110012859451,PO BOX 9662,10000,PENNINGTON,-103.215617
+,,,Y,SD,,$0,1,Transient non-community system,,,,RUSHMORE TRAMWAY,57751,08,,N,0,0,,KEYSTONE,,,SD4602245,_____________,,,43.890706,Zip Code Centroid,0,,3,,110052803418,,10000,PENNINGTON,-103.427286
+,,,Y,SD,,$0,1,Transient non-community system,,,,RUSHMORE UNDER CANVAS,57718,08,,N,0,0,,,,,SD4602364,_____________,,,44.179163,Zip Code Centroid,0,,,,SD4602364,,10000,Pennington,-103.336656
+,,,Y,SD,,$0,1,Transient non-community system,,,,RUSTIC RIDGE GUEST CABINS,57751,08,,N,0,0,,KEYSTONE,,,SD4602341,_____________,,,43.890706,Zip Code Centroid,0,,,,110063337777,,10000,PENNINGTON,-103.427286
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,SACORA MOBILE HOME PARK,57718,08,,Y,0,1,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4600546,V___________V,9.591,101201110305,44.15166,ADDRESS MATCHING-HOUSE NUMBER,1,MEADE COUNTY,6,57718,110012954320,7005 TIMBERLINE ROAD,30,MEADE,-103.32483
+,,,Y,SD,,$0,1,Community water system,,,,SAINT LAWRENCE,,08,,N,0,0,,,,,SD4600286,_____________,,,44.546713,County Centroid,0,,,,110013001731,,30000,HAND,-99.004575
+,,,Y,SD,,$0,1,Transient non-community system,,,,SAINT ONGE LIVESTOCK CAFE,,08,,N,0,1,,,,,SD4601047,_V___________,,,44.353669,County Centroid,0,,1,,110052835777,,30000,LAWRENCE,-103.796528
+46081,,,Y,SD,10120203,$0,1,Community water system,,46081,,SAINT ONGE SEWER & WATER CO,57783,08,,N,0,0,CENTER OF A FACILITY OR STATION,SPEARFISH,,,SD4600287,_____________,7.457,101202030304,44.49578,ADDRESS MATCHING-HOUSE NUMBER,0,LAWRENCE COUNTY,,57783,110013001759,1221 N MAIN STREET,30,LAWRENCE,-103.86054
+,,,Y,SD,,$0,1,Community water system,,,,SALEM,,08,,N,0,0,,,,,SD4600288,_____________,,,43.678924,County Centroid,0,,,,110013001768,,30000,MCCOOK,-97.362036
+,,,Y,SD,,$0,1,Transient non-community system,,,,SALVATION ARMY CAMP,,08,,N,0,1,,,,,SD4601035,_V___________,,,44.002349,County Centroid,0,,1,,110052619412,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,SANBORN CENTRAL SCHOOL DISTRICT,57314,08,,N,0,1,,ARTESIAN,,,SD4602242,VVVVVVV______,,,44.009148,Zip Code Centroid,0,,44,,110052803329,,10000,SANBORN,-97.92407
+,,,Y,SD,,$0,1,Transient non-community system,,,,SCHMIDT'S LANDING,57216,08,,N,0,1,,BIG STONE CITY,,,SD4600723,_V___________,,,45.293038,Zip Code Centroid,0,,1,,110052811427,,10000,ROBERTS,-96.46848
+,,,Y,SD,,$0,1,Community water system,,,,SCOTLAND,99999,08,,N,0,0,,UNK,,,SD4600290,_____________,,,42.986031,County Centroid,0,,,,110013001786,UNK,30000,BON HOMME,-97.885613
+,1,,Y,SD,,$0,1,Community water system,,,,SELBY,,08,,Y,1,1,,,,,SD4600291,VVVVVVVVVVVVV,,,45.427605,County Centroid,1,,15,,110013001839,,30000,WALWORTH,-100.027856
+,,,Y,SD,,$0,1,Community water system,,,,SENECA,,08,,N,0,1,,,,,SD4600292,VV______VV___,,,45.065476,County Centroid,0,,4,,110013001900,,30000,FAULK,-99.153564
+,,,Y,SD,,$0,1,Community water system,,,,SHAMROCK COLONY,,08,,N,0,1,,,,,SD4602267,______VVVV___,,,44.855211,County Centroid,0,,31,,110048143781,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Transient non-community system,,,,SHEPS CANYON COVE MHC,57747,08,,N,0,0,,HOT SPRINGS,,,SD4602256,_____________,,,43.433953,Zip Code Centroid,0,,3,,110052803560,,10000,FALL RIVER,-103.480193
+,,,Y,SD,,$0,1,Community water system,,,,SHERIDAN LAKE HIGHLANDS,,08,,N,0,1,,,,,SD4602285,_____VV______,,,44.002349,County Centroid,0,,3,,110048690298,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,SHIPWRECK LEE'S,57702,08,,N,0,1,,RAPID CITY,,,SD4602118,_____V_______,,,44.067734,Zip Code Centroid,0,,2,,110052885197,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,46081,,SHIRT TAIL GULCH DEVELOPMENT,57732,08,,Y,0,1,,DEADWOOD,,,SD4602232,VVVVSSVVVVVVV,,,44.321062,Zip Code Centroid,1,LAWRENCE COUNTY,80,,110016613306,PO BOX 393,10000,LAWRENCE,-103.60779
+,,,Y,SD,,$0,1,Transient non-community system,,,,SILVER DOLLAR SALOON,57745,08,,N,0,1,,HILL CITY,,,SD4600927,VVVVV________,,,43.933713,Zip Code Centroid,0,,6,,110052660009,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,SIOUX FALLS,,08,,N,0,0,,,,,SD4600294,_____________,,,43.667472,County Centroid,0,,,,110013001955,,30000,MINNEHAHA,-96.795726
+46029,,,Y,SD,10170202,$0,1,Community water system,,46029,,SIOUX RURAL WATER SYSTEM,57201,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,WATERTOWN,,,SD4600866,_____________,12.456,101702010903,44.832961,ADDRESS MATCHING-HOUSE NUMBER,0,CODINGTON COUNTY,,57201,110012864007,45703 176TH ST,50,CODINGTON,-97.067065
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,SIPHON HILL WATER COMPANY,57702,08,,N,0,0,CENTER OF A FACILITY OR STATION,RAPID CITY,,,SD4600272,_____________,6.862,101201100201,44.07668,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,1,57702,110013001287,13083 WOODLAND COURT,30,PENNINGTON,-103.43552
+,,,Y,SD,,$0,1,Community water system,,,,SISSETON,,08,,N,0,0,,,,,SD4600310,_____________,,,45.623397,County Centroid,0,,,,110013002222,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Community water system,,,,SKYLINE HEIGHTS,,08,,N,0,0,,,,,SD4600297,_____________,,,43.667472,County Centroid,0,,,,110013001982,,30000,MINNEHAHA,-96.795726
+,,,Y,SD,,$0,1,Community water system,,,,SOUTH CANYON COUNTRY ESTATES,,08,,N,0,0,,,,,SD4600627,_____________,,,44.002349,County Centroid,0,,,,110012863810,,30000,PENNINGTON,-102.823802
+46083,,,Y,SD,10170102,$0,1,Community water system,,46083,,SOUTH LINCOLN RURAL WATER SYSTEM,57013,08,,N,0,0,,CANTON,,,SD4600870,_____________,1.399,101701021004,43.236418,,0,LINCOLN COUNTY,29,57004,110012864043,PO BOX 155,35969,LINCOLN,-96.766849
+,,,Y,SD,,$0,1,Community water system,,,,SOUTH SHORE,,08,,N,0,1,,,,,SD4602068,VVV_________V,,,44.966324,County Centroid,0,,3,,110012861554,,30000,CODINGTON,-97.198843
+,,,Y,SD,,$0,1,Transient non-community system,,,,SOUTH WHITLOCK RESORT,57442,08,,N,0,0,,GETTYSBURG,,,SD4600967,_____________,,,45.015732,Zip Code Centroid,0,,,,110052715353,,10000,POTTER,-99.95126
+46011,,,Y,SD,10170202,$0,1,Community water system,,46011,,SOUTHBROOK ESTATES - TREAT SITE - #1,57006,08,,N,0,1,CENTER OF A FACILITY OR STATION,BROOKINGS,,,SD4600072,VVVVV____VVVV,8.583,101702021110,44.26033,ADDRESS MATCHING-HOUSE NUMBER,0,BROOKINGS COUNTY,56,57006,110050630260,3901 SOUTH MAIN,30,BROOKINGS,-96.79833
+,,,Y,SD,,$0,1,Community water system,,,,SOUTHERN BLACK HILLS WATER,,08,,N,0,0,,,,,SD4602309,_____________,,,44.446796,State Centroid,0,,,,110048745051,,100000,,-100.238176
+,,,Y,SD,,$0,1,Transient non-community system,,,,SPEARFISH CANYON RESORT LLC,57754,08,,N,0,1,,LEAD,,,SD4602160,VVVVVV__VV___,,,44.354484,Zip Code Centroid,0,,5,,110052668519,,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,SPEARFISH FOREST PRODUCTS,57783,08,,N,0,0,,SPEARFISH,,,SD4602313,_____________,,,44.498478,Zip Code Centroid,0,,,,110052879809,,10000,LAWRENCE,-103.890276
+,,,Y,SD,,$0,1,Transient non-community system,,,,SPEARFISH KOA,57783,08,,N,0,0,,SPEARFISH,,,SD4600708,_____________,,,44.498478,Zip Code Centroid,0,,,,110052811070,,10000,LAWRENCE,-103.890276
+46093,,,Y,SD,10120202,$0,1,Community water system,,46093,,SPEARFISH MEADOWS,57785,08,,N,0,1,CENTER OF A FACILITY OR STATION,STURGIS,,,SD4600875,___V_________,7.838,101202020702,44.3992,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,2,57785,110012864203,801 GLOVER STREET,30,MEADE,-103.50687
+46081,,,Y,SD,10120203,$0,1,Community water system,,46081,,SPEARFISH VALLEY MOBILE EST,57783,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,SPEARFISH,,,SD4600625,_____________,7.644,101202030304,44.517426,ADDRESS MATCHING-HOUSE NUMBER,0,LAWRENCE COUNTY,,57783,110012863669,107 VALLEY DR,50,LAWRENCE,-103.885564
+46081,,,Y,SD,10120203,$0,1,Community water system,,46081,,SPEARFISH WTP,57783,08,Y,N,0,0,CENTER OF A FACILITY OR STATION,SPEARFISH,,,SD4600311,_____________,7.661,101202030304,44.48962,ADDRESS MATCHING-HOUSE NUMBER,0,LAWRENCE COUNTY,,57783,110013002286,625 N 5TH STREET,30,LAWRENCE,-103.86042
+,,,Y,SD,,$0,1,Community water system,,,,SPENCER,,08,,N,0,1,,,,,SD4600407,__VVVVV______,,,43.678924,County Centroid,0,,2,,110013000037,,30000,MCCOOK,-97.362036
+,,,Y,SD,,$0,1,Transient non-community system,,,,SPOKANE CREEK CABINS & CAMPGROUND,57751,08,,N,0,0,,KEYSTONE,,,SD4600649,_____________,,,43.890706,Zip Code Centroid,0,,,,110052869008,,10000,CUSTER,-103.427286
+,,,Y,SD,,$0,1,Community water system,,46093,,SPRING CANYON WATER COMPANY,57769,08,,N,0,0,,PIEDMONT,,,SD4600015,_____________,,,44.245944,Zip Code Centroid,0,MEADE COUNTY,1,,110013012514,HC 80 BOX 483,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Community water system,,,,SPRING CREEK ACRES,,08,,N,0,0,,,,,SD4602252,_____________,,,44.606792,County Centroid,0,,7,,110048589853,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Transient non-community system,,,,SPRING CREEK INN,57745,08,,Y,0,1,,HILL CITY,,,SD4600542,_VV___VVVVVVV,,,43.933713,Zip Code Centroid,1,,13,,110052784821,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Community water system,,,,SPRING CREEK SANITARY DISTRICT,,08,,N,0,0,,,,,SD4602089,_____________,,,44.392258,County Centroid,0,,,,110012862170,,30000,HUGHES,-99.985846
+,,,Y,SD,,$0,1,Community water system,,,,SPRING LAKE COLONY,,08,,N,0,0,,,,,SD4602076,_____________,,,44.362969,County Centroid,0,,,,110012861885,,30000,KINGSBURY,-97.499313
+,,,Y,SD,,$0,1,Community water system,,,,SPRINGFIELD,,08,,N,0,1,,,,,SD4600317,_VVVSS_______,,,42.986031,County Centroid,0,,11,,110012953385,,30000,BON HOMME,-97.885613
+,,,Y,SD,,$0,1,Community water system,,46093,,STAGEBARN SANITARY DISTRICT,57769,08,,N,0,0,,PIEDMONT,,,SD4602159,_____________,,,44.245944,Zip Code Centroid,0,MEADE COUNTY,1,,110012858620,HC 80 BOX 483,10000,MEADE,-103.410993
+,,,Y,SD,,$0,1,Community water system,,46033,,STAR ACADEMY-MAIN CAMPUS,57730,08,,Y,0,1,,CUSTER,,,SD4600384,__________VVV,,,43.855937,Zip Code Centroid,1,CUSTER COUNTY,3,,110012999363,RR 1 BOX 98,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,STATE VETERANS HOME,57747,08,,N,0,0,,HOT SPRINGS,,,SD4600055,S____________,,,43.433953,Zip Code Centroid,0,,4,,110052857565,,10000,FALL RIVER,-103.480193
+,,,Y,SD,,$0,1,Transient non-community system,,,,STEEL WHEEL CAMPGROUND AND CONVENIEN,,08,,N,0,0,,,,,SD4602265,_____________,,,44.353669,County Centroid,0,,,,110052629189,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,STICKNEY,,08,,N,0,0,,,,,SD4600318,_____________,,,43.724719,County Centroid,0,,,,110013002507,,30000,AURORA,-98.577587
+,,,Y,SD,,$0,1,Transient non-community system,,,,STORM MOUNTAIN CENTER,,08,,N,0,1,,,,,SD4601032,____VVVV_____,,,44.002349,County Centroid,0,,2,,110052619341,,30000,PENNINGTON,-102.823802
+46103,,,Y,SD,10120109,$0,1,Community water system,,46103,,STRAT-O-RIM ESTATES,57702,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,RAPID CITY,,,SD4602191,_____________,9.076,101201090906,43.980272,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,,57702,110012955757,23645 CLUBHOUSE DRIVE,50,PENNINGTON,-103.238866
+,,,Y,SD,,$0,1,Community water system,,,,STRATFORD,,08,,N,0,0,,,,,SD4600408,_____________,,,45.589254,County Centroid,0,,,,110013000162,,30000,BROWN,-98.352175
+,,,Y,SD,,$0,1,Community water system,,,,STURGIS,,08,,N,0,0,,,,,SD4600321,_____________,,,44.606792,County Centroid,0,,,,110013002561,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Transient non-community system,,,,SUGAR SHACK,57732,08,,N,0,0,,DEADWOOD,,,SD4602167,_____________,,,44.321062,Zip Code Centroid,0,,,,110052668644,,10000,LAWRENCE,-103.60779
+,,,Y,SD,,$0,1,Community water system,,,,SUMMIT,,08,,Y,0,1,,,,,SD4600326,VVVVV___VVVVV,,,45.623397,County Centroid,1,,64,,110013002623,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Community water system,,,,SUN VALLEY DEVELOPMENT,,08,,N,0,0,,,,,SD4602270,_____________,,,44.606792,County Centroid,0,,1,,110048143969,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,46093,,SUNNYSIDE MOBILE HOME PARK II,57718,08,,Y,0,1,,BLACK HAWK,,,SD4602001,_V__________V,,,44.179163,Zip Code Centroid,1,MEADE COUNTY,2,,110052750117,4800 EVEREST RD,10000,PENNINGTON,-103.336656
+46081,,,Y,SD,10120203,$0,1,Community water system,,46081,,SUNRISE HOMEOWNERS ASSOCIATION,57783,08,,N,0,0,CENTER OF A FACILITY OR STATION,SPEARFISH,,,SD4600512,_____________,8.578,101202030402,44.48884,ADDRESS MATCHING-HOUSE NUMBER,0,LAWRENCE COUNTY,,57783,110012863099,5118 AIRPORT ROAD,30,LAWRENCE,-103.77768
+,,,Y,SD,,$0,1,Community water system,,46091,,SUNSET COLONY,,08,,N,0,0,,,,,SD4602025,_____________,,,45.737054,County Centroid,0,MARSHALL COUNTY,,,110012860804,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,SUNSET RANCH,,08,,N,0,0,,,,,SD4602263,_____________,,,44.002349,County Centroid,0,,6,,110048145351,,30000,PENNINGTON,-102.823802
+46059,,,Y,SD,10160009,$0,1,Community water system,,46059,,SUNSHINE BIBLE ACADEMY,57362,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,MILLER,,,SD4601029,_____________,4.082,101600060901,44.32867,ADDRESS MATCHING-HOUSE NUMBER,0,HAND COUNTY,1,57362,110012954856,400 SUNSHINE DR,50,HAND,-98.98414
+,,,Y,SD,,$0,1,Community water system,,46041,,T C & G RURAL WATER SYSTEM - ROD SEN,57630,08,,N,0,1,,GLENCROSS,,,SD4600143,V___VVVVV____,,,45.440105,Zip Code Centroid,0,DEWEY COUNTY,56,,110013009485,PO BOX 105 - 110 SOUTH MAIN ST,10000,DEWEY,-100.884835
+,,,Y,SD,,$0,1,Community water system,,,,TABOR,99999,08,,N,0,0,,UNK,,,SD4600327,_____________,,,42.986031,County Centroid,0,,,,110013002650,UNK,30000,BON HOMME,-97.885613
+,15,,Y,SD,,$0,1,Transient non-community system,,,,TAM'S CORNER BAR,57724,08,,Y,15,1,,CAMP CROOK,,,SD4601045,VVVVVSVSSSVVV,,,45.54917,Zip Code Centroid,1,,66,,110052619644,,10000,HARDING,-103.97469
+,,,Y,SD,,$0,1,Community water system,,,,TEA,,08,,N,0,0,,,,,SD4600409,_____________,,,43.27942,County Centroid,0,,,,110013000242,,30000,LINCOLN,-96.722286
+,,,Y,SD,,$0,1,Transient non-community system,,,,TEE PEE CAMPGROUND,57702,08,,N,0,0,,RAPID CITY,,,SD4600710,_____________,,,44.067734,Zip Code Centroid,0,,,,110052811132,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,46081,,TERRY TROJAN WATER DISTRICT,57754,08,,N,0,0,,LEAD,,,SD4600053,_____________,,,44.354484,Zip Code Centroid,0,LAWRENCE COUNTY,,,110012956355,PO BOX 515,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Community water system,,,,THE MEADOWS,,08,,N,0,0,,,,,SD4600023,_____________,,,45.589254,County Centroid,0,,,,110013012710,,30000,BROWN,-98.352175
+46103,,,Y,SD,10120110,$0,1,Community water system,,46103,,THE RANCH AT BLACK GAP,57702,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,RAPID CITY,,,SD4602203,_____________,24.036,101201100202,44.106001,ADDRESS MATCHING-HOUSE NUMBER,0,PENNINGTON COUNTY,1,57702,110012859184,2843 SAMCO ROAD #F,50,PENNINGTON,-103.26815
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,THRALL MTN. PROPERTY OWNERS ASSOCIAT,57718,08,,N,0,0,CENTER OF A FACILITY OR STATION,BLACK HAWK,,,SD4600513,_____________,9.591,101201110305,44.15166,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57718,110012954133,7005 TIMBERLINE ROAD,30,MEADE,-103.32483
+,,,Y,SD,,$0,1,Transient non-community system,,,,THREE FLAGS RV PARK,57718,08,,N,0,0,,BLACK HAWK,,,SD4602165,_____________,,,44.179163,Zip Code Centroid,0,,,,110052668582,,10000,MEADE,-103.336656
+,,,Y,SD,,$0,1,Transient non-community system,,,,THREE FORKS CAMPGROUND AND RV PARK,57745,08,,N,0,1,,HILL CITY,,,SD4600598,_V___________,,,43.933713,Zip Code Centroid,0,,3,,110052714826,,10000,PENNINGTON,-103.570374
+,,,Y,SD,,$0,1,Transient non-community system,,,,THUNDERHEAD EPISCOPAL CAMP,,08,,N,0,0,,,,,SD4601052,_____________,,,44.353669,County Centroid,0,,1,,110052835937,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,TIMBER LAKE,,08,,N,0,0,,,,,SD4600411,_____________,,,45.150005,County Centroid,0,,,,110012953848,,30000,DEWEY,-100.852218
+,,,Y,SD,,$0,1,Community water system,,,,TIMBERLAND PARK,,08,,Y,0,1,,,,,SD4600412,_______VVVVVV,,,43.006607,County Centroid,1,,7,,110013000288,,30000,YANKTON,-97.388339
+,,,Y,SD,,$0,1,Community water system,,,,TIMBERWOOD PARK ESTATES,,08,,N,0,0,,,,,SD4602272,_____________,,,44.606792,County Centroid,0,,,,110048144021,,30000,MEADE,-102.715864
+46125,,,Y,SD,10170102,$0,1,Community water system,,46125,,TM RURAL WATER DISTRICT,57053,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,PARKER,,,SD4600999,_____________,3.96,101701020606,43.396753,ADDRESS MATCHING-HOUSE NUMBER,0,TURNER COUNTY,,57053,110012860038,"110 N MAIN ST,",50,TURNER,-97.136667
+,,,Y,SD,,$0,1,Community water system,,,,TOLSTOY,,08,,N,0,1,,,,,SD4600331,VVVVVVV______,,,45.064276,County Centroid,0,,1,,110013002678,,30000,POTTER,-99.949631
+,,,Y,SD,,$0,1,Transient non-community system,,,,TOMAHAWK COUNTRY CLUB-CLUBHOUSE,57732,08,,N,0,1,,DEADWOOD,,,SD4600597,V____V_______,,,44.321062,Zip Code Centroid,0,,6,,110052714764,,10000,LAWRENCE,-103.60779
+,,,Y,SD,,$0,1,Transient non-community system,,,,TRAILSHEAD LODGE,57754,08,,N,0,1,,LEAD,,,SD4601050,_V___________,,,44.354484,Zip Code Centroid,0,,1,,110052835857,,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Community water system,,,,TRENT,,08,,N,0,0,,,,,SD4600333,_____________,,,44.012429,County Centroid,0,,,,110013002712,,30000,MOODY,-96.676054
+,,,Y,SD,,$0,1,Community water system,,46041,,TRI-COUNTY RURAL WATER SYSTEM,57625,08,,N,0,0,,EAGLE BUTTE,,,SD4600112,_____________,,,45.06591,Zip Code Centroid,0,DEWEY COUNTY,1,,110013008075,PO BOX 490,10000,DEWEY,-100.975855
+,,,Y,SD,,$0,1,Community water system,,46033,,TRIPLE T TRAILER COURT,57730,08,,N,0,1,,CUSTER,,,SD4602209,__V__________,,,43.855937,Zip Code Centroid,0,CUSTER COUNTY,2,,110012955971,PO BOX 684,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,TRIPP,,08,,N,0,0,,,,,SD4600334,_____________,,,43.33671,County Centroid,0,,,,110013002810,,30000,HUTCHINSON,-97.749383
+46123,,,Y,SD,10140204,$0,1,Community water system,,46123,,TRIPP COUNTY WATER USER DISTRICT,57580,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,WINNER,,,SD4600520,V____________,22.209,101402040803,43.374423,ADDRESS MATCHING-HOUSE NUMBER,0,TRIPP COUNTY,21,57580,110012863320,130 W 4TH ST,50,TRIPP,-99.857336
+46067,,,Y,SD,10160011,$0,1,Community water system,,46067,,TSCHETTER HUTTERIAN BRETHREN INC,57052,08,,N,0,0,CENTER OF A FACILITY OR STATION,OLIVET,,,SD4602019,,0,,43.36749,ADDRESS MATCHING-HOUSE NUMBER,0,HUTCHINSON COUNTY,,57052,110012954936,27709 TSCHETTER AVE,30,HUTCHINSON,-97.68738
+,,,Y,SD,,$0,1,Community water system,,,,TULARE,,08,,Y,0,1,,,,,SD4600335,___________VV,,,44.931034,County Centroid,1,,7,,110012953429,,30000,SPINK,-98.339644
+,,,Y,SD,,$0,1,Community water system,,,,TYNDALL,99999,08,,N,0,0,,UNK,,,SD4600337,_____________,,,42.986031,County Centroid,0,,,,110013003016,UNK,30000,BON HOMME,-97.885613
+,,,Y,SD,,$0,1,Community water system,,,,UNITED ORDER OF SOUTH DAKOTA,57730,08,,N,0,1,,CUSTER,,,SD4602286,VV_VVVVVVVVV,,,43.855937,Zip Code Centroid,0,,24,,110048690323,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Community water system,,,,UNIVERSITY ESTATES,,08,,N,0,0,,,,,SD4600075,_____________,,,44.376675,County Centroid,0,,1,,110013014326,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,46111,,UPLAND COLONY,57314,08,,N,0,0,,ARTESIAN,,,SD4602077,_____________,,,44.009148,Zip Code Centroid,0,SANBORN COUNTY,3,,110012861910,24221 412TH AVENUE,10000,SANBORN,-97.92407
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,US DOD USAF ELLSWORTH AFB,57706,08,,N,0,0,,ELLSWORTH AFB,,,SD4680004,_____________,23.821,101201110401,44.151681,,0,MEADE COUNTY,7,57706,110032904472,2103 SCOTT DRIVE,17469,MEADE,-103.093332
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,USFS - NEMO WATER SYSTEM,,08,,N,0,0,,,,,SD4680083,_____________,,,44.353669,County Centroid,0,,,,110051881870,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF BISMARK LAKE CAMPGROUND,,08,,N,0,0,,,,,SD4680054,_____________,,,43.684943,County Centroid,0,,,,110052473765,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF CHIPPER/THUMPER CG,,08,,N,0,0,,,,,SD4680073,_____________,,,44.002349,County Centroid,0,,,,110051881718,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF COMMANCHE PARK CAMPGROUND,,08,,N,0,0,,,,,SD4680056,_____________,,,43.684943,County Centroid,0,,,,110052473818,,30000,CUSTER,-103.46225
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF DUTCHMAN CAMPGROUND,,08,,N,0,0,,,,,SD4680062,_____________,,,44.002349,County Centroid,0,,,,110052473961,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF HORSETHIEF LAKE CG,,08,,N,0,0,,,,,SD4680063,_____________,,,44.002349,County Centroid,0,,,,110052473998,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF OREVILLE CAMPGROUND,,08,,N,0,0,,,,,SD4680064,_____________,,,44.002349,County Centroid,0,,,,110052474023,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF PACTOLA CAMPGROUND,,08,,N,0,0,,,,,SD4680071,_____________,,,44.002349,County Centroid,0,,,,110051881674,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF PACTOLA VISITOR CENTER,57730,08,,N,0,1,,CUSTER,,,SD4680110,_VV__________,,,43.855937,Zip Code Centroid,0,,3,,110052476584,,10000,PENNINGTON,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF ROCKY CAMPGROUND,,08,,N,0,0,,,,,SD4680078,_____________,,,44.002349,County Centroid,0,,,,110051881790,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF ROUBAIX LAKE CG,,08,,N,0,0,,,,,SD4680068,_____________,,,44.353669,County Centroid,0,,,,110051881629,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,USFS-BHNF WOODSY/SMOKEY CG,,08,,N,0,0,,,,,SD4680074,_____________,,,44.002349,County Centroid,0,,,,110051881727,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,UTICA,,08,,Y,0,1,,,,,SD4600338,VV__________V,,,43.006607,County Centroid,1,,7,,110012998220,,30000,YANKTON,-97.388339
+46047,,,Y,SD,10120109,$0,1,Community water system,,46047,,V A MEDICAL CENTER,57747,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,HOT SPRINGS,Y,,SD4680003,_________V___,15.115,101201090105,43.435424,ADDRESS MATCHING-HOUSE NUMBER,0,FALL RIVER COUNTY,1,57747,110012859674,500 N. FIFTH ST,50,FALL RIVER,-103.474214
+46093,,,Y,SD,10120202,$0,1,Community water system,,46093,,VA FORT MEADE MEDICAL CENTER,57741,08,,Y,0,1,CENTER OF A FACILITY OR STATION,FORT MEADE,,,SD4680002,__________VVV,7.683,101202020704,44.41255,ADDRESS MATCHING-HOUSE NUMBER,1,MEADE COUNTY,2,57741,110012859629,113 COMANCHE RD,30,MEADE,-103.47486
+46019,,,Y,SD,10120202,$0,1,Community water system,,46093,,VALE SANITARY DISTRICT,57788,08,,Y,0,1,CENTER OF A FACILITY OR STATION,VALE,,,SD4600415,_____VVVVVVVV,6.211,101202020206,44.622342,UNKNOWN,1,MEADE COUNTY,4,57788,110009791788,"NE.SIDE OF VALE,SE1/4,SEC.28,T",99999999,BUTTE,-103.393244
+,,,Y,SD,,$0,1,Community water system,,,,VALHALLA ADDITION,,08,,N,0,0,,,,,SD4602211,_____________,,,44.353669,County Centroid,0,,,,110012859415,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,VALLEY HEIGHTS ESTATES INC,57709,08,,Y,0,1,,,,,SD4602361,_______VVVVVV,,,44.079112,Zip Code Centroid,1,,5,,SD4602361,,10000,Pennington,-103.215617
+46099,,,Y,SD,10170203,$0,1,Community water system,,46099,,VALLEY SPRINGS/CITY HALL,57068,08,,N,0,0,CENTER OF A FACILITY OR STATION,VALLEY SPRINGS,,,SD4600340,_____________,3.97,101702031506,43.58264,ADDRESS MATCHING-HOUSE NUMBER,0,MINNEHAHA COUNTY,,57068,110012953447,"P.O. BOX 118, 401 BROADWAY AVE",30,MINNEHAHA,-96.46779
+46099,,,Y,SD,10170203,$0,1,Community water system,,46099,,VALLEY VIEW MOBILE HOME PARK,57103,08,,N,0,0,CENTER OF A FACILITY OR STATION,SIOUX FALLS,,,SD4600300,_____________,25.607,101702031705,43.56791,ADDRESS MATCHING-HOUSE NUMBER,0,MINNEHAHA COUNTY,,57103,110013002062,"1807 N RICHARD PL,",30,MINNEHAHA,-96.67672
+,,,Y,SD,,$0,1,Community water system,,,,VALLEY VIEW WATER COMPANY,,08,,Y,0,1,,,,,SD4600040,_V__________V,,,44.606792,County Centroid,1,,2,,110013013354,,30000,MEADE,-102.715864
+,1,,Y,SD,,$0,1,Community water system,,,,VEBLEN,,08,,N,1,1,,,,,SD4600341,VVVVVV_______,,,45.737054,County Centroid,0,,17,,110012998202,,30000,MARSHALL,-97.580884
+,,,Y,SD,,$0,1,Community water system,,,,VERMILLION,,08,,N,0,0,,,,,SD4600342,_____________,,,42.912997,County Centroid,0,,,,110012998248,,30000,CLAY,-96.979795
+,,,Y,SD,,$0,1,Community water system,,,,VIBORG,,08,,Y,0,1,,,,,SD4600343,_VVV_____VVVV,,,43.30867,County Centroid,1,,3,,110012998284,,30000,TURNER,-97.150185
+,21,,Y,SD,,$0,1,Community water system,,,,VIEWFIELD RURAL WATER SYSTEM,,08,,Y,21,1,,,,,SD4602287,VVVVVVVVVVVVV,,,44.606792,County Centroid,1,,43,,110048690350,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,VOLGA,,08,,N,0,0,,,,,SD4600346,_____________,,,44.376675,County Centroid,0,,,,110012998417,,30000,BROOKINGS,-96.797797
+,,,Y,SD,,$0,1,Community water system,,,,VOLIN,,08,,N,0,0,,,,,SD4600347,_____________,,,43.006607,County Centroid,0,,,,110012998471,,30000,YANKTON,-97.388339
+46023,,,Y,SD,10140101,$0,1,Community water system,,46023,,WAGNER,57380,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,WAGNER,,,SD4600348,V___VVVVSS___,3.834,101401011602,43.25548,ADDRESS MATCHING-HOUSE NUMBER,0,CHARLES MIX COUNTY,3,57342,110012998550,,50,CHARLES MIX,-98.695567
+,,,Y,SD,,$0,1,Community water system,,,,WAGON WHEEL VILLAGE I,,08,,Y,0,1,,,,,SD4602071,___VVVVVVVSVV,,,44.002349,County Centroid,1,,6,,110012861581,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,WAKONDA,,08,,N,0,1,,,,,SD4600349,_VVV_________,,,42.912997,County Centroid,0,,5,,110012998587,,30000,CLAY,-96.979795
+,,,Y,SD,,$0,1,Community water system,,,,WALL,,08,,N,0,0,,,,,SD4600417,_____________,,,44.002349,County Centroid,0,,,,110013000322,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,WALLACE,,08,,N,0,1,,,,,SD4600350,____VV_______,,,44.966324,County Centroid,0,,2,,110012953492,,30000,CODINGTON,-97.198843
+,,,Y,SD,,$0,1,Community water system,,,,WALNUT PARK,,08,,Y,0,1,,,,,SD4600316,VVVVVVVVVVVVV,,,44.353669,County Centroid,1,,7,,110013002455,,30000,LAWRENCE,-103.796528
+46013,,,Y,SD,10160003,$0,1,Community water system,,46013,,"WARNER, TOWN OF",57479,08,,N,0,0,POINT WHERE SUBSTANCE IS RELEASED,WARNER,Y,,SD4600418,_____________,4.615,101600032004,45.31925,UNKNOWN,0,BROWN COUNTY,,57479,110009792233,"1/4MI.SW OF TOWN N1/2, SE1/4,",17400,BROWN,-98.502
+,,,Y,SD,,$0,1,Community water system,,,,WASTA,,08,,N,0,0,,,,,SD4600352,_____________,,,44.002349,County Centroid,0,,,,110012998612,,30000,PENNINGTON,-102.823802
+46029,,,Y,SD,10170202,$0,1,Community water system,,46029,,WATERTOWN MUNICIPAL UTILITIES,57201,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,WATERTOWN,,,SD4600356,__VV_________,6.071,101702010903,44.89742,ADDRESS MATCHING-HOUSE NUMBER,0,CODINGTON COUNTY,2,57201,110012998676,901 4TH AVE SW,50,CODINGTON,-97.13179
+,,,Y,SD,,$0,1,Community water system,,,,WAUBAY,,08,,N,0,0,,,,,SD4600357,_____________,,,45.362283,County Centroid,0,,,,110012953526,,30000,DAY,-97.593734
+46013,,,Y,SD,10160003,$0,1,Community water system,,46013,,WEB WATER DEVELOPMENT ASSOCIATION,57401,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,ABERDEEN,,,SD4601089,_____________,9.912,101600031906,45.455843,ADDRESS MATCHING-HOUSE NUMBER,0,BROWN COUNTY,,57401,110012860225,38462 US HIGHWAY 12,50,BROWN,-98.536851
+,,,Y,SD,,$0,1,Community water system,,,,WEBSTER,,08,,N,0,0,,,,,SD4600360,_____________,,,45.362283,County Centroid,0,,1,,110012998701,,30000,DAY,-97.593734
+,,,Y,SD,,$0,1,Community water system,,,,WENTWORTH,,08,,N,0,0,,,,,SD4600419,_____________,,,44.02845,County Centroid,0,,,,110013000395,,30000,LAKE,-97.123223
+,,,Y,SD,,$0,1,Community water system,,,,WESSINGTON,,08,,N,0,1,,,,,SD4600361,VV___________,,,44.418265,County Centroid,0,,5,,110012998765,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Community water system,,,,WESSINGTON SPRINGS,,08,,N,0,0,,,,,SD4600362,_____________,,,44.063416,County Centroid,0,,,,110012953697,,30000,JERAULD,-98.623188
+,,,Y,SD,,$0,1,Community water system,,,,WEST NIKE SUBDIVISION,,08,,N,0,0,,,,,SD4602260,_____________,,,44.606792,County Centroid,0,,,,110048590226,,30000,MEADE,-102.715864
+46093,,,Y,SD,10120111,$0,1,Community water system,,46093,,WESTBERRY TRAILS WATER USERS ASSOC,57769,08,,N,0,0,CENTER OF A FACILITY OR STATION,PIEDMONT,,,SD4600253,_____________,8.004,101201110606,44.1966,ADDRESS MATCHING-HOUSE NUMBER,0,MEADE COUNTY,,57769,110013000590,5310 EBONY PLACE,30,MEADE,-103.3074
+,,,Y,SD,,$0,1,Community water system,,,,WESTFIELD ADDITION,,08,,N,0,0,,,,,SD4600521,_____________,,,44.353669,County Centroid,0,,,,110012863357,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,WESTON HEIGHTS,,08,,N,0,0,,,,,SD4600862,_____________,,,44.606792,County Centroid,0,,,,110012863856,,30000,MEADE,-102.715864
+46013,,,Y,SD,10160004,$0,1,Community water system,,46013,,WESTPORT SANITARY DISTRICT,57481,08,,N,0,0,CENTER OF A FACILITY OR STATION,WESTPORT,,,SD4600179,_____________,5.243,101600040802,45.64717,ADDRESS MATCHING-HOUSE NUMBER,0,BROWN COUNTY,1,57481,110006692098,27 MAIN STREET WEST,30,BROWN,-98.49338
+46081,,,Y,SD,10120203,$0,1,Community water system,,46081,,WESTVIEW HOMEOWNERS ASSOCIATION,57783,08,,N,0,0,CENTER OF A FACILITY OR STATION,SPEARFISH,,,SD4600876,_____________,7.868,101202030304,44.52362,ADDRESS MATCHING-HOUSE NUMBER,0,LAWRENCE COUNTY,,57783,110012864221,3518 WESTVIEW DRIVE,30,LAWRENCE,-103.91199
+,,,Y,SD,,$0,1,Non-Transient non-community system,,,,WHARF RESOURCES WATER SYSTEM,57754,08,,N,0,0,,LEAD,,,SD4600933,_____________,,,44.354484,Zip Code Centroid,0,,,,110052660134,,10000,LAWRENCE,-103.786907
+,,,Y,SD,,$0,1,Transient non-community system,,,,WHEELS WEST RV PARK,57730,08,,N,0,0,,CUSTER,,,SD4600609,_____________,,,43.855937,Zip Code Centroid,0,,,,110052715068,,10000,CUSTER,-103.6941
+,,,Y,SD,,$0,1,Transient non-community system,,,,WHISPERING PINES CAMPGROUND,57702,08,,N,0,0,,RAPID CITY,,,SD4600716,_____________,,,44.067734,Zip Code Centroid,0,,,,110052811285,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,WHISPERING PINES WATER ASSOCIATION,,08,,N,0,0,,,,,SD4600268,_____________,,,44.002349,County Centroid,0,,4,,110013001072,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,WHISPERING WILLOWS,,08,,N,0,0,,,,,SD4602094,_____________,,,44.002349,County Centroid,0,,1,,110012862358,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Transient non-community system,,,,WHISPERING WINDS COTTAGES,57702,08,,Y,0,1,,RAPID CITY,,,SD4602300,VVVVVVV___VVV,,,44.067734,Zip Code Centroid,1,,7,,110052846042,,10000,PENNINGTON,-103.310357
+,,,Y,SD,,$0,1,Community water system,,,,WHITE,,08,,N,0,0,,,,,SD4600364,_____________,,,44.376675,County Centroid,0,,,,110012998792,,30000,BROOKINGS,-96.797797
+46003,,,Y,SD,10140101,$0,1,Community water system,,46003,,WHITE LAKE,57383,08,,N,0,1,,WHITE LAKE,,,SD4600366,VVV__________,5.134,101401011204,43.724934,,0,AURORA COUNTY,2,57383,110012998818,PO BOX 37,17469,AURORA,-98.739385
+46095,,,Y,SD,10140203,$0,1,Community water system,,46095,,WHITE RIVER/CITY HALL,57579,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,WHITE RIVER,,,SD4600367,_____________,69.618,101402030606,43.56673,ADDRESS MATCHING-NEAREST INTERSECTION,0,MELLETTE COUNTY,,57579,110012998890,"S 2ND & BROCK,",200,MELLETTE,-100.74403
+,,,Y,SD,,$0,1,Community water system,,,,WHITE ROCK COLONY,,08,,N,0,1,,,,,SD4602027,__________VV,,,45.623397,County Centroid,0,,51,,110012860895,,30000,ROBERTS,-96.947551
+,,,Y,SD,,$0,1,Community water system,,,,WHITEWOOD,,08,,N,0,0,,,,,SD4600368,_____________,,,44.353669,County Centroid,0,,,,110012998970,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Community water system,,,,WHITEWOOD FOREST ACRES,57793,08,,N,0,1,,,,,SD4602354,____V________,,,44.459532,Zip Code Centroid,0,,1,,SD4602354,,10000,Lawrence,-103.627029
+,,,Y,SD,,$0,1,Transient non-community system,,,,WICKIUP VILLAGE CABINS LLC,,08,,N,0,0,,,,,SD4602190,_____________,,,44.353669,County Centroid,0,,,,110052887104,,30000,LAWRENCE,-103.796528
+,,,Y,SD,,$0,1,Transient non-community system,,,,WILD BILL'S CAMPGROUND,57732,08,,N,0,1,,DEADWOOD,,,SD4600605,____VVVVVV___,,,44.321062,Zip Code Centroid,0,,2,,110052714988,,10000,LAWRENCE,-103.60779
+46019,,,Y,SD,10120203,$0,1,Community water system,,46019,,WILEN ENTERPRISES,57717,08,,Y,0,1,ENTRANCE POINT OF A FACILITY OR STATION,BELLE FOURCHE,,,SD4602143 SD4602220 SD4602257,___VVVVVVVVVV,7.245,101202030401,44.630006,ADDRESS MATCHING-HOUSE NUMBER,1,BUTTE COUNTY,8,57717,110052153762,19157 SANDSTONE RD,50,BUTTE,-103.849632
+,,,Y,SD,,$0,1,Community water system,,,,WILLOW LAKE,,08,,N,0,1,,,,,SD4600370,VV___________,,,44.855211,County Centroid,0,,1,,110012953722,,30000,CLARK,-97.724912
+,,,Y,SD,,$0,1,Community water system,,,,WILMOT,,08,,N,0,0,,,,,SD4600371,_____________,,,45.623397,County Centroid,0,,,,110012999014,,30000,ROBERTS,-96.947551
+46123,,,Y,SD,10140204,$0,1,Community water system,,46123,,WINNER,57580,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,WINNER,,,SD4600373,_____________,22.186,101402040803,43.374153,ADDRESS MATCHING-HOUSE NUMBER,0,TRIPP COUNTY,,57580,110012999149,"425 S MAIN ST,",50,TRIPP,-99.856875
+,,,Y,SD,,$0,1,Community water system,,,,WOLSEY,,08,,N,0,0,,,,,SD4600375,_____________,,,44.418265,County Centroid,0,,1,,110012953811,,30000,BEADLE,-98.279422
+,,,Y,SD,,$0,1,Community water system,,,,WONDERLAND HOMES,,08,,N,0,0,,,,,SD4600421,_____________,,,44.606792,County Centroid,0,,1,,110013000457,,30000,MEADE,-102.715864
+,,,Y,SD,,$0,1,Community water system,,,,WOODLAND HILLS,,08,,N,0,0,,,,,SD4600042,_____________,,,44.606792,County Centroid,0,,,,110013013452,,30000,MEADE,-102.715864
+46111,,,Y,SD,10160011,$0,1,Community water system,,46111,,WOONSOCKET/CITY HALL,57385,08,,N,0,0,ENTRANCE POINT OF A FACILITY OR STATION,WOONSOCKET,,,SD4600376,V____________,2.427,,44.048618,ADDRESS MATCHING-HOUSE NUMBER,0,SANBORN COUNTY,3,57385,110012999201,106 S. 3RD ST,50,SANBORN,-98.271309
+46083,,,Y,SD,10170203,$0,1,Community water system,,46083,,WORTHING WATER,57077,08,,N,0,1,CENTER OF A FACILITY OR STATION,WORTHING,,,SD4600377,_________VV__,3.46,101701021004,43.32933,GPS - UNSPECIFIED,0,LINCOLN COUNTY,2,57077,110012999274,208 S MAIN ST,33,LINCOLN,-96.767192
+,,,Y,SD,,$0,1,Community water system,,,,WR/LJ - CREIGHTON PROJECT,,08,,N,0,0,,,,,SD4602156,_____________,,,44.002349,County Centroid,0,,,,110012858595,,30000,PENNINGTON,-102.823802
+,,,Y,SD,,$0,1,Community water system,,,,WR/LJ - MNI WICONI,,08,,N,0,0,,,,,SD4602223,_____________,,,44.415547,County Centroid,0,,1,,110013750495,,30000,STANLEY,-100.749163
+,,,Y,SD,,$0,1,Community water system,,,,WR/LJ - NORTH STANLEY COUNTY,,08,,N,0,0,,,,,SD4602224,_____________,,,44.415547,County Centroid,0,,1,,110013750501,,30000,STANLEY,-100.749163
+46127,,,Y,SD,10170101,$0,1,Community water system,,46127,,WYNSTONE DEVELOPMENT,57049,08,,N,0,0,CENTER OF A FACILITY OR STATION,NORTH SIOUX CITY,,,SD4602185,_____________,10.615,101702032507,42.53179,ADDRESS MATCHING-HOUSE NUMBER,0,UNION COUNTY,,57049,110012858933,"600 N DERBY LN,",30,UNION,-96.49755
+46135,,,Y,SD,10170101,$0,1,Community water system,,46135,,"YANKTON, CITY OF",57078,08,,N,0,1,ENTRANCE POINT OF A FACILITY OR STATION,YANKTON,,,SD4600423,_VV__________,9.207,101701011204,42.866931,ADDRESS MATCHING-HOUSE NUMBER,0,YANKTON COUNTY,2,57078,110012953964,105 WEST RIVERSIDE DRIVE,50,YANKTON,-97.392875
