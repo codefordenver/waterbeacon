@@ -6,13 +6,13 @@ class WbHeader extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">
+          <a className="navbar-brand" href="#">
             <img src={wbLogo} alt=""/>
           </a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto">
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0">
               <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">Subscribe</button>
             </form>
           </div>
