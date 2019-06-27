@@ -1,0 +1,22 @@
+path {
+  stroke: #333;
+  stroke-width: .5px;
+}
+
+.state-boundary {
+  stroke: black;
+  fill: rgba(0,0,0,0)
+}
+
+.county-boundary {
+  stroke: grey;
+}
+
+.state-boundary:hover {
+  stroke-width: 3px;
+}
+
+.active {
+  stroke: purple;
+  stroke-width: 2px;
+}
