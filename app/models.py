@@ -32,7 +32,7 @@ class location(models.Model):
 	created = models.DateTimeField( auto_now_add=True)
 
 	def __unicode__(self):
-		return self.name
+		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
 	location =  models.ForeignKey(location)

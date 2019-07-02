@@ -21,26 +21,35 @@ class Command(BaseCommand):
         ]
 
         for state in states:
-            areas = cruncher.calc_state_scores(state, print_test = True)
 
+            areas = cruncher.calc_state_scores(state, print_test = True)
             for area in areas:
                 location = models.location.objects.filter(zipcode =  area['zipcode']).first()
+                if not location:
+                    log('zipcode: %s not found' %( area['zipcode'] ), 'error')
+                    continue
                 if area['score'] == 0:
-                    if not models.data.objects.filter(location = location, score = score).exists():
+                    if not models.data.objects.filter(location = location, score = area['score']).exists():
                         data = models.data()
                         data.location = location
                         data.score = area['score']
                         data.save()
-                        log('%s [%s]', )
+                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                    else:
+                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
                 else:
                     if area['score'] - 0.05 < 0:
                         min_score = 0
                     else:
                         min_score = area['score'] - 0.05
                     max_score = area['score'] + 0.05
-                if not models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
 
-                        data = models.data()
-                        data.location = location
-                        data.score = area['score']
-                        data.save()
+                    if not models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
+
+                            data = models.data()
+                            data.location = location
+                            data.score = area['score']
+                            data.save()
+                            log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                    else:
+                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
