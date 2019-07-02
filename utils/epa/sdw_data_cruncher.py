@@ -84,7 +84,7 @@ class SDW_Data_Cruncher(object):
         if print_test:
             log('state: %s' % (state), 'success')
 
-        if not len(self.zcdb.find_zip(state=state)):
+        if not self.zcdb.find_zip(state=state):
             return areas
 
         for zipcode in [z.zip for z in self.zcdb.find_zip(state=state)]:
