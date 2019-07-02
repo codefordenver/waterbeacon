@@ -34,8 +34,11 @@ class locationData(APIView):
                 response["locations"].append({
                     "fips_state_id": location.fips_state,
                     "fips_county_id": location.fips_county,
+                    "major_city": location.major_city,
                     "state": location.state,
                     "county": location.county,
+                    "population": location.population,
+                    "population_density":location.population_density,
                     "score": location.score,
                 })
 
