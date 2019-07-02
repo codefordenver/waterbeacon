@@ -16,36 +16,27 @@ from api.v1 import ( serializers )
 from utils.utils import ( str2bool )
 
 
-class nodeData(APIView):
+class locationData(APIView):
     # /v1/data/?status=true&violation=true
 
 
     def get(self, request):
-        response = {"meta":{"sensors": 0, "cities": 0, "utilities": 0},"cities":[], "sensors":[],"utilities" :[]}
+        response = {"meta":{ "cities": 0, "utilities": 0},"locations":[], "utilities" :[]}
 
         sources = request.query_params.get('sources','').split(',')
 
-        # filter for sensor
-        if 'sensors' in sources or not len(sources):
-            queryset = app_models.node.objects.all()
-            if request.query_params.get('status'):
-                queryset.filter( status = str2bool(request.query_params.get('status')) )
-            for sensor in queryset:
-                data = models.data.objects.filter(node = sensor).latest('timestamp')
-                response["sensors"].append({
-                    "fips_state_id": sensor.fips_state,
-                    "fips_county_id": sensor.fips_county,
-                    "name": sensor.name,
-                    "state": sensor.state,
-                    "county": sensor.county,
-                    "long": sensor.position.x if sensor.position else '',
-                    "lat":sensor.position.y if sensor.position else '',
-                    "score": sensor.score,
-                    "status": sensor.stauts,
-                    "disolved_oxygen": sensor.meta.get('disolved_oxygen',0),
-                    "ph": sensor.meta.get('ph',0),
-                    "temperature_change": sensor.meta.get('temperature_change',0),
-                    "turbidity": sensor.meta.get('turbidity',0),
+        # filter for locations
+        if 'locations' in sources or not len(sources):
+            queryset = app_models.location.objects.all()
+
+            for location in queryset:
+                data = models.data.objects.filter(node = location).latest('timestamp')
+                response["locations"].append({
+                    "fips_state_id": location.fips_state,
+                    "fips_county_id": location.fips_county,
+                    "state": location.state,
+                    "county": location.county,
+                    "score": location.score,
                 })
 
         # filter for news

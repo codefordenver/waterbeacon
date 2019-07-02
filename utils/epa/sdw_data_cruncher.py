@@ -93,3 +93,5 @@ class SDW_Data_Cruncher(object):
 
             if print_test:
                 log('%s: %s' % (zipcode, round(score, 3)), 'success')
+
+        return areas
