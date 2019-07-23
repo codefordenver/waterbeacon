@@ -14,7 +14,7 @@ class Command(BaseCommand):
         return s.encode('ascii', errors='ignore').decode("utf-8")
 
     def handle(self, *args, **options):
-        search = SearchEngine(simple_zipcode=False)
+        search = SearchEngine(simple_zipcode=True)
         baseDir  = settings.BASE_DIR
         with open('%s/app/management/commands/state_fips.json' % ( baseDir )) as json_file:
             state_fips = json.load(json_file)
@@ -51,4 +51,4 @@ class Command(BaseCommand):
 
                 log('%s [%s]' % ( location.county, location.state ), 'success')
             else:
-                log('%s [%s]' % ( zip, fips_county ), 'error')
+                log('%s [%s]' % ( zip, fips_county ), 'warning')

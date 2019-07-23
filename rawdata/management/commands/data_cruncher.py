@@ -1,13 +1,20 @@
-import os
+import os, json
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from utils.epa.sdw_data_cruncher import ( SDW_Data_Cruncher )
-from app import models
+from app import models as app_models
+from rawdata import models as raw_models
 from utils.log import log
+from uszipcode import SearchEngine
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
         cruncher = SDW_Data_Cruncher()
+        search = SearchEngine(simple_zipcode=True)
+
+        baseDir  = settings.BASE_DIR
+        with open('%s/app/management/commands/state_fips.json' % ( baseDir )) as json_file:
+            state_fips = json.load(json_file)
 
         states = [
              "AL",  "AK",  "AS",  "AZ",  "AR",  "CA",  "CO",  "CT",
@@ -24,13 +31,31 @@ class Command(BaseCommand):
 
             areas = cruncher.calc_state_scores(state, print_test = True)
             for area in areas:
-                location = models.location.objects.filter(zipcode =  area['zipcode']).first()
+                location = app_models.location.objects.filter(zipcode =  area['zipcode']).first()
                 if not location:
-                    log('zipcode: %s not found' %( area['zipcode'] ), 'error')
+                    result = search.by_zipcode(area['zipcode'])
+                    if raw_models.EpaFacilitySystem.objects.filter( FacZip = area['zipcode'] ).exists() and result:
+                        facility = raw_models.EpaFacilitySystem.objects.filter( FacZip = area['zipcode'] ).first()
+                        location = app_models.location()
+
+
+                        location.county = facility.FacCounty
+                        location.zipcode = facility.FacZip
+                        location.state = facility.FacState
+                        location.major_city = result.major_city
+                        location.fips_state = state_fips[result.state]
+                        location.fips_county = facility.FacFIPSCode
+                        location.population = result.population
+                        location.population_density = result.population_density
+                        location.save()
+
+                        log('zipcode: %s found and inserted' %( area['zipcode'] ), 'warning')
+                    else:
+                        log('zipcode: %s not found' %( area['zipcode'] ), 'error')
                     continue
                 if area['score'] == 0:
-                    if not models.data.objects.filter(location = location, score = area['score']).exists():
-                        data = models.data()
+                    if not app_models.data.objects.filter(location = location, score = area['score']).exists():
+                        data = app_models.data()
                         data.location = location
                         data.score = area['score']
                         data.save()
@@ -44,9 +69,9 @@ class Command(BaseCommand):
                         min_score = area['score'] - 0.05
                     max_score = area['score'] + 0.05
 
-                    if not models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
+                    if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
 
-                            data = models.data()
+                            data = app_models.data()
                             data.location = location
                             data.score = area['score']
                             data.save()
