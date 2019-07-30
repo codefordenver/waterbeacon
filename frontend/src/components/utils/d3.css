@@ -1,0 +1,62 @@
+path {
+  stroke: #333;
+  stroke-width: .5px;
+}
+
+.map-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-content table {
+  width: 30%;
+}
+
+.map {
+  width: 70%;
+}
+
+.state-boundary {
+  stroke: black;
+  fill: rgba(0,0,0,0)
+}
+
+.county-boundary {
+  stroke: grey;
+}
+
+.state-boundary:hover {
+  stroke-width: 3px;
+}
+
+.active {
+  stroke: purple;
+  stroke-width: 2px;
+  /* fill must be none to make county display work */
+  fill: none;
+}
+
+.zoomer {
+  display:flex;
+}
+
+.zoomer .btn-group {
+  margin-left: auto;
+}
+
+.zoom-row .col-sm-3 {
+  text-align: right;
+  margin: auto 0 auto auto;
+}
+
+.zoom-row .form-label {
+  margin: auto;
+}
+
+.county-list .remove-county:hover {
+  cursor: pointer;
+}
+
+.county-list {
+  word-break: break-all;
+}

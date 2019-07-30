@@ -1,95 +1,327 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
-class DetaultD3 extends Component {
+import './utils/d3.css'
 
-  constructor(props) {
-    console.log("constructor()")
-    super(props)
-    this.state = {
-      topologyData: null,
-      unemploymentData: null
+import * as unemploymentTsv from './tempData/unemployment.tsv';
+import { ChooseZoom } from './ChooseZoom';
+import { countyList } from './utils/counties';
+
+export const stateFipsId = {
+  "56":{State:"WY",},"54":{State:"WV",},"55":{State:"WI",},
+  "53":{State:"WA",},"50":{State:"VT",},"78":{State:"VI",},
+  "51":{State:"VA",},"49":{State:"UT",},"74":{State:"UM",},
+  "48":{State:"TX",},"47":{State:"TN",},"46":{State:"SD",},
+  "45":{State:"SC",},"44":{State:"RI",},"70":{State:"PW",},
+  "72":{State:"PR",},"42":{State:"PA",},"41":{State:"OR",},
+  "40":{State:"OK",},"39":{State:"OH",},"36":{State:"NY",},
+  "32":{State:"NV",},"35":{State:"NM",},"34":{State:"NJ",},
+  "33":{State:"NH",},"31":{State:"NE",},"38":{State:"ND",},
+  "37":{State:"NC",},"30":{State:"MT",},"28":{State:"MS",},
+  "69":{State:"MP",},"29":{State:"MO",},"27":{State:"MN",},
+  "26":{State:"MI",},"68":{State:"MH",},"23":{State:"ME",},
+  "24":{State:"MD",},"25":{State:"MA",},"22":{State:"LA",},
+  "21":{State:"KY",},"20":{State:"KS",},"18":{State:"IN",},
+  "17":{State:"IL",},"16":{State:"ID",},"19":{State:"IA",},
+  "15":{State:"HI",},"66":{State:"GU",},"13":{State:"GA",},
+  "64":{State:"FM",},"12":{State:"FL",},"10":{State:"DE",},
+  "11":{State:"DC",},"09":{State:"CT",},"08":{State:"CO",},
+  "06":{State:"CA",},"04":{State:"AZ",},"60":{State:"AS",},
+  "05":{State:"AR",},"01":{State:"AL",},"02":{State:"AK",}
+};
+
+export const stateList = [{id:"NA", name:"NONE"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
+  {id:"04", name:"ARIZONA"},{id:"05", name:"ARKANSAS"},{id:"06", name:"CALIFORNIA"},
+  {id:"08", name:"COLORADO"},{id:"09", name:"CONNECTICUT"},{id:"10", name:"DELAWARE"},
+  {id:"11", name:"DISTRICT OF COLUMBIA"},{id:"12", name:"FLORIDA"},
+  {id:"13", name:"GEORGIA"},{id:"15", name:"HAWAII"},{id:"16", name:"IDAHO"},
+  {id:"17", name:"ILLINOIS"},{id:"18", name:"INDIANA"},{id:"19", name:"IOWA"},
+  {id:"20", name:"KANSAS"},{id:"21", name:"KENTUCKY"},{id:"22", name:"LOUISIANA"},
+  {id:"23", name:"MAINE"},{id:"24", name:"MARYLAND"},{id:"25", name:"MASSACHUSETTS"},
+  {id:"26", name:"MICHIGAN"},{id:"27", name:"MINNESOTA"},{id:"28", name:"MISSISSIPPI"},
+  {id:"29", name:"MISSOURI"},{id:"30", name:"MONTANA"},{id:"31", name:"NEBRASKA"},
+  {id:"32", name:"NEVADA"},{id:"33", name:"NEW HAMPSHIRE"},{id:"34", name:"NEW JERSEY"},
+  {id:"35", name:"NEW MEXICO"},{id:"36", name:"NEW YORK"},{id:"37", name:"NORTH CAROLINA"},
+  {id:"38", name:"NORTH DAKOTA"},{id:"39", name:"OHIO"},{id:"40", name:"OKLAHOMA"},
+  {id:"41", name:"OREGON"},{id:"42", name:"PENNSYLVANIA"},{id:"44", name:"RHODE ISLAND"},
+  {id:"45", name:"SOUTH CAROLINA"},{id:"46", name:"SOUTH DAKOTA"},{id:"47", name:"TENNESSEE"},
+  {id:"48", name:"TEXAS"},{id:"49", name:"UTAH"},{id:"50", name:"VERMONT"},
+  {id:"51", name:"VIRGINIA"},{id:"53", name:"WASHINGTON"},{id:"54", name:"WEST VIRGINIA"},
+  {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}];
+
+const DefaultD3 = () => {
+  const [topologyData, setTD] = useState(undefined);
+  const [unemploymentData, setUD] = useState(undefined);
+  //todo: use state unemployment data to add table on left
+  const [stateUnemploymentData, setSUD] = useState(undefined);
+
+  const [countiesRanked, setCountyRanked] = useState([]);
+
+  //this will not change.
+  const anchor = useRef(null);
+
+  //refs, we don't want a rerender when these change!
+  const svg = useRef(null);
+  const g = useRef(null);
+  const centered = useRef(null);
+  const usStates = useRef(null);
+  const usCounties = useRef(null);
+
+  //we want to pass this to child components
+  //want it to send new value when updated
+  const [areaInViewPort, setAIVP] = useState(undefined);
+
+  //create a path item
+  const path = useRef(d3.geoPath());
+
+  const width = 960;
+  const height = 600;
+
+  const centerState = (d) => {
+    //create variables for centering the state
+    var x, y, k;
+
+    if (d && centered !== d) {
+      var centroid = path.current.centroid(d);
+      x = centroid[0];
+      y = centroid[1];
+      //calculate the zoom extent
+      const boundsArr = path.current.bounds(d);
+      const stateWidth = boundsArr[1][0]-boundsArr[0][0];
+      const stateHeight = boundsArr[1][1]-boundsArr[0][1];
+      const widthZoom = width/stateWidth;
+      const heightZoom = height/stateHeight;
+      k=.8*Math.min(widthZoom, heightZoom);
+      centered.current = d;
+    } else {
+      x = width / 2;
+      y = height / 2;
+      k = 1;
+      centered.current = null;
     }
-  }
-
-  componentWillMount() {
-    console.log("componentWillMount()")
-
-    Promise.all(
-      [d3.json("https://d3js.org/us-10m.v1.json"),
-      d3.tsv("../static/unemployment.tsv")]
-    ).then( ([topologyData, unemploymentData]) => {
-          this.setState({
-            topologyData,
-            unemploymentData
-          })
-    }).catch(err => console.log('Error loading or parsing data.'))
-
-  }
-
-  componentDidUpdate() {
-    console.log("componentDidUpdate()")
-
-    const svg = d3.select(this.refs.anchor),
-      { width, height } = this.props;
-
-    const path = d3.geoPath();
-    const unemployment = d3.map();
-
-    unemployment.set(this.state.unemploymentData.id, +this.state.unemploymentData.rate);
-
-    const x = d3.scaleLinear()
-        .domain([1, 10])
-        .rangeRound([400, 860]);
-
-    const color = d3.scaleThreshold()
-        .domain(d3.range(2, 10))
-        .range(d3.schemeBlues[9]);
-
-    const g = svg.append("g")
-        .attr("class", "key")
-        .attr("transform", "translate(0,40)");
-
-    g.selectAll("rect")
-      .data(color.range().map(function(d) {
-          d = color.invertExtent(d);
-          if (d[0] == null) d[0] = x.domain()[0];
-          if (d[1] == null) d[1] = x.domain()[1];
-          return d;
-        }))
-
-    const usStates = topojson.feature(this.state.topologyData, this.state.topologyData.objects.states).features
-    const usStatePaths = topojson.mesh(this.state.topologyData, this.state.topologyData.objects.states, function(a, b) { return a !== b; });
-
-    svg.append("g")
-      .attr("class", "states")
+  
+    g.current.select("#states")
       .selectAll("path")
-      .data(usStates)
-      .enter().append("path")
-        .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
-        .attr("d", path)
-      .append("title")
-        .text(function(d) { return d.rate + "%"; })
-      .attr("d", path);
+      .classed("active", centered.current && function(d) { return d === centered.current; });
+  
+    g.current.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
 
-
-    svg.append("path")
-      .attr("class", "state-borders")
-      .attr("d", path(usStatePaths));
-
+    setAIVP(centered.current);
   }
 
-  render () {
-    console.log("render()")
-    const { topologyData, unemploymentData } = this.state;
+  const addCounty = (d) => {
+    console.log(d);
+    const tempObj = {
+      id: d.id,
+      rate: d.rate
+    }
+    setCountyRanked(countiesRanked=>countiesRanked.concat(tempObj).sort((a,b)=>{return b.rate-a.rate}));
+  }
 
-    if(!topologyData || !unemploymentData) {
-       return null;
+  //todo: create an element on the right that gives user map options
+  useEffect(()=>{
+    const getData = async () => {
+      try {
+        const topoLocation = navigator.onLine ? "https://d3js.org/us-10m.v1.json" : "/us-10m.v1.json";
+        setTD(await d3.json(topoLocation));
+    
+        //todo: our data will come in with lat/long, hopefully;
+        //todo: will need to use d3.geoContains(lat, long);
+        const fipsData = await d3.tsv(unemploymentTsv);
+        setUD(fipsData);
+
+        let parsedStateInfo = stateFipsId;
+        
+        let countyList = [];
+        //for each fips specific data point, work on state data
+        fipsData.forEach((fipsSpecific)=>{
+          const stateId = fipsSpecific.id.substring(0,2);
+          const stateData = parsedStateInfo[stateId];
+          stateData.count = stateData.count ? stateData.count+1 : 1;
+          stateData.max = stateData.max ? 
+            Math.max(stateData.max, parseFloat(fipsSpecific.rate)) : 
+            parseFloat(fipsSpecific.rate);
+          stateData.min = stateData.min ? 
+            Math.min(stateData.min, parseFloat(fipsSpecific.rate)) : 
+            parseFloat(fipsSpecific.rate);
+          if(countyList.length<3) {
+            countyList.push(fipsSpecific)
+          }else {
+            countyList.push(fipsSpecific);
+            countyList.sort((a,b)=>{return b.rate-a.rate})
+            countyList.pop();
+          }
+          //!: average is not actually average
+          //!: does not account for population
+          stateData.avg = stateData.avg ? 
+            ((stateData.avg*(stateData.count-1)+parseFloat(fipsSpecific.rate))/stateData.count).toFixed(2) : 
+            parseFloat(fipsSpecific.rate);
+            parsedStateInfo[stateId]=stateData;
+        });
+        setCountyRanked(countyList);
+        setSUD(parsedStateInfo);
+      } catch (error) {
+        console.log('Error loading or parsing data.')
+      }
+    }
+    (!topologyData && !unemploymentData) && getData();
+  }, []);
+
+  useEffect(()=> {
+    const translateData = () => {
+      //set the svg to the ancor element
+      svg.current = d3.select(anchor.current).append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+
+      //create an element d3 map
+      const unemployment = d3.map();
+      
+      //go through each state in the unemploymentByState data and set the map
+      unemploymentData.forEach((countyUD)=>{
+        unemployment.set(countyUD.id, +countyUD.rate);
+      })
+
+      //this is the color scheme
+      //the range will need to be reset to be between 0 and 1 (or 0 and 100)
+      //scheme color should change
+      const color = d3.scaleThreshold().domain(d3.range(2, 10)).range(d3.schemeBlues[9]);
+      
+      //this creates the data for the map
+      usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
+
+      g.current = svg.current.append("g")
+
+      //we append a new "g" element that will have all the county information
+      g.current.append("g")
+        //we set the class as "counties" for this element
+        .attr("id", "counties")
+        //the following line selects all the "path" elements inside the new "g" element
+        //hint: there are nome
+        .selectAll("path")
+        //have to convert this to the "features" array
+        .data(usCounties.current.features)
+        //enter goes into the recently selected elemnt
+        //pressing append addes a new "path" element to match the length of the "features" array
+        //that is why we had to use .data instead of .datum and convert it to an array
+        .enter().append("path")
+          //for each "path" that is created, we will set the "d" to the path
+          .attr("d", path.current)
+          //also, we will set the fill, which will give us our chloropleth
+          .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
+          //we also want to create a new class for easy boundary editing in a style sheet
+          .attr("class", "county-boundary")
+          //when clicking on a county, call centerState with no "d"
+          //this will recenter the map over the entire US
+          //viewing the "title" only works since "active" state has no fill
+          .on("click", addCounty)
+          .append("title").text(function(d) {const name = countyList[d.id] ? countyList[d.id].Name : "Unknown" ; return name + ": " + d.rate + "%";})
+          .attr("d", path.current)
+
+      //can't use "mesh" because we want to create a zoom on state boundary function
+      usStates.current = topojson.feature(topologyData, topologyData.objects.states);
+      
+      //we append a new "g" element for the state boundaries
+      g.current.append("g")
+        //set the class
+        .attr("id", "states")
+        //select the "path" elements
+        .selectAll("path")
+        //give our new element the "data"
+        .data(usStates.current.features)
+        .enter().append("path")
+          //create each state's individual path
+          .attr("d", path.current)
+          //give each path a boundary for easy coloring
+          .attr("class", "state-boundary")
+          //give a click listener for each state-boundary
+          .on("click", centerState)
+          .append('title').text((d) => 
+            {return `Min: ${stateUnemploymentData[d.id].min}, Max: ${stateUnemploymentData[d.id].max}, Avg: ${stateUnemploymentData[d.id].avg}`});
+      
+      //todo: add icons from noun project as water utilities
     }
 
-    return <g ref="anchor" />;
+    (topologyData && unemploymentData && stateUnemploymentData) && translateData();
+  }, [topologyData, unemploymentData, stateUnemploymentData])
+
+  if(!topologyData || !unemploymentData) {
+    return null;
   }
+
+  //todo: add options to view as state or county
+  //todo: add rank on left sidebar
+
+  //todo: add populace areas along the bottom
+  return (
+    <div className="map-content">
+      <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
+      <div className="map" >
+        <ChooseZoom areaInViewPort={areaInViewPort} centerState={centerState} usStates={usStates}/>
+        <small>Zoom to state, click on county to compare at left. Hit reset to zoom to bounds of U.S.</small>
+        <div ref={anchor} />
+      </div>
+    </div>
+  )
 }
 
-export default DetaultD3;
+const TopCounties = (props) => {
+  const removeCounty = (index) => {
+    const tempCountyA = props.countiesRanked.slice(0,index);
+    const tempCountyB = props.countiesRanked.slice(index+1);
+    const tempCounty = tempCountyA.concat(tempCountyB);
+    props.setCountyRanked(tempCounty);
+  };
+
+  return (
+    <table className="county-list">
+      <thead>
+        <tr>
+          <th>
+            Number
+          </th>
+          <th>
+            County
+          </th>
+          <th>
+            State
+          </th>
+          <th>
+            Rating
+          </th>
+          <th>
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.countiesRanked.map((county, index)=>{
+          return (
+            <tr key={index}>
+              <td>
+                {index+1}
+              </td>
+              <td>
+                {countyList[county.id] ? countyList[county.id].Name : "Unknown"}
+              </td>
+              <td>
+                {countyList[county.id] ? countyList[county.id].State : "Unknown"}
+              </td>
+              <td>
+                {county.rate}
+              </td>
+              <td className="remove-county" onClick={()=>removeCounty(index)}>
+                X
+              </td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
+
+export default DefaultD3;
