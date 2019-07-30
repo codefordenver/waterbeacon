@@ -6,6 +6,7 @@ from django.db import models
 # Create your models here.
 from django_pandas.managers import DataFrameManager
 
+
 class EpaWaterSystem(models.Model):
 	PWSName = models.CharField(max_length=255)
 	# should probably define one of the PWSId values as a FK to the other table, but they will still join without it being enforced
@@ -124,3 +125,4 @@ class EpaFacilitySystem(models.Model):
 	Score = models.DecimalField(max_digits=12, decimal_places=6)
 
 	objects = DataFrameManager()
+
