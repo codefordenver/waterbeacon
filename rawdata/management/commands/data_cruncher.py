@@ -34,8 +34,8 @@ class Command(BaseCommand):
                 location = app_models.location.objects.filter(zipcode =  area['zipcode']).first()
                 if not location:
                     result = search.by_zipcode(area['zipcode'])
-                    if raw_models.EpaFacilitySystem.objects.filter( FacZip = area['zipcode'] ).exists() and result:
-                        facility = raw_models.EpaFacilitySystem.objects.filter( FacZip = area['zipcode'] ).first()
+                    if raw_models.EpaFacilitySystem.objects.filter( FacDerivedZip = area['zipcode'] ).exists() and result:
+                        facility = raw_models.EpaFacilitySystem.objects.filter( FacDerivedZip = area['zipcode'] ).first()
                         location = app_models.location()
 
 
@@ -52,7 +52,7 @@ class Command(BaseCommand):
                         log('zipcode: %s found and inserted' %( area['zipcode'] ), 'warning')
                     else:
                         log('zipcode: %s not found' %( area['zipcode'] ), 'error')
-                    continue
+                        continue
                 if area['score'] == 0:
                     if not app_models.data.objects.filter(location = location, score = area['score']).exists():
                         data = app_models.data()
