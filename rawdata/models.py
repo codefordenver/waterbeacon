@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
+from django_pandas.managers import DataFrameManager
 
 
 class EpaWaterSystem(models.Model):
@@ -80,6 +81,7 @@ class EpaWaterSystem(models.Model):
 	SiteVisits5yrOther = models.IntegerField(null=True)
 	MaxScore = models.IntegerField(null=True)
 
+	objects = DataFrameManager()
 
 class EpaFacilitySystem(models.Model):
 	FacName = models.CharField(max_length=255)
@@ -121,3 +123,6 @@ class EpaFacilitySystem(models.Model):
 	# Indicates whether or not the facility discharges directly into category 4 or 5 impaired water, as designated under section 303(d) of the Clean Water Act
 	FacImpWaterFlg = models.CharField(max_length=1, null=True)
 	Score = models.DecimalField(max_digits=12, decimal_places=6)
+
+	objects = DataFrameManager()
+

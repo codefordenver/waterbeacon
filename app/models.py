@@ -16,65 +16,28 @@ import choice
 import const
 
 # Create your models here.
-class node(models.Model):
+class location(models.Model):
+
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-	name = models.CharField(max_length=255, null=True, blank=True,default='')
-	position = models.PointField(null=True, blank=True)
+	major_city = models.CharField(max_length=255, null=True, blank=True, default="")
 	county = models.CharField(max_length=255, null=True, blank=True, default="")
 	state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
-	fips_state = models.CharField(max_length=255, null=True, blank=True,default='')
-	fips_county = models.CharField(max_length=255, null=True, blank=True,default='')
-	source = models.CharField(max_length=255, null=True, blank=True,choices=choice.SOURCE_TYPE, default="usgs")
-	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
-	status = models.CharField(max_length=255, null=True, blank=True, choices= choice.NODE_STATUS ,default='')
-	meta = JSONField()
+	fips_state = models.CharField(max_length=10, null=True, blank=True,default='')
+	fips_county = models.CharField(max_length=10, null=True, blank=True,default='')
+	zipcode = models.CharField(max_length=10, null=True, blank=True,default='')
+	neighborhood = models.CharField(max_length=100, null=True, blank=True,default='')
 	notes = models.TextField(null=True, blank=True,default='')
+	population = models.IntegerField( blank=True, null=True, default = 0)
+	population_density = models.FloatField( blank=True, null=True, default =0.0)
 	created = models.DateTimeField( auto_now_add=True)
 
-
 	def __unicode__(self):
-		return self.name
-
-	def _chart(self, sensor_type, title, label):
-		out = []
-		now = datetime.today()
-		date = datetime.now() - settings.MAXIMUM_CHART_DAYS
-		for datum in data.objects.filter(node = self,metric = sensor_type, timestamp__gte = date):
-			out.append({
-				'time':datum.timestamp,
-				'value': int(datum.value)
-				})
-
-		return render_to_string('admin/app/node/chart.html', {'data':out,'chart_div':sensor_type,'title':title,'label':label,'units': const.SENSOR_UNITS[sensor_type] })
-
-	def ph_chart(self):
-		return self._chart('ph','Ph Chart','Ph')
-	ph_chart.allow_tags = True
-
-	def temperature_chart(self):
-		return self._chart('temperature','Temperature Chart','Temperature')
-	temperature_chart.allow_tags = True
-
-	def conductivity_chart(self):
-		return self._chart('conductivity','Conductivity Chart','Conductivity')
-	conductivity_chart.allow_tags = True
-
-	def turbidity_chart(self):
-		return self._chart('turbidity','Turbidity Chart','Turbidity')
-	turbidity_chart.allow_tags = True
-
-	def orp_chart(self):
-		return self._chart('orp','Oxygen Reduction Potential Chart','Oxygen Reduction Potential')
-	orp_chart.allow_tags = True
-
-	def odo_chart(self):
-		return self._chart('odo','Dissolved Oxygen Chart','Dissolved Oxygen')
-	odo_chart.allow_tags = True
+		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
-	node =  models.ForeignKey(node)
+	location =  models.ForeignKey(location)
 	timestamp = models.DateTimeField( auto_now_add=True)
-	metrics = JSONField(null = True, blank = True)
+	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	objects = DataFrameManager()
 
 	def __unicode__(self):
