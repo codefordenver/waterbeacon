@@ -35,9 +35,9 @@ class Command(BaseCommand):
                 if not location:
                     result = search.by_zipcode(area['zipcode'])
                     if raw_models.EpaFacilitySystem.objects.filter( FacDerivedZip = area['zipcode'] ).exists() and result:
+
                         facility = raw_models.EpaFacilitySystem.objects.filter( FacDerivedZip = area['zipcode'] ).first()
                         location = app_models.location()
-
 
                         location.county = facility.FacCounty
                         location.zipcode = facility.FacZip
@@ -53,6 +53,7 @@ class Command(BaseCommand):
                     else:
                         log('zipcode: %s not found' %( area['zipcode'] ), 'error')
                         continue
+
                 if area['score'] == 0:
                     if not app_models.data.objects.filter(location = location, score = area['score']).exists():
                         data = app_models.data()

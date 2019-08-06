@@ -11,6 +11,7 @@ from utils.utils import (
     remove_stopwords, cleanhtml, hasPhrase
 )
 from utils.log import log
+from fake_useragent import UserAgent
 
 import tweepy
 
@@ -181,7 +182,10 @@ def EWG_TapwaterReader(stale_updated_days = 30):
 
     for state in states:
 
-        response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ))
+        ua = UserAgent()
+        headers = {'User-Agent': ua['google chrome']}
+        response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ), headers = headers)
+
         if response.status_code != 200:
             return []
 
@@ -196,7 +200,9 @@ def EWG_TapwaterReader(stale_updated_days = 30):
             o_utility.link = utility.xpath('td[@data-label="Utility"]/a/@href')[0].strip()
             o_utility.location = utility.xpath('td[@data-label="Location"]/text()')[0].strip()
             o_utility.population = utility.xpath('td[@data-label="Population"]/text()')[0].strip()
-            o_utility.violation_points = utility.xpath('td[@data-label="Violation Points"]/text()')[0].strip()
+            o_utility.violation_points = int(utility.xpath('td[@data-label="Violation Points"]/text()')[0].strip())
+            if o_utility.violation_points > 0:
+                o_utility.violation = True
             o_utility.save()
 
             # delete all other utility last updated greater than

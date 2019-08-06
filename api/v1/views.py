@@ -11,8 +11,6 @@ from datetime import datetime, timedelta
 
 from app import models as app_models
 from news import models as news_models
-
-from api.v1 import ( serializers )
 from utils.utils import ( str2bool )
 
 
@@ -21,26 +19,32 @@ class locationData(APIView):
 
 
     def get(self, request):
-        response = {"meta":{ "cities": 0, "utilities": 0},"locations":[], "utilities" :[]}
+        response = {"meta":{ "cities": 0, "utilities": 0, "locations": 0},"locations":[], "utilities" :[], 'cities':[]}
 
         sources = request.query_params.get('sources','').split(',')
 
+
         # filter for locations
         if 'locations' in sources or not len(sources):
+
             queryset = app_models.location.objects.all()
 
             for location in queryset:
-                data = models.data.objects.filter(node = location).latest('timestamp')
-                response["locations"].append({
-                    "fips_state_id": location.fips_state,
-                    "fips_county_id": location.fips_county,
-                    "major_city": location.major_city,
-                    "state": location.state,
-                    "county": location.county,
-                    "population": location.population,
-                    "population_density":location.population_density,
-                    "score": location.score,
-                })
+
+                if app_models.data.objects.filter(location = location, score__gt=0).exists():
+                    data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
+                    response["locations"].append({
+                        "fips_state_id": location.fips_state,
+                        "fips_county_id": location.fips_county,
+                        "major_city": location.major_city,
+                        "state": location.state,
+                        "county": location.county,
+                        "population": location.population,
+                        "population_density":location.population_density,
+                        "score": round(float(data.score), 2),
+                    })
+
+                response["meta"]["locations"] = len(response["locations"])
 
         # filter for news
         if 'news' in sources or not len(sources):
@@ -69,13 +73,13 @@ class locationData(APIView):
 
         # filter for utilities
         if 'utilities' in sources or not len(sources):
-            queryset = news_models.utility.objects.all()
 
+            queryset = Q()
             if request.query_params.get('violation'):
-                queryset.filter( violation = str2bool(request.query_params.get('violation')) )
+                queryset &= Q( violation = str2bool(request.query_params.get('violation')) )
 
-            response["meta"]["utilities"] = queryset.count()
-            for utility in queryset:
+            response["meta"]["utilities"] = news_models.utility.objects.filter(queryset).count()
+            for utility in  news_models.utility.objects.filter(queryset):
 
                 counties_served = []
                 for county in news_models.county_served.objects.filter( utility = utility):
@@ -98,7 +102,4 @@ class locationData(APIView):
                 })
 
 
-        return Response()
-
-    def post(self, request, format = None):
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(response)
