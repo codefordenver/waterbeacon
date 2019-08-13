@@ -4,7 +4,7 @@ import * as topojson from 'topojson';
 
 import './utils/d3.css'
 
-import * as unemploymentTsv from './tempData/unemployment.tsv';
+//import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { countyList } from './utils/counties';
 
@@ -52,9 +52,9 @@ export const stateList = [{id:"NA", name:"NONE"},{id:"01", name:"ALABAMA"},{id:"
 
 const DefaultD3 = () => {
   const [topologyData, setTD] = useState(undefined);
-  const [unemploymentData, setUD] = useState(undefined);
+  const [waterScoreData, setWSD] = useState(undefined);
   //todo: use state unemployment data to add table on left
-  const [stateUnemploymentData, setSUD] = useState(undefined);
+  const [stateWaterQualData, setWQD] = useState(undefined);
 
   const [countiesRanked, setCountyRanked] = useState([]);
 
@@ -67,6 +67,9 @@ const DefaultD3 = () => {
   const centered = useRef(null);
   const usStates = useRef(null);
   const usCounties = useRef(null);
+  
+  //start maxScore at 0, that way we will ensure a score is higher
+  const maxScore = useRef(0);
 
   //we want to pass this to child components
   //want it to send new value when updated
@@ -114,61 +117,72 @@ const DefaultD3 = () => {
   }
 
   const addCounty = (d) => {
-    console.log(d);
-    const tempObj = {
-      id: d.id,
-      rate: d.rate
+    const getCounty = () => {
+      const counties = waterScoreData.length;
+      for(let i = 0; i<=counties; i++){
+        const county = waterScoreData[i];
+        if(d.id===county.fips_county_id){
+          return county;
+        }
+      }
     }
-    setCountyRanked(countiesRanked=>countiesRanked.concat(tempObj).sort((a,b)=>{return b.rate-a.rate}));
+    const chosenOne = getCounty();
+    return chosenOne ? setCountyRanked(countiesRanked=>countiesRanked.concat(chosenOne).sort((a,b)=>{return b.score-a.score})) :
+      console.log('county does not exist');
   }
 
   //todo: create an element on the right that gives user map options
   useEffect(()=>{
     const getData = async () => {
       try {
-        const topoLocation = navigator.onLine ? "https://d3js.org/us-10m.v1.json" : "/us-10m.v1.json";
+        const topoLocation = "https://d3js.org/us-10m.v1.json";
         setTD(await d3.json(topoLocation));
     
         //todo: our data will come in with lat/long, hopefully;
         //todo: will need to use d3.geoContains(lat, long);
-        const fipsData = await d3.tsv(unemploymentTsv);
-        setUD(fipsData);
+        const locationsLocation = "/v1/data/?sources=locations";
+        const locJSON = await fetch(locationsLocation);
+        const locData = await locJSON.json();
+        const locations = locData.locations;
+        setWSD(locations);
 
         let parsedStateInfo = stateFipsId;
         
         let countyList = [];
         //for each fips specific data point, work on state data
-        fipsData.forEach((fipsSpecific)=>{
-          const stateId = fipsSpecific.id.substring(0,2);
+        locations.forEach((fipsSpecific)=>{
+          const stateId = fipsSpecific.fips_county_id.substring(0,2);
           const stateData = parsedStateInfo[stateId];
           stateData.count = stateData.count ? stateData.count+1 : 1;
+          const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
           stateData.max = stateData.max ? 
-            Math.max(stateData.max, parseFloat(fipsSpecific.rate)) : 
-            parseFloat(fipsSpecific.rate);
+            Math.max(stateData.max, currScore) : 
+            currScore;
           stateData.min = stateData.min ? 
-            Math.min(stateData.min, parseFloat(fipsSpecific.rate)) : 
-            parseFloat(fipsSpecific.rate);
+            Math.min(stateData.min, currScore) : 
+            currScore;
+          currScore>maxScore.current && (maxScore.current = currScore);
           if(countyList.length<3) {
             countyList.push(fipsSpecific)
           }else {
             countyList.push(fipsSpecific);
-            countyList.sort((a,b)=>{return b.rate-a.rate})
+            countyList.sort((a,b)=>{return b.score-a.score})
             countyList.pop();
           }
           //!: average is not actually average
           //!: does not account for population
           stateData.avg = stateData.avg ? 
-            ((stateData.avg*(stateData.count-1)+parseFloat(fipsSpecific.rate))/stateData.count).toFixed(2) : 
-            parseFloat(fipsSpecific.rate);
+            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
+            currScore;
             parsedStateInfo[stateId]=stateData;
         });
         setCountyRanked(countyList);
-        setSUD(parsedStateInfo);
+        setWQD(parsedStateInfo);
       } catch (error) {
-        console.log('Error loading or parsing data.')
+        console.log('Error loading or parsing data.');
       }
     }
-    (!topologyData && !unemploymentData) && getData();
+    (!topologyData && !waterScoreData) && getData();
   }, []);
 
   useEffect(()=> {
@@ -178,17 +192,16 @@ const DefaultD3 = () => {
         .attr("viewBox", `0 0 ${width} ${height}`)
 
       //create an element d3 map
-      const unemployment = d3.map();
-      
+      const waterScore = d3.map();
       //go through each state in the unemploymentByState data and set the map
-      unemploymentData.forEach((countyUD)=>{
-        unemployment.set(countyUD.id, +countyUD.rate);
+      waterScoreData.forEach((countyWaterScore)=>{
+        waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2)*100);
       })
 
       //this is the color scheme
       //the range will need to be reset to be between 0 and 1 (or 0 and 100)
       //scheme color should change
-      const color = d3.scaleThreshold().domain(d3.range(2, 10)).range(d3.schemeBlues[9]);
+      const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/9)).range(d3.schemeBlues[9]);
       
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -211,14 +224,14 @@ const DefaultD3 = () => {
           //for each "path" that is created, we will set the "d" to the path
           .attr("d", path.current)
           //also, we will set the fill, which will give us our chloropleth
-          .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
+          .attr("fill", function(d) { return color(d.score = waterScore.get(d.id)); })
           //we also want to create a new class for easy boundary editing in a style sheet
           .attr("class", "county-boundary")
           //when clicking on a county, call centerState with no "d"
           //this will recenter the map over the entire US
           //viewing the "title" only works since "active" state has no fill
           .on("click", addCounty)
-          .append("title").text(function(d) {const name = countyList[d.id] ? countyList[d.id].Name : "Unknown" ; return name + ": " + d.rate + "%";})
+          .append("title").text(function(d) {const name = countyList[d.id] ? countyList[d.id].Name : "Unknown" ; return name + ": " + d.score + "%";})
           .attr("d", path.current)
 
       //can't use "mesh" because we want to create a zoom on state boundary function
@@ -240,15 +253,15 @@ const DefaultD3 = () => {
           //give a click listener for each state-boundary
           .on("click", centerState)
           .append('title').text((d) => 
-            {return `Min: ${stateUnemploymentData[d.id].min}, Max: ${stateUnemploymentData[d.id].max}, Avg: ${stateUnemploymentData[d.id].avg}`});
+            {return `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`});
       
       //todo: add icons from noun project as water utilities
     }
 
-    (topologyData && unemploymentData && stateUnemploymentData) && translateData();
-  }, [topologyData, unemploymentData, stateUnemploymentData])
+    (topologyData && waterScoreData && stateWaterQualData) && translateData();
+  }, [topologyData, waterScoreData, stateWaterQualData])
 
-  if(!topologyData || !unemploymentData) {
+  if(!topologyData || !waterScoreData) {
     return null;
   }
 
@@ -269,6 +282,7 @@ const DefaultD3 = () => {
 }
 
 const TopCounties = (props) => {
+  console.log(props.countiesRanked);
   const removeCounty = (index) => {
     const tempCountyA = props.countiesRanked.slice(0,index);
     const tempCountyB = props.countiesRanked.slice(index+1);
@@ -305,13 +319,13 @@ const TopCounties = (props) => {
                 {index+1}
               </td>
               <td>
-                {countyList[county.id] ? countyList[county.id].Name : "Unknown"}
+                {county.county}
               </td>
               <td>
-                {countyList[county.id] ? countyList[county.id].State : "Unknown"}
+                {county.state}
               </td>
               <td>
-                {county.rate}
+                {county.score}
               </td>
               <td className="remove-county" onClick={()=>removeCounty(index)}>
                 X
