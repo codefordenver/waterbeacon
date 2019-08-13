@@ -27,8 +27,7 @@ class location(models.Model):
 	zipcode = models.CharField(max_length=10, null=True, blank=True,default='')
 	neighborhood = models.CharField(max_length=100, null=True, blank=True,default='')
 	notes = models.TextField(null=True, blank=True,default='')
-	population = models.IntegerField( blank=True, null=True, default = 0)
-	population_density = models.FloatField( blank=True, null=True, default =0.0)
+	population_served = models.IntegerField( blank=True, null=True, default = 0)
 	created = models.DateTimeField( auto_now_add=True)
 
 	def __unicode__(self):

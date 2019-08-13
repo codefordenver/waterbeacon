@@ -39,8 +39,8 @@ class locationData(APIView):
                         "major_city": location.major_city,
                         "state": location.state,
                         "county": location.county,
-                        "population": location.population,
-                        "population_density":location.population_density,
+                        "zipcode": location.zipcode,
+                        "population_served":location.population_served,
                         "score": round(float(data.score), 2),
                     })
 
