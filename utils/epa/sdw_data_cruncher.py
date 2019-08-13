@@ -1,5 +1,4 @@
 from app import models as app_models
-from pyzipcode import ZipCodeDatabase
 from rawdata import models as rawdata_models
 from utils.log import log
 
@@ -19,7 +18,7 @@ class SDW_Data_Cruncher(object):
     _OTHER_WATER_SYSTEM_WEIGHT = 0.4
 
     def __init__(self):
-        self.zcdb = ZipCodeDatabase()
+        pass
 
     def _calc_historical_score(self, viopaccr):
         # viopaccr: historical score
@@ -69,11 +68,11 @@ class SDW_Data_Cruncher(object):
 
         return ( cumulative_cws_score, cumlative_other_score )
 
-    def _calc_area_score(self, zipcode):
+    def _calc_area_score(self, county_fips):
         # single area represent a zipcode
         areas = []
 
-        systems = rawdata_models.EpaWaterSystem.objects.filter( ZipCodesServed = zipcode )
+        systems = rawdata_models.EpaWaterSystem.objects.filter( FIPSCodes__contains = county_fips )
         cws_score, other_score = self._pws_type_score(systems)
 
         return cws_score + other_score
@@ -84,17 +83,14 @@ class SDW_Data_Cruncher(object):
         if print_test:
             log('state: %s' % (state), 'success')
 
-        if not self.zcdb.find_zip(state=state):
-            return areas
-
-        for zipcode in [z.zip for z in self.zcdb.find_zip(state=state)]:
-            score = self._calc_area_score(zipcode)
+        for facility in rawdata_models.EpaFacilitySystem.objects.filter( FacState = state).exclude(FacFIPSCode = ''):
+            score = self._calc_area_score(facility.FacFIPSCode)
             areas.append({
-                'zipcode': zipcode,
+                'county_fips': facility.FacFIPSCode,
                 'score': score
             })
 
             if print_test:
-                log('%s: %s' % (zipcode, round(score, 3)), 'success')
+                log('%s: %s' % (facility.FacFIPSCode, round(score, 3)), 'success')
 
         return areas
