@@ -36,6 +36,7 @@ django-supervisor==0.3.4
 djangorestframework==3.3.3
 docutils==0.14
 factory-boy==2.10.0
+fake-useragent==0.1.11
 Faker==0.8.7
 feedparser==5.2.1
 funcsigs==1.0.2
