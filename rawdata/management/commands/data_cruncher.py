@@ -26,9 +26,6 @@ class Command(BaseCommand):
             areas = cruncher.calc_state_scores(state, print_test = True)
             for area in areas:
                 location = app_models.location.objects.filter(fips_county =  area['county_fips']).first()
-                if not location:
-                    log('%s county fips not found' %  ( area['county_fips'] ),'warning')
-                    continue
 
                 if area['score'] == 0:
                     if not app_models.data.objects.filter(location = location, score = area['score']).exists():
