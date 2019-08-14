@@ -1,5 +1,6 @@
 from app import models as app_models
 from rawdata import models as rawdata_models
+from app import models as app_models
 from utils.log import log
 
 class SDW_Data_Cruncher(object):
@@ -83,14 +84,14 @@ class SDW_Data_Cruncher(object):
         if print_test:
             log('state: %s' % (state), 'success')
 
-        for facility in rawdata_models.EpaFacilitySystem.objects.filter( FacState = state).exclude(FacFIPSCode = ''):
-            score = self._calc_area_score(facility.FacFIPSCode)
+        for location in app_models.location.objects.filter( state = state).exclude(fips_county = ''):
+            score = self._calc_area_score(location.fips_county)
             areas.append({
-                'county_fips': facility.FacFIPSCode,
+                'county_fips': location.fips_county,
                 'score': score
             })
 
             if print_test:
-                log('%s: %s' % (facility.FacFIPSCode, round(score, 3)), 'success')
+                log('%s: %s' % (location.fips_county, round(score, 3)), 'success')
 
         return areas

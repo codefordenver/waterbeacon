@@ -22,6 +22,7 @@ class Command(BaseCommand):
 
         completed = 0
         total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
+        print('%s Facilities that need FIPs Codes' % (total))
         for facility in rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = ''):
             county_fips = get_census_block(facility.FacLat, facility.FacLong )
 
@@ -45,4 +46,5 @@ class Command(BaseCommand):
 
             completed +=1
             if completed % 100 == 0:
-                print('%s [%s] completed' % ( round( (completed  / total ) * 100, 2 ), completed))
+                total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
+                print('%s [%s]' % ( total , completed))
