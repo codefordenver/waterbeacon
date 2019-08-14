@@ -5,10 +5,14 @@
     "fields": {
         "position": null,
         "city": "washington",
+        "county": "",
         "state": "DC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.8949549, latitude=-77.0366456, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-01T03:56:46.985Z"
     }
 },
@@ -18,10 +22,14 @@
     "fields": {
         "position": null,
         "city": "new york",
+        "county": "",
         "state": "NY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=40.7306458, latitude=-73.9866136, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:45:54.697Z"
     }
 },
@@ -31,10 +39,14 @@
     "fields": {
         "position": null,
         "city": "los angeles",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=34.054935, latitude=-118.244476, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:48:13.353Z"
     }
 },
@@ -44,10 +56,14 @@
     "fields": {
         "position": null,
         "city": "chicago",
+        "county": "",
         "state": "IL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=41.8755546, latitude=-87.6244212, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:48:56.771Z"
     }
 },
@@ -57,10 +73,14 @@
     "fields": {
         "position": null,
         "city": "houston",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=29.7589382, latitude=-95.3676974, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:50:07.189Z"
     }
 },
@@ -70,10 +90,14 @@
     "fields": {
         "position": null,
         "city": "phoenix",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:51:08.918Z"
     }
 },
@@ -83,10 +107,14 @@
     "fields": {
         "position": null,
         "city": "philadelphia",
+        "county": "",
         "state": "PA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.9523993, latitude=-75.1635899, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:52:45.586Z"
     }
 },
@@ -96,10 +124,14 @@
     "fields": {
         "position": null,
         "city": "san antonio",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=29.4246002, latitude=-98.4951405, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:53:36.341Z"
     }
 },
@@ -109,10 +141,14 @@
     "fields": {
         "position": null,
         "city": "san diego",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.7174209, latitude=-117.1627714, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-05T02:54:43.578Z"
     }
 },
@@ -122,10 +158,14 @@
     "fields": {
         "position": null,
         "city": "dallas",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.7762719, latitude=-96.7968559, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:03:36.926Z"
     }
 },
@@ -135,10 +175,14 @@
     "fields": {
         "position": null,
         "city": "san jose",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=37.3297085, latitude=-121.9031599, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:03:55.283Z"
     }
 },
@@ -148,10 +192,14 @@
     "fields": {
         "position": null,
         "city": "austin",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=30.2711286, latitude=-97.7436995, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:04:12.833Z"
     }
 },
@@ -161,10 +209,14 @@
     "fields": {
         "position": null,
         "city": "jacksonville",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=30.3321838, latitude=-81.655651, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:04:24.949Z"
     }
 },
@@ -174,10 +226,14 @@
     "fields": {
         "position": null,
         "city": "indianapolis",
+        "county": "",
         "state": "IN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.7683331, latitude=-86.1583502, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:04:39.406Z"
     }
 },
@@ -187,10 +243,14 @@
     "fields": {
         "position": null,
         "city": "san francisco",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=46.8443248, latitude=-71.2743272, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:04:56.766Z"
     }
 },
@@ -200,10 +260,14 @@
     "fields": {
         "position": null,
         "city": "columbus",
+        "county": "",
         "state": "OH",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.9622601, latitude=-83.0007065, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:05:09.475Z"
     }
 },
@@ -213,10 +277,14 @@
     "fields": {
         "position": null,
         "city": "fort worth",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.753177, latitude=-97.3327459, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:05:24.760Z"
     }
 },
@@ -226,10 +294,14 @@
     "fields": {
         "position": null,
         "city": "charlotte",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.2270869, latitude=-80.8431268, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:05:37.969Z"
     }
 },
@@ -239,10 +311,14 @@
     "fields": {
         "position": null,
         "city": "detroit",
+        "county": "",
         "state": "MI",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=42.3486635, latitude=-83.0567375, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:05:55.062Z"
     }
 },
@@ -252,10 +328,14 @@
     "fields": {
         "position": null,
         "city": "el paso",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=31.8111305, latitude=-106.501349396, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:06:09.787Z"
     }
 },
@@ -265,10 +345,14 @@
     "fields": {
         "position": null,
         "city": "memphis",
+        "county": "",
         "state": "TN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.1490215, latitude=-90.0516285, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:06:21.076Z"
     }
 },
@@ -278,10 +362,14 @@
     "fields": {
         "position": null,
         "city": "boston",
+        "county": "",
         "state": "MA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=42.3604823, latitude=-71.0595678, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:06:37.688Z"
     }
 },
@@ -291,10 +379,14 @@
     "fields": {
         "position": null,
         "city": "seattle",
+        "county": "",
         "state": "WA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=47.6038321, latitude=-122.3300624, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:06:56.725Z"
     }
 },
@@ -304,10 +396,14 @@
     "fields": {
         "position": null,
         "city": "denver",
+        "county": "",
         "state": "CO",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.7348381, latitude=-104.9653271, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:07:16.130Z"
     }
 },
@@ -317,10 +413,14 @@
     "fields": {
         "position": null,
         "city": "Nashville",
+        "county": "",
         "state": "TN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.1622296, latitude=-86.7743531, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:07:41.878Z"
     }
 },
@@ -330,10 +430,14 @@
     "fields": {
         "position": null,
         "city": "baltimore",
+        "county": "",
         "state": "MD",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.2908816, latitude=-76.610759, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:07:57.512Z"
     }
 },
@@ -343,10 +447,14 @@
     "fields": {
         "position": null,
         "city": "louisville",
+        "county": "",
         "state": "KY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.2542376, latitude=-85.759407, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:08:20.954Z"
     }
 },
@@ -356,10 +464,14 @@
     "fields": {
         "position": null,
         "city": "jefferson",
+        "county": "",
         "state": "KY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.1787175, latitude=-85.664528, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:08:33.980Z"
     }
 },
@@ -369,10 +481,14 @@
     "fields": {
         "position": null,
         "city": "davidson",
+        "county": "",
         "state": "TN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.189724, latitude=-86.7857862, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:08:54.028Z"
     }
 },
@@ -382,10 +498,14 @@
     "fields": {
         "position": null,
         "city": "Portland",
+        "county": "",
         "state": "OR",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=45.5202471, latitude=-122.6741949, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:09:04.245Z"
     }
 },
@@ -395,10 +515,14 @@
     "fields": {
         "position": null,
         "city": "Oklahoma",
+        "county": "",
         "state": "OK",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.5533328, latitude=-97.4367741, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:09:12.680Z"
     }
 },
@@ -408,10 +532,14 @@
     "fields": {
         "position": null,
         "city": "Milwaukee",
+        "county": "",
         "state": "WI",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=43.0349931, latitude=-87.922497, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:09:27.028Z"
     }
 },
@@ -421,10 +549,14 @@
     "fields": {
         "position": null,
         "city": "Las Vegas",
+        "county": "",
         "state": "NV",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.1662859, latitude=-115.149225, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:09:58.490Z"
     }
 },
@@ -434,10 +566,14 @@
     "fields": {
         "position": null,
         "city": "Albuquerque",
+        "county": "",
         "state": "NM",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.0841034, latitude=-106.6509851, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:10:13.966Z"
     }
 },
@@ -447,10 +583,14 @@
     "fields": {
         "position": null,
         "city": "Tucson",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.2218917, latitude=-110.9262353, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:11:14.407Z"
     }
 },
@@ -460,10 +600,14 @@
     "fields": {
         "position": null,
         "city": "Fresno",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.7295295, latitude=-119.708861261, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:11:24.171Z"
     }
 },
@@ -473,10 +617,14 @@
     "fields": {
         "position": null,
         "city": "Sacramento",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.5815719, latitude=-121.4943996, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:11:35.610Z"
     }
 },
@@ -486,10 +634,14 @@
     "fields": {
         "position": null,
         "city": "Long Beach",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=44.4567705, latitude=-78.7359702, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:11:54.498Z"
     }
 },
@@ -499,10 +651,14 @@
     "fields": {
         "position": null,
         "city": "Kansas",
+        "county": "",
         "state": "MO",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=34.0474531, latitude=-106.8948253, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:12:09.579Z"
     }
 },
@@ -512,10 +668,14 @@
     "fields": {
         "position": null,
         "city": "Mesa",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=34.2700153, latitude=-114.0824451, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:12:19.781Z"
     }
 },
@@ -525,10 +685,14 @@
     "fields": {
         "position": null,
         "city": "Virginia Beach",
+        "county": "",
         "state": "VA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.7953025, latitude=-76.0509251226, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:12:34.167Z"
     }
 },
@@ -538,10 +702,14 @@
     "fields": {
         "position": null,
         "city": "Atlanta",
+        "county": "",
         "state": "GA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.7490987, latitude=-84.3901849, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:12:45.985Z"
     }
 },
@@ -551,10 +719,14 @@
     "fields": {
         "position": null,
         "city": "Colorado Springs",
+        "county": "",
         "state": "CO",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.8339578, latitude=-104.8253485, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:12:57.083Z"
     }
 },
@@ -564,10 +736,14 @@
     "fields": {
         "position": null,
         "city": "Raleigh",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.7803977, latitude=-78.6390989, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:13:04.726Z"
     }
 },
@@ -577,10 +753,14 @@
     "fields": {
         "position": null,
         "city": "Omaha",
+        "county": "",
         "state": "NE",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=41.2587317, latitude=-95.9378732, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:13:17.744Z"
     }
 },
@@ -590,10 +770,14 @@
     "fields": {
         "position": null,
         "city": "Miami",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=25.7742658, latitude=-80.1936589, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:13:28.064Z"
     }
 },
@@ -603,10 +787,14 @@
     "fields": {
         "position": null,
         "city": "Oakland",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=43.0317491, latitude=-80.3310713, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:13:36.054Z"
     }
 },
@@ -616,10 +804,14 @@
     "fields": {
         "position": null,
         "city": "Tulsa",
+        "county": "",
         "state": "OK",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.1556805, latitude=-95.9929113, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:13:50.432Z"
     }
 },
@@ -629,10 +821,14 @@
     "fields": {
         "position": null,
         "city": "Minneapolis",
+        "county": "",
         "state": "MN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=44.9772995, latitude=-93.2654692, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:00.966Z"
     }
 },
@@ -642,10 +838,14 @@
     "fields": {
         "position": null,
         "city": "Cleveland",
+        "county": "",
         "state": "OH",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=41.5051613, latitude=-81.6934446, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:11.877Z"
     }
 },
@@ -655,10 +855,14 @@
     "fields": {
         "position": null,
         "city": "Wichita",
+        "county": "",
         "state": "KS",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=37.6922361, latitude=-97.3375448, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:24.919Z"
     }
 },
@@ -668,10 +872,14 @@
     "fields": {
         "position": null,
         "city": "Arlington",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.701939, latitude=-97.1057149358, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:36.845Z"
     }
 },
@@ -681,10 +889,14 @@
     "fields": {
         "position": null,
         "city": "New Orleans",
+        "county": "",
         "state": "LA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=51.90491615, latitude=4.48745086188, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:49.696Z"
     }
 },
@@ -694,10 +906,14 @@
     "fields": {
         "position": null,
         "city": "Bakersfield",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.3738712, latitude=-119.0194639, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:14:59.556Z"
     }
 },
@@ -707,10 +923,14 @@
     "fields": {
         "position": null,
         "city": "Tampa",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=27.9518491, latitude=-82.4563972, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:15:09.285Z"
     }
 },
@@ -720,10 +940,14 @@
     "fields": {
         "position": null,
         "city": "Honolulu",
+        "county": "",
         "state": "HI",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=21.3250785, latitude=-157.846644179, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:15:20.039Z"
     }
 },
@@ -733,10 +957,14 @@
     "fields": {
         "position": null,
         "city": "Anaheim",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.8347516, latitude=-117.911732, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:15:29.443Z"
     }
 },
@@ -746,10 +974,14 @@
     "fields": {
         "position": null,
         "city": "Aurora",
+        "county": "",
         "state": "CO",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=43.6963371, latitude=-98.5722461, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:15:39.219Z"
     }
 },
@@ -759,10 +991,14 @@
     "fields": {
         "position": null,
         "city": "Santa Ana",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.7494951, latitude=-117.8732213, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:15:50.622Z"
     }
 },
@@ -772,10 +1008,14 @@
     "fields": {
         "position": null,
         "city": "St Louis",
+        "county": "",
         "state": "MO",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.6272733, latitude=-90.1978889, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:16:06.426Z"
     }
 },
@@ -785,10 +1025,14 @@
     "fields": {
         "position": null,
         "city": "Riverside",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=49.122193, latitude=-122.2971512, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:16:16.592Z"
     }
 },
@@ -798,10 +1042,14 @@
     "fields": {
         "position": null,
         "city": "Corpus Christi",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=27.8002542, latitude=-97.3955744, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:16:27.879Z"
     }
 },
@@ -811,10 +1059,14 @@
     "fields": {
         "position": null,
         "city": "Pittsburgh",
+        "county": "",
         "state": "PA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=40.4416941, latitude=-79.9900861, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:16:40.460Z"
     }
 },
@@ -824,10 +1076,14 @@
     "fields": {
         "position": null,
         "city": "lexington",
+        "county": "",
         "state": "KY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.0464066, latitude=-84.4970393, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:16:58.912Z"
     }
 },
@@ -837,10 +1093,14 @@
     "fields": {
         "position": null,
         "city": "fayette",
+        "county": "",
         "state": "KY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=38.0280648, latitude=-84.4722444, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:17:11.819Z"
     }
 },
@@ -850,10 +1110,14 @@
     "fields": {
         "position": null,
         "city": "anchorage",
+        "county": "",
         "state": "AK",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=61.2163129, latitude=-149.8948523, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:17:22.033Z"
     }
 },
@@ -863,10 +1127,14 @@
     "fields": {
         "position": null,
         "city": "Stockton",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=49.583333, latitude=-99.45, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:17:36.399Z"
     }
 },
@@ -876,10 +1144,14 @@
     "fields": {
         "position": null,
         "city": "Cincinnati",
+        "county": "",
         "state": "OH",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.1014537, latitude=-84.5124602, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:17:50.826Z"
     }
 },
@@ -889,10 +1161,14 @@
     "fields": {
         "position": null,
         "city": "St Paul",
+        "county": "",
         "state": "MN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=44.9504037, latitude=-93.1015026, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:18:35.553Z"
     }
 },
@@ -902,10 +1178,14 @@
     "fields": {
         "position": null,
         "city": "toledo",
+        "county": "",
         "state": "OH",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=41.6786754, latitude=-83.5127283, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:19:05.700Z"
     }
 },
@@ -915,10 +1195,14 @@
     "fields": {
         "position": null,
         "city": "newark",
+        "county": "",
         "state": "NJ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=40.735657, latitude=-74.1723667, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:19:29.601Z"
     }
 },
@@ -928,10 +1212,14 @@
     "fields": {
         "position": null,
         "city": "greensboro",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.0726355, latitude=-79.7919754, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:19:49.835Z"
     }
 },
@@ -941,10 +1229,14 @@
     "fields": {
         "position": null,
         "city": "Plano",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.0136764, latitude=-96.6925096, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:20:00.692Z"
     }
 },
@@ -954,10 +1246,14 @@
     "fields": {
         "position": null,
         "city": "Henderson",
+        "county": "",
         "state": "NV",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.0391456, latitude=-114.9819235, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:20:16.121Z"
     }
 },
@@ -967,10 +1263,14 @@
     "fields": {
         "position": null,
         "city": "Lincoln",
+        "county": "",
         "state": "NE",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=40.8, latitude=-96.667821, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:00.148Z"
     }
 },
@@ -980,10 +1280,14 @@
     "fields": {
         "position": null,
         "city": "Buffalo",
+        "county": "",
         "state": "NY",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=42.8867166, latitude=-78.8783922, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:09.010Z"
     }
 },
@@ -993,10 +1297,14 @@
     "fields": {
         "position": null,
         "city": "Fort Wayne",
+        "county": "",
         "state": "IN",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=41.0799898, latitude=-85.1386015, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:22.473Z"
     }
 },
@@ -1006,10 +1314,14 @@
     "fields": {
         "position": null,
         "city": "Jersey",
+        "county": "",
         "state": "NJ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=40.8599873158, latitude=-74.2765768764, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:35.459Z"
     }
 },
@@ -1019,10 +1331,14 @@
     "fields": {
         "position": null,
         "city": "Chula Vista",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.6400541, latitude=-117.0841955, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:45.163Z"
     }
 },
@@ -1032,10 +1348,14 @@
     "fields": {
         "position": null,
         "city": "Orlando",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=28.5479786, latitude=-81.4127841856, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:21:57.500Z"
     }
 },
@@ -1045,10 +1365,14 @@
     "fields": {
         "position": null,
         "city": "St Petersburg",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=27.77330515, latitude=-82.6469934, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:22:18.420Z"
     }
 },
@@ -1058,10 +1382,14 @@
     "fields": {
         "position": null,
         "city": "Norfolk",
+        "county": "",
         "state": "VA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.8889933, latitude=-76.2481624, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:23:57.983Z"
     }
 },
@@ -1071,10 +1399,14 @@
     "fields": {
         "position": null,
         "city": "Chandler",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.3067132, latitude=-111.8408489, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:24:12.057Z"
     }
 },
@@ -1084,10 +1416,14 @@
     "fields": {
         "position": null,
         "city": "Laredo",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=27.5060991, latitude=-99.5088979, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:24:31.445Z"
     }
 },
@@ -1097,10 +1433,14 @@
     "fields": {
         "position": null,
         "city": "Madison",
+        "county": "",
         "state": "WI",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=43.074761, latitude=-89.3837613, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:24:40.899Z"
     }
 },
@@ -1110,10 +1450,14 @@
     "fields": {
         "position": null,
         "city": "Durham",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.9966551, latitude=-78.9018115, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:24:51.073Z"
     }
 },
@@ -1123,10 +1467,14 @@
     "fields": {
         "position": null,
         "city": "Lubbock",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.5778631, latitude=-101.8551665, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:25:07.963Z"
     }
 },
@@ -1136,10 +1484,14 @@
     "fields": {
         "position": null,
         "city": "Winston",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.106031, latitude=-80.245136, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:25:17.985Z"
     }
 },
@@ -1149,10 +1501,14 @@
     "fields": {
         "position": null,
         "city": "Garland",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.912624, latitude=-96.6388833, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:25:43.145Z"
     }
 },
@@ -1162,10 +1518,14 @@
     "fields": {
         "position": null,
         "city": "Salem",
+        "county": "",
         "state": "NC",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=35.4340236, latitude=-81.1953572, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:25:55.287Z"
     }
 },
@@ -1175,10 +1535,14 @@
     "fields": {
         "position": null,
         "city": "Glendale",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.5389854, latitude=-112.1858157, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:26:03.767Z"
     }
 },
@@ -1188,10 +1552,14 @@
     "fields": {
         "position": null,
         "city": "Hialeah",
+        "county": "",
         "state": "FL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=25.8575963, latitude=-80.2781057, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:26:16.497Z"
     }
 },
@@ -1201,10 +1569,14 @@
     "fields": {
         "position": null,
         "city": "Reno",
+        "county": "",
         "state": "NV",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=39.52927, latitude=-119.8136744, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:26:23.738Z"
     }
 },
@@ -1214,10 +1586,14 @@
     "fields": {
         "position": null,
         "city": "Baton Rouge",
+        "county": "",
         "state": "LA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=30.4507462, latitude=-91.154551, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:26:35.406Z"
     }
 },
@@ -1227,10 +1603,14 @@
     "fields": {
         "position": null,
         "city": "Irvine",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=49.9584438, latitude=-110.2732606, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:26:46.874Z"
     }
 },
@@ -1240,10 +1620,14 @@
     "fields": {
         "position": null,
         "city": "Chesapeake",
+        "county": "",
         "state": "VA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.7183708, latitude=-76.2466798, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:27:01.162Z"
     }
 },
@@ -1253,10 +1637,14 @@
     "fields": {
         "position": null,
         "city": "Irving",
+        "county": "",
         "state": "TX",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=32.8295183, latitude=-96.9442177, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:27:12.170Z"
     }
 },
@@ -1266,10 +1654,14 @@
     "fields": {
         "position": null,
         "city": "Scottsdale",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.5091215, latitude=-111.8992365, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:27:25.195Z"
     }
 },
@@ -1279,10 +1671,14 @@
     "fields": {
         "position": null,
         "city": "North Las Vegas",
+        "county": "",
         "state": "NV",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=36.2008371, latitude=-115.1120958, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:27:43.131Z"
     }
 },
@@ -1292,10 +1688,14 @@
     "fields": {
         "position": null,
         "city": "Fremont",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=49.2850624, latitude=-123.135817451, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:27:56.904Z"
     }
 },
@@ -1305,10 +1705,14 @@
     "fields": {
         "position": null,
         "city": "Gilbert town",
+        "county": "",
         "state": "AZ",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.3699821, latitude=-111.7900711, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:28:06.490Z"
     }
 },
@@ -1318,10 +1722,14 @@
     "fields": {
         "position": null,
         "city": "San Bernardino",
+        "county": "",
         "state": "CA",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=34.1083449, latitude=-117.2897652, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:28:18.879Z"
     }
 },
@@ -1331,10 +1739,14 @@
     "fields": {
         "position": null,
         "city": "Boise",
+        "county": "",
         "state": "ID",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=43.61656, latitude=-116.200835, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:28:28.559Z"
     }
 },
@@ -1344,10 +1756,14 @@
     "fields": {
         "position": null,
         "city": "Birmingham",
+        "county": "",
         "state": "AL",
         "zipcode": "",
+        "fips_state": "",
+        "fips_county": "",
         "geocode": "longitude=33.570499, latitude=-86.765783, radius=5",
         "keywords": "",
+        "status": "safe",
         "created": "2017-12-15T02:28:37.365Z"
     }
 }

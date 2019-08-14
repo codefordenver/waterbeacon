@@ -1,0 +1,314 @@
+[
+{
+    "model": "news.url",
+    "pk": 1,
+    "fields": {
+        "alert": 1,
+        "link": "https://t.co/GRJDzBfYK7"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 2,
+    "fields": {
+        "alert": 2,
+        "link": "https://t.co/P7FAyzHQeZ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 3,
+    "fields": {
+        "alert": 3,
+        "link": "https://t.co/H9O9jHDIiM"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 4,
+    "fields": {
+        "alert": 4,
+        "link": "https://t.co/dBbhjHfpaD"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 5,
+    "fields": {
+        "alert": 5,
+        "link": "https://t.co/0nmMMeoXRj"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 6,
+    "fields": {
+        "alert": 6,
+        "link": "https://t.co/MuchO5yfIG"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 7,
+    "fields": {
+        "alert": 7,
+        "link": "https://t.co/13ZGmV6dPS"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 8,
+    "fields": {
+        "alert": 8,
+        "link": "https://t.co/COAIAnoy50"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 9,
+    "fields": {
+        "alert": 8,
+        "link": "https://t.co/Tkyx5zTKzk"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 10,
+    "fields": {
+        "alert": 8,
+        "link": "https://t.co/dneR2wLV9x"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 11,
+    "fields": {
+        "alert": 9,
+        "link": "https://t.co/cBWRS3LzWd"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 12,
+    "fields": {
+        "alert": 11,
+        "link": "https://t.co/hbMmAylruc"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 13,
+    "fields": {
+        "alert": 13,
+        "link": "https://t.co/5v7MnhtQwu"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 14,
+    "fields": {
+        "alert": 14,
+        "link": "https://t.co/hwAo3lDiNk"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 15,
+    "fields": {
+        "alert": 19,
+        "link": "https://t.co/2AC6qna3gZ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 16,
+    "fields": {
+        "alert": 20,
+        "link": "https://t.co/0nmMMeoXRj"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 17,
+    "fields": {
+        "alert": 22,
+        "link": "https://t.co/ydZsUvWego"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 18,
+    "fields": {
+        "alert": 23,
+        "link": "https://t.co/8Sa2k3XyxO"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 19,
+    "fields": {
+        "alert": 24,
+        "link": "https://t.co/0E7oPXqoAK"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 20,
+    "fields": {
+        "alert": 24,
+        "link": "https://t.co/6itzSsfCYP"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 21,
+    "fields": {
+        "alert": 25,
+        "link": "https://t.co/DqSCyYeeDP"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 22,
+    "fields": {
+        "alert": 26,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.tristatehomepage.com/news/local-news/holiday-world-water-woes-could-lead-to-a-flood-of-fun/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNHzCZK4K7wwNpUiD-y7XFMly7GshA"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 23,
+    "fields": {
+        "alert": 27,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.mybuckhannon.com/whats-happening-at-mt-hope-water-association-officials-say-string-of-boil-water-advisories-linked-to-old-water-line/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNFKdM7ufcQKBQYbiRYpTgn4t8CZmQ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 24,
+    "fields": {
+        "alert": 28,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wwdmag.com/contaminants/seeing-forest-trees&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNGZH-hEl9hYXOgF3cl31biFU_s8cQ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 25,
+    "fields": {
+        "alert": 29,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wvgazettemail.com/news/advisories/boil-water-advisories-aug/article_5750543f-4bb6-5783-8267-617a6dc67c7d.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNFAA9ZnddfDmrOxhpIrz0nBWmB67A"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 26,
+    "fields": {
+        "alert": 30,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.irontontribune.com/2019/08/05/ironton-issues-boil-water-advisory/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNEAuOKykgr-lKiKLIeJTzGgQN-j9g"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 27,
+    "fields": {
+        "alert": 31,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.klfy.com/boil-alert/grand-prairie-water-system-issues-boil-advisory/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNG5V9prlbLRWoPGpDbDLcL7MWszxw"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 28,
+    "fields": {
+        "alert": 32,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wtap.com/content/news/Reno-Water-department-announces--520945531.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNHdBs_RGGEDq9-68Z0nJ_RZa8S4_A"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 29,
+    "fields": {
+        "alert": 33,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.abc17news.com/news/boil-advisory-issued-for-part-of-district-9-until-tuesday/1105404005&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNFa-sHcE3gpSUF1mZoDp04e99-_4A"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 30,
+    "fields": {
+        "alert": 34,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.miamiherald.com/news/local/community/broward/article233531037.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNHHVSpbMw5Rz6IWkAdFA7xYd6obLg"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 31,
+    "fields": {
+        "alert": 35,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://edmontonsun.com/news/local-news/gatineau-lifts-boil-water-advisory-2/wcm/0d223ad6-c5c3-4f4d-bc98-de26e1752fce&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNGHWVt5AYIaJUBHz6saLUUBP1wWgQ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 32,
+    "fields": {
+        "alert": 36,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://ottawacitizen.com/news/local-news/gatineau-lifts-boil-water-advisory-2&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNGHEUAmKou57bqSylHLOLZ8HePq_w"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 33,
+    "fields": {
+        "alert": 37,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wboy.com/emergencies/boil-water-advisory/boil-water-advisory-issued-for-valley-of-good-hope-area/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNGV5yQTpxLEkiBN1_M9jHv8lD-wig"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 34,
+    "fields": {
+        "alert": 38,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wdtv.com/content/news/Boil-water-advisory-Bryan-Foster-Rd-519482501.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNG0xC9m_eMZzw7-h1Mwgc_GM2EFJQ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 35,
+    "fields": {
+        "alert": 39,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.observertoday.com/uncategorized/2019/08/brocton-portland-boil-water-advisory-lifted/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNGJfM0uIfD8WqS_0uhTCwqF2EQ9RQ"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 36,
+    "fields": {
+        "alert": 40,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wvgazettemail.com/news/advisories/boil-water-advisories-aug/article_eca0e208-ed18-52b8-bd51-00fa2fe9115b.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNEmaV-0hbfp7PInHRIWeivfKJCoMg"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 37,
+    "fields": {
+        "alert": 41,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://nbonews.com/whirlpool-whr-holder-taylor-asset-management-trimmed-its-holding-by-3-60-million-as-american-wtr-wks-co-awk-share-value-rose-j-p-marvel-investment-advisors-trimmed-by-659360-its-position/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNHKZkhb5ZBBYu3btTYZum1y5gGCqA"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 38,
+    "fields": {
+        "alert": 42,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://nbonews.com/as-merck-as-american-wtr-wks-co-new-awk-valuation-rose-mirae-asset-global-investments-has-lowered-its-stake/&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNFz4e7eZlme6Sx5-QfAwju6tc9jTA"
+    }
+},
+{
+    "model": "news.url",
+    "pk": 39,
+    "fields": {
+        "alert": 43,
+        "link": "https://www.google.com/url?rct=j&sa=t&url=https://www.wvnews.com/theet/news/lumberport-wv-issues-boil-water-advisory/article_2930ff7c-a321-5d5f-aa16-2508854d51f4.html&ct=ga&cd=CAIyHDI5YmNlMjk5MzM4NGEzMTk6Y29tOmVuOlVTOlI&usg=AFQjCNF5Jw_wEWvwNIUMH6d0PW_eDmqfTA"
+    }
+}
+]
