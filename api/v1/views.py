@@ -11,42 +11,40 @@ from datetime import datetime, timedelta
 
 from app import models as app_models
 from news import models as news_models
-
-from api.v1 import ( serializers )
 from utils.utils import ( str2bool )
 
 
-class nodeData(APIView):
+class locationData(APIView):
     # /v1/data/?status=true&violation=true
 
 
     def get(self, request):
-        response = {"meta":{"sensors": 0, "cities": 0, "utilities": 0},"cities":[], "sensors":[],"utilities" :[]}
+        response = {"meta":{ "cities": 0, "utilities": 0, "locations": 0},"locations":[], "utilities" :[], 'cities':[]}
 
         sources = request.query_params.get('sources','').split(',')
 
-        # filter for sensor
-        if 'sensors' in sources or not len(sources):
-            queryset = app_models.node.objects.all()
-            if request.query_params.get('status'):
-                queryset.filter( status = str2bool(request.query_params.get('status')) )
-            for sensor in queryset:
-                data = models.data.objects.filter(node = sensor).latest('timestamp')
-                response["sensors"].append({
-                    "fips_state_id": sensor.fips_state,
-                    "fips_county_id": sensor.fips_county,
-                    "name": sensor.name,
-                    "state": sensor.state,
-                    "county": sensor.county,
-                    "long": sensor.position.x if sensor.position else '',
-                    "lat":sensor.position.y if sensor.position else '',
-                    "score": sensor.score,
-                    "status": sensor.stauts,
-                    "disolved_oxygen": sensor.meta.get('disolved_oxygen',0),
-                    "ph": sensor.meta.get('ph',0),
-                    "temperature_change": sensor.meta.get('temperature_change',0),
-                    "turbidity": sensor.meta.get('turbidity',0),
-                })
+
+        # filter for locations
+        if 'locations' in sources or not len(sources):
+
+            queryset = app_models.location.objects.all()
+
+            for location in queryset:
+
+                if app_models.data.objects.filter(location = location, score__gt=0).exists():
+                    data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
+                    response["locations"].append({
+                        "fips_state_id": location.fips_state,
+                        "fips_county_id": location.fips_county,
+                        "major_city": location.major_city,
+                        "state": location.state,
+                        "county": location.county,
+                        "zipcode": location.zipcode,
+                        "population_served":location.population_served,
+                        "score": round(float(data.score), 2),
+                    })
+
+                response["meta"]["locations"] = len(response["locations"])
 
         # filter for news
         if 'news' in sources or not len(sources):
@@ -75,13 +73,13 @@ class nodeData(APIView):
 
         # filter for utilities
         if 'utilities' in sources or not len(sources):
-            queryset = news_models.utility.objects.all()
 
+            queryset = Q()
             if request.query_params.get('violation'):
-                queryset.filter( violation = str2bool(request.query_params.get('violation')) )
+                queryset &= Q( violation = str2bool(request.query_params.get('violation')) )
 
-            response["meta"]["utilities"] = queryset.count()
-            for utility in queryset:
+            response["meta"]["utilities"] = news_models.utility.objects.filter(queryset).count()
+            for utility in  news_models.utility.objects.filter(queryset):
 
                 counties_served = []
                 for county in news_models.county_served.objects.filter( utility = utility):
@@ -104,7 +102,4 @@ class nodeData(APIView):
                 })
 
 
-        return Response()
-
-    def post(self, request, format = None):
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(response)

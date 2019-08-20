@@ -11,6 +11,7 @@ from utils.utils import (
     remove_stopwords, cleanhtml, hasPhrase
 )
 from utils.log import log
+from fake_useragent import UserAgent
 
 import tweepy
 
@@ -32,17 +33,17 @@ def save_twitter_data(tweet, location = None, print_test = False ):
     # ref: https://dev.twitter.com/overview/api/tweets
 
     if models.alert.objects.filter(sourceId = tweet.id_str ).exists():
-        print "%s - exists" % ( tweet.text )
-        #log(tweet.text, 'success')
+        print "%s - exists" % ( tweet.full_text )
+        #log(tweet.full_text, 'success')
         return
 
     tw = models.alert()
 
-    tw.text = tweet.text
-    tw.text_wo_stopwords =  remove_stopwords( tweet.text.lower() )
+    tw.text = tweet.full_text
+    tw.text_wo_stopwords =  remove_stopwords( tweet.full_text.lower() )
     tw.sourceId = tweet.id_str
     tw.source = 'twitter'
-    tw.status = status(tweet.text.lower())
+    tw.status = status(tweet.full_text.lower())
     tw.published = tweet.created_at
     tw.save()
 
@@ -58,8 +59,8 @@ def save_twitter_data(tweet, location = None, print_test = False ):
             url.link = item['url']
             url.save()
 
-    print tweet.text
-    #log(tweet.text, 'success')
+    print tweet.full_text
+    #log(tweet.full_text, 'success')
 
 def save_feed_data(item, location = None):
 
@@ -140,7 +141,8 @@ def TweetWaterAdvisoryReader(
                     'geocode': geocode,
                     'lang':'en',
                     'wait_on_rate_limit': True,
-                    'since': past.strftime('%Y-%m-%d')
+                    'since': past.strftime('%Y-%m-%d'),
+                    'tweet_mode': 'extended'
                 }
 
                 if latest_tweet:
@@ -158,7 +160,8 @@ def TweetWaterAdvisoryReader(
             'geocode': geocode,
             'lang':'en',
             'wait_on_rate_limit': True,
-            'since': past.strftime('%Y-%m-%d')
+            'since': past.strftime('%Y-%m-%d'),
+            'tweet_mode': 'extended'
         }
 
         if latest_tweet:
@@ -179,7 +182,10 @@ def EWG_TapwaterReader(stale_updated_days = 30):
 
     for state in states:
 
-        response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ))
+        ua = UserAgent()
+        headers = {'User-Agent': ua['google chrome']}
+        response = requests.get('https://www.ewg.org/tapwater/state.php?stab=%s' % ( state ), headers = headers)
+
         if response.status_code != 200:
             return []
 
@@ -194,7 +200,9 @@ def EWG_TapwaterReader(stale_updated_days = 30):
             o_utility.link = utility.xpath('td[@data-label="Utility"]/a/@href')[0].strip()
             o_utility.location = utility.xpath('td[@data-label="Location"]/text()')[0].strip()
             o_utility.population = utility.xpath('td[@data-label="Population"]/text()')[0].strip()
-            o_utility.violation_points = utility.xpath('td[@data-label="Violation Points"]/text()')[0].strip()
+            o_utility.violation_points = int(utility.xpath('td[@data-label="Violation Points"]/text()')[0].strip())
+            if o_utility.violation_points > 0:
+                o_utility.violation = True
             o_utility.save()
 
             # delete all other utility last updated greater than

@@ -2,15 +2,15 @@
 
 waterbeacon
 
-# Resources
+## Resources
 
 https://www.waterqualitydata.us/
 
-# NSF Water Quality Index
+## NSF Water Quality Index
 
 http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
 
-# Installation Guide
+## API Installation Guide
 
 You'll need to install `python2` along with `pip`.
 
@@ -31,7 +31,16 @@ Make sure you have the folling tools are installed:
 
 Create the waterbeacon database by running `createdb waterbeacon`
 
-When that completes, run `./manage.py migrate --settings=settings.dev` to create a local SQLite db instance for developnent.
+When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
+
+(Optional - never necessary if csvs exist) To get all the new facility location data from the EPA, you can run `./manage.py download_epa_facility_data --settings=settings.dev`
+
+(Optional - never necessary if csvs exist) To get all the new SDWA data from the EPA, you can run `./manage.py download_epa_water_data --settings=settings.dev`
+
+(Optional) Populate the rawdata app with EPA data by running the following:
+
+    ./manage.py import_epa_facility_data --settings=settings.dev
+    ./manage.py import_epa_water_data --settings=settings.dev
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
 
@@ -39,4 +48,11 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
-A comment about editors, if you're using VSCode, it appears there is [an issue](https://github.com/Microsoft/ptvsd/issues/943) that prevents running in debug mode. 
+## Frontend Installation Guide
+
+Navigate to the frontend directory where the react app is located and run install
+
+* `cd frontend`
+* `npm install`
+
+After installation you can run `npm start` which will run the react app on localhost:3000 with "hot reload" enabled.

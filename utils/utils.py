@@ -1,5 +1,7 @@
+import json
 import re
 from nltk.corpus import stopwords
+import requests
 
 def remove_stopwords(input):
     word_list = input.split(" ")
@@ -98,3 +100,16 @@ def getStateAbbrev(state):
     }
 
     return us_state_abbrev[state]
+
+def get_census_block(lat, long):
+
+    url = 'https://geo.fcc.gov/api/census/area'
+    params ={'lat': float(lat), 'lon': float(long), 'format': 'json'}
+    response = requests.get(url, params = params)
+
+    fipsCodes = []
+    if response.status_code == 200:
+        data = json.loads(response.content)
+        if len(data['results']):
+            return data['results'][0]['county_fips']
+    return ''

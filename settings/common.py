@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'app',
     'news',
     'subscribers'
+    'rawdata'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -138,3 +139,6 @@ CELERYCAM_EXPIRE_PENDING = timedelta(days=30)
 
 
 MAXIMUM_CHART_DAYS = timedelta(days=2)
+
+# where the EPA data requests are stored in json files before being imported into the DB
+EPA_DATA_DIRECTORY = 'rawdata/epa/'

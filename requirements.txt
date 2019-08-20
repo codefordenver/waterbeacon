@@ -36,6 +36,7 @@ django-supervisor==0.3.4
 djangorestframework==3.3.3
 docutils==0.14
 factory-boy==2.10.0
+fake-useragent==0.1.11
 Faker==0.8.7
 feedparser==5.2.1
 funcsigs==1.0.2
@@ -73,6 +74,7 @@ pyparsing==2.1.1
 python-dateutil==2.5.2
 pytz==2018.4
 PyYAML==3.11
+pyzipcode==1.0
 redis==2.10.5
 requests==2.21.0
 requests-oauthlib==0.8.0
@@ -84,6 +86,7 @@ tornado==4.2
 tweepy==3.7.0
 Twisted==18.4.0
 txaio==2.10.0
+unicodecsv==0.14.1
 uritemplate==3.0.0
 urllib3==1.22
 watchdog==0.8.3

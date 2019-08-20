@@ -11,30 +11,12 @@ def register_admin(model):
         return klass
     return wrapper
 
-@admin.register(models.node)
-class NodeAdmin(admin.ModelAdmin):
-    list_display = ('name','state','county','source','notes')
-    search_fields = ['name']
+@admin.register(models.location)
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ('state','county','notes')
     list_filter = ('state',)
-
-#    readonly_fields = ('ph_chart', 'temperature_chart','conductivity_chart','turbidity_chart','orp_chart','odo_chart')
-#    fieldsets = [
-#            ('Node', { 'fields':  [  'active', 'name', 'long', \
-#                            'lat', 'devicealias', 'sourcetype','commtype','deviceaddress','hostip','proxy_url','notes' ]}), \
-#            ('Ph', { 'fields':  [  'ph_chart',  ]}),
-#            ('Temperature', { 'fields':  [  'temperature_chart',  ]}),
-#
-#            ('Conductivity', { 'fields':  [  'conductivity_chart',  ]}),
-#            ('Turbidity', { 'fields':  [  'turbidity_chart',  ]}),
-#            ('Oxygen Reduction Potential', { 'fields':  [  'orp_chart',  ]}),
-#            ('Dissolved Oxygen', { 'fields':  [  'odo_chart',  ]}),
-#    ]
-
-#    class Media:
-#        js = ("js/node.js",)
-
 
 @admin.register(models.data)
 class DataAdmin(admin.ModelAdmin):
-    list_display = ('id','node','timestamp')
+    list_display = ('id','location','timestamp')
     list_filter = ('timestamp',)
