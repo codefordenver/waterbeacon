@@ -109,5 +109,7 @@ def get_census_block(lat, long):
 
     fipsCodes = []
     if response.status_code == 200:
-        return json.loads(response.content)['results'][0]['county_fips']
+        data = json.loads(response.content)
+        if len(data['results']):
+            return data['results'][0]['county_fips']
     return ''
