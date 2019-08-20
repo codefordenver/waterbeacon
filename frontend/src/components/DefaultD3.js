@@ -68,7 +68,7 @@ const DefaultD3 = () => {
   const centered = useRef(null);
   const usStates = useRef(null);
   const usCounties = useRef(null);
-  
+
   //start maxScore at 0, that way we will ensure a score is higher
   const maxScore = useRef(0);
 
@@ -104,12 +104,12 @@ const DefaultD3 = () => {
       k = 1;
       centered.current = null;
     }
-  
+
     g.current.select("#states")
       .selectAll("path")
       .classed("active", centered.current && function(d) { return d === centered.current; });
-  
-    
+
+
     //todo: make the stroke width smaller!
     g.current.transition()
       .duration(750)
@@ -141,7 +141,7 @@ const DefaultD3 = () => {
       try {
         const topoLocation = "https://d3js.org/us-10m.v1.json";
         setTD(await d3.json(topoLocation));
-    
+
         //todo: our data will come in with lat/long, hopefully;
         //todo: will need to use d3.geoContains(lat, long);
         const locationsLocation = "/v1/data/?sources=locations";
@@ -151,7 +151,7 @@ const DefaultD3 = () => {
         setWSD(locations);
 
         let parsedStateInfo = stateFipsId;
-        
+
         let countyList = [];
         //for each fips specific data point, work on state data
         locations.forEach((fipsSpecific)=>{
@@ -159,11 +159,11 @@ const DefaultD3 = () => {
           const stateData = parsedStateInfo[stateId];
           stateData.count = stateData.count ? stateData.count+1 : 1;
           const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
-          stateData.max = stateData.max ? 
-            Math.max(stateData.max, currScore) : 
+          stateData.max = stateData.max ?
+            Math.max(stateData.max, currScore) :
             currScore;
-          stateData.min = stateData.min ? 
-            Math.min(stateData.min, currScore) : 
+          stateData.min = stateData.min ?
+            Math.min(stateData.min, currScore) :
             currScore;
           currScore>maxScore.current && (maxScore.current = currScore);
           if(countyList.length<3) {
@@ -175,8 +175,8 @@ const DefaultD3 = () => {
           }
           //!: average is not actually average
           //!: does not account for population
-          stateData.avg = stateData.avg ? 
-            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
+          stateData.avg = stateData.avg ?
+            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) :
             currScore;
             parsedStateInfo[stateId]=stateData;
         });
@@ -211,7 +211,7 @@ const DefaultD3 = () => {
       const colorScale = d3.quantize(d3.interpolateHcl('#e1f5fe','#01579b'), iteration);
       const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/(iteration+1)))
         .range(colorScale);
-      
+
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
 
@@ -245,7 +245,7 @@ const DefaultD3 = () => {
 
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-      
+
       //todo: change the background to a light grey
       //todo: change outline color
       //todo: margin under navbar
@@ -267,7 +267,7 @@ const DefaultD3 = () => {
           .attr("class", "state-boundary")
           //give a click listener for each state-boundary
           .on("click", centerState)
-          .append('title').text((d) => 
+          .append('title').text((d) =>
             {return `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`});
       //todo: add icons from noun project as water utilities
     }
@@ -276,7 +276,7 @@ const DefaultD3 = () => {
   }, [topologyData, waterScoreData, stateWaterQualData])
 
   //todo: move loader to center of page
-  if(!topologyData || !waterScoreData) return <Loader type="Oval" color="#somecolor" height={80} width={80} />
+  if(!topologyData || !waterScoreData) return <div class="position-center"><Loader type="MutatingDots" color="#6c757d" height={100} width={100} /></div>
 
   //todo: add options to view as state or county
   //todo: add rank on left sidebar
