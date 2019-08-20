@@ -108,6 +108,8 @@ const DefaultD3 = () => {
       .selectAll("path")
       .classed("active", centered.current && function(d) { return d === centered.current; });
   
+    
+    //todo: make the stroke width smaller!
     g.current.transition()
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -121,14 +123,15 @@ const DefaultD3 = () => {
       const counties = waterScoreData.length;
       for(let i = 0; i<=counties; i++){
         const county = waterScoreData[i];
-        if(d.id===county.fips_county_id){
-          return county;
+        if(county){
+          if(d.id===county.fips_county_id){
+            return county;
+          }
         }
       }
     }
     const chosenOne = getCounty();
-    return chosenOne ? setCountyRanked(countiesRanked=>countiesRanked.concat(chosenOne).sort((a,b)=>{return b.score-a.score})) :
-      console.log('county does not exist');
+    return chosenOne && setCountyRanked(countiesRanked=>countiesRanked.concat(chosenOne).sort((a,b)=>{return b.score-a.score}));
   }
 
   //todo: create an element on the right that gives user map options
