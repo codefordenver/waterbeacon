@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
+import Loader from 'react-loader-spinner';
 
 import './utils/d3.css'
 
@@ -31,7 +32,7 @@ export const stateFipsId = {
   "05":{State:"AR",},"01":{State:"AL",},"02":{State:"AK",}
 };
 
-export const stateList = [{id:"NA", name:"NONE"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
+export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
   {id:"04", name:"ARIZONA"},{id:"05", name:"ARKANSAS"},{id:"06", name:"CALIFORNIA"},
   {id:"08", name:"COLORADO"},{id:"09", name:"CONNECTICUT"},{id:"10", name:"DELAWARE"},
   {id:"11", name:"DISTRICT OF COLUMBIA"},{id:"12", name:"FLORIDA"},
@@ -192,7 +193,9 @@ const DefaultD3 = () => {
     const translateData = () => {
       //set the svg to the ancor element
       svg.current = d3.select(anchor.current).append("svg")
-        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("viewBox", `0 0 ${width} ${height}`);
+
+      console.log(waterScoreData);
 
       //create an element d3 map
       const waterScore = d3.map();
@@ -204,7 +207,10 @@ const DefaultD3 = () => {
       //this is the color scheme
       //the range will need to be reset to be between 0 and 1 (or 0 and 100)
       //scheme color should change
-      const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/9)).range(d3.schemeBlues[9]);
+      const iteration = 10;
+      const colorScale = d3.quantize(d3.interpolateHcl('#e1f5fe','#01579b'), iteration);
+      const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/(iteration+1)))
+        .range(colorScale);
       
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -227,7 +233,7 @@ const DefaultD3 = () => {
           //for each "path" that is created, we will set the "d" to the path
           .attr("d", path.current)
           //also, we will set the fill, which will give us our chloropleth
-          .attr("fill", function(d) { return color(d.score = waterScore.get(d.id)); })
+          .attr("fill", function(d) { return waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : 'rgb(248,249,250)'; })
           //we also want to create a new class for easy boundary editing in a style sheet
           .attr("class", "county-boundary")
           //when clicking on a county, call centerState with no "d"
@@ -240,6 +246,12 @@ const DefaultD3 = () => {
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
       
+      //todo: change the background to a light grey
+      //todo: change outline color
+      //todo: margin under navbar
+      //todo: map at 100vh-ish
+      //todo: add dots for facility locations
+      //todo: highlight major cities (save for later)
       //we append a new "g" element for the state boundaries
       g.current.append("g")
         //set the class
@@ -257,16 +269,14 @@ const DefaultD3 = () => {
           .on("click", centerState)
           .append('title').text((d) => 
             {return `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`});
-      
       //todo: add icons from noun project as water utilities
     }
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
   }, [topologyData, waterScoreData, stateWaterQualData])
 
-  if(!topologyData || !waterScoreData) {
-    return null;
-  }
+  //todo: move loader to center of page
+  if(!topologyData || !waterScoreData) return <Loader type="Oval" color="#somecolor" height={80} width={80} />
 
   //todo: add options to view as state or county
   //todo: add rank on left sidebar

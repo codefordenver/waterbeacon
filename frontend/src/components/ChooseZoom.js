@@ -47,9 +47,9 @@ export const ChooseZoom = (props) => {
     </div>
     <div className="col-sm-3">
       <div className="group btn-group">
-        <button className="btn btn-outline-danger" disabled={!props.areaInViewPort} onClick={() => props.centerState()}>
+        <button className="btn btn-outline-info" disabled={!props.areaInViewPort} onClick={() => props.centerState()}>
           Reset
-          </button>
+        </button>
       </div>
     </div>
   </form>);

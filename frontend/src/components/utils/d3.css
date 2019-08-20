@@ -13,7 +13,9 @@ path {
 }
 
 .map {
-  width: 70%;
+  min-width: 58%;
+  max-width: 69.5%;
+  margin-left: .5%;
 }
 
 .state-boundary {
@@ -30,7 +32,7 @@ path {
 }
 
 .active {
-  stroke: purple;
+  stroke: #2d5e9e;
   stroke-width: 2px;
   /* fill must be none to make county display work */
   fill: none;
@@ -38,6 +40,7 @@ path {
 
 .zoomer {
   display:flex;
+  margin-top: 20px;
 }
 
 .zoomer .btn-group {
@@ -59,4 +62,6 @@ path {
 
 .county-list {
   word-break: break-all;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px 10px 10px 10px;
 }
