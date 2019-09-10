@@ -82,10 +82,15 @@ const DefaultD3 = () => {
   const width = 960;
   const height = 600;
 
+  let x = width/2;
+  let y = height/2;
+  let k = 1;
+
+  //change the following variable to adjust stroke width
+  const initSW = .5;
+
   const centerState = (d) => {
     //create variables for centering the state
-    var x, y, k;
-
     if (d && centered !== d) {
       var centroid = path.current.centroid(d);
       x = centroid[0];
@@ -96,7 +101,7 @@ const DefaultD3 = () => {
       const stateHeight = boundsArr[1][1]-boundsArr[0][1];
       const widthZoom = width/stateWidth;
       const heightZoom = height/stateHeight;
-      k=.8*Math.min(widthZoom, heightZoom);
+      k=.5*Math.min(widthZoom, heightZoom);
       centered.current = d;
     } else {
       x = width / 2;
@@ -104,17 +109,20 @@ const DefaultD3 = () => {
       k = 1;
       centered.current = null;
     }
+
+    console.log(k);
   
+    //todo: double check this
     g.current.select("#states")
       .selectAll("path")
-      .classed("active", centered.current && function(d) { return d === centered.current; });
-  
-    
-    //todo: make the stroke width smaller!
+      .classed("active", centered.current && function(d) { return d === centered.current; })
+      .style("stroke-width", k*initSW + "px")
+      .style("stroke", "#2d5e9e")
+      .attr("fill", "none");
+
     g.current.transition()
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
 
     setAIVP(centered.current);
   }
@@ -135,15 +143,12 @@ const DefaultD3 = () => {
     return chosenOne && setCountyRanked(countiesRanked=>countiesRanked.concat(chosenOne).sort((a,b)=>{return b.score-a.score}));
   }
 
-  //todo: create an element on the right that gives user map options
   useEffect(()=>{
     const getData = async () => {
       try {
         const topoLocation = "https://d3js.org/us-10m.v1.json";
         setTD(await d3.json(topoLocation));
-    
-        //todo: our data will come in with lat/long, hopefully;
-        //todo: will need to use d3.geoContains(lat, long);
+
         const locationsLocation = "/v1/data/?sources=locations";
         const locJSON = await fetch(locationsLocation);
         const locData = await locJSON.json();
@@ -191,11 +196,9 @@ const DefaultD3 = () => {
 
   useEffect(()=> {
     const translateData = () => {
-      //set the svg to the ancor element
+      //set the svg to the anchor element
       svg.current = d3.select(anchor.current).append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`);
-
-      console.log(waterScoreData);
 
       //create an element d3 map
       const waterScore = d3.map();
@@ -204,11 +207,21 @@ const DefaultD3 = () => {
         waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2)*100);
       })
 
-      //this is the color scheme
-      //the range will need to be reset to be between 0 and 1 (or 0 and 100)
-      //scheme color should change
+      const handleHover = (identifier) => {
+        d3.select(`#${identifier}`)
+          .style("stroke-width", 4 * initSW + "px");
+      }
+      const removeHover = (identifier) => {
+        d3.select(`#${identifier}`)
+          .style("stroke-width", initSW + "px");
+      }
+
+      //this is the color scheme and scale
       const iteration = 10;
-      const colorScale = d3.quantize(d3.interpolateHcl('#e1f5fe','#01579b'), iteration);
+      const noColor = 'rgb(248,249,250)';
+      const csStart = '#e1f5fe';
+      const csEnd = '#01579b';
+      const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
       const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/(iteration+1)))
         .range(colorScale);
       
@@ -233,25 +246,25 @@ const DefaultD3 = () => {
           //for each "path" that is created, we will set the "d" to the path
           .attr("d", path.current)
           //also, we will set the fill, which will give us our chloropleth
-          .attr("fill", function(d) { return waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : 'rgb(248,249,250)'; })
+          .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
           //we also want to create a new class for easy boundary editing in a style sheet
           .attr("class", "county-boundary")
-          //when clicking on a county, call centerState with no "d"
-          //this will recenter the map over the entire US
-          //viewing the "title" only works since "active" state has no fill
+          .style("stroke", "grey")
+          //add county to list
           .on("click", addCounty)
-          .append("title").text(function(d) {const name = countyList[d.id] ? countyList[d.id].Name : "Unknown" ; return name + ": " + d.score + "%";})
+          //the following two lines darken the county that is hovered on
+          .on("mouseover", d => handleHover(`county-${d.id}`))
+          .on("mouseout", d => removeHover(`county-${d.id}`))
+          .append("title").text(d => (countyList[d.id] ? countyList[d.id].name : "Unknown") + ": " + d.score + "%")
           .attr("d", path.current)
 
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-      
-      //todo: change the background to a light grey
-      //todo: change outline color
-      //todo: margin under navbar
-      //todo: map at 100vh-ish
+
       //todo: add dots for facility locations
       //todo: highlight major cities (save for later)
+      //todo: move state selector to above the county table
+      //todo: add timeline to where state selector is currently
       //we append a new "g" element for the state boundaries
       g.current.append("g")
         //set the class
@@ -265,21 +278,24 @@ const DefaultD3 = () => {
           .attr("d", path.current)
           //give each path a boundary for easy coloring
           .attr("class", "state-boundary")
+          //add a fully opaque fill, allows the state to handle click
+          .attr("fill", "rgba(0,0,0,0)")
+          .attr("id", d => `state-${d.id}`)
+          .style("stroke", "black")
+          .style("stroke-width", ".5px")
           //give a click listener for each state-boundary
           .on("click", centerState)
-          .append('title').text((d) => 
-            {return `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`});
+          .on("mouseover", d => handleHover(`state-${d.id}`))
+          .on("mouseout", d => removeHover(`state-${d.id}`))
+          .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
       //todo: add icons from noun project as water utilities
     }
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
   }, [topologyData, waterScoreData, stateWaterQualData])
 
-  //todo: move loader to center of page
-  if(!topologyData || !waterScoreData) return <Loader type="Oval" color="#somecolor" height={80} width={80} />
 
-  //todo: add options to view as state or county
-  //todo: add rank on left sidebar
+  if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#somecolor" height={80} width={80} className="loader" />
 
   //todo: add populace areas along the bottom
   return (
@@ -288,14 +304,13 @@ const DefaultD3 = () => {
       <div className="map" >
         <ChooseZoom areaInViewPort={areaInViewPort} centerState={centerState} usStates={usStates}/>
         <small>Zoom to state, click on county to compare at left. Hit reset to zoom to bounds of U.S.</small>
-        <div ref={anchor} />
+        <div className="map-container" ref={anchor} />
       </div>
     </div>
   )
 }
 
 const TopCounties = (props) => {
-  console.log(props.countiesRanked);
   const removeCounty = (index) => {
     const tempCountyA = props.countiesRanked.slice(0,index);
     const tempCountyB = props.countiesRanked.slice(index+1);

@@ -1,8 +1,3 @@
-path {
-  stroke: #333;
-  stroke-width: .5px;
-}
-
 .map-content {
   display: flex;
   flex-direction: row;
@@ -16,26 +11,6 @@ path {
   min-width: 58%;
   max-width: 69.5%;
   margin-left: .5%;
-}
-
-.state-boundary {
-  stroke: black;
-  fill: rgba(0,0,0,0)
-}
-
-.county-boundary {
-  stroke: grey;
-}
-
-.state-boundary:hover {
-  stroke-width: 3px;
-}
-
-.active {
-  stroke: #2d5e9e;
-  stroke-width: 2px;
-  /* fill must be none to make county display work */
-  fill: none;
 }
 
 .zoomer {
@@ -64,4 +39,10 @@ path {
   word-break: break-all;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 20px 10px 10px 10px;
+}
+
+.loader {
+  width: 100vw;
+  top: 50vh;
+  position: absolute;
 }
