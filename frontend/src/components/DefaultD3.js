@@ -49,7 +49,30 @@ export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"
   {id:"45", name:"SOUTH CAROLINA"},{id:"46", name:"SOUTH DAKOTA"},{id:"47", name:"TENNESSEE"},
   {id:"48", name:"TEXAS"},{id:"49", name:"UTAH"},{id:"50", name:"VERMONT"},
   {id:"51", name:"VIRGINIA"},{id:"53", name:"WASHINGTON"},{id:"54", name:"WEST VIRGINIA"},
-  {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}];
+  {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
+];
+
+const colorScale = (maxScore) => {
+  const iteration = 10;
+  const csStart = '#e1f5fe';
+  const csEnd = '#01579b';
+  const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
+  return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
+    .range(colorScale);
+};
+
+//change the following variable to adjust stroke width
+const initSW = .5;
+
+const handleHover = (identifier) => {
+  d3.select(`#${identifier}`)
+    .style("stroke-width", 4 * initSW + "px");
+};
+
+const removeHover = (identifier) => {
+  d3.select(`#${identifier}`)
+    .style("stroke-width", initSW + "px");
+}
 
 const DefaultD3 = () => {
   const [topologyData, setTD] = useState(undefined);
@@ -79,15 +102,12 @@ const DefaultD3 = () => {
   //create a path item
   const path = useRef(d3.geoPath());
 
+  // setting some boundaries
   const width = 960;
   const height = 600;
-
   let x = width/2;
   let y = height/2;
   let k = 1;
-
-  //change the following variable to adjust stroke width
-  const initSW = .5;
 
   const centerState = (d) => {
     //create variables for centering the state
@@ -109,16 +129,16 @@ const DefaultD3 = () => {
       k = 1;
       centered.current = null;
     }
-
-    console.log(k);
   
     //todo: double check this
     g.current.select("#states")
       .selectAll("path")
       .classed("active", centered.current && function(d) { return d === centered.current; })
+
+    g.current.selectAll("#active")
       .style("stroke-width", k*initSW + "px")
       .style("stroke", "#2d5e9e")
-      .attr("fill", "none");
+      .attr("fill", "none")
 
     g.current.transition()
       .duration(750)
@@ -140,7 +160,8 @@ const DefaultD3 = () => {
       }
     }
     const chosenOne = getCounty();
-    return chosenOne && setCountyRanked(countiesRanked=>countiesRanked.concat(chosenOne).sort((a,b)=>{return b.score-a.score}));
+
+    return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
   }
 
   useEffect(()=>{
@@ -175,7 +196,7 @@ const DefaultD3 = () => {
             countyList.push(fipsSpecific)
           }else {
             countyList.push(fipsSpecific);
-            countyList.sort((a,b)=>{return b.score-a.score})
+            countyList.sort((a,b) => b.score-a.score)
             countyList.pop();
           }
           //!: average is not actually average
@@ -205,25 +226,11 @@ const DefaultD3 = () => {
       //go through each state in the unemploymentByState data and set the map
       waterScoreData.forEach((countyWaterScore)=>{
         waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2)*100);
-      })
-
-      const handleHover = (identifier) => {
-        d3.select(`#${identifier}`)
-          .style("stroke-width", 4 * initSW + "px");
-      }
-      const removeHover = (identifier) => {
-        d3.select(`#${identifier}`)
-          .style("stroke-width", initSW + "px");
-      }
+      });
 
       //this is the color scheme and scale
-      const iteration = 10;
       const noColor = 'rgb(248,249,250)';
-      const csStart = '#e1f5fe';
-      const csEnd = '#01579b';
-      const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
-      const color = d3.scaleThreshold().domain(d3.range(0,maxScore.current,maxScore.current/(iteration+1)))
-        .range(colorScale);
+      const color = colorScale(maxScore.current);
       
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -234,29 +241,23 @@ const DefaultD3 = () => {
       g.current.append("g")
         //we set the class as "counties" for this element
         .attr("id", "counties")
-        //the following line selects all the "path" elements inside the new "g" element
-        //hint: there are nome
+        // with no path elements, the .data call will create them
         .selectAll("path")
-        //have to convert this to the "features" array
         .data(usCounties.current.features)
-        //enter goes into the recently selected elemnt
-        //pressing append addes a new "path" element to match the length of the "features" array
-        //that is why we had to use .data instead of .datum and convert it to an array
+        // enter goes into the recently selected elemnt
         .enter().append("path")
-          //for each "path" that is created, we will set the "d" to the path
           .attr("d", path.current)
-          //also, we will set the fill, which will give us our chloropleth
+          .attr("id", d => `county-${d.id}`)
           .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
-          //we also want to create a new class for easy boundary editing in a style sheet
           .attr("class", "county-boundary")
           .style("stroke", "grey")
-          //add county to list
+          // add county to list
           .on("click", addCounty)
           //the following two lines darken the county that is hovered on
           .on("mouseover", d => handleHover(`county-${d.id}`))
           .on("mouseout", d => removeHover(`county-${d.id}`))
-          .append("title").text(d => (countyList[d.id] ? countyList[d.id].name : "Unknown") + ": " + d.score + "%")
-          .attr("d", path.current)
+          // this is the hover overlay
+          .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + d.score + "%");
 
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
@@ -308,7 +309,7 @@ const DefaultD3 = () => {
       </div>
     </div>
   )
-}
+};
 
 const TopCounties = (props) => {
   const removeCounty = (index) => {

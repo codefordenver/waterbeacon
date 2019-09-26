@@ -7,6 +7,12 @@
   width: 30%;
 }
 
+.active {
+  stroke-width: 2px;
+  stroke: #2d5e9e;
+  fill: none;
+}
+
 .map {
   min-width: 58%;
   max-width: 69.5%;
