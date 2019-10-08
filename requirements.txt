@@ -62,7 +62,6 @@ numpy==1.14.0
 oauthlib==2.0.6
 orderedmultidict==0.7.11
 pandas==0.22.0
-pathlib==1.0.1
 pathtools==0.1.2
 pbr==3.1.1
 polyline==1.3.2
