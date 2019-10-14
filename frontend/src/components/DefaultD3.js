@@ -162,7 +162,7 @@ const DefaultD3 = () => {
     const chosenOne = getCounty();
 
     return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
-  }
+  };
 
   useEffect(()=>{
     const getData = async () => {
@@ -211,7 +211,8 @@ const DefaultD3 = () => {
       } catch (error) {
         console.log('Error loading or parsing data.');
       }
-    }
+    };
+
     (!topologyData && !waterScoreData) && getData();
   }, []);
 
@@ -257,7 +258,7 @@ const DefaultD3 = () => {
           .on("mouseover", d => handleHover(`county-${d.id}`))
           .on("mouseout", d => removeHover(`county-${d.id}`))
           // this is the hover overlay
-          .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + d.score + "%");
+          .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
 
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
