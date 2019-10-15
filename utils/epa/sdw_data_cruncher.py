@@ -48,14 +48,23 @@ class SDW_Data_Cruncher(object):
         cws_population = 0
         other_population = 0
         other_score = 0
+
+        # set all facilities in violations as false
+        pwsids = systems.values_list("PWSId", flat=True).distinct()
+        rawdata_models.EpaFacilitySystem.objects.filter( PWSId__in= pwsids).update(in_violation = False)
+
         for system in systems:
             if (system.PWSTypeCode == 'cws' ):
                 cws_population += system.PopulationServedCount
-                cws_score += self._calc_facility_score(system.Viopaccr, system.Vioremain, system.PopulationServedCount) * system.PopulationServedCount
+                facility_score = self._calc_facility_score(system.Viopaccr, system.Vioremain, system.PopulationServedCount) * system.PopulationServedCount
+                cws_score += facility_score
             else:
                 other_population += system.PopulationServedCount
-                other_score += self._calc_facility_score(system.Viopaccr, system.Vioremain, system.PopulationServedCount) * system.PopulationServedCount
+                facility_score = self._calc_facility_score(system.Viopaccr, system.Vioremain, system.PopulationServedCount) * system.PopulationServedCount
+                other_score += facility_score
 
+            if facility_score:
+                rawdata_models.EpaFacilitySystem.objects.filter( PWSId = system.PWSId ).update(in_violation = True )
 
         if cws_population:
             cumulative_cws_score = (cws_score / cws_population) * self._COMMUNITY_WATER_SYSTEM_WEIGHT

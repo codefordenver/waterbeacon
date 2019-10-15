@@ -35,7 +35,7 @@ class locationData(APIView):
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
                     # get facilities
                     facilities = []
-                    for facility in location.facilities.all():
+                    for facility in location.facilities.filter( in_violation = True):
                         facilities.append({
                             'PWSId': facility.PWSId,
                             'FacName': facility.FacName,
