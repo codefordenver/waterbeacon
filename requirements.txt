@@ -57,7 +57,7 @@ Markdown==2.6.6
 meld3==1.0.2
 mock==2.0.0
 msgpack-python==0.5.5
-nltk==3.2.4
+nltk==3.4.5
 numpy==1.14.0
 oauthlib==2.0.6
 orderedmultidict==0.7.11
