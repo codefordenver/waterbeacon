@@ -43,6 +43,7 @@ funcsigs==1.0.2
 furl==1.0.1
 futures==3.0.5
 geopy==1.11.0
+gunicorn==19.9.0
 html5lib==1.0.1
 hyperlink==18.0.0
 idna==2.7
