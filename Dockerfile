@@ -4,7 +4,6 @@ FROM python:2.7
 # to the terminal with out buffering it first
 ENV PYTHONUNBUFFERED 1
 
-# prevents python from writing pyc files to disk
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # create root directory for our project in the container
