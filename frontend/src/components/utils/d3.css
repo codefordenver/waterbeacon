@@ -1,6 +1,7 @@
 .map-content {
   display: flex;
   flex-direction: row;
+  background-color: #fbfbfb;
 }
 
 .map-content table {
@@ -29,8 +30,15 @@
 
 .county-list {
   word-break: break-all;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);;
   margin: 20px 10px 10px 10px;
+  background-color: white;
+}
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .loader {
