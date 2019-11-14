@@ -7,6 +7,10 @@
   width: 30%;
 }
 
+.map-container {
+  margin-top: 10px;
+}
+
 .active {
   stroke-width: 2px;
   stroke: #2d5e9e;
@@ -17,24 +21,6 @@
   min-width: 58%;
   max-width: 69.5%;
   margin-left: .5%;
-}
-
-.zoomer {
-  display:flex;
-  margin-top: 20px;
-}
-
-.zoomer .btn-group {
-  margin-left: auto;
-}
-
-.zoom-row .col-sm-3 {
-  text-align: right;
-  margin: auto 0 auto auto;
-}
-
-.zoom-row .form-label {
-  margin: auto;
 }
 
 .county-list .remove-county:hover {

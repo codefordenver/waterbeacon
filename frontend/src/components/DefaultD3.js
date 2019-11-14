@@ -52,10 +52,11 @@ export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"
   {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
 ];
 
+// todo: change color scale from blue
 const colorScale = (maxScore) => {
   const iteration = 10;
-  const csStart = '#e1f5fe';
-  const csEnd = '#01579b';
+  const csStart = '#FFFFFF';
+  const csEnd = '#2O4177';
   const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
   return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
     .range(colorScale);
@@ -72,35 +73,28 @@ const handleHover = (identifier) => {
 const removeHover = (identifier) => {
   d3.select(`#${identifier}`)
     .style("stroke-width", initSW + "px");
-}
+};
 
-const DefaultD3 = () => {
-  const [topologyData, setTD] = useState(undefined);
-  const [waterScoreData, setWSD] = useState(undefined);
-  //todo: use state unemployment data to add table on left
-  const [stateWaterQualData, setWQD] = useState(undefined);
-
-  const [countiesRanked, setCountyRanked] = useState([]);
-
-  //this will not change.
-  const anchor = useRef(null);
-
+const MapRender = (props) => {
+  const anchor = useRef('map-container');
+  const {
+    topologyData,
+    waterScoreData,
+    stateWaterQualData,
+    addCounty,
+    maxScore
+  } = props;
+  
   //refs, we don't want a rerender when these change!
   const svg = useRef(null);
   const g = useRef(null);
-  const centered = useRef(null);
   const usStates = useRef(null);
   const usCounties = useRef(null);
-  
-  //start maxScore at 0, that way we will ensure a score is higher
-  const maxScore = useRef(0);
-
-  //we want to pass this to child components
-  //want it to send new value when updated
-  const [areaInViewPort, setAIVP] = useState(undefined);
-
+  const centered = useRef(null);
+  const stateFacilityObj = useRef({});
   //create a path item
   const path = useRef(d3.geoPath());
+  const [areaInViewPort, setAIVP] = useState(null);
 
   // setting some boundaries
   const width = 960;
@@ -111,7 +105,7 @@ const DefaultD3 = () => {
 
   const centerState = (d) => {
     //create variables for centering the state
-    if (d && centered !== d) {
+    if (d && centered.current !== d) {
       var centroid = path.current.centroid(d);
       x = centroid[0];
       y = centroid[1];
@@ -129,8 +123,7 @@ const DefaultD3 = () => {
       k = 1;
       centered.current = null;
     }
-  
-    //todo: double check this
+
     g.current.select("#states")
       .selectAll("path")
       .classed("active", centered.current && function(d) { return d === centered.current; })
@@ -145,76 +138,7 @@ const DefaultD3 = () => {
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
 
     setAIVP(centered.current);
-  }
-
-  const addCounty = (d) => {
-    const getCounty = () => {
-      const counties = waterScoreData.length;
-      for(let i = 0; i<=counties; i++){
-        const county = waterScoreData[i];
-        if(county){
-          if(d.id===county.fips_county_id){
-            return county;
-          }
-        }
-      }
-    }
-    const chosenOne = getCounty();
-
-    return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
   };
-
-  useEffect(()=>{
-    const getData = async () => {
-      try {
-        const topoLocation = "https://d3js.org/us-10m.v1.json";
-        setTD(await d3.json(topoLocation));
-
-        const locationsLocation = "/v1/data/?sources=locations";
-        const locJSON = await fetch(locationsLocation);
-        const locData = await locJSON.json();
-        const locations = locData.locations;
-        setWSD(locations);
-
-        let parsedStateInfo = stateFipsId;
-        
-        let countyList = [];
-        //for each fips specific data point, work on state data
-        locations.forEach((fipsSpecific)=>{
-          const stateId = fipsSpecific.fips_county_id.substring(0,2);
-          const stateData = parsedStateInfo[stateId];
-          stateData.count = stateData.count ? stateData.count+1 : 1;
-          const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
-          stateData.max = stateData.max ? 
-            Math.max(stateData.max, currScore) : 
-            currScore;
-          stateData.min = stateData.min ? 
-            Math.min(stateData.min, currScore) : 
-            currScore;
-          currScore>maxScore.current && (maxScore.current = currScore);
-          if(countyList.length<3) {
-            countyList.push(fipsSpecific)
-          }else {
-            countyList.push(fipsSpecific);
-            countyList.sort((a,b) => b.score-a.score)
-            countyList.pop();
-          }
-          //!: average is not actually average
-          //!: does not account for population
-          stateData.avg = stateData.avg ? 
-            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
-            currScore;
-            parsedStateInfo[stateId]=stateData;
-        });
-        setCountyRanked(countyList);
-        setWQD(parsedStateInfo);
-      } catch (error) {
-        console.log('Error loading or parsing data.');
-      }
-    };
-
-    (!topologyData && !waterScoreData) && getData();
-  }, []);
 
   useEffect(()=> {
     const translateData = () => {
@@ -225,13 +149,23 @@ const DefaultD3 = () => {
       //create an element d3 map
       const waterScore = d3.map();
       //go through each state in the unemploymentByState data and set the map
-      waterScoreData.forEach((countyWaterScore)=>{
+      for (let i = 0; i < waterScoreData.length; i += 1) {
+        const countyWaterScore = waterScoreData[i];
         waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2)*100);
-      });
+        const stateId = countyWaterScore.fips_state_id;
+        const { facilities } = countyWaterScore;
+        if (!stateFacilityObj.current[stateId]) {
+          stateFacilityObj.current[stateId] = {facArr: []};
+        }
+        if (!facilities) continue;
+        const { facArr } = stateFacilityObj.current[stateId];
+        facArr.push(...facilities);
+        stateFacilityObj.current[stateId].facArr = facArr
+      };
 
       //this is the color scheme and scale
       const noColor = 'rgb(248,249,250)';
-      const color = colorScale(maxScore.current);
+      const color = colorScale(maxScore);
       
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -290,23 +224,165 @@ const DefaultD3 = () => {
           .on("mouseover", d => handleHover(`state-${d.id}`))
           .on("mouseout", d => removeHover(`state-${d.id}`))
           .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
-      //todo: add icons from noun project as water utilities
     }
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
-  }, [topologyData, waterScoreData, stateWaterQualData])
+  }, [topologyData, waterScoreData, stateWaterQualData]);
 
+  useEffect(() => {
+    const addPoints = () => {
+      if (areaInViewPort) {
+        console.log(areaInViewPort.id);
+        const facilities = stateFacilityObj.current[areaInViewPort.id];
+        console.log(facilities);
+        // todo: add facilities that have problems in areaInViewPort
+        // todo: 11/11 Update - need to adjust the coords so the points appear on the map
+        // todo: onClick, send to facility page on ECHO in new page using RegistryID
+        // g.current.append('g')
+        //   .attr('id', 'facilities')
+        //   .selectAll('circle')
+        //   .data(facilities)
+        //   .enter()
+        //   .append('circle')
+        //   .attr('cx', (d) => d.areaCoords[0])
+        //   .attr('cy', (d) => d.areaCoords[1])
+        //   .on('click', (d) => reqRedirect(d))
+        //   .attr('r', 8)
+        //   .attr('fill', 'yellow')
+        //   .attr('class', 'city-point')
+        //   .append('title')
+        //   .text((d) => d.areaName);
+      } else {
+        // g.current.select('#facilities')
+        //   .remove();
+      }
+    }
+
+    if (g.current) addPoints();
+  }, [areaInViewPort])
+
+  return (
+    <>
+      <ChooseZoom areaInViewPort={areaInViewPort} centerState={centerState} usStates={usStates}/>
+      <div className="map-container" ref={anchor} />
+    </>
+  )
+};
+
+const DefaultD3 = () => {
+  // !leave this
+  const [topologyData, setTD] = useState(undefined);
+  // !leave this
+  const [waterScoreData, setWSD] = useState(undefined);
+  // !leave this
+  const [stateWaterQualData, setWQD] = useState(undefined);
+  // !leave this
+  const [countiesRanked, setCountyRanked] = useState([]);
+  
+  //start maxScore at 0, that way we will ensure a score is higher
+  const maxScore = useRef(0);
+
+  // !leave this
+  const addCounty = (d) => {
+    const getCounty = () => {
+      const counties = waterScoreData.length;
+      for(let i = 0; i<=counties; i++){
+        const county = waterScoreData[i];
+        if(county){
+          if(d.id===county.fips_county_id){
+            return county;
+          }
+        }
+      }
+    }
+    const chosenOne = getCounty();
+
+    return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
+  };
+
+  // !leave this
+  useEffect(()=>{
+    const getData = async () => {
+      try {
+        const topoLocation = "https://d3js.org/us-10m.v1.json";
+        setTD(await d3.json(topoLocation));
+
+        const locationsSRC = "/v1/data/?sources=locations";
+        const locJSON = await fetch(locationsSRC);
+        const locData = await locJSON.json();
+        const { locations } = locData;
+        const locCount = locations.length;
+        const convLoc = Object.keys(countyList).map((countyId) => {
+          for (let i = 0; i < locCount; i ++) {
+            if (countyId === locations[i].fips_county_id) {
+              return locations[i];
+            }
+          }
+          const county = countyList[countyId];
+          return {
+            county: county.Name,
+            fips_county_id: countyId,
+            fips_state_id: countyId.substring(0, 2),
+            score: 0,
+            facilities: [],
+          }
+        })
+        setWSD(convLoc);
+        
+        let topCountyScores = [];
+        //for each fips specific data point, work on state data
+        locations.forEach((fipsSpecific)=>{
+          // State FIPS ID is the first two characters of the county ID
+          const stateId = fipsSpecific.fips_county_id.substring(0,2);
+          const stateData = stateFipsId[stateId];
+          stateData.count = stateData.count ? stateData.count+1 : 1;
+          const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
+          stateData.max = stateData.max ? 
+            Math.max(stateData.max, currScore) : 
+            currScore;
+          stateData.min = stateData.min ? 
+            Math.min(stateData.min, currScore) : 
+            currScore;
+          currScore > maxScore.current && (maxScore.current = currScore);
+          if(topCountyScores.length<3) {
+            topCountyScores.push(fipsSpecific)
+          } else {
+            topCountyScores.push(fipsSpecific);
+            topCountyScores.sort((a,b) => b.score-a.score)
+            topCountyScores.pop();
+          }
+          //!: average is not actually average
+          //!: does not account for population
+          stateData.avg = stateData.avg ? 
+            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
+            currScore;
+          stateFipsId[stateId]=stateData;
+        });
+        setCountyRanked(topCountyScores);
+        setWQD(stateFipsId);
+      } catch (error) {
+        console.log('Error loading or parsing data.');
+      }
+    };
+
+    (!topologyData && !waterScoreData) && getData();
+  }, []);
 
   if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#somecolor" height={80} width={80} className="loader" />
 
-  //todo: add populace areas along the bottom
+  // todo: add populace areas along the bottom
   return (
     <div className="map-content">
       <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
       <div className="map" >
-        <ChooseZoom areaInViewPort={areaInViewPort} centerState={centerState} usStates={usStates}/>
         <small>Zoom to state, click on county to compare at left. Hit reset to zoom to bounds of U.S.</small>
-        <div className="map-container" ref={anchor} />
+        <MapRender
+          topologyData = { topologyData }
+          waterScoreData = { waterScoreData }
+          stateWaterQualData = { stateWaterQualData }
+          addCounty = { addCounty }
+          maxScore = { maxScore.current }
+        />
       </div>
     </div>
   )
