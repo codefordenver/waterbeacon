@@ -59,7 +59,7 @@ const DefaultD3 = ({
         <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
       </div>
       <div className="map" >
-        <small>Zoom to state, click on county to compare at left. Hit reset to zoom to bounds of U.S.</small>
+        <small id="reset-zoom" onClick={() => setAIVP(null)}>Zoom to state, click on county to compare at left. Click here to reset.</small>
         <MapRender
           topologyData={topologyData}
           waterScoreData={waterScoreData}

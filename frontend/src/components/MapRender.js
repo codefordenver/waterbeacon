@@ -4,7 +4,7 @@ import * as topojson from 'topojson';
 import { countyList } from './utils/counties';
 
 export const width = 960;
-export const height = 500;
+export const height = 600;
 //create a path item
 export const path = d3.geoPath();
 

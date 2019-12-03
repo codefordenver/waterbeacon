@@ -48,3 +48,7 @@
   flex-direction: column;
   margin: 10px;
 }
+
+#reset-zoom:hover {
+  cursor: pointer;
+}
