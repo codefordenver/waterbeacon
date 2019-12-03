@@ -1,52 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import { stateList } from './DefaultD3';
+import { Typeahead } from 'react-bootstrap-typeahead';
 import './ChooseZoom.css';
 
-export const ChooseZoom = (props) => {
-  const [states, setStates] = useState(stateList[0].name);
-  const [viewToggle, setVT] = useState(false);
+export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
+  {id:"04", name:"ARIZONA"},{id:"05", name:"ARKANSAS"},{id:"06", name:"CALIFORNIA"},
+  {id:"08", name:"COLORADO"},{id:"09", name:"CONNECTICUT"},{id:"10", name:"DELAWARE"},
+  {id:"11", name:"DISTRICT OF COLUMBIA"},{id:"12", name:"FLORIDA"},
+  {id:"13", name:"GEORGIA"},{id:"15", name:"HAWAII"},{id:"16", name:"IDAHO"},
+  {id:"17", name:"ILLINOIS"},{id:"18", name:"INDIANA"},{id:"19", name:"IOWA"},
+  {id:"20", name:"KANSAS"},{id:"21", name:"KENTUCKY"},{id:"22", name:"LOUISIANA"},
+  {id:"23", name:"MAINE"},{id:"24", name:"MARYLAND"},{id:"25", name:"MASSACHUSETTS"},
+  {id:"26", name:"MICHIGAN"},{id:"27", name:"MINNESOTA"},{id:"28", name:"MISSISSIPPI"},
+  {id:"29", name:"MISSOURI"},{id:"30", name:"MONTANA"},{id:"31", name:"NEBRASKA"},
+  {id:"32", name:"NEVADA"},{id:"33", name:"NEW HAMPSHIRE"},{id:"34", name:"NEW JERSEY"},
+  {id:"35", name:"NEW MEXICO"},{id:"36", name:"NEW YORK"},{id:"37", name:"NORTH CAROLINA"},
+  {id:"38", name:"NORTH DAKOTA"},{id:"39", name:"OHIO"},{id:"40", name:"OKLAHOMA"},
+  {id:"41", name:"OREGON"},{id:"42", name:"PENNSYLVANIA"},{id:"44", name:"RHODE ISLAND"},
+  {id:"45", name:"SOUTH CAROLINA"},{id:"46", name:"SOUTH DAKOTA"},{id:"47", name:"TENNESSEE"},
+  {id:"48", name:"TEXAS"},{id:"49", name:"UTAH"},{id:"50", name:"VERMONT"},
+  {id:"51", name:"VIRGINIA"},{id:"53", name:"WASHINGTON"},{id:"54", name:"WEST VIRGINIA"},
+  {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
+];
+
+export const ChooseZoom = ({ areaInViewPort, usStates, }) => {
+  const stateNames = stateList.map((state) => state.name);
+  const [selected, setSel] = useState([]);
+
+  console.log(selected);
 
   useEffect(() => {
     const centerState = () => {
-      const { id } = stateList.find((state) => state.name === states);
-      if (!props.areaInViewPort || id === props.areaInViewPort.id) return null;
-      if (states === "All") {
-        return props.centerState();
+      const stateIn = selected[0].toLowerCase();
+      const { id } = stateList.find((state) => state.name.toLowerCase() === stateIn);
+      if (areaInViewPort && id === areaInViewPort.id) return null;
+      if (stateIn === "All") {
+        return centerState();
       };
-      const tempState = props.usStates.current.features.find((state) => state.id === id);
-      tempState && props.centerState(tempState);
+      const tempState = usStates.current.features.find((state) => state.id === id);
+      tempState && centerState(tempState);
     }
 
-    if (viewToggle) setVT(false);
-    centerState();
-  }, [states])
+    // if (selected.length === 1) setVT(false);
+    if(selected.length === 1) centerState();
+  }, [selected]);
 
   useEffect(() => {
     const setStateInView = () => {
-      const { name } = stateList.find((state) => props.areaInViewPort.id === state.id );
-      setStates(name);
+      const { name } = stateList.find((state) => areaInViewPort.id === state.id );
+      setSel([name]);
     };
-    props.areaInViewPort ? setStateInView() : setStates(stateList[0].name);
-  }, [props.areaInViewPort]);
+    areaInViewPort ? setStateInView() : setSel([]);
+  }, [areaInViewPort]);
 
-  // todo: make drop-down look like this: https://codepen.io/miniven/pen/ZJydge
   return (
-  <div className="zoomer zoom-form">
-    <div className="col-sm-9 zoom-choice">
-      <div className="selector-toggle" onClick={() => setVT(!viewToggle)}>
-        <div className="col-sm-9">{states}</div>
-        <div className="col-sm-3">X</div>
-      </div>
-      <div className="selector-list">
-        {viewToggle && stateList.map((state) => <div key={`selector-${state.id}`} className="col-sm-9" onClick={() => setStates(state.name)}>{state.name}</div>)}
-      </div>
+    <div className="zoomer">
+      <Typeahead
+        id="choose-state"
+        onChange={selected => setSel(selected)}
+        options={stateNames}
+        placeholder="Choose a state!"
+      />
     </div>
-    <div className="col-sm-3">
-      <div className="group btn-group">
-        <button className="btn btn-outline-info" disabled={!props.areaInViewPort} onClick={() => props.centerState()}>
-          Reset
-        </button>
-      </div>
-    </div>
-  </div>);
+  )
 };

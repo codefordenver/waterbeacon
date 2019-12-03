@@ -1,45 +1,8 @@
 .zoomer {
   display:flex;
-  margin-top: 20px;
+  justify-content: space-between;
 }
 
-.zoomer .btn-group {
-  margin-left: auto;
-}
-
-.zoomer .zoom-choice {
-  margin: auto;
-}
-
-.selector-toggle:hover {
-  cursor: pointer;
-}
-
-.selector-toggle,
-.selector-list .col-sm-9 {
-  background: #f8f9fa;
-}
-
-.selector-toggle {
-  display: flex;
-  flex-direction: row;
-  box-shadow: 1px;
-}
-
-.selector-toggle .col-sm-3 {
-  text-align: right;
-}
-
-.selector-list {
-  position: absolute;
+.zoomer div {
   width: 100%;
-}
-
-.selector-list .col-sm-9 {
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-.selector-list .col-sm-9:hover {
-  cursor: pointer;
 }

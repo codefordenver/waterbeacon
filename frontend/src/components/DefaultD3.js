@@ -1,288 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as d3 from 'd3';
-import * as topojson from 'topojson';
+import React, { useState, useRef } from 'react';
 import Loader from 'react-loader-spinner';
-
+import * as d3 from 'd3';
 import './utils/d3.css'
 
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
-import { countyList } from './utils/counties';
+import { MapRender } from './MapRender';
 
-export const stateFipsId = {
-  "56":{State:"WY",},"54":{State:"WV",},"55":{State:"WI",},
-  "53":{State:"WA",},"50":{State:"VT",},"78":{State:"VI",},
-  "51":{State:"VA",},"49":{State:"UT",},"74":{State:"UM",},
-  "48":{State:"TX",},"47":{State:"TN",},"46":{State:"SD",},
-  "45":{State:"SC",},"44":{State:"RI",},"70":{State:"PW",},
-  "72":{State:"PR",},"42":{State:"PA",},"41":{State:"OR",},
-  "40":{State:"OK",},"39":{State:"OH",},"36":{State:"NY",},
-  "32":{State:"NV",},"35":{State:"NM",},"34":{State:"NJ",},
-  "33":{State:"NH",},"31":{State:"NE",},"38":{State:"ND",},
-  "37":{State:"NC",},"30":{State:"MT",},"28":{State:"MS",},
-  "69":{State:"MP",},"29":{State:"MO",},"27":{State:"MN",},
-  "26":{State:"MI",},"68":{State:"MH",},"23":{State:"ME",},
-  "24":{State:"MD",},"25":{State:"MA",},"22":{State:"LA",},
-  "21":{State:"KY",},"20":{State:"KS",},"18":{State:"IN",},
-  "17":{State:"IL",},"16":{State:"ID",},"19":{State:"IA",},
-  "15":{State:"HI",},"66":{State:"GU",},"13":{State:"GA",},
-  "64":{State:"FM",},"12":{State:"FL",},"10":{State:"DE",},
-  "11":{State:"DC",},"09":{State:"CT",},"08":{State:"CO",},
-  "06":{State:"CA",},"04":{State:"AZ",},"60":{State:"AS",},
-  "05":{State:"AR",},"01":{State:"AL",},"02":{State:"AK",}
-};
-
-export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
-  {id:"04", name:"ARIZONA"},{id:"05", name:"ARKANSAS"},{id:"06", name:"CALIFORNIA"},
-  {id:"08", name:"COLORADO"},{id:"09", name:"CONNECTICUT"},{id:"10", name:"DELAWARE"},
-  {id:"11", name:"DISTRICT OF COLUMBIA"},{id:"12", name:"FLORIDA"},
-  {id:"13", name:"GEORGIA"},{id:"15", name:"HAWAII"},{id:"16", name:"IDAHO"},
-  {id:"17", name:"ILLINOIS"},{id:"18", name:"INDIANA"},{id:"19", name:"IOWA"},
-  {id:"20", name:"KANSAS"},{id:"21", name:"KENTUCKY"},{id:"22", name:"LOUISIANA"},
-  {id:"23", name:"MAINE"},{id:"24", name:"MARYLAND"},{id:"25", name:"MASSACHUSETTS"},
-  {id:"26", name:"MICHIGAN"},{id:"27", name:"MINNESOTA"},{id:"28", name:"MISSISSIPPI"},
-  {id:"29", name:"MISSOURI"},{id:"30", name:"MONTANA"},{id:"31", name:"NEBRASKA"},
-  {id:"32", name:"NEVADA"},{id:"33", name:"NEW HAMPSHIRE"},{id:"34", name:"NEW JERSEY"},
-  {id:"35", name:"NEW MEXICO"},{id:"36", name:"NEW YORK"},{id:"37", name:"NORTH CAROLINA"},
-  {id:"38", name:"NORTH DAKOTA"},{id:"39", name:"OHIO"},{id:"40", name:"OKLAHOMA"},
-  {id:"41", name:"OREGON"},{id:"42", name:"PENNSYLVANIA"},{id:"44", name:"RHODE ISLAND"},
-  {id:"45", name:"SOUTH CAROLINA"},{id:"46", name:"SOUTH DAKOTA"},{id:"47", name:"TENNESSEE"},
-  {id:"48", name:"TEXAS"},{id:"49", name:"UTAH"},{id:"50", name:"VERMONT"},
-  {id:"51", name:"VIRGINIA"},{id:"53", name:"WASHINGTON"},{id:"54", name:"WEST VIRGINIA"},
-  {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
-];
-
-// todo: change color scale from blue
-const colorScale = (maxScore) => {
-  const iteration = 10;
-  const csStart = '#FFFFFF';
-  const csEnd = '#2O4177';
-  const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
-  return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
-    .range(colorScale);
-};
+export const width = 960;
+export const height = 600;
+//create a path item
+export const path = d3.geoPath();
 
 //change the following variable to adjust stroke width
-const initSW = .5;
+export const initSW = .5;
 
-const handleHover = (identifier) => {
-  d3.select(`#${identifier}`)
-    .style("stroke-width", 4 * initSW + "px");
-};
-
-const removeHover = (identifier) => {
-  d3.select(`#${identifier}`)
-    .style("stroke-width", initSW + "px");
-};
-
-const MapRender = (props) => {
-  const anchor = useRef('map-container');
-  const {
-    topologyData,
-    waterScoreData,
-    stateWaterQualData,
-    addCounty,
-    maxScore
-  } = props;
-  
-  //refs, we don't want a rerender when these change!
-  const svg = useRef(null);
-  const g = useRef(null);
-  const usStates = useRef(null);
-  const usCounties = useRef(null);
-  const centered = useRef(null);
-  const stateFacilityObj = useRef({});
-  //create a path item
-  const path = useRef(d3.geoPath());
+const DefaultD3 = ({
+  topologyData,
+  waterScoreData,
+  setCountyRanked,
+  countiesRanked,
+  stateWaterQualData,
+  maxScore,
+}) => {
   const [areaInViewPort, setAIVP] = useState(null);
+  const usStates = useRef(null);
+  const centered = useRef(null);
+  //refs, we don't want a rerender when these change!
+  const g = useRef(null);
 
   // setting some boundaries
-  const width = 960;
-  const height = 600;
-  let x = width/2;
-  let y = height/2;
+  let x = width / 2;
+  let y = height / 2;
   let k = 1;
 
-  const centerState = (d) => {
-    //create variables for centering the state
-    if (d && centered.current !== d) {
-      var centroid = path.current.centroid(d);
-      x = centroid[0];
-      y = centroid[1];
-      //calculate the zoom extent
-      const boundsArr = path.current.bounds(d);
-      const stateWidth = boundsArr[1][0]-boundsArr[0][0];
-      const stateHeight = boundsArr[1][1]-boundsArr[0][1];
-      const widthZoom = width/stateWidth;
-      const heightZoom = height/stateHeight;
-      k=.5*Math.min(widthZoom, heightZoom);
-      centered.current = d;
-    } else {
-      x = width / 2;
-      y = height / 2;
-      k = 1;
-      centered.current = null;
-    }
-
-    g.current.select("#states")
-      .selectAll("path")
-      .classed("active", centered.current && function(d) { return d === centered.current; })
-
-    g.current.selectAll("#active")
-      .style("stroke-width", k*initSW + "px")
-      .style("stroke", "#2d5e9e")
-      .attr("fill", "none")
-
-    g.current.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-
-    setAIVP(centered.current);
-  };
-
-  useEffect(()=> {
-    const translateData = () => {
-      //set the svg to the anchor element
-      svg.current = d3.select(anchor.current).append("svg")
-        .attr("viewBox", `0 0 ${width} ${height}`);
-
-      //create an element d3 map
-      const waterScore = d3.map();
-      //go through each state in the unemploymentByState data and set the map
-      for (let i = 0; i < waterScoreData.length; i += 1) {
-        const countyWaterScore = waterScoreData[i];
-        waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2)*100);
-        const stateId = countyWaterScore.fips_state_id;
-        const { facilities } = countyWaterScore;
-        if (!stateFacilityObj.current[stateId]) {
-          stateFacilityObj.current[stateId] = {facArr: []};
-        }
-        if (!facilities) continue;
-        const { facArr } = stateFacilityObj.current[stateId];
-        facArr.push(...facilities);
-        stateFacilityObj.current[stateId].facArr = facArr
-      };
-
-      //this is the color scheme and scale
-      const noColor = 'rgb(248,249,250)';
-      const color = colorScale(maxScore);
-      
-      //this creates the data for the map
-      usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
-
-      g.current = svg.current.append("g")
-
-      //we append a new "g" element that will have all the county information
-      g.current.append("g")
-        //we set the class as "counties" for this element
-        .attr("id", "counties")
-        // with no path elements, the .data call will create them
-        .selectAll("path")
-        .data(usCounties.current.features)
-        // enter goes into the recently selected elemnt
-        .enter().append("path")
-          .attr("d", path.current)
-          .attr("id", d => `county-${d.id}`)
-          .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
-          .attr("class", "county-boundary")
-          .style("stroke", "grey")
-          // add county to list
-          .on("click", addCounty)
-          //the following two lines darken the county that is hovered on
-          .on("mouseover", d => handleHover(`county-${d.id}`))
-          .on("mouseout", d => removeHover(`county-${d.id}`))
-          // this is the hover overlay
-          .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
-
-      //can't use "mesh" because we want to create a zoom on state boundary function
-      usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-
-      //todo: add dots for facility locations
-      //todo: highlight major cities (save for later)
-      //todo: move state selector to above the county table
-      //todo: add timeline to where state selector is currently
-      //we append a new "g" element for the state boundaries
-      g.current.append("g")
-        //set the class
-        .attr("id", "states")
-        //select the "path" elements
-        .selectAll("path")
-        //give our new element the "data"
-        .data(usStates.current.features)
-        .enter().append("path")
-          //create each state's individual path
-          .attr("d", path.current)
-          //give each path a boundary for easy coloring
-          .attr("class", "state-boundary")
-          //add a fully opaque fill, allows the state to handle click
-          .attr("fill", "rgba(0,0,0,0)")
-          .attr("id", d => `state-${d.id}`)
-          .style("stroke", "black")
-          .style("stroke-width", ".5px")
-          //give a click listener for each state-boundary
-          .on("click", centerState)
-          .on("mouseover", d => handleHover(`state-${d.id}`))
-          .on("mouseout", d => removeHover(`state-${d.id}`))
-          .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
-    }
-
-    (topologyData && waterScoreData && stateWaterQualData) && translateData();
-  }, [topologyData, waterScoreData, stateWaterQualData]);
-
-  useEffect(() => {
-    const addPoints = () => {
-      if (areaInViewPort) {
-        console.log(areaInViewPort.id);
-        const facilities = stateFacilityObj.current[areaInViewPort.id];
-        console.log(facilities);
-        // todo: add facilities that have problems in areaInViewPort
-        // todo: 11/11 Update - need to adjust the coords so the points appear on the map
-        // todo: onClick, send to facility page on ECHO in new page using RegistryID
-        // g.current.append('g')
-        //   .attr('id', 'facilities')
-        //   .selectAll('circle')
-        //   .data(facilities)
-        //   .enter()
-        //   .append('circle')
-        //   .attr('cx', (d) => d.areaCoords[0])
-        //   .attr('cy', (d) => d.areaCoords[1])
-        //   .on('click', (d) => reqRedirect(d))
-        //   .attr('r', 8)
-        //   .attr('fill', 'yellow')
-        //   .attr('class', 'city-point')
-        //   .append('title')
-        //   .text((d) => d.areaName);
-      } else {
-        // g.current.select('#facilities')
-        //   .remove();
-      }
-    }
-
-    if (g.current) addPoints();
-  }, [areaInViewPort])
-
-  return (
-    <>
-      <ChooseZoom areaInViewPort={areaInViewPort} centerState={centerState} usStates={usStates}/>
-      <div className="map-container" ref={anchor} />
-    </>
-  )
-};
-
-const DefaultD3 = () => {
-  // !leave this
-  const [topologyData, setTD] = useState(undefined);
-  // !leave this
-  const [waterScoreData, setWSD] = useState(undefined);
-  // !leave this
-  const [stateWaterQualData, setWQD] = useState(undefined);
-  // !leave this
-  const [countiesRanked, setCountyRanked] = useState([]);
-  
-  //start maxScore at 0, that way we will ensure a score is higher
-  const maxScore = useRef(0);
-
-  // !leave this
   const addCounty = (d) => {
     const getCounty = () => {
       const counties = waterScoreData.length;
@@ -300,88 +51,66 @@ const DefaultD3 = () => {
     return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
   };
 
-  // !leave this
-  useEffect(()=>{
-    const getData = async () => {
-      try {
-        const topoLocation = "https://d3js.org/us-10m.v1.json";
-        setTD(await d3.json(topoLocation));
+  const centerState = (d) => {
+    //create variables for centering the state
+    if (d && centered.current !== d) {
+      var centroid = path.current.centroid(d);
+      x = centroid[0];
+      y = centroid[1];
+      //calculate the zoom extent
+      const boundsArr = path.current.bounds(d);
+      const stateWidth = boundsArr[1][0] - boundsArr[0][0];
+      const stateHeight = boundsArr[1][1] - boundsArr[0][1];
+      const widthZoom = width / stateWidth;
+      const heightZoom = height / stateHeight;
+      k = .5 * Math.min(widthZoom, heightZoom);
+      centered.current = d;
+    }
+    else {
+      x = width / 2;
+      y = height / 2;
+      k = 1;
+      centered.current = null;
+    }
+    g.current.select("#states")
+      .selectAll("path")
+      .classed("active", centered.current && function (d) { return d === centered.current; });
+    g.current.selectAll("#active")
+      .style("stroke-width", k * initSW + "px")
+      .style("stroke", "#2d5e9e")
+      .attr("fill", "none");
+    g.current.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+    setAIVP(centered.current);
+  };
 
-        const locationsSRC = "/v1/data/?sources=locations";
-        const locJSON = await fetch(locationsSRC);
-        const locData = await locJSON.json();
-        const { locations } = locData;
-        const locCount = locations.length;
-        const convLoc = Object.keys(countyList).map((countyId) => {
-          for (let i = 0; i < locCount; i ++) {
-            if (countyId === locations[i].fips_county_id) {
-              return locations[i];
-            }
-          }
-          const county = countyList[countyId];
-          return {
-            county: county.Name,
-            fips_county_id: countyId,
-            fips_state_id: countyId.substring(0, 2),
-            score: 0,
-            facilities: [],
-          }
-        })
-        setWSD(convLoc);
-        
-        let topCountyScores = [];
-        //for each fips specific data point, work on state data
-        locations.forEach((fipsSpecific)=>{
-          // State FIPS ID is the first two characters of the county ID
-          const stateId = fipsSpecific.fips_county_id.substring(0,2);
-          const stateData = stateFipsId[stateId];
-          stateData.count = stateData.count ? stateData.count+1 : 1;
-          const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
-          stateData.max = stateData.max ? 
-            Math.max(stateData.max, currScore) : 
-            currScore;
-          stateData.min = stateData.min ? 
-            Math.min(stateData.min, currScore) : 
-            currScore;
-          currScore > maxScore.current && (maxScore.current = currScore);
-          if(topCountyScores.length<3) {
-            topCountyScores.push(fipsSpecific)
-          } else {
-            topCountyScores.push(fipsSpecific);
-            topCountyScores.sort((a,b) => b.score-a.score)
-            topCountyScores.pop();
-          }
-          //!: average is not actually average
-          //!: does not account for population
-          stateData.avg = stateData.avg ? 
-            ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
-            currScore;
-          stateFipsId[stateId]=stateData;
-        });
-        setCountyRanked(topCountyScores);
-        setWQD(stateFipsId);
-      } catch (error) {
-        console.log('Error loading or parsing data.');
-      }
-    };
+  if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
 
-    (!topologyData && !waterScoreData) && getData();
-  }, []);
-
-  if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#somecolor" height={80} width={80} className="loader" />
-
+  // todo: make the ChooseZoom component work; manage AIVP state here
   // todo: add populace areas along the bottom
   return (
     <div className="map-content">
-      <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
+      <div className="options">
+        <ChooseZoom
+          areaInViewPort={areaInViewPort}
+          centerState={centerState}
+          usStates={usStates}
+        />
+        <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
+      </div>
       <div className="map" >
         <small>Zoom to state, click on county to compare at left. Hit reset to zoom to bounds of U.S.</small>
         <MapRender
-          topologyData = { topologyData }
-          waterScoreData = { waterScoreData }
-          stateWaterQualData = { stateWaterQualData }
-          addCounty = { addCounty }
-          maxScore = { maxScore.current }
+          topologyData={topologyData}
+          waterScoreData={waterScoreData}
+          g={g}
+          stateWaterQualData={stateWaterQualData}
+          centerState={centerState}
+          addCounty={addCounty}
+          maxScore={maxScore.current}
+          usStates={usStates}
+          areaInViewPort={areaInViewPort}
         />
       </div>
     </div>

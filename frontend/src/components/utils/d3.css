@@ -4,10 +4,6 @@
   background-color: #fbfbfb;
 }
 
-.map-content table {
-  width: 30%;
-}
-
 .map-container {
   margin-top: 10px;
 }
@@ -30,8 +26,8 @@
 
 .county-list {
   word-break: break-all;
-  box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);;
-  margin: 20px 10px 10px 10px;
+  box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px 0;
   background-color: white;
 }
 
@@ -45,4 +41,10 @@
   width: 100vw;
   top: 50vh;
   position: absolute;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
