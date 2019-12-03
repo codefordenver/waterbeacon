@@ -1,19 +1,10 @@
 import React, { useState, useRef } from 'react';
 import Loader from 'react-loader-spinner';
-import * as d3 from 'd3';
 import './utils/d3.css'
 
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
-
-export const width = 960;
-export const height = 600;
-//create a path item
-export const path = d3.geoPath();
-
-//change the following variable to adjust stroke width
-export const initSW = .5;
 
 const DefaultD3 = ({
   topologyData,
@@ -25,12 +16,6 @@ const DefaultD3 = ({
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
   const usStates = useRef(null);
-  const centered = useRef(null);
-
-  // setting some boundaries
-  let x = width / 2;
-  let y = height / 2;
-  let k = 1;
 
   const addCounty = (d) => {
     const getCounty = () => {
@@ -51,36 +36,11 @@ const DefaultD3 = ({
 
   const centerState = (d) => {
     //create variables for centering the state
-    if (d && centered.current !== d) {
-      var centroid = path.centroid(d);
-      x = centroid[0];
-      y = centroid[1];
-      //calculate the zoom extent
-      const boundsArr = path.bounds(d);
-      const stateWidth = boundsArr[1][0] - boundsArr[0][0];
-      const stateHeight = boundsArr[1][1] - boundsArr[0][1];
-      const widthZoom = width / stateWidth;
-      const heightZoom = height / stateHeight;
-      k = .5 * Math.min(widthZoom, heightZoom);
-      centered.current = d;
+    if (d && areaInViewPort !== d) {
+      setAIVP(d);
+    } else {
+      setAIVP(null);
     }
-    else {
-      x = width / 2;
-      y = height / 2;
-      k = 1;
-      centered.current = null;
-    }
-    // g.current.select("#states")
-    //   .selectAll("path")
-    //   .classed("active", centered.current && function (d) { return d === centered.current; });
-    // g.current.selectAll("#active")
-    //   .style("stroke-width", k * initSW + "px")
-    //   .style("stroke", "#2d5e9e")
-    //   .attr("fill", "none");
-    // g.current.transition()
-    //   .duration(750)
-    //   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
-    setAIVP(centered.current);
   };
 
   if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
@@ -103,11 +63,11 @@ const DefaultD3 = ({
           topologyData={topologyData}
           waterScoreData={waterScoreData}
           stateWaterQualData={stateWaterQualData}
-          centerState={centerState}
           addCounty={addCounty}
           maxScore={maxScore.current}
           usStates={usStates}
           areaInViewPort={areaInViewPort}
+          centerState={centerState}
         />
       </div>
     </div>

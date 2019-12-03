@@ -2,7 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { countyList } from './utils/counties';
-import { width, height, path, initSW, } from './DefaultD3';
+
+export const width = 960;
+export const height = 600;
+//create a path item
+export const path = d3.geoPath();
+
+//change the following variable to adjust stroke width
+export const initSW = .5;
 
 // todo: change color scale from blue
 const colorScale = (maxScore) => {
@@ -24,6 +31,11 @@ const removeHover = (identifier) => {
     .style("stroke-width", initSW + "px");
 };
 
+// setting some boundaries
+let x = width / 2;
+let y = height / 2;
+let k = 1;
+
 export const MapRender = (props) => {
   const anchor = useRef('map-container');
   const { 
@@ -32,9 +44,9 @@ export const MapRender = (props) => {
     stateWaterQualData,
     addCounty,
     maxScore,
-    centerState,
     usStates,
     areaInViewPort,
+    centerState,
   } = props;
   const svg = useRef(null);
   const usCounties = useRef(null);
@@ -117,7 +129,7 @@ export const MapRender = (props) => {
         .style("stroke", "black")
         .style("stroke-width", ".5px")
         //give a click listener for each state-boundary
-        .on("click", centerState)
+        .on("click", d => centerState(d))
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
@@ -155,8 +167,39 @@ export const MapRender = (props) => {
         //   .remove();
       }
     };
-    if (g.current)
+    const centerState = () => {
+      //create variables for centering the state
+      if (areaInViewPort) {
+        var centroid = path.centroid(areaInViewPort);
+        x = centroid[0];
+        y = centroid[1];
+        //calculate the zoom extent
+        const boundsArr = path.bounds(areaInViewPort);
+        const stateWidth = boundsArr[1][0] - boundsArr[0][0];
+        const stateHeight = boundsArr[1][1] - boundsArr[0][1];
+        const widthZoom = width / stateWidth;
+        const heightZoom = height / stateHeight;
+        k = .5 * Math.min(widthZoom, heightZoom);
+      } else {
+        x = width / 2;
+        y = height / 2;
+        k = 1;
+      }
+      g.current.select("#states")
+        .selectAll("path")
+        .classed("active", areaInViewPort && function (d) { return d === areaInViewPort; });
+      g.current.selectAll("#active")
+        .style("stroke-width", k * initSW + "px")
+        .style("stroke", "#2d5e9e")
+        .attr("fill", "none");
+      g.current.transition()
+        .duration(750)
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
+    }
+    if (g.current) {
       addPoints();
+      centerState();
+    }
   }, [areaInViewPort]);
 
   return (<div className="map-container" ref={anchor} />);
