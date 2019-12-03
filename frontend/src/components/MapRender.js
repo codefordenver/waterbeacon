@@ -4,7 +4,7 @@ import * as topojson from 'topojson';
 import { countyList } from './utils/counties';
 
 export const width = 960;
-export const height = 600;
+export const height = 500;
 //create a path item
 export const path = d3.geoPath();
 
@@ -140,33 +140,47 @@ export const MapRender = (props) => {
 
   useEffect(() => {
     const addPoints = () => {
-      if (areaInViewPort) {
-        console.log(areaInViewPort.id);
-        const facilities = stateFacilityObj.current[areaInViewPort.id];
-        console.log(facilities);
-        // todo: add facilities that have problems in areaInViewPort
-        // todo: 11/11 Update - need to adjust the coords so the points appear on the map
-        // todo: onClick, send to facility page on ECHO in new page using RegistryID
-        // g.current.append('g')
-        //   .attr('id', 'facilities')
-        //   .selectAll('circle')
-        //   .data(facilities)
-        //   .enter()
-        //   .append('circle')
-        //   .attr('cx', (d) => d.areaCoords[0])
-        //   .attr('cy', (d) => d.areaCoords[1])
-        //   .on('click', (d) => reqRedirect(d))
-        //   .attr('r', 8)
-        //   .attr('fill', 'yellow')
-        //   .attr('class', 'city-point')
-        //   .append('title')
-        //   .text((d) => d.areaName);
+      if (g.current) {
+        g.current.select('#facilities')
+          .remove();
       }
-      else {
-        // g.current.select('#facilities')
-        //   .remove();
+      if (areaInViewPort) {
+        const facilities = stateFacilityObj.current[areaInViewPort.id];
+        const defaultScale = d3.geoAlbersUsa().scale();
+        // todo: scale is not precise for Idaho or Florida
+        // code from: https://jsfiddle.net/bze197L2/
+        const projection = d3.geoAlbersUsa()
+          .translate([480, 300])
+          .scale(defaultScale * 600 / 500);
+        facilities.facArr.forEach((facility) => {
+          const coordinates = projection([facility.long, facility.lat]);
+          if (coordinates) {
+            facility.coordinates = coordinates;
+          } else {
+            facility.coordinates = [0, 0];
+          }
+        })
+
+        // todo: onClick, send to facility page on ECHO in new page using RegistryID
+        // redirect code is currently commented out
+        g.current.append('g')
+          .attr('id', 'facilities')
+          .selectAll('circle')
+          .data(facilities.facArr)
+          .enter()
+          .append('circle')
+          .attr('cx', (d) => d.coordinates[0])
+          .attr('cy', (d) => d.coordinates[1])
+          // .on('click', (d) => reqRedirect(d))
+          .attr('r', 2)
+          .attr('fill', 'yellow')
+          .attr('class', 'city-point')
+          .append('title')
+          .text((d) => d.areaName);
+      } else {
       }
     };
+
     const centerState = () => {
       //create variables for centering the state
       if (areaInViewPort) {
@@ -195,7 +209,8 @@ export const MapRender = (props) => {
       g.current.transition()
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
-    }
+    };
+
     if (g.current) {
       addPoints();
       centerState();
