@@ -1,0 +1,8 @@
+.zoomer {
+  display:flex;
+  justify-content: space-between;
+}
+
+.zoomer div {
+  width: 100%;
+}

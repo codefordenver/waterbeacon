@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Water Beacon",
+  "name": "Water Beacon: Tracking Water Quality Issues",
   "icons": [
     {
       "src": "favicon.ico",
