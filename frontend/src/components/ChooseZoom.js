@@ -29,16 +29,20 @@ export const ChooseZoom = ({ areaInViewPort, usStates, centerState, }) => {
   useEffect(() => {
     const chooseState = () => {
       const stateIn = selected[0].toLowerCase();
+      // get the fips ID of the state selected
       const { id } = stateList.find((state) => state.name.toLowerCase() === stateIn);
+      // if the state searched for is already in the view box
       if (areaInViewPort && id === areaInViewPort.id) return null;
+      // if the user chooses to view all states
       if (selected[0] === "All") {
         return centerState();
       };
+      // find state in features
       const tempState = usStates.current.features.find((state) => state.id === id);
+      // will call parent function to recenter view box
       tempState && centerState(tempState);
     }
 
-    // if (selected.length === 1) setVT(false);
     if (selected.length === 1 && selected[0] !== areaInViewPort) chooseState();
   }, [selected]);
 

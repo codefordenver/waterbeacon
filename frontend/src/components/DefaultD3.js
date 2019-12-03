@@ -6,6 +6,7 @@ import './utils/d3.css'
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 
+// this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
   topologyData,
   waterScoreData,
@@ -17,29 +18,19 @@ const DefaultD3 = ({
   const [areaInViewPort, setAIVP] = useState(null);
   const usStates = useRef(null);
 
+  // this function adds counties to the table on left
   const addCounty = (d) => {
-    const getCounty = () => {
-      const counties = waterScoreData.length;
-      for(let i = 0; i<=counties; i++){
-        const county = waterScoreData[i];
-        if(county){
-          if(d.id===county.fips_county_id){
-            return county;
-          }
-        }
-      }
-    }
-    const chosenOne = getCounty();
+    const chosenOne = waterScoreData.find((county) => d.id === county.fips_county_id);
 
     return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
   };
 
+  // when called, changes the area in viewport state, triggering useEffect function in map render
   const centerState = (d) => {
     //create variables for centering the state
     if (d && areaInViewPort !== d) {
       setAIVP(d);
     } else {
-      console.log('here');
       setAIVP(null);
     }
   };
@@ -65,7 +56,7 @@ const DefaultD3 = ({
           waterScoreData={waterScoreData}
           stateWaterQualData={stateWaterQualData}
           addCounty={addCounty}
-          maxScore={maxScore.current}
+          maxScore={maxScore}
           usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}

@@ -26,33 +26,43 @@ const stateFipsId = {
   "05":{State:"AR",},"01":{State:"AL",},"02":{State:"AK",}
 };
 
-const Retrieve = (props) => {
-  // !leave this
+// this component will retrieve the data from our database
+const Retrieve = () => {
+  // this is the data used to build the map
   const [topologyData, setTD] = useState(undefined);
-  // !leave this
+  // this is the data used to color the map
   const [waterScoreData, setWSD] = useState(undefined);
-  // !leave this
+  // this is the component that will hold the state information, along with min and max values
   const [stateWaterQualData, setWQD] = useState(undefined);
-  // !leave this
+  // holds the highest scoring three counties on initial render
+  // data is sent to table on left pane
+  // user can add and remove counties 
   const [countiesRanked, setCountyRanked] = useState([]);
-
-  //start maxScore at 0, that way we will ensure a score is higher
-  const maxScore = useRef(0);
+  // holds the max score for all counties
+  const [maxScore, setMax] = useState(0);
 
   useEffect(()=>{
+    // retrieve topo data
+    // can store topo data locally and import it
     const getTopoData = async () => {
       const topoLocation = "https://d3js.org/us-10m.v1.json";
       setTD(await d3.json(topoLocation));
+      // uncomment following if loading topo data locally
+      // setTD(topoLocation);
     }
 
     const getLocations = async () => {
+      // stores the location data in session storage
+      // speeds up rerenders in development
       if (sessionStorage.getItem('locData')) {
         const locData = sessionStorage.getItem('locData');
         return JSON.parse(locData);
       }
+      // calls the server set up as proxy in package.json to retrieve data
       const locationsSRC = "/v1/data/?sources=locations";
       const locJSON = await fetch(locationsSRC);
       const locData = await locJSON.json();
+      // stores data retrieved in browser
       sessionStorage.setItem('locData', JSON.stringify(locData));
       return locData;
     }
@@ -62,11 +72,15 @@ const Retrieve = (props) => {
       const { locations } = locData;
       const locCount = locations.length;
       const convLoc = Object.keys(countyList).map((countyId) => {
+        // could do an array find here, but there is potential that no county is returned
+        // when there is no county returned, it will trigger error
         for (let i = 0; i < locCount; i ++) {
           if (countyId === locations[i].fips_county_id) {
             return locations[i];
           }
         }
+
+        // if a county is not in our db, will need to establish data for the county
         const county = countyList[countyId];
         return {
           county: county.Name,
@@ -78,21 +92,29 @@ const Retrieve = (props) => {
       })
       setWSD(convLoc);
       
+      // two variables to hold data until we are ready to set state
       let topCountyScores = [];
+      let tempMaxScore = 0
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
         const stateId = fipsSpecific.fips_county_id.substring(0,2);
         const stateData = stateFipsId[stateId];
-        stateData.count = stateData.count ? stateData.count+1 : 1;
+        stateData.count = stateData.count ? stateData.count + 1 : 1;
+        // only need to go two spots past decimal
         const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
+        // test to find the max county score for a state
         stateData.max = stateData.max ? 
           Math.max(stateData.max, currScore) : 
           currScore;
+        // test to find the min county score for a state
         stateData.min = stateData.min ? 
           Math.min(stateData.min, currScore) : 
           currScore;
-        currScore > maxScore.current && (maxScore.current = currScore);
+        // reset the tempMaxScore if currScore is larger
+        currScore > tempMaxScore && (tempMaxScore = currScore);
+
+        // build the three-county table
         if(topCountyScores.length<3) {
           topCountyScores.push(fipsSpecific)
         } else {
@@ -107,6 +129,7 @@ const Retrieve = (props) => {
           currScore;
         stateFipsId[stateId]=stateData;
       });
+      setMax(tempMaxScore);
       setCountyRanked(topCountyScores);
       setWQD(stateFipsId);
     };

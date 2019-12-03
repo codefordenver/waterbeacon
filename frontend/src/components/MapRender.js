@@ -3,29 +3,33 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { countyList } from './utils/counties';
 
-export const width = 960;
-export const height = 600;
+const width = 960;
+const height = 600;
 //create a path item
-export const path = d3.geoPath();
+const path = d3.geoPath();
 
 //change the following variable to adjust stroke width
-export const initSW = .5;
+const initSW = .5;
 
-// todo: change color scale from blue
+// this function controls the entire color scale for the map
 const colorScale = (maxScore) => {
+  console.log(maxScore);
   const iteration = 10;
   const csStart = '#FFFFFF';
+  // todo: may need to choose a darker color for end of scale
   const csEnd = '#2O4177';
   const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
   return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
     .range(colorScale);
 };
 
+// increases the border when hovering
 const handleHover = (identifier) => {
   d3.select(`#${identifier}`)
     .style("stroke-width", 4 * initSW + "px");
 };
 
+// resets the border after hovering
 const removeHover = (identifier) => {
   d3.select(`#${identifier}`)
     .style("stroke-width", initSW + "px");
@@ -36,6 +40,7 @@ let x = width / 2;
 let y = height / 2;
 let k = 1;
 
+// this function's only goal is to keep the map rendered in the "view box"
 export const MapRender = (props) => {
   const anchor = useRef('map-container');
   const { 
@@ -54,6 +59,7 @@ export const MapRender = (props) => {
   //refs, we don't want a rerender when these change!
   const g = useRef(null);
 
+  // this hook builds the map and renders it
   useEffect(() => {
     const translateData = () => {
       // todo: make map render (12/2)
@@ -138,8 +144,11 @@ export const MapRender = (props) => {
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
+  // this hook is triggered when the user changes the zoom
+  // it centers the map
   useEffect(() => {
     const addPoints = () => {
+      // need to remove facilities from inactive states
       if (g.current) {
         g.current.select('#facilities')
           .remove();
