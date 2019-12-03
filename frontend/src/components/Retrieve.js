@@ -46,20 +46,19 @@ const Retrieve = (props) => {
     }
 
     const getLocations = async () => {
-      if (localStorage.getItem('locData')) {
-        const locData = localStorage.getItem('locData');
+      if (sessionStorage.getItem('locData')) {
+        const locData = sessionStorage.getItem('locData');
         return JSON.parse(locData);
       }
       const locationsSRC = "/v1/data/?sources=locations";
       const locJSON = await fetch(locationsSRC);
       const locData = await locJSON.json();
-      localStorage.setItem('locData', JSON.stringify(locData));
+      sessionStorage.setItem('locData', JSON.stringify(locData));
       return locData;
     }
 
     const getData = async () => {
       const locData = await getLocations();
-      console.log(locData);
       const { locations } = locData;
       const locCount = locations.length;
       const convLoc = Object.keys(countyList).map((countyId) => {

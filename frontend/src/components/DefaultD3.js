@@ -26,8 +26,6 @@ const DefaultD3 = ({
   const [areaInViewPort, setAIVP] = useState(null);
   const usStates = useRef(null);
   const centered = useRef(null);
-  //refs, we don't want a rerender when these change!
-  const g = useRef(null);
 
   // setting some boundaries
   let x = width / 2;
@@ -54,11 +52,11 @@ const DefaultD3 = ({
   const centerState = (d) => {
     //create variables for centering the state
     if (d && centered.current !== d) {
-      var centroid = path.current.centroid(d);
+      var centroid = path.centroid(d);
       x = centroid[0];
       y = centroid[1];
       //calculate the zoom extent
-      const boundsArr = path.current.bounds(d);
+      const boundsArr = path.bounds(d);
       const stateWidth = boundsArr[1][0] - boundsArr[0][0];
       const stateHeight = boundsArr[1][1] - boundsArr[0][1];
       const widthZoom = width / stateWidth;
@@ -72,16 +70,16 @@ const DefaultD3 = ({
       k = 1;
       centered.current = null;
     }
-    g.current.select("#states")
-      .selectAll("path")
-      .classed("active", centered.current && function (d) { return d === centered.current; });
-    g.current.selectAll("#active")
-      .style("stroke-width", k * initSW + "px")
-      .style("stroke", "#2d5e9e")
-      .attr("fill", "none");
-    g.current.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+    // g.current.select("#states")
+    //   .selectAll("path")
+    //   .classed("active", centered.current && function (d) { return d === centered.current; });
+    // g.current.selectAll("#active")
+    //   .style("stroke-width", k * initSW + "px")
+    //   .style("stroke", "#2d5e9e")
+    //   .attr("fill", "none");
+    // g.current.transition()
+    //   .duration(750)
+    //   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
     setAIVP(centered.current);
   };
 
@@ -104,7 +102,6 @@ const DefaultD3 = ({
         <MapRender
           topologyData={topologyData}
           waterScoreData={waterScoreData}
-          g={g}
           stateWaterQualData={stateWaterQualData}
           centerState={centerState}
           addCounty={addCounty}

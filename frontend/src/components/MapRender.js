@@ -32,7 +32,6 @@ export const MapRender = (props) => {
     stateWaterQualData,
     addCounty,
     maxScore,
-    g,
     centerState,
     usStates,
     areaInViewPort,
@@ -40,8 +39,12 @@ export const MapRender = (props) => {
   const svg = useRef(null);
   const usCounties = useRef(null);
   const stateFacilityObj = useRef({});
+  //refs, we don't want a rerender when these change!
+  const g = useRef(null);
+
   useEffect(() => {
     const translateData = () => {
+      // todo: make map render (12/2)
       //set the svg to the anchor element
       svg.current = d3.select(anchor.current).append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`);
@@ -61,8 +64,7 @@ export const MapRender = (props) => {
         const { facArr } = stateFacilityObj.current[stateId];
         facArr.push(...facilities);
         stateFacilityObj.current[stateId].facArr = facArr;
-      }
-      ;
+      };
       //this is the color scheme and scale
       const noColor = 'rgb(248,249,250)';
       const color = colorScale(maxScore);
@@ -78,7 +80,7 @@ export const MapRender = (props) => {
         .data(usCounties.current.features)
         // enter goes into the recently selected elemnt
         .enter().append("path")
-        .attr("d", path.current)
+        .attr("d", path)
         .attr("id", d => `county-${d.id}`)
         .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
         .attr("class", "county-boundary")
@@ -106,7 +108,7 @@ export const MapRender = (props) => {
         .data(usStates.current.features)
         .enter().append("path")
         //create each state's individual path
-        .attr("d", path.current)
+        .attr("d", path)
         //give each path a boundary for easy coloring
         .attr("class", "state-boundary")
         //add a fully opaque fill, allows the state to handle click
@@ -123,6 +125,7 @@ export const MapRender = (props) => {
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
   }, [topologyData, waterScoreData, stateWaterQualData]);
+
   useEffect(() => {
     const addPoints = () => {
       if (areaInViewPort) {
@@ -155,5 +158,6 @@ export const MapRender = (props) => {
     if (g.current)
       addPoints();
   }, [areaInViewPort]);
+
   return (<div className="map-container" ref={anchor} />);
 };
