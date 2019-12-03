@@ -8,9 +8,13 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     container_name: app
     volumes:
-      — .:/app
+      - pg-data:/app
     ports:
-      — 8000:8000
+      - 8000:8000
+
+volumes:
+  pg-data:
+
 #    env_file:
 #      - ./env
 #  nginx:
