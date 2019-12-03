@@ -39,6 +39,7 @@ const DefaultD3 = ({
     if (d && areaInViewPort !== d) {
       setAIVP(d);
     } else {
+      console.log('here');
       setAIVP(null);
     }
   };

@@ -22,18 +22,16 @@ export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"
   {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
 ];
 
-export const ChooseZoom = ({ areaInViewPort, usStates, }) => {
+export const ChooseZoom = ({ areaInViewPort, usStates, centerState, }) => {
   const stateNames = stateList.map((state) => state.name);
   const [selected, setSel] = useState([]);
 
-  console.log(selected);
-
   useEffect(() => {
-    const centerState = () => {
+    const chooseState = () => {
       const stateIn = selected[0].toLowerCase();
       const { id } = stateList.find((state) => state.name.toLowerCase() === stateIn);
       if (areaInViewPort && id === areaInViewPort.id) return null;
-      if (stateIn === "All") {
+      if (selected[0] === "All") {
         return centerState();
       };
       const tempState = usStates.current.features.find((state) => state.id === id);
@@ -41,16 +39,8 @@ export const ChooseZoom = ({ areaInViewPort, usStates, }) => {
     }
 
     // if (selected.length === 1) setVT(false);
-    if(selected.length === 1) centerState();
+    if (selected.length === 1 && selected[0] !== areaInViewPort) chooseState();
   }, [selected]);
-
-  useEffect(() => {
-    const setStateInView = () => {
-      const { name } = stateList.find((state) => areaInViewPort.id === state.id );
-      setSel([name]);
-    };
-    areaInViewPort ? setStateInView() : setSel([]);
-  }, [areaInViewPort]);
 
   return (
     <div className="zoomer">
