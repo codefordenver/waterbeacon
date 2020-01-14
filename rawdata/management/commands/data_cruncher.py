@@ -5,6 +5,7 @@ from utils.epa.sdw_data_cruncher import ( SDW_Data_Cruncher )
 from app import models as app_models
 from rawdata import models as raw_models
 from utils.log import log
+import pandas as pd
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -24,7 +25,7 @@ class Command(BaseCommand):
         for state in states:
 
             areas = cruncher.calc_state_scores(state, print_test = True)
-            for area in areas:
+            for __, area in areas.iterrows():
                 location = app_models.location.objects.filter(fips_county =  area['county_fips']).first()
 
                 if area['score'] == 0:
