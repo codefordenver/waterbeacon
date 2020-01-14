@@ -30,12 +30,12 @@ class SDW_Data_Cruncher(object):
 
         return viopaccr / self._HISTORICAL_MAX_SCORE
 
-    def _calc_current_score(self, voiremain):
-        # voiremain current score
-        if (voiremain >= self._CURRENT_MAX_SCORE ):
+    def _calc_current_score(self, vioremain):
+        # vioremain current score
+        if (vioremain >= self._CURRENT_MAX_SCORE ):
             return 1
 
-        return voiremain / self._CURRENT_MAX_SCORE
+        return vioremain / self._CURRENT_MAX_SCORE
 
     def _calc_facility_score(self, facility):
         historical_score = self._calc_historical_score(facility['Viopaccr'])
@@ -53,41 +53,42 @@ class SDW_Data_Cruncher(object):
         
         systems_df = pd.DataFrame(list(systems))
         systems_df['FIPSCodes'].fillna(0, inplace = True)
+        # this only takes the first listed value in FIPSCodes
+        # can potentially change it to take all values and split into new rows
         systems_df['FIPSCodes'] = systems_df['FIPSCodes'].str.split(',', expand = True)[0]
         systems_df['Viopaccr'].fillna(0, inplace = True)
         systems_df['Vioremain'].fillna(0, inplace = True)
         systems_df['facility_weighted_score'] = systems_df.apply(lambda x: self._calc_facility_score(x), axis = 1)
-        # todo: continue here
-        return systems_df
-        # fips_populations = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['PopulationServedCount'].sum()
-        # fips_weighted_scores = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['weighted_fac_score'].sum()
-        # fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
-        # fips_info['adjusted_score'] = fips_info['weighted_fac_score'] / fips_info['PopulationServedCount']
-        # # this holds the accumulated scores for each FIPs code in a state
-        # fips_scores = fips_info.groupby('FIPSCodes')['adjusted_score'].sum().reset_index()
-        # return fips_scores
+        systems_df['IsCommWaterSystem'] = systems_df['PWSTypeCode'] == 'CWS'
+
+        # sum the populations and weighted scores
+        fips_populations = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['PopulationServedCount'].sum()
+        fips_weighted_scores = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['facility_weighted_score'].sum()
+        # combine values into one dataframe
+        fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
+        # evaluate adjusted score by dividing score by total population served
+        fips_info['adjusted_score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
+        # this holds the accumulated scores for each FIPs code in a state
+        fips_scores = fips_info.groupby('FIPSCodes')['adjusted_score'].sum().reset_index()
+        return fips_scores
 
     def calc_state_scores(self, state, print_test = False):
-        areas = []
-
         if print_test:
             log('state: %s' % (state), 'success')
-        
-        locations = app_models.location.objects.filter( state = state).exclude(fips_county = '')
-        
-        for location in app_models.location.objects.filter( state = state).exclude(fips_county = ''):
-            areas.append({
-                'county_fips': location.fips_county,
-            })
 
-            # if print_test:
-            #     log('%s: %s' % (location.fips_county, round(score, 3)), 'success')
+        areas = []
+        for location in app_models.location.objects.filter(state = state).exclude(fips_county = ''):
+            areas.append({
+                'county_fips': location.fips_county
+            })
         
-        area_scores = self._calc_area_score(state)
-        # todo: exit if area_scores has no data
         area_info = pd.DataFrame(areas)
-        # todo: only get the facilities that have FIPS in area_info (probably right merge)
-        area_df = pd.merge(area_scores, area_info, left_on=FIPSCodes, right_on=count_fips)
         print(area_info.head())
 
-        return []
+        area_scores = self._calc_area_score(state)
+
+        area_df = pd.merge(area_scores, area_info, left_on='FIPSCodes', right_on='county_fips', how='right')
+
+        areas = area_df.values
+
+        return areas
