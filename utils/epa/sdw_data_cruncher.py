@@ -67,9 +67,9 @@ class SDW_Data_Cruncher(object):
         # combine values into one dataframe
         fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
         # evaluate adjusted score by dividing score by total population served
-        fips_info['adjusted_score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
+        fips_info['score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
         # this holds the accumulated scores for each FIPs code in a state
-        fips_scores = fips_info.groupby('FIPSCodes')['adjusted_score'].sum().reset_index()
+        fips_scores = fips_info.groupby('FIPSCodes')['score'].sum().reset_index()
         return fips_scores
 
     def calc_state_scores(self, state, print_test = False):
@@ -81,14 +81,11 @@ class SDW_Data_Cruncher(object):
             areas.append({
                 'county_fips': location.fips_county
             })
-        
+        if len(areas) == 0:
+            return pd.DataFrame(areas)
         area_info = pd.DataFrame(areas)
-        print(area_info.head())
-
         area_scores = self._calc_area_score(state)
 
         area_df = pd.merge(area_scores, area_info, left_on='FIPSCodes', right_on='county_fips', how='right')
-
-        areas = area_df.values
-
-        return areas
+        area_df['score'].fillna(0, inplace=True)
+        return area_df
