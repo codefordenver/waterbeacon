@@ -1,0 +1,7 @@
+boost		eigen		gdal		glib		json-c		libpq		mongodb		numpy		pixman		protobuf	sqlite		zstd
+cairo		epsilon		gdbm		gmp		krb5		libspatialite	mpfr		openblas	pkg-config	protobuf-c	szip
+cfitsio		expat		geoip		hdf5		libdap		libtiff		mysql		openjpeg	poppler		python		unixodbc
+cgal		fontconfig	geos		icu4c		libffi		libtool		netcdf		openssl		popt		python@2	webp
+circleci	freetype	gettext		isl		libgeotiff	libxml2		node		openssl@1.1	postgis		qt		xerces-c
+docker		freexl		giflib		jasper		libmpc		little-cms2	nspr		pcre		postgresql	readline	xz
+docker-machine	gcc		git		jpeg		libpng		lzo		nss		pcre2		proj		sfcgal		yarn
