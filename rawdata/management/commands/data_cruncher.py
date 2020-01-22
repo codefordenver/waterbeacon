@@ -5,6 +5,7 @@ from utils.epa.sdw_data_cruncher import ( SDW_Data_Cruncher )
 from app import models as app_models
 from rawdata import models as raw_models
 from utils.log import log
+from django_pandas.io import read_frame
 import pandas as pd
 
 class Command(BaseCommand):
@@ -26,15 +27,17 @@ class Command(BaseCommand):
 
             areas = cruncher.calc_state_scores(state, print_test = True)
             for __, area in areas.iterrows():
-                location = app_models.location.objects.filter(fips_county =  area['county_fips']).first()
-
+                location = app_models.location.objects.filter(fips_county =  area['fips_county']).first()
                 if area['score'] == 0:
                     if not app_models.data.objects.filter(location = location, score = area['score']).exists():
                         data = app_models.data()
                         data.location = location
                         data.score = area['score']
-                        data.save()
-                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                        try:
+                            data.save()
+                            log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                        except:
+                            print(location)
                     else:
                         log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
                 else:
@@ -45,11 +48,13 @@ class Command(BaseCommand):
                     max_score = area['score'] + 0.05
 
                     if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
-
                             data = app_models.data()
                             data.location = location
                             data.score = area['score']
-                            data.save()
-                            log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                            try:
+                                data.save()
+                                log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                            except:
+                                print(location)
                     else:
                         log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')

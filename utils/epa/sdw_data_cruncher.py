@@ -2,6 +2,7 @@ from app import models as app_models
 from rawdata import models as rawdata_models
 from app import models as app_models
 from utils.log import log
+from django_pandas.io import read_frame
 import pandas as pd
 
 class SDW_Data_Cruncher(object):
@@ -51,7 +52,7 @@ class SDW_Data_Cruncher(object):
         if systems.count() == 0:
             return pd.DataFrame([])
         
-        systems_df = pd.DataFrame(list(systems))
+        systems_df = read_frame(systems)
         systems_df['FIPSCodes'].fillna(0, inplace = True)
         # this only takes the first listed value in FIPSCodes
         # can potentially change it to take all values and split into new rows
@@ -76,16 +77,14 @@ class SDW_Data_Cruncher(object):
         if print_test:
             log('state: %s' % (state), 'success')
 
-        areas = []
-        for location in app_models.location.objects.filter(state = state).exclude(fips_county = ''):
-            areas.append({
-                'county_fips': location.fips_county
-            })
-        if len(areas) == 0:
-            return pd.DataFrame(areas)
-        area_info = pd.DataFrame(areas)
+        state_locs = app_models.location.objects.filter(state = state)
+        state_df = read_frame(state_locs)
+        state_df["fips_county"] = pd.to_numeric(state_df["fips_county"], errors = 'coerce')
+        state_df["fips_county"] = state_df["fips_county"].astype(int)
         area_scores = self._calc_area_score(state)
-
-        area_df = pd.merge(area_scores, area_info, left_on='FIPSCodes', right_on='county_fips', how='right')
+        if area_scores.shape[0] == 0:
+            state_df['score'] = 0
+            return state_df
+        area_df = pd.merge(area_scores, state_df, left_on='FIPSCodes', right_on='fips_county', how='right')
         area_df['score'].fillna(0, inplace=True)
         return area_df
