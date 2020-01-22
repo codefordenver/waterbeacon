@@ -21,8 +21,6 @@ class Command(BaseCommand):
         for filename in os.listdir(csvDirectory):
             path = os.path.join(csvDirectory, filename)
             data = pd.read_csv(path)
-            # get column names for db
-            columns = list(data.columns)
             # line_cnt can start at 0, as our data will be first row
             line_cnt = 0
 
@@ -35,11 +33,11 @@ class Command(BaseCommand):
             for __, system in data.iterrows():
                 try:
                     processed_rows += 1
-                    importer.add_watersystem_to_db(system, columns)
+                    importer.add_watersystem_to_db(system)
                     if (processed_rows % 10000 == 0):
                         self.stdout.write('Processed row %s...' %processed_rows)
                 except utils.IntegrityError:
-                    self.stdout.write('%s already in the db' % system[columns.index("PWSId")])
+                    self.stdout.write('%s already in the db' % system["PWSId"])
                 except:
                     self.stdout.write('%s' %system)
                     raise
