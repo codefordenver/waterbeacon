@@ -85,6 +85,8 @@ class SDW_Data_Cruncher(object):
         if area_scores.shape[0] == 0:
             state_df['score'] = 0
             return state_df
+        area_scores["FIPSCodes"] = pd.to_numeric(area_scores["FIPSCodes"], errors = 'coerce')
+        area_scores["FIPSCodes"] = area_scores["FIPSCodes"].astype(int)
         area_df = pd.merge(area_scores, state_df, left_on='FIPSCodes', right_on='fips_county', how='right')
         area_df['score'].fillna(0, inplace=True)
         return area_df
