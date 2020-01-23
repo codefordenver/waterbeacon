@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 from app import models as app_models
 from news import models as news_models
 from utils.utils import ( str2bool )
+import math
 
 
 class locationData(APIView):
@@ -30,12 +31,10 @@ class locationData(APIView):
             queryset = app_models.location.objects.all()
             total_facilities = 0
             for location in queryset:
-
-
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
                     # get facilities
                     facilities = []
-                    for facility in location.facilities.filter( in_violation = True):
+                    for facility in location.facilities.filter(in_violation = True, ):
                         facilities.append({
                             'PWSId': facility.PWSId,
                             'FacName': facility.FacName,
@@ -46,18 +45,30 @@ class locationData(APIView):
                     total_facilities += len(facilities)
                     data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
 
-
-                    response["locations"].append({
-                        "fips_state_id": location.fips_state,
-                        "fips_county_id": location.fips_county,
-                        "major_city": location.major_city,
-                        "state": location.state,
-                        "county": location.county,
-                        "zipcode": location.zipcode,
-                        "population_served":location.population_served,
-                        "score": round(float(data.score), 2),
-                        "facilities": facilities
-                    })
+                    if math.isnan(data.score):
+                        response["locations"].append({
+                            "fips_state_id": location.fips_state,
+                            "fips_county_id": location.fips_county,
+                            "major_city": location.major_city,
+                            "state": location.state,
+                            "county": location.county,
+                            "zipcode": location.zipcode,
+                            "population_served":location.population_served,
+                            "score": 0,
+                            "facilities": facilities
+                        })
+                    else:
+                        response["locations"].append({
+                            "fips_state_id": location.fips_state,
+                            "fips_county_id": location.fips_county,
+                            "major_city": location.major_city,
+                            "state": location.state,
+                            "county": location.county,
+                            "zipcode": location.zipcode,
+                            "population_served":location.population_served,
+                            "score": round(float(data.score), 2),
+                            "facilities": facilities
+                        })
 
                 response["meta"]["locations"] = len(response["locations"])
 
