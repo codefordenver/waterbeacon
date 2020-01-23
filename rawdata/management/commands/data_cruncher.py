@@ -28,10 +28,13 @@ class Command(BaseCommand):
             areas = cruncher.calc_state_scores(state, print_test = True)
             for __, area in areas.iterrows():
                 location = app_models.location.objects.filter(fips_county =  area['fips_county']).first()
+                systems = raw_models.EpaWaterSystem.objects.filter(FIPSCodes = area['fips_county']).values()
                 if area['score'] == 0:
                     if not app_models.data.objects.filter(location = location, score = area['score']).exists():
                         data = app_models.data()
+                        
                         data.location = location
+                        data.facilities = systems
                         data.score = area['score']
                         try:
                             data.save()
@@ -50,6 +53,7 @@ class Command(BaseCommand):
                     if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
                             data = app_models.data()
                             data.location = location
+                            data.facilities = systems
                             data.score = area['score']
                             try:
                                 data.save()

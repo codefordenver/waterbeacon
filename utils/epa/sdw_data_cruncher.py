@@ -27,14 +27,14 @@ class SDW_Data_Cruncher(object):
         # viopaccr: historical score
         if (viopaccr >= self._HISTORICAL_MAX_SCORE):
             # 1 represents the highest value which equates to the worst water quality in general
-            return 1
+            return 1 * self._HISTORICAL_SCORE_WEIGHT
 
         return (viopaccr / self._HISTORICAL_MAX_SCORE) * self._HISTORICAL_SCORE_WEIGHT
 
     def _calc_current_score(self, vioremain):
         # vioremain current score
         if (vioremain >= self._CURRENT_MAX_SCORE ):
-            return 1
+            return 1 * self._CURRENT_SCORE_WEIGHT
 
         return (vioremain / self._CURRENT_MAX_SCORE) * self._CURRENT_SCORE_WEIGHT
 
@@ -65,7 +65,6 @@ class SDW_Data_Cruncher(object):
         systems_df['Viopaccr'].fillna(0, inplace = True)
         systems_df['Vioremain'].fillna(0, inplace = True)
 
-
         systems_df['facility_weighted_score'] = systems_df.apply(lambda x: self._calc_facility_score(x), axis = 1)
         systems_df['IsCommWaterSystem'] = systems_df['PWSTypeCode'] == 'CWS'
 
@@ -74,10 +73,13 @@ class SDW_Data_Cruncher(object):
         fips_weighted_scores = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['facility_weighted_score'].sum()
         
         # combine values into one dataframe
-        fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
+        comb_fips = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
         # evaluate adjusted score by dividing score by total population served
-        fips_info['score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
-        return fips_info
+        comb_fips['score'] = comb_fips['facility_weighted_score'] / comb_fips['PopulationServedCount']
+
+        comb_fips = comb_fips.groupby(['FIPSCodes'])['score'].sum().reset_index()
+        comb_fips.drop_duplicates(inplace = True)
+        return comb_fips
 
     def calc_state_scores(self, state, print_test = False):
         if print_test:

@@ -10,17 +10,33 @@ from utils.epa.sdw_importer import ( SDW_Importer )
 import pandas as pd
 
 class Command(BaseCommand):
+    def _get_fips(self, fips_list):
+        if len(fips_list) == 1:
+            return fips_list[0]
+        elif len(fips_list[0]) == 5:
+            return fips_list[0]
+        else:
+            return self._get_fips(fips_list[1:])
+
     def handle(self, *args, **options):
         # TODO make this a setting not property in EpaDataGetter class WATER_TYPE = 'WaterSystems'
         # TODO make this a setting not property in EpaDataGetter class WATER_TYPE = 'WaterSystems'
         csvDirectory = os.path.join(
             settings.BASE_DIR, settings.EPA_DATA_DIRECTORY, 'WaterSystems')
         processed_rows = 0
+        dtype = {
+            'FIPSCodes': 'object',
+            'RegistryID': 'string',
+            'SDWDateLastVisitEPA': 'string'
+        }
 
         importer = SDW_Importer()
         for filename in os.listdir(csvDirectory):
             path = os.path.join(csvDirectory, filename)
-            data = pd.read_csv(path)
+            data = pd.read_csv(
+                path,
+                dtype=dtype
+            )
             # line_cnt can start at 0, as our data will be first row
             line_cnt = 0
 
@@ -28,6 +44,10 @@ class Command(BaseCommand):
             data = data[data['PWSActivityCode'] == 'A']
 
             data.fillna('', inplace = True)
+            data['FIPSCodes'] = data['FIPSCodes'].apply(
+                lambda x: self._get_fips(x.split(', '))
+            )
+            data['EPARegion'] = str(data['EPARegion'][0]).rstrip('0').rstrip('.').zfill(2)
 
             # go through each system (row) and add it to db
             for __, system in data.iterrows():
