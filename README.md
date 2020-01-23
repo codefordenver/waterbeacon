@@ -55,7 +55,7 @@ When that completes, run `./manage.py migrate --settings=settings.dev` to create
 
     ./manage.py import_epa_facility_data --settings=settings.dev
     ./manage.py import_epa_water_data --settings=settings.dev
-    ./manage.py import_facility_fips --settings=settings.dev
+    ./manage.py insert_facility_fips --settings=settings.dev
     ./manage.py data_cruncher --settings=settings.dev
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
