@@ -29,14 +29,14 @@ class SDW_Data_Cruncher(object):
             # 1 represents the highest value which equates to the worst water quality in general
             return 1
 
-        return viopaccr / self._HISTORICAL_MAX_SCORE
+        return (viopaccr / self._HISTORICAL_MAX_SCORE) * self._HISTORICAL_SCORE_WEIGHT
 
     def _calc_current_score(self, vioremain):
         # vioremain current score
         if (vioremain >= self._CURRENT_MAX_SCORE ):
             return 1
 
-        return vioremain / self._CURRENT_MAX_SCORE
+        return (vioremain / self._CURRENT_MAX_SCORE) * self._CURRENT_SCORE_WEIGHT
 
     def _calc_facility_score(self, facility):
         historical_score = self._calc_historical_score(facility['Viopaccr'])
@@ -53,23 +53,30 @@ class SDW_Data_Cruncher(object):
             return pd.DataFrame([])
         
         systems_df = read_frame(systems)
-        systems_df['FIPSCodes'].fillna(0, inplace = True)
+        # remove all systems that do not have a fips code
+        systems_df['FIPSCodes'].dropna(inplace = True)
+        # drop duplicate rows
+        systems_df.drop_duplicates(subset = ['PWSId'], inplace = True)
         # this only takes the first listed value in FIPSCodes
         # can potentially change it to take all values and split into new rows
         systems_df['FIPSCodes'] = systems_df['FIPSCodes'].str.split(',', expand = True)[0]
+
+        # in the event any of our violation scores are NaN, fill with 0
         systems_df['Viopaccr'].fillna(0, inplace = True)
         systems_df['Vioremain'].fillna(0, inplace = True)
+
+
         systems_df['facility_weighted_score'] = systems_df.apply(lambda x: self._calc_facility_score(x), axis = 1)
         systems_df['IsCommWaterSystem'] = systems_df['PWSTypeCode'] == 'CWS'
 
         # sum the populations and weighted scores
         fips_populations = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['PopulationServedCount'].sum()
         fips_weighted_scores = systems_df.groupby(['FIPSCodes', 'IsCommWaterSystem'])['facility_weighted_score'].sum()
+        
         # combine values into one dataframe
         fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
         # evaluate adjusted score by dividing score by total population served
         fips_info['score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
-        print(fips_info)
         return fips_info
 
     def calc_state_scores(self, state, print_test = False):
