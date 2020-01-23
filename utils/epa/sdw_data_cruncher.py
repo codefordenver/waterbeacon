@@ -79,14 +79,12 @@ class SDW_Data_Cruncher(object):
 
         state_locs = app_models.location.objects.filter(state = state)
         state_df = read_frame(state_locs)
-        state_df["fips_county"] = pd.to_numeric(state_df["fips_county"], errors = 'coerce')
-        state_df["fips_county"] = state_df["fips_county"].astype(int)
         area_scores = self._calc_area_score(state)
-        if area_scores.shape[0] == 0:
+        if area_scores.shape[0] == 0 or state_df.shape[0] == 0:
             state_df['score'] = 0
             return state_df
-        area_scores["FIPSCodes"] = pd.to_numeric(area_scores["FIPSCodes"], errors = 'coerce')
-        area_scores["FIPSCodes"] = area_scores["FIPSCodes"].astype(int)
+        state_df["fips_county"] = state_df.apply(lambda x: str(x['fips_county']).rstrip('0').rstrip('.').zfill(5), axis = 1)
+        area_scores["FIPSCodes"] = area_scores.apply(lambda x: str(x['FIPSCodes']).rstrip('0').rstrip('.').zfill(5), axis = 1)
         area_df = pd.merge(area_scores, state_df, left_on='FIPSCodes', right_on='fips_county', how='right')
         area_df['score'].fillna(0, inplace=True)
         return area_df

@@ -29,11 +29,11 @@ class Command(BaseCommand):
                 continue
             facilities_df["Score"] = facilities_df["Score"].fillna(0)
             facilities_df["FacDerivedStctyFIPS"] = facilities_df["FacDerivedStctyFIPS"].fillna(0)
-            facilities_df["FacDerivedStctyFIPS"] = facilities_df["FacDerivedStctyFIPS"].astype(int)
+            facilities_df["FacDerivedStctyFIPS"] = facilities_df.apply(lambda x: str(x['FacDerivedStctyFIPS']).rstrip('0').rstrip('.').zfill(5), axis = 1)
             facilities_df["FacDerivedZip"] = facilities_df["FacDerivedZip"].fillna(0)
-            facilities_df["FacDerivedZip"] = facilities_df["FacDerivedZip"].astype(int)
+            facilities_df["FacDerivedZip"] = facilities_df.apply(lambda x: str(x['FacDerivedZip']).rstrip('0').rstrip('.').zfill(5), axis = 1)
             facilities_df["FacEPARegion"] = facilities_df["FacEPARegion"].fillna(0)
-            facilities_df["FacEPARegion"] = facilities_df["FacEPARegion"].astype(int)
+            facilities_df["FacEPARegion"] = facilities_df.apply(lambda x: str(x['FacEPARegion']).rstrip('0').rstrip('.').zfill(2), axis = 1)
             facilities_df.fillna('', inplace = True)
             line_cnt = 0
             for __, facility in facilities_df.iterrows():
