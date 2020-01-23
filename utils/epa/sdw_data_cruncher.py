@@ -69,9 +69,8 @@ class SDW_Data_Cruncher(object):
         fips_info = pd.concat([fips_populations, fips_weighted_scores], axis = 1).reset_index()
         # evaluate adjusted score by dividing score by total population served
         fips_info['score'] = fips_info['facility_weighted_score'] / fips_info['PopulationServedCount']
-        # this holds the accumulated scores for each FIPs code in a state
-        fips_scores = fips_info.groupby('FIPSCodes')['score'].sum().reset_index()
-        return fips_scores
+        print(fips_info)
+        return fips_info
 
     def calc_state_scores(self, state, print_test = False):
         if print_test:
