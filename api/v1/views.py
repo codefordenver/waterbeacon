@@ -11,6 +11,8 @@ from datetime import datetime, timedelta
 
 from app import models as app_models
 from news import models as news_models
+from rawdata import models as raw_models
+from django_pandas.io import read_frame
 from utils.utils import ( str2bool )
 import math
 
@@ -29,12 +31,23 @@ class locationData(APIView):
         if 'locations' in sources or not len(sources):
 
             queryset = app_models.location.objects.all()
+            facilities_rd = raw_models.EpaFacilitySystem.objects.all()
+            fac_df = read_frame(facilities_rd)
+            fac_df = fac_df[fac_df['CurrVioFlag'] == 1]
+            fac_df = fac_df[[
+                'FacFIPSCode',
+                'PWSId',
+                'FacName',
+                'FacLong',
+                'FacLat'
+            ]]
             total_facilities = 0
             for location in queryset:
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
                     # get facilities
                     facilities = []
-                    for facility in location.facilities.filter(in_violation = True, ):
+                    for __, facility in fac_df[fac_df['FacFIPSCode'] == location.fips_county].iterrows():
+                        total_facilities += 1
                         facilities.append({
                             'PWSId': facility.PWSId,
                             'FacName': facility.FacName,
