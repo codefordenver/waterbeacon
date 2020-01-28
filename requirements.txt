@@ -19,8 +19,8 @@ lxml==4.4.2
 nltk==3.4.5
 numpy==1.18.1
 pandas==0.25.3
+psycopg2==2.8.4
 python-dateutil==2.8.1
-python-dotenv==0.10.5
 python-stdnum==1.13
 pytz==2019.3
 requests==2.22.0
