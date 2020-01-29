@@ -2,7 +2,7 @@
 from datetime import datetime
 import requests
 import json
-import unicodecsv as csv
+import csv
 import os
 import time
 
@@ -46,8 +46,8 @@ class EpaDataGetter(object):
         return True
 
     def _append_data_to_file(self, data, target_csv):
-        with open(target_csv, 'ab+') as f:
-            csvwriter = csv.writer(f, encoding='utf-8')
+        with open(target_csv, 'a') as f:
+            csvwriter = csv.writer(f)
             count = 0
             previous_data = os.stat(target_csv).st_size != 0
             for row in data:
@@ -110,7 +110,12 @@ class EpaDataGetter(object):
     def _get_json_data_from_url(self, url):
         raw_json = requests.get(url)
         if raw_json.status_code == 200:
-            data = json.loads(raw_json.content)
+            try:
+                data = json.loads(raw_json.content)
+            except UnicodeDecodeError:
+                # if this ever fails, we could do something like try 
+                # encoding = raw_json.encoding or raw_json.apparent_encoding or 'ISO-8859-1'
+                data = json.loads(raw_json.content.decode('ISO-8859-1'))
         else:
             raise ValueError('Invalid response: %s %s' %
                              (raw_json.status_code, raw_json.content))
@@ -155,6 +160,7 @@ class EpaFacilityDataGetter(EpaDataGetter):
         # https://ofmpub.epa.gov/echo/echo_rest_services.metadata?output=JSON
         # 16, 17, 31,
         # lat, lng, types
+        # TODO did these change? not getting the right columns anymore!
         self.columns_query_param = r'&qcolumns=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C16%2C17%2C23%2C31%2C58%2C63%2C64%2C69%2C70%2C71%2C72%2C73%2C83%2C89%2C91%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C110%2C156%2C158%2C167%2C168%2C185%2C188%2C190'
         # filter for water only facilities
         self.get_queryid_request_parameters = '&p_med=S'
