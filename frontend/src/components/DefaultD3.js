@@ -1,95 +1,125 @@
-import React, { Component } from 'react';
-import * as d3 from 'd3';
-import * as topojson from 'topojson';
+import React, { useState, useRef } from 'react';
+import Loader from 'react-loader-spinner';
+import './utils/d3.css'
 
-class DetaultD3 extends Component {
+//import * as unemploymentTsv from './tempData/unemployment.tsv';
+import { ChooseZoom } from './ChooseZoom';
+import { MapRender } from './MapRender';
 
-  constructor(props) {
-    console.log("constructor()")
-    super(props)
-    this.state = {
-      topologyData: null,
-      unemploymentData: null
+// this component controls the logic that is shared between ChooseZoom and MapRender
+const DefaultD3 = ({
+  topologyData,
+  waterScoreData,
+  setCountyRanked,
+  countiesRanked,
+  stateWaterQualData,
+  maxScore,
+}) => {
+  const [areaInViewPort, setAIVP] = useState(null);
+  const usStates = useRef(null);
+
+  // this function adds counties to the table on left
+  const addCounty = (d) => {
+    const chosenOne = waterScoreData.find((county) => d.id === county.fips_county_id);
+
+    return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
+  };
+
+  // when called, changes the area in viewport state, triggering useEffect function in map render
+  const centerState = (d) => {
+    //create variables for centering the state
+    if (d && areaInViewPort !== d) {
+      setAIVP(d);
+    } else {
+      setAIVP(null);
     }
-  }
+  };
 
-  componentWillMount() {
-    console.log("componentWillMount()")
+  if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
 
-    Promise.all(
-      [d3.json("https://d3js.org/us-10m.v1.json"),
-      d3.tsv("../static/unemployment.tsv")]
-    ).then( ([topologyData, unemploymentData]) => {
-          this.setState({
-            topologyData,
-            unemploymentData
-          })
-    }).catch(err => console.log('Error loading or parsing data.'))
+  // todo: make the ChooseZoom component work; manage AIVP state here
+  // todo: add populace areas along the bottom
+  return (
+    <div className="map-content">
+      <div className="options">
+        <ChooseZoom
+          areaInViewPort={areaInViewPort}
+          centerState={centerState}
+          usStates={usStates}
+        />
+        <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
+      </div>
+      <div className="map" >
+        <small id="reset-zoom" onClick={() => setAIVP(null)}>Zoom to state, click on county to compare at left. Click here to reset.</small>
+        <MapRender
+          topologyData={topologyData}
+          waterScoreData={waterScoreData}
+          stateWaterQualData={stateWaterQualData}
+          addCounty={addCounty}
+          maxScore={maxScore}
+          usStates={usStates}
+          areaInViewPort={areaInViewPort}
+          centerState={centerState}
+        />
+      </div>
+    </div>
+  )
+};
 
-  }
+const TopCounties = (props) => {
+  const removeCounty = (index) => {
+    const tempCountyA = props.countiesRanked.slice(0,index);
+    const tempCountyB = props.countiesRanked.slice(index+1);
+    const tempCounty = tempCountyA.concat(tempCountyB);
+    props.setCountyRanked(tempCounty);
+  };
 
-  componentDidUpdate() {
-    console.log("componentDidUpdate()")
-
-    const svg = d3.select(this.refs.anchor),
-      { width, height } = this.props;
-
-    const path = d3.geoPath();
-    const unemployment = d3.map();
-
-    unemployment.set(this.state.unemploymentData.id, +this.state.unemploymentData.rate);
-
-    const x = d3.scaleLinear()
-        .domain([1, 10])
-        .rangeRound([400, 860]);
-
-    const color = d3.scaleThreshold()
-        .domain(d3.range(2, 10))
-        .range(d3.schemeBlues[9]);
-
-    const g = svg.append("g")
-        .attr("class", "key")
-        .attr("transform", "translate(0,40)");
-
-    g.selectAll("rect")
-      .data(color.range().map(function(d) {
-          d = color.invertExtent(d);
-          if (d[0] == null) d[0] = x.domain()[0];
-          if (d[1] == null) d[1] = x.domain()[1];
-          return d;
-        }))
-
-    const usStates = topojson.feature(this.state.topologyData, this.state.topologyData.objects.states).features
-    const usStatePaths = topojson.mesh(this.state.topologyData, this.state.topologyData.objects.states, function(a, b) { return a !== b; });
-
-    svg.append("g")
-      .attr("class", "states")
-      .selectAll("path")
-      .data(usStates)
-      .enter().append("path")
-        .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
-        .attr("d", path)
-      .append("title")
-        .text(function(d) { return d.rate + "%"; })
-      .attr("d", path);
-
-
-    svg.append("path")
-      .attr("class", "state-borders")
-      .attr("d", path(usStatePaths));
-
-  }
-
-  render () {
-    console.log("render()")
-    const { topologyData, unemploymentData } = this.state;
-
-    if(!topologyData || !unemploymentData) {
-       return null;
-    }
-
-    return <g ref="anchor" />;
-  }
+  return (
+    <table className="county-list">
+      <thead>
+        <tr>
+          <th>
+            Number
+          </th>
+          <th>
+            County
+          </th>
+          <th>
+            State
+          </th>
+          <th>
+            Rating
+          </th>
+          <th>
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.countiesRanked.map((county, index)=>{
+          return (
+            <tr key={index}>
+              <td>
+                {index+1}
+              </td>
+              <td>
+                {county.county}
+              </td>
+              <td>
+                {county.state}
+              </td>
+              <td>
+                {county.score}
+              </td>
+              <td className="remove-county" onClick={()=>removeCounty(index)}>
+                X
+              </td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
 }
 
-export default DetaultD3;
+export default DefaultD3;

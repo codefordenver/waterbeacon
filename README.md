@@ -29,7 +29,21 @@ Make sure you have the folling tools are installed:
 * [PSequel](http://www.psequel.com/)
 * You may need to manually install [GeoDjango](https://docs.djangoproject.com/en/1.11/ref/contrib/gis/install/#homebrew). If you have trouble with it, consider using brew.
 
+Create an empty .env file `touch .env`.
+
 Create the waterbeacon database by running `createdb waterbeacon`
+
+(Optional - Linux Users) You may need to create a new Postgres User or update the default Postgres User to have access to the database.  Do this by running the following:
+
+    `sudo su - postgres`
+
+    `psql`
+
+    `CREATE USER myprojectuser WITH PASSWORD 'password';`
+    
+    `GRANT ALL PRIVILEGES ON DATABASE waterbeacon TO myprojectuser;`
+
+You should then update the 'USER' and 'PASSWORD' to the dev.py file in the settings folder to your newly created postgres user.
 
 When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
 

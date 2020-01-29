@@ -1,0 +1,54 @@
+.map-content {
+  display: flex;
+  flex-direction: row;
+  background-color: #fbfbfb;
+}
+
+.map-container {
+  margin-top: 10px;
+}
+
+.active {
+  stroke-width: 2px;
+  stroke: #2d5e9e;
+  fill: none;
+}
+
+.map {
+  min-width: 58%;
+  max-width: 69.5%;
+  margin-left: .5%;
+}
+
+.county-list .remove-county:hover {
+  cursor: pointer;
+}
+
+.county-list {
+  word-break: break-all;
+  box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px 0;
+  background-color: white;
+}
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.loader {
+  width: 100vw;
+  top: 50vh;
+  position: absolute;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+#reset-zoom:hover {
+  cursor: pointer;
+}

@@ -84,6 +84,7 @@ class EpaWaterSystem(models.Model):
 	objects = DataFrameManager()
 
 class EpaFacilitySystem(models.Model):
+	in_violation = models.NullBooleanField()
 	FacName = models.CharField(max_length=255)
 	PWSId = models.CharField(max_length=255, unique=True) #comes from SDWAIDs
 	RegistryID = models.CharField(max_length=12, unique=True)
@@ -125,4 +126,3 @@ class EpaFacilitySystem(models.Model):
 	Score = models.DecimalField(max_digits=12, decimal_places=6)
 
 	objects = DataFrameManager()
-

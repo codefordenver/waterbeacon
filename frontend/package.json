@@ -2,6 +2,8 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
+  "homepage": "https://waterbeacon.org",
   "dependencies": {
     "acorn-jsx": "^5.0.1",
     "bootstrap": "^4.3.1",
@@ -11,7 +13,9 @@
     "queue": "^6.0.1",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.8",
+    "react-bootstrap-typeahead": "^3.4.7",
     "react-dom": "^16.8.4",
+    "react-loader-spinner": "^3.1.2",
     "react-scripts": "2.1.8",
     "tar": "^4.4.2",
     "topojson": "^3.0.2"

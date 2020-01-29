@@ -15,11 +15,11 @@ from utils.utils import ( str2bool )
 
 
 class locationData(APIView):
-    # /v1/data/?status=true&violation=true
+    # /v1/data/?sources=locations
 
 
     def get(self, request):
-        response = {"meta":{ "cities": 0, "utilities": 0, "locations": 0},"locations":[], "utilities" :[], 'cities':[]}
+        response = {"meta":{ "cities": 0, "utilities": 0, "locations": 0, "facilities": 0},"locations":[], "utilities" :[], 'cities':[], 'facilities': []}
 
         sources = request.query_params.get('sources','').split(',')
 
@@ -28,11 +28,25 @@ class locationData(APIView):
         if 'locations' in sources or not len(sources):
 
             queryset = app_models.location.objects.all()
-
+            total_facilities = 0
             for location in queryset:
 
+
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
+                    # get facilities
+                    facilities = []
+                    for facility in location.facilities.filter( in_violation = True):
+                        facilities.append({
+                            'PWSId': facility.PWSId,
+                            'FacName': facility.FacName,
+                            'long':facility.FacLong,
+                            'lat': facility.FacLat,
+                        })
+
+                    total_facilities += len(facilities)
                     data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
+
+
                     response["locations"].append({
                         "fips_state_id": location.fips_state,
                         "fips_county_id": location.fips_county,
@@ -42,10 +56,12 @@ class locationData(APIView):
                         "zipcode": location.zipcode,
                         "population_served":location.population_served,
                         "score": round(float(data.score), 2),
+                        "facilities": facilities
                     })
 
                 response["meta"]["locations"] = len(response["locations"])
 
+            response["meta"]["facilities"] = total_facilities
         # filter for news
         if 'news' in sources or not len(sources):
             queryset = news_models.location.objects.all()
