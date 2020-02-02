@@ -23,6 +23,8 @@ class EpaDataGetter(object):
         self.request_type = ''
         self.system_url = ''
         self.query_url = ''
+        self.desired_columns = ()  # Iterable of column names
+        self.endpoint_metadata_url = ''
         self.columns_query_param = ''
         self.failed_requests = []
         self.get_queryid_request_parameters = ''
@@ -37,6 +39,52 @@ class EpaDataGetter(object):
             "SD",  "TN",  "TX",  "UT",  "VT",  "VI",  "VA",  "WA",
             "WV", "WI",  "WY"
         ]
+
+    def collect_and_save_data(self, output_directory):
+        if self.request_type not in EpaDataGetter.VALID_REQUEST_TYPES:
+            raise ValueError(
+                'Invalid request type. Must be watersystem or facility.')
+
+        for state in self.states:
+            self._get_query_id_from_epa_system_url(state)
+            if self.query_id is None:
+                continue
+            file_name = '%s.csv' % state
+            target_file = os.path.join(
+                output_directory, self.request_type, file_name)
+            self._create_target_file(target_file)
+            data, page = True, 1
+            while data:
+                data = self._get_page_of_data_for_query_id(page)
+                page += 1
+                if data is not None:
+                    self._append_data_to_file(data, target_file)
+
+    def get_column_url_parameters_from_metadata(self):
+        if not (self.desired_columns and self.endpoint_metadata_url):
+            raise ValueError(
+                'Missing required values: self.desired_columns or self.endpoint_metadata_url')
+        data = self._get_json_data_from_url(self.endpoint_metadata_url)
+        query_params = ''
+        missing_columns = False
+        missing_columns_list = []
+        for col in self.desired_columns:
+            col_info = [d
+                        for d in data['Results']['ResultColumns'] if d['ColumnName'] == col]
+            if col_info:
+                column_id = col_info[0]['ColumnID']
+                if query_params:
+                    # %2C is a comma
+                    query_params += '%2C{!s}'.format(column_id)
+                else:
+                    query_params += '{!s}'.format(column_id)
+            else:
+                print('missing %s' % col)
+                missing_columns_list.append(col)
+                missing_columns = True
+        if missing_columns:
+            raise ValueError('Missing columns: %s' % missing_columns_list)
+        return '&qcolumns=%s' % query_params
 
     def _create_target_file(self, target_file):
         with open(target_file, 'w'):
@@ -78,26 +126,6 @@ class EpaDataGetter(object):
         else:
             return data["Results"][self.request_type]
 
-    def collect_and_save_data(self, output_directory):
-        if self.request_type not in EpaDataGetter.VALID_REQUEST_TYPES:
-            raise ValueError(
-                'Invalid request type. Must be watersystem or facility.')
-
-        for state in self.states:
-            self._get_query_id_from_epa_system_url(state)
-            if self.query_id is None:
-                continue
-            file_name = '%s.csv' % state
-            target_file = os.path.join(
-                output_directory, self.request_type, file_name)
-            self._create_target_file(target_file)
-            data, page = True, 1
-            while data:
-                data = self._get_page_of_data_for_query_id(page)
-                page += 1
-                if data is not None:
-                    self._append_data_to_file(data, target_file)
-
     def _reset_query_results(self):
         self.query_id = None
         self.query_rows = None
@@ -113,7 +141,7 @@ class EpaDataGetter(object):
             try:
                 data = json.loads(raw_json.content)
             except UnicodeDecodeError:
-                # if this ever fails, we could do something like try 
+                # if this ever fails, we could do something like try
                 # encoding = raw_json.encoding or raw_json.apparent_encoding or 'ISO-8859-1'
                 data = json.loads(raw_json.content.decode('ISO-8859-1'))
         else:
@@ -156,12 +184,10 @@ class EpaFacilityDataGetter(EpaDataGetter):
         self.request_type = EpaDataGetter.FACILITY_TYPE
         self.system_url = '%s/echo_rest_services.get_facilities' % self.hostname
         self.query_url = '%s/echo_rest_services.get_qid' % self.hostname
-        # there are tons of columns and we don't need them all. This list was found using the metadata URL and then picking out interesting items
-        # https://ofmpub.epa.gov/echo/echo_rest_services.metadata?output=JSON
-        # 16, 17, 31,
-        # lat, lng, types
-        # TODO did these change? not getting the right columns anymore!
-        self.columns_query_param = r'&qcolumns=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C16%2C17%2C23%2C31%2C58%2C63%2C64%2C69%2C70%2C71%2C72%2C73%2C83%2C89%2C91%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C110%2C156%2C158%2C167%2C168%2C185%2C188%2C190'
+        self.endpoint_metadata_url = '%s/echo_rest_services.metadata?output=JSON' % self.hostname
+        self.desired_columns = ('REGISTRY_ID', 'FAC_NAME', 'SDWA_IDS', 'FAC_STREET', 'FAC_CITY', 'FAC_STATE', 'FAC_ZIP', 'FAC_COUNTY', 'FAC_FIPS_CODE', 'FAC_DERIVED_ZIP', 'FAC_EPA_REGION', 'FAC_LAT', 'FAC_LONG', 'FAC_ACCURACY_METERS', 'FAC_REFERENCE_POINT', 'FAC_TOTAL_PENALTIES', 'FAC_DATE_LAST_PENALTY', 'FAC_LAST_PENALTY_AMT', 'SDWA_FORMAL_ACTION_COUNT',
+                                'SDWA_SYSTEM_TYPES', 'FAC_DERIVED_STCTY_FIPS', 'FAC_PERCENT_MINORITY', 'FAC_MAJOR_FLAG', 'VIOL_FLAG', 'CURR_VIO_FLAG', 'FAC_PENALTY_COUNT', 'FAC_FORMAL_ACTION_COUNT', 'SDWA_3YR_COMPL_QTRS_HISTORY', 'SDWA_INSPECTIONS_5YR', 'SDWA_INFORMAL_COUNT', 'FAC_COLLECTION_METHOD', 'FAC_STD_COUNTY_NAME', 'SDWIS_FLAG', 'FAC_IMP_WATER_FLG', 'SCORE')
+        self.columns_query_param = self.get_column_url_parameters_from_metadata()
         # filter for water only facilities
         self.get_queryid_request_parameters = '&p_med=S'
 
@@ -180,7 +206,9 @@ class EpaWaterDataGetter(EpaDataGetter):
         self.system_url = '%s/sdw_rest_services.get_systems' % self.hostname
         self.query_url = '%s/sdw_rest_services.get_qid' % self.hostname
         # maybe we want to restrict the data in this case too but we can just store it all in the meantime
-        self.columns_query_param = ''
+        # self.endpoint_metadata_url = '%s/sdw_rest_services.metadata?output=JSON' % self.hostname
+        # self.desired_columns = () 
+        # self.columns_query_param = self.get_column_url_parameters_from_metadata()
         # for water locations, we also use the numeric codes that are typically reservations. probably unnecesary as the state should have duplicate info
         self.states.append(('01',  '02',  '03',  '04',  '05',
                             '06',  '07',  '08', '09',  '10'))
