@@ -1,24 +1,42 @@
 import React from 'react';
-import {  } from 'react-bootstrap';
-
+import { Card } from 'react-bootstrap';
 
 export default function liveData () {
   return (
     <article id="live">
-      <section>
-        <h2>Promoting water quality through open data and community</h2>
+      <section className="live-titles" >
+        <h2>
+          Promoting water quality through open data and community
+        </h2>
         <h4>
-
+          Second Quote
         </h4>
-
       </section>
-      <section>
-        <div>
-          <h3>Water quality Data</h3>
-        </div>
-        <div>
-          <h3>Water quality Data2</h3>
-        </div>
+      <section className="feat">
+        <Card classname="feat-data "id="feat-one">
+          <Card.Body>
+            <Card.Title>Location of Data</Card.Title>
+            <Card.Title>Name of Facility</Card.Title>
+            <Card.Text>
+              Water Quality Info
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">Updated Time</small>
+          </Card.Footer>
+        </Card>
+        <Card classname="feat-data" id="feat-two">
+          <Card.Body>
+            <Card.Title>Location of Data</Card.Title>
+            <Card.Title>Name of Facility</Card.Title>
+            <Card.Text>
+              Water Quality Info
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">Updated Time</small>
+          </Card.Footer>
+        </Card>
       </section>
     </article>
   )

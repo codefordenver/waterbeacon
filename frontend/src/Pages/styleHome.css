@@ -1,5 +1,45 @@
 #live {
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #198CFF;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  min-height: 80vh;
+  min-width: 90vw;
+}
+.live-titles {
+ max-width: 50%;
+}
+.feat {
+  max-width: 50%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.feat-data {
+  max-height: 50vh;
+  width: 25vw;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+#feat-one {
+  max-height: 40vh;
+  width: 25vw;
+  margin-top: 1rem; 
+}
+#feat-two {
+  max-height: 50vh;
+  width: 25vw;
+  margin-top: 5rem; 
+}
+@media only screen and (max-width: 600px) {
+  #feat-one {
+    max-height: 40vh;
+    width: 90vw;
+    margin: 0.5rem;
+  }
+  #feat-two {
+    max-height: 40vh;
+    width: 90vw;
+    margin: 0.5rem;
+  }
 }
