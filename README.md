@@ -4,15 +4,15 @@ waterbeacon
 
 ## Resources
 
-https://www.waterqualitydata.us/
+[Water quality data](https://www.waterqualitydata.us/)
 
 ## NSF Water Quality Index
 
-http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
+[Water quality index calc](http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm)
 
 ## API Installation Guide
 
-You'll need to install `python2` along with `pip`.
+You'll need to install `python3` along with `pip`.
 
 Next, you'll need to install [python virtual environment wrapper](https://virtualenvwrapper.readthedocs.io/en/latest/). You can do so by running `pip install virtualenvwrapper`.
 
@@ -35,13 +35,13 @@ Create the waterbeacon database by running `createdb waterbeacon`
 
 (Optional - Linux Users) You may need to create a new Postgres User or update the default Postgres User to have access to the database.  Do this by running the following:
 
-    `sudo su - postgres`
+    sudo su - postgres
 
-    `psql`
+    psql
 
-    `CREATE USER myprojectuser WITH PASSWORD 'password';`
+    CREATE USER myprojectuser WITH PASSWORD 'password';
     
-    `GRANT ALL PRIVILEGES ON DATABASE waterbeacon TO myprojectuser;`
+    GRANT ALL PRIVILEGES ON DATABASE waterbeacon TO myprojectuser;
 
 You should then update the 'USER' and 'PASSWORD' to the dev.py file in the settings folder to your newly created postgres user.
 

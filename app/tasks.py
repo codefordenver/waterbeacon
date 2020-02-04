@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from waterquality.celery import app
 from app import models
 from annoying.functions import get_object_or_None

@@ -6,7 +6,6 @@ from django.db.models import Q
 from django.db.models import Count
 from django.http import Http404
 
-from annoying.functions import get_object_or_None
 from datetime import datetime, timedelta
 
 from app import models as app_models

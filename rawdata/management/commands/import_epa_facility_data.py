@@ -2,7 +2,7 @@ from rawdata.models import EpaFacilitySystem
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from django.db import utils
-import unicodecsv as csv
+import csv
 import os
 import pandas as pd
 from django.core.management.base import BaseCommand

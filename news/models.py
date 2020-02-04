@@ -1,6 +1,4 @@
 
-from __future__ import unicode_literals
-
 from django.contrib.gis.db import models
 from .choice import (
     WATER_STATUS,
@@ -58,7 +56,8 @@ class advisory_keyword(models.Model):
         verbose_name = "Advisory Keyword"
 
 class alert(models.Model):
-    location = models.ForeignKey(location, null=True, blank=True)
+    location = models.ForeignKey(
+        location, null=True, blank=True, on_delete=models.SET_NULL)
     source = models.CharField(max_length=255, null=True, blank=True,choices=SOURCE, default="")
     sourceId = models.CharField(max_length=255, null=True, blank=True, default="")
     status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
@@ -72,7 +71,8 @@ class alert(models.Model):
         return self.sourceId
 
 class url(models.Model):
-    alert = models.ForeignKey(alert, null=True, blank=True)
+    alert = models.ForeignKey(
+        alert, null=True, blank=True, on_delete=models.SET_NULL)
     link = models.TextField(null=True, blank=True,default='')
 
 class utility(models.Model):
@@ -94,5 +94,7 @@ class utility(models.Model):
         verbose_name_plural = "Utilities"
 
 class county_served(models.Model):
-    utility = models.ForeignKey(utility, null=True, blank=True)
-    location = models.ForeignKey(location, null=True, blank=True)
+    utility = models.ForeignKey(
+        utility, null=True, blank=True, on_delete=models.SET_NULL)
+    location = models.ForeignKey(
+        location, null=True, blank=True, on_delete=models.SET_NULL)
