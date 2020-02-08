@@ -16,7 +16,7 @@ class EpaWaterSystem(models.Model):
 	# this should be a many to many FK with a zipcode table
 	ZipCodesServed = models.CharField(max_length=4000, null=True, db_index=True)
 	CountiesServed = models.CharField(max_length=4000, null=True)
-	EPARegion = models.CharField(max_length=10, null=True)
+	EPARegion = models.CharField(max_length=2, null = True)
 	PWSTypeCode = models.CharField(max_length=50)
 	PrimarySourceCode = models.CharField(max_length=50, null=True)
 	PrimarySourceDesc = models.CharField(max_length=255, null=True)
@@ -55,7 +55,7 @@ class EpaWaterSystem(models.Model):
 	CuAle = models.CharField(max_length=50, null=True)
 	Rc350Viol = models.IntegerField(null=True)
 	DfrUrl = models.CharField(max_length=1000, null=True)
-	FIPSCodes = models.CharField(max_length=1000, null=True)
+	FIPSCodes = models.CharField(max_length=5, null=True)
 	SNC = models.CharField(max_length=255, null=True)
 	GwSwCode = models.CharField(max_length=10, null=True)
 	SDWA3yrComplQtrsHistory = models.CharField(max_length=4000, null=True)
@@ -96,7 +96,7 @@ class EpaFacilitySystem(models.Model):
 	FacFIPSCode = models.CharField(max_length=15)
 	FacDerivedZip = models.CharField(
 		max_length=5, null=True)  # derived from lat/lng
-	FacEPARegion = models.CharField(max_length=2)
+	FacEPARegion = models.CharField(max_length=2, null = True)
 	FacLat = models.DecimalField(max_digits=10, decimal_places=6)
 	FacLong = models.DecimalField(max_digits=10, decimal_places=6)
 	FacAccuracyMeters = models.DecimalField(max_digits=12, decimal_places=2)
@@ -106,7 +106,7 @@ class EpaFacilitySystem(models.Model):
 	FacLastPenaltyAmt = models.CharField(max_length=50, null=True)
 	SDWAFormalActionCount = models.IntegerField(null=True)
 	SDWASystemTypes = models.CharField(max_length=4000, null=True)
-	FacDerivedStctyFIPS = models.CharField(max_length=5, null=True)
+	FacDerivedStctyFIPS = models.IntegerField(null=True)
 	FacPercentMinority = models.DecimalField(
 		max_digits=5, decimal_places=2, null=True)
 	FacMajorFlag = models.CharField(max_length=1, null=True)

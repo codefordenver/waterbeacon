@@ -45,7 +45,7 @@ Create the waterbeacon database by running `createdb waterbeacon`
 
 You should then update the 'USER' and 'PASSWORD' to the dev.py file in the settings folder to your newly created postgres user.
 
-When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
+When that completes, run `./manage.py migrate --settings=settings.dev` to create a local postgres db instance for development.
 
 (Optional - never necessary if csvs exist) To get all the new facility location data from the EPA, you can run `./manage.py download_epa_facility_data --settings=settings.dev`
 
@@ -53,8 +53,7 @@ When that completes, run ./manage.py migrate --settings=settings.dev to create a
 
 (Optional) Populate the rawdata app with EPA data by running the following:
 
-    ./manage.py import_epa_facility_data --settings=settings.dev
-    ./manage.py import_epa_water_data --settings=settings.dev
+`./manage.py import_epa_facility_data --settings=settings.dev;./manage.py import_epa_water_data --settings=settings.dev;./manage.py insert_facility_fips --settings=settings.dev;./manage.py data_cruncher --settings=settings.dev`
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
 
