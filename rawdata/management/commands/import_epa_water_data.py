@@ -26,8 +26,8 @@ class Command(BaseCommand):
         processed_rows = 0
         dtype = {
             'FIPSCodes': 'object',
-            'RegistryID': 'string',
-            'SDWDateLastVisitEPA': 'string'
+            'RegistryID': 'str',
+            'SDWDateLastVisitEPA': 'str'
         }
 
         importer = SDW_Importer()
