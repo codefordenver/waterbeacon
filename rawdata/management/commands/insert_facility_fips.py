@@ -20,22 +20,24 @@ class Command(BaseCommand):
 
         search = SearchEngine(simple_zipcode=True)
 
-        water_systems = rawdata_models.EpaWaterSystem.objects.all()
-        ws_df = read_frame(water_systems)
+        ws_df = read_frame(rawdata_models.EpaWaterSystem.objects.all())
+
+        facilities_without_fips = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '')
 
         completed = 0
-        total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
-        print('%s Facilities that need FIPs Codes' % (total))
+        total_facility_cnt = facilities_without_fips.count()
+
+        self.stdout.write('%s facilities need FIPs Codes' %
+                          (total_facility_cnt))
+
         # update all facilities that do not have FIPSCodes
-        for facility in rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = ''):
-            fac_pws_id = facility.PWSId
+        for facility in facilities_without_fips:
             county_fips = ''
-            equiv_ws_list = ws_df[(ws_df['PWSId'] == fac_pws_id)]
+            equiv_ws_list = ws_df[(ws_df['PWSId'] == facility.PWSId)]
             if equiv_ws_list['id'].count() > 0:
                 equiv_ws = equiv_ws_list.iloc[0]
                 county_fips = equiv_ws['FIPSCodes']
-            if county_fips == '':
-                print('checking census block for %s' %fac_pws_id)
+            if not county_fips:
                 county_fips = get_census_block(facility.FacLat, facility.FacLong )
 
             facility.FacFIPSCode = county_fips.split(', ')[0]
@@ -43,18 +45,18 @@ class Command(BaseCommand):
 
             completed +=1
             if completed % 100 == 0:
-                total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
-                print('Remaining: %s Completed: %s' % ( total , completed))
+                self.stdout.write('Remaining: %s Completed: %s' %
+                      (total_facility_cnt - completed, completed))
 
-        facilities = rawdata_models.EpaFacilitySystem.objects.all()
-        fac_df = read_frame(facilities)
-        fac_df.dropna(subset=['FacFIPSCode'], inplace = True)
-        fac_df.drop_duplicates(subset=['FacFIPSCode'], inplace = True)
-        num_unique_fips = fac_df['FacFIPSCode'].nunique()
+        facilites = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode__isnull=False).distinct(
+            'FacFIPSCode')
+
+        num_unique_fips = facilites.count()
         completed = 0
 
-        print('Checking which facilities to add to locations. %s facilities.' %num_unique_fips)
-        for __, facility in fac_df.iterrows():
+        self.stdout.write('Checking which facilities to add to locations. %s facilities.' % num_unique_fips)
+
+        for facility in facilites:
             completed += 1
             if not app_models.location.objects.filter(fips_county =  facility['FacFIPSCode']).exists():
                 county_fips = facility['FacFIPSCode']
@@ -74,5 +76,7 @@ class Command(BaseCommand):
                     location.save()
                 except:
                     self.stdout.write('%s not saved' %location)
+
             if completed % 100 == 0:
-                print('Remaining: %s Completed: %s' % ( num_unique_fips - completed , completed))
+                self.stdout.write('Remaining: %s Completed: %s' %
+                                  (num_unique_fips - completed, completed))

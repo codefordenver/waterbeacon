@@ -106,7 +106,7 @@ class EpaFacilitySystem(models.Model):
 	FacLastPenaltyAmt = models.CharField(max_length=50, null=True)
 	SDWAFormalActionCount = models.IntegerField(null=True)
 	SDWASystemTypes = models.CharField(max_length=4000, null=True)
-	FacDerivedStctyFIPS = models.IntegerField(null=True)
+	FacDerivedStctyFIPS = models.CharField(max_length=10, null=True)
 	FacPercentMinority = models.DecimalField(
 		max_digits=5, decimal_places=2, null=True)
 	FacMajorFlag = models.CharField(max_length=1, null=True)

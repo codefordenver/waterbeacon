@@ -61,6 +61,8 @@ The dev server will run on `localhost:8000` by default. If you prefer another po
 
 _Note_: to deactive the virtual env wrapper, just run `deactivate`.
 
+_Tip_: use `./manage.py shell --settings=settings.dev` to access the django shell where you can run commands using the queryset API.
+
 ## Frontend Installation Guide
 
 Navigate to the frontend directory where the react app is located and run install
