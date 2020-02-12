@@ -36,7 +36,7 @@ class Command(BaseCommand):
             facilities_df["FacEPARegion"] = facilities_df.apply(lambda x: str(x['FacEPARegion']).rstrip('0').rstrip('.').zfill(2), axis = 1)
             facilities_df.fillna('', inplace = True)
             line_cnt = 0
-            for __, facility in facilities_df.itertuples():
+            for facility in facilities_df.itertuples():
                 line_cnt += 1
                 try:
                     processed_rows += 1

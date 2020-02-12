@@ -50,7 +50,7 @@ class Command(BaseCommand):
             data['EPARegion'] = str(data['EPARegion'][0]).rstrip('0').rstrip('.').zfill(2)
 
             # go through each system (row) and add it to db
-            for __, system in data.itertuples():
+            for system in data.itertuples():
                 try:
                     processed_rows += 1
                     importer.add_watersystem_to_db(system)
