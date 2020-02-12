@@ -58,18 +58,18 @@ class Command(BaseCommand):
 
         for facility in facilites:
             completed += 1
-            if not app_models.location.objects.filter(fips_county =  facility['FacFIPSCode']).exists():
-                county_fips = facility['FacFIPSCode']
+            if not app_models.location.objects.filter(fips_county =  facility.FacFIPSCode).exists():
+                county_fips = facility.FacFIPSCode
                 location = app_models.location()
                 location.fips_county = county_fips
                 location.state = facility.FacState
                 location.fips_state = state_fips[facility.FacState]
                 location.county = facility.FacCounty
-                fips_populations = ws_df[ws_df['FIPSCodes'] == facility['FacFIPSCode']]['PopulationServedCount'].sum()
+                fips_populations = ws_df[ws_df['FIPSCodes'] == facility.FacFIPSCode]['PopulationServedCount'].sum()
                 location.population_served = fips_populations
 
-                if facility['FacFIPSCode'] in fips_to_zip:
-                    location.zipcode = fips_to_zip[facility['FacFIPSCode']]
+                if facility.FacFIPSCode in fips_to_zip:
+                    location.zipcode = fips_to_zip[facility.FacFIPSCode]
                     result = search.by_zipcode( location.zipcode )
                     location.major_city = result.major_city
                 try:

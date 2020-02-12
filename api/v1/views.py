@@ -45,7 +45,7 @@ class locationData(APIView):
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
                     # get facilities
                     facilities = []
-                    for __, facility in fac_df[fac_df['FacFIPSCode'] == location.fips_county].iterrows():
+                    for __, facility in fac_df[fac_df['FacFIPSCode'] == location.fips_county].itertuples():
                         total_facilities += 1
                         facilities.append({
                             'PWSId': facility.PWSId,

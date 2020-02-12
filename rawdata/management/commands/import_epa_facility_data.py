@@ -36,16 +36,15 @@ class Command(BaseCommand):
             facilities_df["FacEPARegion"] = facilities_df.apply(lambda x: str(x['FacEPARegion']).rstrip('0').rstrip('.').zfill(2), axis = 1)
             facilities_df.fillna('', inplace = True)
             line_cnt = 0
-            for __, facility in facilities_df.iterrows():
+            for __, facility in facilities_df.itertuples():
                 line_cnt += 1
                 try:
                     processed_rows += 1
-                    if len(facility["SDWAIDs"]) > 9:
+                    if len(facility.SDWAIDs) > 9:
                         # multiple water facilities included
-                        full_id_list = facility[
-                            "SDWAIDs"].split(' ')
+                        full_id_list = facility.SDWAIDs.split(' ')
                         for sdwa_id in full_id_list:
-                            facility["SDWAIDs"] = sdwa_id
+                            facility.SDWAIDs = sdwa_id
                             importer.add_epafacility_to_db(facility)
                     else:
                         importer.add_epafacility_to_db(facility)

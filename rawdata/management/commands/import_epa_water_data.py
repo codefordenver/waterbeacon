@@ -50,14 +50,14 @@ class Command(BaseCommand):
             data['EPARegion'] = str(data['EPARegion'][0]).rstrip('0').rstrip('.').zfill(2)
 
             # go through each system (row) and add it to db
-            for __, system in data.iterrows():
+            for __, system in data.itertuples():
                 try:
                     processed_rows += 1
                     importer.add_watersystem_to_db(system)
                     if (processed_rows % 10000 == 0):
                         self.stdout.write('Processed row %s...' %processed_rows)
                 except utils.IntegrityError:
-                    self.stdout.write('%s already in the db' % system["PWSId"])
+                    self.stdout.write('%s already in the db' % system.PWSId)
                 except:
                     self.stdout.write('%s' %system)
                     raise

@@ -26,42 +26,42 @@ class Command(BaseCommand):
         for state in states:
 
             areas = cruncher.calc_state_scores(state, print_test = True)
-            for __, area in areas.iterrows():
-                location = app_models.location.objects.filter(fips_county =  area['fips_county']).first()
-                systems = raw_models.EpaFacilitySystem.objects.filter(FacFIPSCode = area['fips_county']).values()
+            for __, area in areas.itertuples():
+                location = app_models.location.objects.filter(fips_county =  area.fips_county).first()
+                systems = raw_models.EpaFacilitySystem.objects.filter(FacFIPSCode = area.fips_county).values()
                 systems_df = read_frame(systems)
                 if systems_df.shape[0] != 0:
                     systems_df['in_violation'] = systems_df.apply(lambda x: x['CurrVioFlag']==1, axis=1)
                     systems_df = systems_df[['PWSId', 'FacName', 'FacLong', 'FacLat', 'in_violation']]
-                if area['score'] == 0:
-                    if not app_models.data.objects.filter(location = location, score = area['score']).exists():
+                if area.score == 0:
+                    if not app_models.data.objects.filter(location = location, score = area.score).exists():
                         data = app_models.data()
                         # todo: need to insert facilities here
                         data.location = location
-                        data.score = area['score']
+                        data.score = area.score
                         try:
                             data.save()
-                            log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                            log('%s, %s [%s]' % (location.major_city, location.state, area.score), 'success')
                         except:
                             print(location)
                     else:
-                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
+                        log('%s, %s [%s]' % (location.major_city, location.state, area.score), 'info')
                 else:
-                    if area['score'] - 0.05 < 0:
+                    if area.score - 0.05 < 0:
                         min_score = 0
                     else:
-                        min_score = area['score'] - 0.05
-                    max_score = area['score'] + 0.05
+                        min_score = area.score - 0.05
+                    max_score = area.score + 0.05
 
                     if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
                         data = app_models.data()
                         # todo: need to insert facilities here
                         data.location = location
-                        data.score = area['score']
+                        data.score = area.score
                         try:
                             data.save()
-                            log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'success')
+                            log('%s, %s [%s]' % (location.major_city, location.state, area.score), 'success')
                         except:
                             print(location)
                     else:
-                        log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
+                        log('%s, %s [%s]' % (location.major_city, location.state, area.score), 'info')
