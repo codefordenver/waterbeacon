@@ -5,6 +5,7 @@ import './utils/d3.css'
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
+import { Table } from 'react-bootstrap';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -37,8 +38,6 @@ const DefaultD3 = ({
 
   if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
 
-  // todo: make the ChooseZoom component work; manage AIVP state here
-  // todo: add populace areas along the bottom
   return (
     <div className="map-content">
       <div className="options">
@@ -48,7 +47,10 @@ const DefaultD3 = ({
           usStates={usStates}
           setAIVP={setAIVP}
         />
-        <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
+        <TopCounties
+          countiesRanked={countiesRanked}
+          setCountyRanked={setCountyRanked}
+        />
       </div>
       <div className="map" >
         <MapRender
@@ -75,7 +77,7 @@ const TopCounties = (props) => {
   };
 
   return (
-    <table className="county-list">
+    <Table striped bordered hover variant="dark" size="sm" className="county-list">
       <thead>
         <tr>
           <th>
@@ -98,7 +100,7 @@ const TopCounties = (props) => {
       <tbody>
         {props.countiesRanked.map((county, index)=>{
           return (
-            <tr key={index}>
+            <tr key={county.county}>
               <td>
                 {index+1}
               </td>
@@ -118,7 +120,7 @@ const TopCounties = (props) => {
           )
         })}
       </tbody>
-    </table>
+    </Table>
   )
 }
 
