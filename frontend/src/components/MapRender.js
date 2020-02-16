@@ -11,13 +11,13 @@ const path = d3.geoPath();
 //change the following variable to adjust stroke width
 const initSW = .5;
 
+const csStart = '#DFF2FE';
+const csEnd = '#2A5067';
+const noColor = '#FFFFFF';
+
 // this function controls the entire color scale for the map
 const colorScale = (maxScore) => {
-  console.log(maxScore);
   const iteration = 10;
-  const csStart = '#FFFFFF';
-  // todo: may need to choose a darker color for end of scale
-  const csEnd = '#2O4177';
   const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
   return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
     .range(colorScale);
@@ -84,7 +84,6 @@ export const MapRender = (props) => {
         stateFacilityObj.current[stateId].facArr = facArr;
       };
       //this is the color scheme and scale
-      const noColor = 'rgb(248,249,250)';
       const color = colorScale(maxScore);
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);

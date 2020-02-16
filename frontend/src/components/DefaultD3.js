@@ -46,11 +46,11 @@ const DefaultD3 = ({
           areaInViewPort={areaInViewPort}
           centerState={centerState}
           usStates={usStates}
+          setAIVP={setAIVP}
         />
         <TopCounties countiesRanked={countiesRanked} setCountyRanked={setCountyRanked} />
       </div>
       <div className="map" >
-        <small id="reset-zoom" onClick={() => setAIVP(null)}>Zoom to state, click on county to compare at left. Click here to reset.</small>
         <MapRender
           topologyData={topologyData}
           waterScoreData={waterScoreData}
