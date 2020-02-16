@@ -38,22 +38,19 @@ class locationData(APIView):
                 'PWSId',
                 'FacName',
                 'FacLong',
-                'FacLat'
+                'FacLat',
+                'Score',
+                'RegistryID',
             ]]
+            fac_df.rename(columns={
+                'FacLong': 'long',
+                'FacLat': 'lat',
+            }, inplace=True)
             total_facilities = 0
             for location in queryset:
                 if app_models.data.objects.filter(location = location, score__gt=0).exists():
                     # get facilities
-                    facilities = []
-                    for __, facility in fac_df[fac_df['FacFIPSCode'] == location.fips_county].iterrows():
-                        total_facilities += 1
-                        facilities.append({
-                            'PWSId': facility.PWSId,
-                            'FacName': facility.FacName,
-                            'long':facility.FacLong,
-                            'lat': facility.FacLat,
-                        })
-
+                    facilities = fac_df[fac_df['FacFIPSCode'] == location.fips_county].to_dict('records')
                     total_facilities += len(facilities)
                     data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
 
