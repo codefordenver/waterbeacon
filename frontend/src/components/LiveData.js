@@ -6,14 +6,14 @@ export default function liveData () {
     <article id="live">
       <section className="live-titles" >
         <h2>
-          Promoting water quality through open data and community
+          Illuminating water quality through open data and community
         </h2>
         <h4>
           Second Quote
         </h4>
       </section>
       <section className="feat">
-        <Card classname="feat-data "id="feat-one">
+        <Card className="feat-data "id="feat-one">
           <Card.Body>
             <Card.Title>Location of Data</Card.Title>
             <Card.Title>Name of Facility</Card.Title>
@@ -25,7 +25,7 @@ export default function liveData () {
             <small className="text-muted">Updated Time</small>
           </Card.Footer>
         </Card>
-        <Card classname="feat-data" id="feat-two">
+        <Card className="feat-data" id="feat-two">
           <Card.Body>
             <Card.Title>Location of Data</Card.Title>
             <Card.Title>Name of Facility</Card.Title>
