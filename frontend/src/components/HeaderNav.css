@@ -2,4 +2,10 @@
   width: 100vw;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+.nav-buttons {
+  
 }

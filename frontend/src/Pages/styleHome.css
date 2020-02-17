@@ -1,17 +1,19 @@
 #live {
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #198CFF;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   min-height: 80vh;
   min-width: 90vw;
+  padding-top: 3rem;
 }
 .live-titles {
- max-width: 50%;
+  max-width: 50%;
+  margin-left: 1rem;
 }
 .feat {
-  max-width: 50%;
+  width: 50%;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
   justify-content: space-between;
 }
 .feat-data {
@@ -32,6 +34,16 @@
   margin-top: 5rem; 
 }
 @media only screen and (max-width: 600px) {
+  #live {
+    flex-flow: row wrap;
+  }
+  .live-titles {
+    max-width: 95%;
+  }
+  .feat {
+    width: 90%;
+    flex-flow: row wrap;
+  }
   #feat-one {
     max-height: 40vh;
     width: 90vw;
