@@ -52,7 +52,6 @@ export const MapRender = (props) => {
     usStates,
     areaInViewPort,
     centerState,
-    setAF,
   } = props;
   const svg = useRef(null);
   const usCounties = useRef(null);
@@ -154,7 +153,6 @@ export const MapRender = (props) => {
       }
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
-        setAF(facilities);
         const defaultScale = d3.geoAlbersUsa().scale();
         // todo: scale is not precise for Idaho or Florida
         // code from: https://jsfiddle.net/bze197L2/
@@ -186,8 +184,6 @@ export const MapRender = (props) => {
           .attr('class', 'city-point')
           .append('title')
           .text((d) => d.areaName);
-      } else {
-        setAF(null);
       }
     };
 

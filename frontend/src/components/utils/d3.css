@@ -20,7 +20,8 @@
   margin-left: .5%;
 }
 
-.county-list .remove-county:hover {
+.county-list .remove-county:hover,
+.county-list .county-selector:hover {
   cursor: pointer;
 }
 

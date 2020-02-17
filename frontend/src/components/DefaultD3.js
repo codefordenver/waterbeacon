@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import './utils/d3.css'
 
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
-import { Table } from 'react-bootstrap';
+import { Table, Alert } from 'react-bootstrap';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -17,12 +17,13 @@ const DefaultD3 = ({
   maxScore,
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
-  const [aivpFacilities, setAF] = useState(null);
+  const [currentCounty, setCC] = useState(null)
   const usStates = useRef(null);
 
   // this function adds counties to the table on left
   const addCounty = (d) => {
     const chosenOne = waterScoreData.find((county) => d.id === county.fips_county_id);
+    setCC(chosenOne);
 
     return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
   };
@@ -37,11 +38,10 @@ const DefaultD3 = ({
     }
   };
 
-  // todo: decrease number of facilities returned and create table
-  console.log(aivpFacilities);
-
   if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
 
+  //todo: make options class stay same width
+  //todo: have CurrentSelection scroll when there are several counties
   return (
     <div className="map-content">
       <div className="options">
@@ -54,7 +54,13 @@ const DefaultD3 = ({
         <TopCounties
           countiesRanked={countiesRanked}
           setCountyRanked={setCountyRanked}
+          setCC={setCC}
         />
+        {currentCounty &&
+          <CurrentSelection
+            currentCounty={currentCounty}
+          />
+        }
       </div>
       <div className="map" >
         <MapRender
@@ -66,12 +72,24 @@ const DefaultD3 = ({
           usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}
-          setAF={setAF}
         />
       </div>
     </div>
   )
 };
+
+const CurrentSelection = ({ currentCounty }) => (
+  <Alert>
+    <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
+    <p>Closest Major City: {currentCounty.major_city}</p>
+    <p>Facilities in Violation</p>
+    <ul style={{textAlign:"left"}}>
+      {currentCounty.facilities.map(facility => (
+        <li key={facility.PWSId}>{facility.FacName}</li>
+      ))}
+    </ul>
+  </Alert>
+);
 
 const TopCounties = (props) => {
   const removeCounty = (index) => {
@@ -109,7 +127,7 @@ const TopCounties = (props) => {
               <td>
                 {index+1}
               </td>
-              <td>
+              <td className="county-selector" onClick={() => props.setCC(county)}>
                 {county.county}
               </td>
               <td>
