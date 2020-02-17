@@ -12,90 +12,78 @@ from app import models as app_models
 from news import models as news_models
 from rawdata import models as raw_models
 from django_pandas.io import read_frame
-from utils.utils import ( str2bool )
+from utils.utils import (str2bool)
 import math
 
 
 class locationData(APIView):
     # /v1/data/?sources=locations
 
+    # TODO
+    # this does way too much work. ideally, there would be a process to
+    #   collect, sanitize, analyze, store the data in the right format
+    #   (maybe with checkpoints so it can stop/start)
+    # given current structure with too many commands, we should move more logic into the data cruncher and
+    # simply select it here
 
     def get(self, request):
-        response = {"meta":{ "cities": 0, "utilities": 0, "locations": 0, "facilities": 0},"locations":[], "utilities" :[], 'cities':[], 'facilities': []}
+        response = {"meta": {"cities": 0, "utilities": 0, "locations": 0, "facilities": 0},
+                    "locations": [], "utilities": [], 'cities': [], 'facilities': []}
 
-        sources = request.query_params.get('sources','').split(',')
-
+        sources = request.query_params.get('sources', '').split(',')
 
         # filter for locations
         if 'locations' in sources or not len(sources):
 
-            queryset = app_models.location.objects.all()
-            facilities_rd = raw_models.EpaFacilitySystem.objects.all()
+            # okay, wtf? how do i include the the data.score column here?
+            # queryset = app_models.location.objects.filter(data__score__gt=0)
+
+            queryset = app_models.location.objects.raw(
+                r'select l.id, l.fips_state, l.fips_county, l.major_city, l.state, l.county, l.zipcode, l.population_served, d.score from "app_location" l join "app_data" d on d.location_id = l.id where d.score > 0')
+
+            facilities_rd = raw_models.EpaFacilitySystem.objects.filter(
+                CurrVioFlag=1).values('FacFIPSCode', 'PWSId', 'FacName', 'FacLong', 'FacLat')
             fac_df = read_frame(facilities_rd)
-            fac_df = fac_df[fac_df['CurrVioFlag'] == 1]
-            fac_df = fac_df[[
-                'FacFIPSCode',
-                'PWSId',
-                'FacName',
-                'FacLong',
-                'FacLat'
-            ]]
+            fac_df.rename(columns={'FacLong': 'long',
+                                   'FacLat': 'lat'}, inplace=True)
             total_facilities = 0
+
             for location in queryset:
-                if app_models.data.objects.filter(location = location, score__gt=0).exists():
-                    # get facilities
-                    facilities = []
-                    for facility in fac_df[fac_df['FacFIPSCode'] == location.fips_county].itertuples():
-                        total_facilities += 1
-                        facilities.append({
-                            'PWSId': facility.PWSId,
-                            'FacName': facility.FacName,
-                            'long':facility.FacLong,
-                            'lat': facility.FacLat,
-                        })
+                facilities = fac_df[fac_df['FacFIPSCode'] ==
+                                    location.fips_county].to_dict('records')
+                if math.isnan(location.score):
+                    score = 0
+                else:
+                    score = round(float(location.score), 2)
 
-                    total_facilities += len(facilities)
-                    data = app_models.data.objects.filter(location = location, score__gt=0).latest('timestamp')
+                response["locations"].append({
+                    "fips_state_id": location.fips_state,
+                    "fips_county_id": location.fips_county,
+                    "major_city": location.major_city,
+                    "state": location.state,
+                    "county": location.county,
+                    "zipcode": location.zipcode,
+                    "population_served": location.population_served,
+                    "score": score,
+                    "facilities": facilities})
 
-                    if math.isnan(data.score):
-                        response["locations"].append({
-                            "fips_state_id": location.fips_state,
-                            "fips_county_id": location.fips_county,
-                            "major_city": location.major_city,
-                            "state": location.state,
-                            "county": location.county,
-                            "zipcode": location.zipcode,
-                            "population_served":location.population_served,
-                            "score": 0,
-                            "facilities": facilities
-                        })
-                    else:
-                        response["locations"].append({
-                            "fips_state_id": location.fips_state,
-                            "fips_county_id": location.fips_county,
-                            "major_city": location.major_city,
-                            "state": location.state,
-                            "county": location.county,
-                            "zipcode": location.zipcode,
-                            "population_served":location.population_served,
-                            "score": round(float(data.score), 2),
-                            "facilities": facilities
-                        })
-
-                response["meta"]["locations"] = len(response["locations"])
-
+            response["meta"]["locations"] = queryset.count()
             response["meta"]["facilities"] = total_facilities
+
         # filter for news
         if 'news' in sources or not len(sources):
             queryset = news_models.location.objects.all()
             if request.query_params.get('fips_state'):
-                queryset.filter( fips_state = request.query_params.get('fips_state') )
+                queryset.filter(
+                    fips_state=request.query_params.get('fips_state'))
 
             if request.query_params.get('fips_county'):
-                queryset.filter( fips_state = request.query_params.get('fips_county') )
+                queryset.filter(
+                    fips_state=request.query_params.get('fips_county'))
 
             if request.query_params.get('status'):
-                queryset.filter( status = str2bool(request.query_params.get('status')) )
+                queryset.filter(status=str2bool(
+                    request.query_params.get('status')))
 
             response["meta"]["cities"] = queryset.count()
             for news in queryset:
@@ -105,7 +93,7 @@ class locationData(APIView):
                     "zipcode": news.zipcode,
                     "name": news.city,
                     "county": news.county,
-                    "status":news.status,
+                    "status": news.status,
                     "long": news.position.x if news.position else '',
                     "lat": news.position.y if news.position else '',
                 })
@@ -115,13 +103,15 @@ class locationData(APIView):
 
             queryset = Q()
             if request.query_params.get('violation'):
-                queryset &= Q( violation = str2bool(request.query_params.get('violation')) )
+                queryset &= Q(violation=str2bool(
+                    request.query_params.get('violation')))
 
-            response["meta"]["utilities"] = news_models.utility.objects.filter(queryset).count()
-            for utility in  news_models.utility.objects.filter(queryset):
+            response["meta"]["utilities"] = news_models.utility.objects.filter(
+                queryset).count()
+            for utility in news_models.utility.objects.filter(queryset):
 
                 counties_served = []
-                for county in news_models.county_served.objects.filter( utility = utility):
+                for county in news_models.county_served.objects.filter(utility=utility):
                     counties_served.append({
                         "fips_state_id": county.location.fips_state,
                         "fips_county_id": county.location.fips_county,
@@ -137,8 +127,7 @@ class locationData(APIView):
                     "violation": utility.violation,
                     "violation_points": utility.voilation_points,
                     "people_served": utility.people_served,
-                    "counties_served":counties_served
+                    "counties_served": counties_served
                 })
-
 
         return Response(response)

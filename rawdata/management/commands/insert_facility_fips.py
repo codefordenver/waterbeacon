@@ -40,6 +40,7 @@ class Command(BaseCommand):
             if not county_fips:
                 county_fips = get_census_block(facility.FacLat, facility.FacLong )
 
+            # TODO I'm seeing values like 53342.0 and 53342
             facility.FacFIPSCode = county_fips.split(', ')[0]
             facility.save()
 
