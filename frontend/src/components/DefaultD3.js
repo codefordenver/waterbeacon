@@ -17,6 +17,7 @@ const DefaultD3 = ({
   maxScore,
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
+  const [aivpFacilities, setAF] = useState(null);
   const usStates = useRef(null);
 
   // this function adds counties to the table on left
@@ -35,6 +36,9 @@ const DefaultD3 = ({
       setAIVP(null);
     }
   };
+
+  // todo: decrease number of facilities returned and create table
+  console.log(aivpFacilities);
 
   if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
 
@@ -62,6 +66,7 @@ const DefaultD3 = ({
           usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}
+          setAF={setAF}
         />
       </div>
     </div>

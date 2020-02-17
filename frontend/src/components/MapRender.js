@@ -52,6 +52,7 @@ export const MapRender = (props) => {
     usStates,
     areaInViewPort,
     centerState,
+    setAF,
   } = props;
   const svg = useRef(null);
   const usCounties = useRef(null);
@@ -111,10 +112,9 @@ export const MapRender = (props) => {
         .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-      //todo: add dots for facility locations
+
       //todo: highlight major cities (save for later)
-      //todo: move state selector to above the county table
-      //todo: add timeline to where state selector is currently
+      //todo: add timeline
       //we append a new "g" element for the state boundaries
       g.current.append("g")
         //set the class
@@ -154,6 +154,7 @@ export const MapRender = (props) => {
       }
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
+        setAF(facilities);
         const defaultScale = d3.geoAlbersUsa().scale();
         // todo: scale is not precise for Idaho or Florida
         // code from: https://jsfiddle.net/bze197L2/
@@ -186,6 +187,7 @@ export const MapRender = (props) => {
           .append('title')
           .text((d) => d.areaName);
       } else {
+        setAF(null);
       }
     };
 
