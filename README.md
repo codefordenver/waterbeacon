@@ -4,15 +4,15 @@ waterbeacon
 
 ## Resources
 
-https://www.waterqualitydata.us/
+[Water quality data](https://www.waterqualitydata.us/)
 
 ## NSF Water Quality Index
 
-http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm
+[Water quality index calc](http://home.eng.iastate.edu/~dslutz/dmrwqn/water_quality_index_calc.htm)
 
 ## API Installation Guide
 
-You'll need to install `python2` along with `pip`.
+You'll need to install `python3` along with `pip`.
 
 Next, you'll need to install [python virtual environment wrapper](https://virtualenvwrapper.readthedocs.io/en/latest/). You can do so by running `pip install virtualenvwrapper`.
 
@@ -29,9 +29,28 @@ Make sure you have the folling tools are installed:
 * [PSequel](http://www.psequel.com/)
 * You may need to manually install [GeoDjango](https://docs.djangoproject.com/en/1.11/ref/contrib/gis/install/#homebrew). If you have trouble with it, consider using brew.
 
+May be required:
+* [libpq-dev](https://pypi.org/project/libpq-dev/)
+* [postgis](https://postgis.net/install/)
+* [gdal-bin](https://gdal.org/)
+
+Create an empty .env file `touch .env`.
+
 Create the waterbeacon database by running `createdb waterbeacon`
 
-When that completes, run ./manage.py migrate --settings=settings.dev to create a local postgres db instance for development.
+(Optional - Linux Users) You may need to create a new Postgres User or update the default Postgres User to have access to the database.  Do this by running the following:
+
+    sudo su - postgres
+
+    psql
+
+    CREATE USER myprojectuser WITH PASSWORD 'password';
+    
+    GRANT ALL PRIVILEGES ON DATABASE waterbeacon TO myprojectuser;
+
+You should then update the 'USER' and 'PASSWORD' to the dev.py file in the settings folder to your newly created postgres user.
+
+When that completes, run `./manage.py migrate --settings=settings.dev` to create a local postgres db instance for development.
 
 (Optional - never necessary if csvs exist) To get all the new facility location data from the EPA, you can run `./manage.py download_epa_facility_data --settings=settings.dev`
 
@@ -39,8 +58,7 @@ When that completes, run ./manage.py migrate --settings=settings.dev to create a
 
 (Optional) Populate the rawdata app with EPA data by running the following:
 
-    ./manage.py import_epa_facility_data --settings=settings.dev
-    ./manage.py import_epa_water_data --settings=settings.dev
+`./manage.py import_epa_facility_data --settings=settings.dev;./manage.py import_epa_water_data --settings=settings.dev;./manage.py insert_facility_fips --settings=settings.dev;./manage.py data_cruncher --settings=settings.dev`
 
 Finally, run `./manage.py runserver --settings=settings.dev` to kick off a dev server.
 

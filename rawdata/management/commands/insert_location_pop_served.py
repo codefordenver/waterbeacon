@@ -12,12 +12,16 @@ class Command(BaseCommand):
         print('total: %s' % ( total ))
 
         completed = 0
+
+        location_water_systems = rawdata_models.EpaWaterSystem.objects.all()
+        lws_df = read_frame(location_water_systems)
+        fips_populations = lws_df.groupby(['FIPSCodes'])['PopulationServedCount'].sum()
+
         for location in app_models.location.objects.filter(population_served = 0):
             if not location.fips_county:
                 print('location: %s skip' % (location.pk))
                 continue
-
-            location.population_served = rawdata_models.EpaWaterSystem.objects.filter( FIPSCodes__contains = location.fips_county ).aggregate(Sum('PopulationServedCount'))['PopulationServedCount__sum']
+            location.population_served = fips_populations[county_fips]['PopulationServedCount']
             location.save()
 
             completed +=1

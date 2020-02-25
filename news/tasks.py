@@ -5,7 +5,6 @@ from waterquality.celery import app
 from datetime import datetime, timedelta
 from utils.log import log
 from news import models
-from annoying.functions import get_object_or_None
 import feedparser
 from utils.utils import (
     remove_stopwords, cleanhtml, hasPhrase

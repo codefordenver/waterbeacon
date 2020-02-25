@@ -5,7 +5,7 @@ from rawdata import models as rawdata_models
 from app import models as app_models
 from utils.utils import ( get_census_block )
 from uszipcode import SearchEngine
-
+from django_pandas.io import read_frame
 
 class Command(BaseCommand):
 
@@ -20,31 +20,59 @@ class Command(BaseCommand):
 
         search = SearchEngine(simple_zipcode=True)
 
+        water_systems = rawdata_models.EpaWaterSystem.objects.all()
+        ws_df = read_frame(water_systems)
+
         completed = 0
         total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
         print('%s Facilities that need FIPs Codes' % (total))
+        # update all facilities that do not have FIPSCodes
         for facility in rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = ''):
-            county_fips = get_census_block(facility.FacLat, facility.FacLong )
+            fac_pws_id = facility.PWSId
+            county_fips = ''
+            equiv_ws_list = ws_df[(ws_df['PWSId'] == fac_pws_id)]
+            if equiv_ws_list['id'].count() > 0:
+                equiv_ws = equiv_ws_list.iloc[0]
+                county_fips = equiv_ws['FIPSCodes']
+            if county_fips == '':
+                print('checking census block for %s' %fac_pws_id)
+                county_fips = get_census_block(facility.FacLat, facility.FacLong )
 
-            facility.FacFIPSCode = county_fips
+            facility.FacFIPSCode = county_fips.split(', ')[0]
             facility.save()
-
-            if not app_models.location.objects.filter(fips_county =  county_fips).exists():
-                location = app_models.location()
-                location.fips_county = county_fips
-                location.state = facility.FacState
-                location.fips_state = state_fips
-                location.county = facility.FacCounty
-                location.population_served = rawdata_models.EpaWaterSystem.objects.filter( FIPSCodes__contains = fips_code ).aggregate(Sum('PopulationServedCount'))['PopulationServedCount__sum']
-
-                if county_fips in fips_to_zip:
-                    location.zipcode = fips_to_zip[county_fips]
-                    result = search.by_zipcode( location.zipcode )
-                    location.major_city = result.major_city
-
-                location.save()
 
             completed +=1
             if completed % 100 == 0:
                 total = rawdata_models.EpaFacilitySystem.objects.filter(FacFIPSCode = '').count()
-                print('%s [%s]' % ( total , completed))
+                print('Remaining: %s Completed: %s' % ( total , completed))
+
+        facilities = rawdata_models.EpaFacilitySystem.objects.all()
+        fac_df = read_frame(facilities)
+        fac_df.dropna(subset=['FacFIPSCode'], inplace = True)
+        fac_df.drop_duplicates(subset=['FacFIPSCode'], inplace = True)
+        num_unique_fips = fac_df['FacFIPSCode'].nunique()
+        completed = 0
+
+        print('Checking which facilities to add to locations. %s facilities.' %num_unique_fips)
+        for __, facility in fac_df.iterrows():
+            completed += 1
+            if not app_models.location.objects.filter(fips_county =  facility['FacFIPSCode']).exists():
+                county_fips = facility['FacFIPSCode']
+                location = app_models.location()
+                location.fips_county = county_fips
+                location.state = facility.FacState
+                location.fips_state = state_fips[facility.FacState]
+                location.county = facility.FacCounty
+                fips_populations = ws_df[ws_df['FIPSCodes'] == facility['FacFIPSCode']]['PopulationServedCount'].sum()
+                location.population_served = fips_populations
+
+                if facility['FacFIPSCode'] in fips_to_zip:
+                    location.zipcode = fips_to_zip[facility['FacFIPSCode']]
+                    result = search.by_zipcode( location.zipcode )
+                    location.major_city = result.major_city
+                try:
+                    location.save()
+                except:
+                    self.stdout.write('%s not saved' %location)
+            if completed % 100 == 0:
+                print('Remaining: %s Completed: %s' % ( num_unique_fips - completed , completed))

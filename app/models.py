@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from django.conf import settings
 from datetime import datetime
 import uuid
@@ -12,9 +11,9 @@ from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
 from rawdata import models as raw_models
 
-import choice
+from app import choice
 
-import const
+from app import const
 
 # Create your models here.
 class location(models.Model):
@@ -36,7 +35,7 @@ class location(models.Model):
 		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
-	location =  models.ForeignKey(location)
+	location = models.ForeignKey(location, on_delete=models.CASCADE)
 	timestamp = models.DateTimeField( auto_now_add=True)
 	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	objects = DataFrameManager()

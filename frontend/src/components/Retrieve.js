@@ -98,7 +98,7 @@ const Retrieve = () => {
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
-        const stateId = fipsSpecific.fips_county_id.substring(0,2);
+        const stateId = fipsSpecific.fips_state_id;
         const stateData = stateFipsId[stateId];
         stateData.count = stateData.count ? stateData.count + 1 : 1;
         // only need to go two spots past decimal

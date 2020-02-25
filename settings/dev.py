@@ -1,4 +1,4 @@
-from common import *
+from settings.common import * 
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
