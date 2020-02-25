@@ -180,7 +180,7 @@ export const MapRender = (props) => {
           .attr('cy', (d) => d.coordinates[1])
           // .on('click', (d) => reqRedirect(d))
           .attr('r', 2)
-          .attr('fill', 'yellow')
+          .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')
           .text((d) => d.areaName);
