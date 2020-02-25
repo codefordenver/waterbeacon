@@ -1,5 +1,5 @@
 #live {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #198CFF;
+  background: linear-gradient(180deg, #f8f9fa 0%, rgba(255, 255, 255, 0) 100%), #198CFF;
   display: flex;
   flex-flow: row nowrap;
   min-height: 80vh;
@@ -32,6 +32,19 @@
   max-height: 50vh;
   width: 25vw;
   margin-top: 5rem; 
+}
+
+.center-all {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+#why-wb {
+  padding:3rem;
+}
+#why-wb div Img{
+  height:25vh;
 }
 @media only screen and (max-width: 600px) {
   #live {
