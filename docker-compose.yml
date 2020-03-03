@@ -2,26 +2,42 @@
 version: '3.7'
 
 services:
-  web:
-    build: .
-    #command: gunicorn waterquality.wsgi:application --bind 0.0.0.0:8000 --workers 3
-    command: python manage.py runserver 0.0.0.0:8000
-    container_name: app
-#    volumes:
-#      - pg-data:/app
+  redis:
+    image: "redis:alpine"
     ports:
-      - 8000:8000
+      - 6379:6379
+    volumes:
+      - redis-data:/data
 
-#volumes:
-#  pg-data:
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
 
-#    env_file:
-#      - ./env
-#  nginx:
-#    build: ./nginx
-#    volumes:
-#      - static_volume:/home/app/web/staticfiles
-#    ports:
-#      - 1337:80
-#    depends_on:
-#      - web
+  backend:
+    build: .
+    command: gunicorn waterquality.wsgi:application --bind 0.0.0.0:8000
+    container_name: app
+    env_file:
+      - ./.env
+    expose:
+      - 8000
+    depends_on:
+      - redis
+      - nginx
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - node-modules:/app/node_modules
+    ports:
+      - 80:3000
+    depends_on:
+      - backend
+      - nginx
+    command: npm start
+
+volumes:
+  redis-data:
+  node-modules:
