@@ -8,7 +8,7 @@ from django.db.models import Sum
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        total  = app_models.location.objects.filter(population_served = 0).count()
+        total  = app_models.Location.objects.filter(population_served = 0).count()
         print('total: %s' % ( total ))
 
         completed = 0
@@ -17,7 +17,7 @@ class Command(BaseCommand):
         lws_df = read_frame(location_water_systems)
         fips_populations = lws_df.groupby(['FIPSCodes'])['PopulationServedCount'].sum()
 
-        for location in app_models.location.objects.filter(population_served = 0):
+        for location in app_models.Location.objects.filter(population_served = 0):
             if not location.fips_county:
                 print('location: %s skip' % (location.pk))
                 continue
@@ -26,5 +26,5 @@ class Command(BaseCommand):
 
             completed +=1
             if completed % 100 == 0:
-                total  = app_models.location.objects.filter(population_served = 0).count()
+                total  = app_models.Location.objects.filter(population_served = 0).count()
                 print('%s [%s]' % ( total , completed))

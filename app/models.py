@@ -9,39 +9,47 @@ from django.contrib.postgres.fields import JSONField
 from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
-from rawdata import models as raw_models
 
 from app import choice
-
 from app import const
 
-# Create your models here.
-class location(models.Model):
 
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-	major_city = models.CharField(max_length=255, null=True, blank=True, default="")
-	county = models.CharField(max_length=255, null=True, blank=True, default="")
-	state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
-	fips_state = models.CharField(max_length=10, null=True, blank=True,default='')
-	fips_county = models.CharField(max_length=10, null=True, blank=True,default='')
-	zipcode = models.CharField(max_length=10, null=True, blank=True,default='')
-	neighborhood = models.CharField(max_length=100, null=True, blank=True,default='')
-	notes = models.TextField(null=True, blank=True,default='')
-	population_served = models.IntegerField( blank=True, null=True, default = 0)
-	facilities = models.ManyToManyField(raw_models.EpaFacilitySystem)
-	created = models.DateTimeField( auto_now_add=True)
+class Address(models.Model):
+    street_number = models.CharField(
+        blank=True, default='', max_length=255, null=True)
+    street_name = models.CharField(
+        blank=True, default='', max_length=255, null=True)
+    city = models.CharField(blank=True, default='', max_length=255, null=True)
+    zipcode = models.CharField(
+        blank=True, default='', max_length=10, null=True)
+    county = models.CharField(max_length=100, null=True)
+    latitude = models.DecimalField(decimal_places=6, max_digits=10, null=True)
+    longitude = models.DecimalField(decimal_places=6, max_digits=10, null=True)
+    state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
 
-	def __unicode__(self):
-		return '%s, %s' % ( self.major_city, self.state)
 
-class data(models.Model):
-	location = models.ForeignKey(location, on_delete=models.CASCADE)
-	timestamp = models.DateTimeField( auto_now_add=True)
-	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
-	objects = DataFrameManager()
+class FipsCode(models.Model):
+    fips_code = models.CharField(max_length=15)
 
-	def __unicode__(self):
-		return '%s - %s' % (self.location.fips_county, self.timestamp)
 
-	class Meta:
-		verbose_name_plural = "Data"
+class Location(models.Model):
+    score = models.DecimalField(decimal_places=3, default=0.0, max_digits=15)
+    fips_code = models.ForeignKey(
+        blank=True, null=True, on_delete=models.CASCADE, to='app.FipsCode')
+
+
+class Facility(models.Model):
+    FAC_TYPES = (('CWS', 'Community Water System'), ('OTHER', 'Other'))
+    facility_name = models.CharField(max_length=255)
+    pws_id = models.CharField(max_length=255, unique=True)
+    registry_id = models.CharField(max_length=12, unique=True)
+    current_violation_score = models.IntegerField(default=0)
+    historic_violation_score = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)
+    facility_type = models.CharField(choices=FAC_TYPES, max_length=255)
+    population_served = models.IntegerField(
+        blank=True, default=0, null=True)
+    address_key = models.ForeignKey(
+        blank=True, on_delete=models.CASCADE, to='app.Address')
+    fips_code = models.ForeignKey(
+        blank=True, null=True, on_delete=models.CASCADE, to='app.FipsCode')

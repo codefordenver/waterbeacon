@@ -38,7 +38,7 @@ class locationData(APIView):
             # okay, wtf? how do i include the the data.score column here?
             # queryset = app_models.location.objects.filter(data__score__gt=0)
 
-            queryset = app_models.location.objects.raw(
+            queryset = app_models.Location.objects.raw(
                 r'select l.id, l.fips_state, l.fips_county, l.major_city, l.state, l.county, l.zipcode, l.population_served, d.score from "app_location" l join "app_data" d on d.location_id = l.id where d.score > 0')
 
             facilities_rd = raw_models.EpaFacilitySystem.objects.filter(

@@ -85,7 +85,7 @@ class SDW_Data_Cruncher(object):
         if print_test:
             log('state: %s' % (state), 'success')
 
-        state_locs = app_models.location.objects.filter(state = state)
+        state_locs = app_models.Location.objects.filter(state = state)
         state_df = read_frame(state_locs)
         area_scores = self._calc_area_score(state)
         if area_scores.shape[0] == 0 or state_df.shape[0] == 0:

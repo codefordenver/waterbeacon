@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
             areas = cruncher.calc_state_scores(state, print_test = True)
             for area in areas.itertuples():
-                location = app_models.location.objects.filter(fips_county =  area.fips_county).first()
+                location = app_models.Location.objects.filter(fips_county =  area.fips_county).first()
                 systems = raw_models.EpaFacilitySystem.objects.filter(FacFIPSCode = area.fips_county).values()
                 systems_df = read_frame(systems)
                 if systems_df.shape[0] != 0:

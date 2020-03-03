@@ -61,7 +61,7 @@ class Command(BaseCommand):
             completed += 1
             if not app_models.location.objects.filter(fips_county=facility.FacFIPSCode).exists():
                 county_fips = facility.FacFIPSCode
-                location = app_models.location()
+                location = app_models.Location()
                 location.fips_county = county_fips
                 location.state = facility.FacState
                 location.fips_state = state_fips[facility.FacState]
