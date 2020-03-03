@@ -29,6 +29,11 @@ Make sure you have the folling tools are installed:
 * [PSequel](http://www.psequel.com/)
 * You may need to manually install [GeoDjango](https://docs.djangoproject.com/en/1.11/ref/contrib/gis/install/#homebrew). If you have trouble with it, consider using brew.
 
+May be required:
+* [libpq-dev](https://pypi.org/project/libpq-dev/)
+* [postgis](https://postgis.net/install/)
+* [gdal-bin](https://gdal.org/)
+
 Create an empty .env file `touch .env`.
 
 Create the waterbeacon database by running `createdb waterbeacon`
