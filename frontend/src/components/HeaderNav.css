@@ -6,6 +6,11 @@
   background-color: #f8f9fa;
   padding: 1rem;
 }
-.nav-buttons {
-  
+.nav-items {
+  margin: 1rem;
+}
+@media only screen and (max-width: 768px) { 
+  .nav-items {
+    margin: 0.3rem;
+ }
 }
