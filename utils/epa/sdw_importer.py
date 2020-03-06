@@ -1,7 +1,8 @@
-from rawdata.models import EpaFacilitySystem, EpaWaterSystem
+from app.models import FipsCode, Location, Facility
 from datetime import datetime
 from django.db import utils
 from decimal import Decimal
+from utils.utils import (get_census_block)
 
 
 class SDW_Importer(object):
@@ -12,19 +13,78 @@ class SDW_Importer(object):
             return datetime.strptime(date_string, '%m/%d/%Y')
         return None
 
-
     def _format_int(self, int_string):
         '''deal with the annoying empty string to int exception'''
         if not int_string:
             return 0
         return int(int_string)
 
-
     def _format_decimal(self, decimal_string):
         '''deal with the annoying empty string exception'''
         if not decimal_string:
             return Decimal(0)
         return Decimal(decimal_string)
+
+    def _get_fips_code(self, dfrow):
+        clean_fips = lambda x: x if (
+            x and len(x) == 5 and x != '00000') else None
+        fips_candidates = (dfrow.FacFIPSCode, dfrow.FIPSCodes,
+                           dfrow.FacDerivedStctyFIPS)
+        fips_options = set(
+            map(clean_fips, fips_candidates))
+
+        fips_options.discard(None)
+        # TODO what happens with multiples?
+        if len(fips_options) > 1:
+            print("found mulitiple fips codes %s for %s" %
+                  (fips_options, dfrow.PWSId))
+            raise AssertionError
+        elif not len(fips_options): # let's calculate one (maybe do the same above?)
+            print("found no valid fips codes %s for %s" %
+                   (fips_options, dfrow.PWSId))
+            return get_census_block(dfrow.FacLat, dfrow.FacLong)
+        else:
+            return fips_options.pop()
+
+
+    def _get_zip_code(self, dfrow):
+        if dfrow.FacZip:
+            return dfrow.FacZip
+        return dfrow.FacDerivedZip
+
+    def add_to_db(self, dfrow):
+        # TODO need to import one or multiple
+        if len(dfrow.SDWAIDs) > 9:
+            # multiple water facilities included
+            full_id_list = dfrow.SDWAIDs.split(' ')
+            for sdwa_id in full_id_list:
+                print('have a bunch of facs to add %s' %full_id_list)
+                # facility.SDWAIDs = sdwa_id
+        else:
+            print('just one to add %s' % dfrow.PWSId)
+
+        # TODO: here we calculate a score (what is current and historic?)
+
+        fac = {
+            "facility_name": dfrow.FacName,
+            'pws_id': dfrow.PWSId,
+            'registry_id': dfrow.RegistryID_x, #_x and _y because both data frames include this column in merge
+            'current_violation_score': dfrow.Viopaccr, 
+            'historic_violation_score': dfrow.Vioremain,
+            'score': dfrow.Score,
+            'facility_type': dfrow.PWSTypeCode,
+            'population_served': dfrow.PopulationServedCount,
+            'fips_code': self._get_fips_code(dfrow),
+            'city': dfrow.FacCity,
+            'zipcode': self._get_zip_code(dfrow),
+            'county': dfrow.FacCounty,
+            'latitude': dfrow.FacLat,
+            'longitude': dfrow.FacLong,
+            'state': dfrow.FacState,
+            'street': dfrow.FacStreet
+
+        }
+        # facility = Facility.objects.update_or_create(fac)
 
 
     def add_watersystem_to_db(self, system):
@@ -103,39 +163,40 @@ class SDW_Importer(object):
 
 
     def add_epafacility_to_db(self, facility):
-        EpaFacilitySystem.objects.update_or_create(RegistryID=facility["RegistryID"],
-            defaults={'FacName': facility["FacName"],
-                'PWSId': facility["SDWAIDs"],
-                'FacStreet': facility["FacStreet"],
-                'FacCity': facility["FacCity"],
-                'FacState': facility["FacState"],
-                'FacZip': facility["FacZip"],
-                'FacCounty': facility["FacCounty"],
-                'FacFIPSCode': facility["FacFIPSCode"],
-                'FacDerivedZip': facility["FacDerivedZip"],
-                'FacEPARegion': facility["FacEPARegion"],
-                'FacLat': self._format_decimal(facility["FacLat"]),
-                'FacLong': self._format_decimal(facility["FacLong"]),
-                'FacAccuracyMeters': self._format_decimal(facility["FacAccuracyMeters"]),
-                'FacReferencePoint': facility["FacReferencePoint"],
-                'FacTotalPenalties': facility["FacTotalPenalties"],
-                'FacDateLastPenalty': self._format_date(facility["FacDateLastPenalty"]),
-                'FacLastPenaltyAmt': facility["FacLastPenaltyAmt"],
-                'SDWAFormalActionCount': self._format_int(facility["SDWAFormalActionCount"]),
-                'SDWASystemTypes': facility["SDWASystemTypes"],
-                'FacDerivedStctyFIPS': facility["FacDerivedStctyFIPS"],
-                'FacPercentMinority': self._format_decimal(facility["FacPercentMinority"]),
-                'FacMajorFlag': facility["FacMajorFlag"],
-                'ViolFlag': self._format_int(facility["ViolFlag"]),
-                'CurrVioFlag': self._format_int(facility["CurrVioFlag"]),
-                'FacPenaltyCount': self._format_int(facility["FacPenaltyCount"]),
-                'FacFormalActionCount': self._format_int(facility["FacFormalActionCount"]),
-                'SDWA3yrComplQtrsHistory': facility["SDWA3yrComplQtrsHistory"],
-                'SDWAInspections5yr': self._format_int(facility["SDWAInspections5yr"]),
-                'SDWAInformalCount': self._format_int(facility["SDWAInformalCount"]),
-                'FacCollectionMethod': facility["FacCollectionMethod"],
-                'FacStdCountyName': facility["FacStdCountyName"],
-                'SDWISFlag': facility["SDWISFlag"],
-                'FacImpWaterFlg': facility["FacImpWaterFlg"],
-                'Score': facility["Score"] 
+        EpaFacilitySystem.objects.update_or_create(RegistryID=facility.RegistryID,
+            defaults={'FacName': facility.FacName,
+                'PWSId': facility.SDWAIDs,
+                'FacStreet': facility.FacStreet,
+                'FacCity': facility.FacCity,
+                'FacState': facility.FacState,
+                'FacZip': facility.FacZip,
+                'FacCounty': facility.FacCounty,
+                'FacFIPSCode': facility.FacFIPSCode,
+                'FacDerivedZip': facility.FacDerivedZip,
+                'FacEPARegion': facility.FacEPARegion,
+                'FacLat': self._format_decimal(facility.FacLat),
+                'FacLong': self._format_decimal(facility.FacLong),
+                'FacAccuracyMeters': self._format_decimal(facility.FacAccuracyMeters),
+                'FacReferencePoint': facility.FacReferencePoint,
+                'FacTotalPenalties': facility.FacTotalPenalties,
+                'FacDateLastPenalty': self._format_date(facility.FacDateLastPenalty),
+                'FacLastPenaltyAmt': facility.FacLastPenaltyAmt,
+                'SDWAFormalActionCount': self._format_int(facility.SDWAFormalActionCount),
+                'SDWASystemTypes': facility.SDWASystemTypes,
+                'FacDerivedStctyFIPS': facility.FacDerivedStctyFIPS,
+                'FacPercentMinority': self._format_decimal(facility.FacPercentMinority),
+                'FacMajorFlag': facility.FacMajorFlag,
+                'ViolFlag': self._format_int(facility.ViolFlag),
+                'CurrVioFlag': self._format_int(facility.CurrVioFlag),
+                'FacPenaltyCount': self._format_int(facility.FacPenaltyCount),
+                'FacFormalActionCount': self._format_int(facility.FacFormalActionCount),
+                'SDWA3yrComplQtrsHistory': facility.SDWA3yrComplQtrsHistory,
+                'SDWAInspections5yr': self._format_int(facility.SDWAInspections5yr),
+                'SDWAInformalCount': self._format_int(facility.SDWAInformalCount),
+                'FacCollectionMethod': facility.FacCollectionMethod,
+                'FacStdCountyName': facility.FacStdCountyName,
+                'SDWISFlag': facility.SDWISFlag,
+                'FacImpWaterFlg': facility.FacImpWaterFlg,
+                'Score': facility.Score 
                       })
+        
