@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Card } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion'
 import wbInfoLogo from '../images/SMWaterBeaconInfo.png';
-import './AccordionDirections.css';
+import './directionsStyle.css';
 
 export default function Directions() {
   return (
