@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Navbar, Nav, Button } from 'react-bootstrap';
 import wbSVG from '../WaterBeacon.svg';
 import wbLogo from '../images/waterBeaconLogo.png';
-import './HeaderNav.css'
+import './pageNavStyle.css'
 import { NavHashLink } from 'react-router-hash-link';
 
 class PageNavHeader extends React.Component {
