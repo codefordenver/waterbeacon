@@ -11,13 +11,13 @@ const path = d3.geoPath();
 //change the following variable to adjust stroke width
 const initSW = .5;
 
+const csStart = '#DFF2FE';
+const csEnd = '#2A5067';
+const noColor = '#FFFFFF';
+
 // this function controls the entire color scale for the map
 const colorScale = (maxScore) => {
-  console.log(maxScore);
   const iteration = 10;
-  const csStart = '#FFFFFF';
-  // todo: may need to choose a darker color for end of scale
-  const csEnd = '#2O4177';
   const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
   return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
     .range(colorScale);
@@ -84,7 +84,6 @@ export const MapRender = (props) => {
         stateFacilityObj.current[stateId].facArr = facArr;
       };
       //this is the color scheme and scale
-      const noColor = 'rgb(248,249,250)';
       const color = colorScale(maxScore);
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -112,10 +111,9 @@ export const MapRender = (props) => {
         .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-      //todo: add dots for facility locations
+
       //todo: highlight major cities (save for later)
-      //todo: move state selector to above the county table
-      //todo: add timeline to where state selector is currently
+      //todo: add timeline
       //we append a new "g" element for the state boundaries
       g.current.append("g")
         //set the class
@@ -182,11 +180,10 @@ export const MapRender = (props) => {
           .attr('cy', (d) => d.coordinates[1])
           // .on('click', (d) => reqRedirect(d))
           .attr('r', 2)
-          .attr('fill', 'yellow')
+          .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')
           .text((d) => d.areaName);
-      } else {
       }
     };
 
