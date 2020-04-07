@@ -1,0 +1,58 @@
+#partners {
+  background-color: #198CFF;
+  color: #f8f9fa;
+  height: 85vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  padding:1rem;
+}
+#sponsor-title-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+#sponsors-title {
+  margin-right: 2rem;
+}
+#sponsors {
+  padding: 1rem;
+  margin-left: 2rem;
+}
+#sponsors div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+#EPA-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.5rem;
+}
+#EPA-btn h2 {
+  color: #3399ff;
+  margin-left: 1rem;
+}
+#CFD-btn {
+  margin: 0.5rem;
+}
+#CFA-btn {
+  margin: 0.5rem;
+}
+.btn-img {
+  height: 75px;
+}
+@media only screen and (max-width: 600px) { 
+  .btn-img {
+    height:50px
+  }
+  #EPA-btn {
+   padding-left: 0.5rem; 
+  }
+  #EPA-btn h2 {
+    margin-left: 0rem;
+  }
+}
