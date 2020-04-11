@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import { countyList } from './utils/counties';
+import { countyList } from '../utils/counties';
 
 const width = 960;
 const height = 600;

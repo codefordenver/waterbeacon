@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import './utils/d3.css'
+import './DefaultD3.css';
 
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
