@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import WbHeaderBsNav from '../components/WbHeaderBsNav';
-// import Retrieve from '../components/Retrieve';
+import Retrieve from '../components/Retrieve';
 import PageNavHeader from '../components/PageNavHeader';
 import LiveData from '../components/LiveData';
 import './styleHome.css';
@@ -16,8 +16,8 @@ class Home extends Component {
     return (
       <div>
         <PageNavHeader />
-        {/* <WbHeaderBsNav />
-        <Retrieve /> */}
+        {/* <WbHeaderBsNav /> */}
+        <Retrieve />
         <Directions />
         <LiveData />
         <WhyWB />
@@ -31,6 +31,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-
