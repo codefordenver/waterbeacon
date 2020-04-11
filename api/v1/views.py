@@ -32,7 +32,7 @@ class locationData(APIView):
             queryset = app_models.location.objects.all()
             facilities_rd = raw_models.EpaFacilitySystem.objects.all()
             fac_df = read_frame(facilities_rd)
-            fac_df = fac_df[fac_df['CurrVioFlag'] == 1]
+            fac_df = fac_df[(fac_df['CurrVioFlag'] == 1) & (fac_df['SDWASystemTypes'] == 'Community water system')]
             fac_df = fac_df[[
                 'FacFIPSCode',
                 'PWSId',
