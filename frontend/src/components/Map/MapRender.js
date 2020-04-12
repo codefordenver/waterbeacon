@@ -53,10 +53,10 @@ export const MapRender = (props) => {
     areaInViewPort,
     centerState,
   } = props;
+  //refs, we don't want a rerender when these change!
   const svg = useRef(null);
   const usCounties = useRef(null);
   const stateFacilityObj = useRef({});
-  //refs, we don't want a rerender when these change!
   const g = useRef(null);
 
   // this hook builds the map and renders it
@@ -178,6 +178,7 @@ export const MapRender = (props) => {
           .append('circle')
           .attr('cx', (d) => d.coordinates[0])
           .attr('cy', (d) => d.coordinates[1])
+          // in future, the click funciton will send you to ECHO page for facility
           // .on('click', (d) => reqRedirect(d))
           .attr('r', 2)
           .attr('fill', '#E15659')
@@ -208,10 +209,11 @@ export const MapRender = (props) => {
       g.current.select("#states")
         .selectAll("path")
         .classed("active", areaInViewPort && function (d) { return d === areaInViewPort; });
-      g.current.selectAll("#active")
-        .style("stroke-width", k * initSW + "px")
-        .style("stroke", "#2d5e9e")
-        .attr("fill", "none");
+      // g.current.selectAll(".active")
+      //   .style("stroke-width", k * initSW + "px")
+      //   .style("stroke", "#2d5e9e")
+      //   .style("z-index", 10)
+      //   .attr("fill", "none");
       g.current.transition()
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
