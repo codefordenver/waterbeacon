@@ -189,6 +189,10 @@ export const MapRender = (props) => {
     };
 
     const centerState = () => {
+      if (g.current) {
+        g.current.select('#active')
+          .remove();
+      }
       //create variables for centering the state
       if (areaInViewPort) {
         var centroid = path.centroid(areaInViewPort);
@@ -207,13 +211,13 @@ export const MapRender = (props) => {
         k = 1;
       }
       g.current.select("#states")
-        .selectAll("path")
-        .classed("active", areaInViewPort && function (d) { return d === areaInViewPort; });
-      // g.current.selectAll(".active")
-      //   .style("stroke-width", k * initSW + "px")
-      //   .style("stroke", "#2d5e9e")
-      //   .style("z-index", 10)
-      //   .attr("fill", "none");
+        .selectAll('path')
+        .attr("id", (d) => areaInViewPort && d === areaInViewPort && "active");
+      g.current.selectAll("#active")
+        .style("stroke-width", k * initSW + "px")
+        .style("stroke", "#2d5e9e")
+        .style("z-index", 10)
+        .attr("fill", "none");
       g.current.transition()
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
