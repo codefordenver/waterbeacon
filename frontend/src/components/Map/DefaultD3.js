@@ -59,6 +59,7 @@ const DefaultD3 = ({
         {currentCounty &&
           <CurrentSelection
             currentCounty={currentCounty}
+            setCC={setCC}
           />
         }
       </div>
@@ -78,8 +79,8 @@ const DefaultD3 = ({
   )
 };
 
-const CurrentSelection = ({ currentCounty }) => (
-  <Alert>
+const CurrentSelection = ({ currentCounty, setCC }) => (
+  <Alert dismissible variant="primary" onClose={() => setCC(null)}>
     <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
     <p>Closest Major City: {currentCounty.major_city}</p>
     <p>Facilities in Violation</p>
