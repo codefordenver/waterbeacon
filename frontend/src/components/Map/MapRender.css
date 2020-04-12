@@ -34,3 +34,9 @@
 .map-container {
   margin-top: 10px;
 }
+
+path#active {
+  stroke: '#2d5e9e';
+  z-index: 10;
+  fill: none;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { countyList } from '../utils/counties';
+import './MapRender.css';
 
 const width = 960;
 const height = 600;
@@ -133,7 +134,7 @@ export const MapRender = (props) => {
         .style("stroke", "black")
         .style("stroke-width", ".5px")
         //give a click listener for each state-boundary
-        .on("click", d => centerState(d))
+        .on("click", d => {removeHover(`state-${d.id}`); centerState(d);})
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
@@ -188,11 +189,7 @@ export const MapRender = (props) => {
       }
     };
 
-    const centerState = () => {
-      if (g.current) {
-        g.current.select('#active')
-          .remove();
-      }
+    const adjustViewPort = () => {
       //create variables for centering the state
       if (areaInViewPort) {
         var centroid = path.centroid(areaInViewPort);
@@ -212,12 +209,7 @@ export const MapRender = (props) => {
       }
       g.current.select("#states")
         .selectAll('path')
-        .attr("id", (d) => areaInViewPort && d === areaInViewPort && "active");
-      g.current.selectAll("#active")
-        .style("stroke-width", k * initSW + "px")
-        .style("stroke", "#2d5e9e")
-        .style("z-index", 10)
-        .attr("fill", "none");
+        .attr("id", (d) => areaInViewPort && d === areaInViewPort ? `active` : `state-${d.id}`);
       g.current.transition()
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
@@ -225,7 +217,7 @@ export const MapRender = (props) => {
 
     if (g.current) {
       addPoints();
-      centerState();
+      adjustViewPort();
     }
   }, [areaInViewPort]);
 
