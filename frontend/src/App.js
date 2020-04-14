@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import WbHeaderBsNav from './components/WbHeaderBsNav';
-import Retrieve from './components/Retrieve';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Pages/Home';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <WbHeaderBsNav />
-        <Retrieve />
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+        </Switch>
+      </Router>
     );
   }
 }

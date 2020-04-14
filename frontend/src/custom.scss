@@ -1,6 +1,14 @@
 // Override default variables before the import
-$body-bg: #fff;
+$body-bg: #f8f9fa;
 $btn-outline-success: #17a6ff;
+.active {
+  text-decoration: none;
+  color: #212529;
+}
+.active:Hover {
+  text-decoration: none;
+  color: gray;
+}
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
