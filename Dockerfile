@@ -19,5 +19,3 @@ RUN pip install pathlib
 RUN pip install -r /app/requirements.txt
 RUN apt-get update
 RUN apt-get install -y binutils libproj-dev gdal-bin
-
-# Copy the current directory contents into the container at /music_service

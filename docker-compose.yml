@@ -14,17 +14,17 @@ services:
     ports:
       - 1337:80
 
-  backend:
-    build: .
-    command: gunicorn waterquality.wsgi:application --bind 0.0.0.0:8000
-    container_name: app
-    env_file:
-      - ./.env
-    expose:
-      - 8000
-    depends_on:
-      - redis
-      - nginx
+#  backend:
+#    build: .
+#    command: gunicorn waterquality.wsgi:application --bind 0.0.0.0:8000
+#    container_name: app
+#    env_file:
+#      - ./.env
+#    expose:
+#      - 8000
+#    depends_on:
+#      - redis
+#      - nginx
 
   frontend:
     build: ./frontend
@@ -34,9 +34,8 @@ services:
     ports:
       - 80:3000
     depends_on:
-      - backend
+  #    - backend
       - nginx
-    command: npm start
 
 volumes:
   redis-data:

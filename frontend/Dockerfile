@@ -13,6 +13,6 @@ RUN npm install
 RUN npm install react-scripts@3.0.1 -g
 RUN npm rebuild node-sass
 
-COPY .  /app
+COPY .  ./
 
-EXPOSE 3000
+CMD ["npm", "start"]
