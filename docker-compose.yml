@@ -37,6 +37,22 @@ services:
       - backend
       - nginx
 
+  celery-worker:
+    build: .
+    command: celery -A waterquality worker -l info
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+
+  celery-beat:
+    build: .
+    command: celery -A waterquality beat -l info --scheduler djcelery.schedulers.DatabaseScheduler
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+
   flower:
     image: mher/flower
     env_file:
