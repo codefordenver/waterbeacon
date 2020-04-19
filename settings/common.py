@@ -12,13 +12,19 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
+
+from . import get_env_variable
+
+
 import djcelery
 import dj_database_url
 djcelery.setup_loader()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+dotenv_path = os.path.join(BASE_DIR, ".env")
+load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
