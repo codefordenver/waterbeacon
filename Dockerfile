@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:2.7
+FROM python:3.6
 
 # to the terminal with out buffering it first
 ENV PYTHONUNBUFFERED 1
