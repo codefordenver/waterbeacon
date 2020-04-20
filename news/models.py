@@ -58,7 +58,7 @@ class advisory_keyword(models.Model):
         verbose_name = "Advisory Keyword"
 
 class alert(models.Model):
-    location = models.ForeignKey(location, null=True, blank=True)
+    location = models.ForeignKey(location, models.PROTECT, null=True, blank=True)
     source = models.CharField(max_length=255, null=True, blank=True,choices=SOURCE, default="")
     sourceId = models.CharField(max_length=255, null=True, blank=True, default="")
     status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
@@ -72,7 +72,7 @@ class alert(models.Model):
         return self.sourceId
 
 class url(models.Model):
-    alert = models.ForeignKey(alert, null=True, blank=True)
+    alert = models.ForeignKey(alert,models.CASCADE, null=True, blank=True)
     link = models.TextField(null=True, blank=True,default='')
 
 class utility(models.Model):
@@ -94,5 +94,5 @@ class utility(models.Model):
         verbose_name_plural = "Utilities"
 
 class county_served(models.Model):
-    utility = models.ForeignKey(utility, null=True, blank=True)
-    location = models.ForeignKey(location, null=True, blank=True)
+    utility = models.ForeignKey(utility, models.PROTECT, null=True, blank=True)
+    location = models.ForeignKey(location, models.PROTECT, null=True, blank=True)

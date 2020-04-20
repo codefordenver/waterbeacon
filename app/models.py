@@ -11,10 +11,6 @@ from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
 
-import choice
-
-import const
-
 # Create your models here.
 class location(models.Model):
 
@@ -34,7 +30,7 @@ class location(models.Model):
 		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
-	location =  models.ForeignKey(location)
+	location =  models.ForeignKey(location, models.PROTECT)
 	timestamp = models.DateTimeField( auto_now_add=True)
 	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	objects = DataFrameManager()

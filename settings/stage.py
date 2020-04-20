@@ -1,4 +1,4 @@
-from common import *
+from .common import *
 import raven
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

@@ -15,28 +15,28 @@ ansi_color= enum(
     )
 
 def log(message, type = None, ansi= ansi_color.blue, tag = ''):
-    
+
     if type == 'info':
-        print colorize(message, ansi = ansi_color.blue)
+        print(colorize(message, ansi = ansi_color.blue))
     elif type == 'success':
-        print colorize(message, ansi = ansi_color.green)
+        print(colorize(message, ansi = ansi_color.green))
     elif type == 'warning':
-        print colorize(message, ansi = ansi_color.orange)
-    elif type == 'error':   
-        print colorize(message, ansi = ansi_color.red)
+        print(colorize(message, ansi = ansi_color.orange))
+    elif type == 'error':
+        print(colorize(message, ansi = ansi_color.red))
     elif type == 'custom':
-        print colorize(message, ansi = ansi)
+        print(colorize(message, ansi = ansi))
     else:
-        print message
+        print(message)
 
 def green(message):
-    print colorize(message, ansi = ansi_color.green)
-     
+    print(colorize(message, ansi = ansi_color.green))
+
 def red(message):
-    print colorize(message, ansi = ansi_color.red)
+    print(colorize(message, ansi = ansi_color.red))
 
 def blue(message):
-    print colorize(message, ansi = ansi_color.blue)
+    print(colorize(message, ansi = ansi_color.blue))
 
 def orange(message):
-    print colorize(message, ansi = ansi_color.orange)
+    print(colorize(message, ansi = ansi_color.orange))

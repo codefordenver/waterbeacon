@@ -56,13 +56,12 @@ INSTALLED_APPS = [
     'rawdata'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -131,7 +130,7 @@ USER= get_env_variable('USER')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-#CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'django-db'
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERY_BROKER_URL = get_env_variable('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ['json']
