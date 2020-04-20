@@ -17,6 +17,7 @@ django-localflavor==2.2
 django-pandas==0.6.1
 djangorestframework==3.11.0
 fake-useragent==0.1.11
+gunicorn==19.9.0
 idna==2.8
 kombu==3.0.37
 lxml==4.4.2
