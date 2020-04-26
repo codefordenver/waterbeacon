@@ -4,12 +4,14 @@
   background-color: #fbfbfb;
   justify-content: center;
   padding-bottom: 10px;
+  max-height: 80vh;
 }
 
 .options {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  width: 30.5%;
 }
 
 .map {
@@ -38,4 +40,13 @@
   width: 100vw;
   top: 50vh;
   position: absolute;
+}
+
+.info {
+  height: 50%;
+  overflow-y: auto;
+}
+
+.info::-webkit-scrollbar {
+  display: none;
 }

@@ -51,17 +51,23 @@ const DefaultD3 = ({
           usStates={usStates}
           setAIVP={setAIVP}
         />
-        <TopCounties
-          countiesRanked={countiesRanked}
-          setCountyRanked={setCountyRanked}
-          setCC={setCC}
-        />
-        {currentCounty &&
-          <CurrentSelection
-            currentCounty={currentCounty}
-            setCC={setCC}
-          />
-        }
+        <div className="info-panel">
+          <div className="info">
+            <TopCounties
+              countiesRanked={countiesRanked}
+              setCountyRanked={setCountyRanked}
+              setCC={setCC}
+            />
+          </div>
+          <div className="info">
+            {currentCounty &&
+              <CurrentSelection
+                currentCounty={currentCounty}
+                setCC={setCC}
+              />
+            }
+          </div>
+        </div>
       </div>
       <div className="map" >
         <MapRender
