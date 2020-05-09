@@ -12,11 +12,19 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
 
+from . import get_env_variable
+
+
+import djcelery
+import dj_database_url
+djcelery.setup_loader()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+dotenv_path = os.path.join(BASE_DIR, ".env")
+load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -27,7 +35,7 @@ SECRET_KEY = 'r(*#1+d-n2vma&*bg6$knhjbiy#82-_5_2vz9z=&$#eh%y9en6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','app.waterbeacon.org','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','waterbeacon.org','127.0.0.1']
 
 
 # Application definition
@@ -41,12 +49,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'rest_framework',
+    'django_celery_results',
     'djcelery',
     'app',
     'news',
     'rawdata'
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,7 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'waterquality.wsgi.application'
 
-
+DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
 
 
 # Password validation
@@ -113,6 +121,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+ENVIRONMENT = get_env_variable('ENVIRONMENT')
+USER= get_env_variable('USER')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -120,21 +130,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-# redis server address
-BROKER_URL = 'redis://localhost:6379/0'
-# store task results in redis
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-# task result life time until they will be deleted
-CELERY_TASK_RESULT_EXPIRES = 7*86400  # 7 days
-# needed for worker monitoring
-CELERY_SEND_EVENTS = True
-# where to store periodic tasks (needed for scheduler)
+CELERY_RESULT_BACKEND = 'django-db'
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+CELERY_BROKER_URL = get_env_variable('CELERY_BROKER_URL')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
-CELERYCAM_EXPIRE_SUCCESS = timedelta(days=30)
-CELERYCAM_EXPIRE_ERROR = timedelta(days=30)
-CELERYCAM_EXPIRE_PENDING = timedelta(days=30)
-
+EMAIL_FROM = 'info@waterbeacon.org'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
 
 MAXIMUM_CHART_DAYS = timedelta(days=2)
 

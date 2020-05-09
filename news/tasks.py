@@ -32,7 +32,7 @@ def save_twitter_data(tweet, location = None, print_test = False ):
     # ref: https://dev.twitter.com/overview/api/tweets
 
     if models.alert.objects.filter(sourceId = tweet.id_str ).exists():
-        print "%s - exists" % ( tweet.full_text )
+        print("%s - exists" % ( tweet.full_text ))
         #log(tweet.full_text, 'success')
         return
 
@@ -58,14 +58,14 @@ def save_twitter_data(tweet, location = None, print_test = False ):
             url.link = item['url']
             url.save()
 
-    print tweet.full_text
+    print(tweet.full_text)
     #log(tweet.full_text, 'success')
 
 def save_feed_data(item, location = None):
 
     sourceId = item['id']
     if models.alert.objects.filter(sourceId = sourceId ).exists():
-        print "%s - exists" % ( sourceId )
+        print("%s - exists" % ( sourceId ))
         #log(sourceId, 'success')
         return
 
@@ -90,7 +90,7 @@ def save_feed_data(item, location = None):
     url.link = link
     url.save()
 
-    print sourceId
+    print(sourceId)
     #log(sourceId, 'success')
 
 @app.task
