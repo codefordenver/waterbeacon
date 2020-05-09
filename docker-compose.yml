@@ -53,7 +53,7 @@ services:
 
   celery-beat:
     build: .
-    command: celery -A waterquality beat -l info --scheduler djcelery.schedulers.DatabaseScheduler
+    command: celery -A waterquality beat -l info
     env_file:
       - ./.env
     depends_on:
