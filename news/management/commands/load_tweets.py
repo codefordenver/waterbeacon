@@ -14,9 +14,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         tasks.TweetWaterAdvisoryReader(
-            consumer_key =  os.getenv('CONSUMER_KEY'),
-            consumer_secret =  os.getenv('CONSUMER_SECRET'),
-            access_token =  os.getenv('ACCESS_TOKEN'),
-            access_token_secret =  os.getenv('ACCESS_TOKEN_SECRET'),
+            consumer_key =  os.getenv('TWITTER_CONSUMER_KEY'),
+            consumer_secret =  os.getenv('TWITTER_CONSUMER_SECRET'),
+            access_token =  os.getenv('TWITTER_ACCESS_TOKEN'),
+            access_token_secret =  os.getenv('TWITTER_ACCESS_TOKEN_SECRET'),
             skip_locations = options['skip_locations']
         )

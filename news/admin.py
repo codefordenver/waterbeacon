@@ -12,6 +12,8 @@ def register_admin(model):
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('city','state','keywords')
+    list_filter = ('status', )
+    search_fields = [ 'city', 'state', 'county']
     exclude = ('position',)
 
 class URLInline(admin.TabularInline):
@@ -68,6 +70,8 @@ class ServedInline(admin.TabularInline):
 @admin.register(models.utility)
 class UtilityAdmin(admin.ModelAdmin):
     list_display = ('name','has_contaminats','violation')
+    list_filter = ('has_contaminats','violation')
+    search_fields = ['name', 'city', 'state']
     inlines = [
     	ServedInline,
     ]

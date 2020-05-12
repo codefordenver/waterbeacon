@@ -170,7 +170,7 @@ def TweetWaterAdvisoryReader(
             save_twitter_data(tweet, print_test = print_test)
 
 @app.task
-def EWG_TapwaterReader(stale_updated_days = 30):
+def EWG_TapwaterReader(stale_updated_days = 30, print_test = False):
 
 
     states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -204,7 +204,10 @@ def EWG_TapwaterReader(stale_updated_days = 30):
                 o_utility.violation = True
             o_utility.save()
 
-            # delete all other utility last updated greater than
+            if print_test:
+                # delete all other utility last updated greater than
+                log('%s, voilation: %s' % (o_utility.name, 'yes' if o_utility.violation else 'no' ) , 'success')
+
 
     #  utilities that haven't been updated since the stale_updated_days to violation as false
     past = datetime.now() - timedelta(days = stale_updated_days)
