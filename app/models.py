@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.conf import settings
 from datetime import datetime
 import uuid
@@ -9,11 +10,6 @@ from django.contrib.postgres.fields import JSONField
 from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
-from rawdata import models as raw_models
-
-from app import choice
-
-from app import const
 
 # Create your models here.
 class location(models.Model):
@@ -28,14 +24,13 @@ class location(models.Model):
 	neighborhood = models.CharField(max_length=100, null=True, blank=True,default='')
 	notes = models.TextField(null=True, blank=True,default='')
 	population_served = models.IntegerField( blank=True, null=True, default = 0)
-	facilities = models.ManyToManyField(raw_models.EpaFacilitySystem)
 	created = models.DateTimeField( auto_now_add=True)
 
 	def __unicode__(self):
 		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
-	location = models.ForeignKey(location, on_delete=models.CASCADE)
+	location =  models.ForeignKey(location, models.PROTECT)
 	timestamp = models.DateTimeField( auto_now_add=True)
 	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	objects = DataFrameManager()
