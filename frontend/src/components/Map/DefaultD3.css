@@ -42,9 +42,14 @@
   position: absolute;
 }
 
+.info-panel {
+  height: 100%;
+}
+
 .info {
-  height: 50%;
+  max-height: 50%;
   overflow-y: auto;
+  margin: 10px;
 }
 
 .info::-webkit-scrollbar {

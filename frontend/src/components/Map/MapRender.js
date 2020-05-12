@@ -113,7 +113,6 @@ export const MapRender = (props) => {
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
 
-      //todo: highlight major cities (save for later)
       //todo: add timeline
       //we append a new "g" element for the state boundaries
       g.current.append("g")
@@ -141,6 +140,7 @@ export const MapRender = (props) => {
     };
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
   // this hook is triggered when the user changes the zoom
@@ -155,11 +155,11 @@ export const MapRender = (props) => {
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
         const defaultScale = d3.geoAlbersUsa().scale();
-        // todo: scale is not precise for Idaho or Florida
-        // code from: https://jsfiddle.net/bze197L2/
+        
         const projection = d3.geoAlbersUsa()
           .translate([480, 300])
           .scale(defaultScale * 600 / 500);
+
         facilities.facArr.forEach((facility) => {
           const coordinates = projection([facility.long, facility.lat]);
           if (coordinates) {
@@ -170,6 +170,7 @@ export const MapRender = (props) => {
         })
 
         // todo: onClick, send to facility page on ECHO in new page using RegistryID
+        // todo: color each dot based on severity of violation
         // redirect code is currently commented out
         g.current.append('g')
           .attr('id', 'facilities')

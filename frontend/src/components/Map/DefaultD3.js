@@ -17,6 +17,7 @@ const DefaultD3 = ({
   maxScore,
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
+  // todo: set first county as a "You are here"
   const [currentCounty, setCC] = useState(null)
   const usStates = useRef(null);
 
@@ -25,7 +26,10 @@ const DefaultD3 = ({
     const chosenOne = waterScoreData.find((county) => d.id === county.fips_county_id);
     setCC(chosenOne);
 
-    return chosenOne && setCountyRanked(tempCR => tempCR.concat(chosenOne).sort((a,b) => b.score-a.score));
+    return chosenOne && setCountyRanked(tempCR => {
+      if (tempCR.find(({ fips_county_id }) => fips_county_id === d.id)) return tempCR;
+      return tempCR.concat(chosenOne).sort((a,b) => b.score-a.score);
+    });
   };
 
   // when called, changes the area in viewport state, triggering useEffect function in map render
@@ -85,6 +89,7 @@ const DefaultD3 = ({
   )
 };
 
+// todo: add facility's score
 const CurrentSelection = ({ currentCounty, setCC }) => (
   <Alert dismissible variant="primary" onClose={() => setCC(null)}>
     <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
