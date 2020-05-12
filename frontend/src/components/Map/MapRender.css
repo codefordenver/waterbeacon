@@ -1,4 +1,4 @@
-
+/* 
 .states {
   fill: #007bff;
   stroke: #fff;
@@ -7,7 +7,7 @@
 
 .states :hover {
   fill-opacity: 0.7;
-}
+} 
 
 .state-borders {
   fill: none;
@@ -22,4 +22,21 @@
   fill: none;
   stroke: #2A2C39;
   stroke-width: 1;
+}
+
+.active {
+  stroke-width: 2px;
+  stroke: #2d5e9e;
+  fill: none;
+}
+*/
+
+.map-container {
+  margin-top: 10px;
+}
+
+path#active {
+  stroke: '#2d5e9e';
+  z-index: 10;
+  fill: none;
 }

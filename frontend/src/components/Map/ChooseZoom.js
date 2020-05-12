@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Typeahead } from 'react-bootstrap-typeahead';
+import { Button } from 'react-bootstrap';
 import './ChooseZoom.css';
 
-export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
+export const stateList = [{id:"01", name:"ALABAMA"},{id:"02", name:"ALASKA"},
   {id:"04", name:"ARIZONA"},{id:"05", name:"ARKANSAS"},{id:"06", name:"CALIFORNIA"},
   {id:"08", name:"COLORADO"},{id:"09", name:"CONNECTICUT"},{id:"10", name:"DELAWARE"},
   {id:"11", name:"DISTRICT OF COLUMBIA"},{id:"12", name:"FLORIDA"},
@@ -22,7 +23,7 @@ export const stateList = [{id:"NA", name: "All"},{id:"01", name:"ALABAMA"},{id:"
   {id:"55", name:"WISCONSIN"},{id:"56", name:"WYOMING"}
 ];
 
-export const ChooseZoom = ({ areaInViewPort, usStates, centerState, }) => {
+export const ChooseZoom = ({ areaInViewPort, usStates, centerState, setAIVP }) => {
   const stateNames = stateList.map((state) => state.name);
   const [selected, setSel] = useState([]);
 
@@ -43,8 +44,17 @@ export const ChooseZoom = ({ areaInViewPort, usStates, centerState, }) => {
       tempState && centerState(tempState);
     }
 
-    if (selected.length === 1 && selected[0] !== areaInViewPort) chooseState();
+    if (selected.length === 1) chooseState();
   }, [selected]);
+
+  useEffect(() => {
+    if (areaInViewPort) {
+      const chosenStateName = stateList.find((state) => state.id === areaInViewPort.id).name;
+      setSel([chosenStateName]);
+    } else if (!areaInViewPort && selected.length === 1) {
+      setSel([]);
+    }
+  }, [areaInViewPort])
 
   return (
     <div className="zoomer">
@@ -53,7 +63,16 @@ export const ChooseZoom = ({ areaInViewPort, usStates, centerState, }) => {
         onChange={selected => setSel(selected)}
         options={stateNames}
         placeholder="Choose a state!"
+        selected={selected}
       />
+      <Button
+        size="sm"
+        variant="warning"
+        disabled={selected.length === 0}
+        onClick={() => setAIVP(null)}
+      >
+        Reset
+      </Button>
     </div>
   )
 };

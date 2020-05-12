@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import { countyList } from './utils/counties';
+import { countyList } from '../utils/counties';
+import './MapRender.css';
 
 const width = 960;
 const height = 600;
@@ -11,13 +12,13 @@ const path = d3.geoPath();
 //change the following variable to adjust stroke width
 const initSW = .5;
 
+const csStart = '#DFF2FE';
+const csEnd = '#2A5067';
+const noColor = '#FFFFFF';
+
 // this function controls the entire color scale for the map
 const colorScale = (maxScore) => {
-  console.log(maxScore);
   const iteration = 10;
-  const csStart = '#FFFFFF';
-  // todo: may need to choose a darker color for end of scale
-  const csEnd = '#2O4177';
   const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
   return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
     .range(colorScale);
@@ -53,10 +54,10 @@ export const MapRender = (props) => {
     areaInViewPort,
     centerState,
   } = props;
+  //refs, we don't want a rerender when these change!
   const svg = useRef(null);
   const usCounties = useRef(null);
   const stateFacilityObj = useRef({});
-  //refs, we don't want a rerender when these change!
   const g = useRef(null);
 
   // this hook builds the map and renders it
@@ -84,7 +85,6 @@ export const MapRender = (props) => {
         stateFacilityObj.current[stateId].facArr = facArr;
       };
       //this is the color scheme and scale
-      const noColor = 'rgb(248,249,250)';
       const color = colorScale(maxScore);
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
@@ -112,10 +112,8 @@ export const MapRender = (props) => {
         .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
-      //todo: add dots for facility locations
-      //todo: highlight major cities (save for later)
-      //todo: move state selector to above the county table
-      //todo: add timeline to where state selector is currently
+
+      //todo: add timeline
       //we append a new "g" element for the state boundaries
       g.current.append("g")
         //set the class
@@ -135,13 +133,14 @@ export const MapRender = (props) => {
         .style("stroke", "black")
         .style("stroke-width", ".5px")
         //give a click listener for each state-boundary
-        .on("click", d => centerState(d))
+        .on("click", d => {removeHover(`state-${d.id}`); centerState(d);})
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
     };
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
   // this hook is triggered when the user changes the zoom
@@ -156,11 +155,11 @@ export const MapRender = (props) => {
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
         const defaultScale = d3.geoAlbersUsa().scale();
-        // todo: scale is not precise for Idaho or Florida
-        // code from: https://jsfiddle.net/bze197L2/
+        
         const projection = d3.geoAlbersUsa()
           .translate([480, 300])
           .scale(defaultScale * 600 / 500);
+
         facilities.facArr.forEach((facility) => {
           const coordinates = projection([facility.long, facility.lat]);
           if (coordinates) {
@@ -171,6 +170,7 @@ export const MapRender = (props) => {
         })
 
         // todo: onClick, send to facility page on ECHO in new page using RegistryID
+        // todo: color each dot based on severity of violation
         // redirect code is currently commented out
         g.current.append('g')
           .attr('id', 'facilities')
@@ -180,17 +180,17 @@ export const MapRender = (props) => {
           .append('circle')
           .attr('cx', (d) => d.coordinates[0])
           .attr('cy', (d) => d.coordinates[1])
+          // in future, the click funciton will send you to ECHO page for facility
           // .on('click', (d) => reqRedirect(d))
           .attr('r', 2)
-          .attr('fill', 'yellow')
+          .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')
           .text((d) => d.areaName);
-      } else {
       }
     };
 
-    const centerState = () => {
+    const adjustViewPort = () => {
       //create variables for centering the state
       if (areaInViewPort) {
         var centroid = path.centroid(areaInViewPort);
@@ -209,12 +209,8 @@ export const MapRender = (props) => {
         k = 1;
       }
       g.current.select("#states")
-        .selectAll("path")
-        .classed("active", areaInViewPort && function (d) { return d === areaInViewPort; });
-      g.current.selectAll("#active")
-        .style("stroke-width", k * initSW + "px")
-        .style("stroke", "#2d5e9e")
-        .attr("fill", "none");
+        .selectAll('path')
+        .attr("id", (d) => areaInViewPort && d === areaInViewPort ? `active` : `state-${d.id}`);
       g.current.transition()
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
@@ -222,7 +218,7 @@ export const MapRender = (props) => {
 
     if (g.current) {
       addPoints();
-      centerState();
+      adjustViewPort();
     }
   }, [areaInViewPort]);
 

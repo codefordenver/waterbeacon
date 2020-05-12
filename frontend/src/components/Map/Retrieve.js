@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import DefaultD3 from './DefaultD3';
-import { countyList } from './utils/counties';
+import { countyList } from '../utils/counties';
 
 const stateFipsId = {
   "56":{State:"WY",},"54":{State:"WV",},"55":{State:"WI",},

@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: row;
   background-color: #fbfbfb;
+  justify-content: center;
+  padding-bottom: 10px;
+  max-height: 80vh;
 }
 
-.map-container {
-  margin-top: 10px;
-}
-
-.active {
-  stroke-width: 2px;
-  stroke: #2d5e9e;
-  fill: none;
+.options {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 30.5%;
 }
 
 .map {
@@ -20,7 +20,8 @@
   margin-left: .5%;
 }
 
-.county-list .remove-county:hover {
+.county-list .remove-county:hover,
+.county-list .county-selector:hover {
   cursor: pointer;
 }
 
@@ -31,10 +32,8 @@
   background-color: white;
 }
 
-.position-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.county-list .remove-county {
+  text-align: center;
 }
 
 .loader {
@@ -43,12 +42,16 @@
   position: absolute;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
+.info-panel {
+  height: 100%;
+}
+
+.info {
+  max-height: 50%;
+  overflow-y: auto;
   margin: 10px;
 }
 
-#reset-zoom:hover {
-  cursor: pointer;
+.info::-webkit-scrollbar {
+  display: none;
 }

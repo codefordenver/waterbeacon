@@ -49,10 +49,25 @@ class SDW_Data_Cruncher(object):
 
     def _calc_area_score(self, state):
         systems = rawdata_models.EpaWaterSystem.objects.filter(StateCode = state).values()
+        facilities = rawdata_models.EpaFacilitySystem.objects.filter(FacState = state).values()
         if systems.count() == 0:
             return pd.DataFrame([])
         
         systems_df = read_frame(systems)
+        systems_df = systems_df[['PWSId', 'FIPSCodes', 'Score']]
+        fac_df = read_frame(facilities)
+        fac_df = fac_df[[
+            'PWSId',
+            'FacName',
+            'FacLong',
+            'FacLat',
+            'RegistryID',
+        ]]
+        fac_df.rename(columns={
+            'FacLong': 'long',
+            'FacLat': 'lat',
+        }, inplace=True)
+        systems_df = pd.merge(systems_df, fac_df, on='PWSId')
         # remove all systems that do not have a fips code
         systems_df['FIPSCodes'].dropna(inplace = True)
         # drop duplicate rows
@@ -79,6 +94,8 @@ class SDW_Data_Cruncher(object):
 
         comb_fips = comb_fips.groupby(['FIPSCodes'])['score'].sum().reset_index()
         comb_fips.drop_duplicates(inplace = True)
+        # todo: figure out why this isn't working; some items come back as float instead of list
+        comb_fips['systems'] = comb_fips.apply(lambda x: systems_df[systems_df['FIPSCodes'] == x['FIPSCodes']], axis = 1)
         return comb_fips
 
     def calc_state_scores(self, state, print_test = False):
