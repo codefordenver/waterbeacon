@@ -112,6 +112,12 @@ def TweetWaterAdvisoryReader(
             print_test = False
             ):
 
+    if print_test:
+        print('consumer_key: %s' % ( consumer_key ))
+        print('consumer_secret: %s' % ( consumer_secret ))
+        print('access_token: %s' % ( access_token ))
+        print('access_token_secret: %s' % ( access_token_secret ))
+
     # get today's date
     today = datetime.now().date()
 
