@@ -6,4 +6,4 @@ from news import tasks
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        tasks.EWG_TapwaterReader()
+        tasks.EWG_TapwaterReader(print_test = True)
