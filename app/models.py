@@ -11,10 +11,15 @@ from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
 from django_pandas.managers import DataFrameManager
 
+from .choice import (
+	WATER_STATUS
+)
+
 # Create your models here.
 class location(models.Model):
-
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	position = models.PointField(null=True, blank=True)
+	geocode = models.CharField(max_length=255, null=True, blank=True,default='')
 	major_city = models.CharField(max_length=255, null=True, blank=True, default="")
 	county = models.CharField(max_length=255, null=True, blank=True, default="")
 	state = USStateField(choices=STATE_CHOICES, null=True, blank=True)
@@ -24,7 +29,10 @@ class location(models.Model):
 	neighborhood = models.CharField(max_length=100, null=True, blank=True,default='')
 	notes = models.TextField(null=True, blank=True,default='')
 	population_served = models.IntegerField( blank=True, null=True, default = 0)
+	status = models.CharField(max_length=255, null=True, blank=True,choices=WATER_STATUS, default="safe")
 	created = models.DateTimeField( auto_now_add=True)
+
+
 
 	def __unicode__(self):
 		return '%s, %s' % ( self.major_city, self.state)

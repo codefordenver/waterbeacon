@@ -9,12 +9,6 @@ def register_admin(model):
         return klass
     return wrapper
 
-@admin.register(models.location)
-class LocationAdmin(admin.ModelAdmin):
-    list_display = ('city','state','keywords')
-    list_filter = ('status', )
-    search_fields = [ 'city', 'state', 'county']
-    exclude = ('position',)
 
 class URLInline(admin.TabularInline):
     model = models.url
