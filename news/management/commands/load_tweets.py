@@ -1,6 +1,12 @@
+from django.conf import settings
 import os
 from django.core.management.base import BaseCommand
 from news import tasks
+
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join(settings.BASE_DIR, ".env")
+load_dotenv(dotenv_path)
 
 class Command(BaseCommand):
 
@@ -14,9 +20,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         tasks.TweetWaterAdvisoryReader(
-            consumer_key =  os.getenv('CONSUMER_KEY'),
-            consumer_secret =  os.getenv('CONSUMER_SECRET'),
-            access_token =  os.getenv('ACCESS_TOKEN'),
-            access_token_secret =  os.getenv('ACCESS_TOKEN_SECRET'),
+            consumer_key =  os.getenv('TWITTER_CONSUMER_KEY'),
+            consumer_secret =  os.getenv('TWITTER_CONSUMER_SECRET'),
+            access_token =  os.getenv('TWITTER_ACCESS_TOKEN'),
+            access_token_secret =  os.getenv('TWITTER_ACCESS_TOKEN_SECRET'),
             skip_locations = options['skip_locations']
         )
