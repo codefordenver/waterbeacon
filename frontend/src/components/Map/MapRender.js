@@ -11,18 +11,7 @@ const path = d3.geoPath();
 
 //change the following variable to adjust stroke width
 const initSW = .5;
-
-const csStart = '#DFF2FE';
-const csEnd = '#2A5067';
 const noColor = '#FFFFFF';
-
-// this function controls the entire color scale for the map
-const colorScale = (maxScore) => {
-  const iteration = 10;
-  const colorScale = d3.quantize(d3.interpolateHcl(csStart,csEnd), iteration);
-  return d3.scaleThreshold().domain(d3.range(0,maxScore, maxScore/(iteration+1)))
-    .range(colorScale);
-};
 
 // increases the border when hovering
 const handleHover = (identifier) => {
@@ -85,7 +74,18 @@ export const MapRender = (props) => {
         stateFacilityObj.current[stateId].facArr = facArr;
       };
       //this is the color scheme and scale
-      const color = colorScale(maxScore);
+      const color = (score) => {
+        if ((maxScore - 10) < score) {
+          return '#CE0A05';
+        }
+        if (maxScore / 3 < score) {
+          return '#FFAE43';
+        }
+        if (maxScore / 10 < score) {
+          return '#badee8';
+        }
+        return noColor;
+      };
       //this creates the data for the map
       usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
       g.current = svg.current.append("g");
@@ -100,6 +100,7 @@ export const MapRender = (props) => {
         .enter().append("path")
         .attr("d", path)
         .attr("id", d => `county-${d.id}`)
+        // todo: make scores within .1 of maxScore #CE0A05
         .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
         .attr("class", "county-boundary")
         .style("stroke", "grey")
@@ -171,6 +172,7 @@ export const MapRender = (props) => {
 
         // todo: onClick, send to facility page on ECHO in new page using RegistryID
         // todo: color each dot based on severity of violation
+        // todo: give dots a black outline
         // redirect code is currently commented out
         g.current.append('g')
           .attr('id', 'facilities')
