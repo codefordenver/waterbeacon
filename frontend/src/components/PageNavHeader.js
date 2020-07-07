@@ -8,14 +8,14 @@ import { NavHashLink } from 'react-router-hash-link';
 class PageNavHeader extends React.Component {
   render() {
     return (
-    
+
       //! get involved button needs link to the page/section
 
       <section className="page-header">
         <Navbar collapseOnSelect className="nav-bar" bg="light" style={{justifyContent: 'initial'}} expand="lg" >
           <Navbar.Brand>
-            <Image src={wbLogo} style={{ maxHeight: 110 }} fluid alt="Water Beacon Logo picture"/>
-            <Image src={wbSVG} alt="Water Beacon Title"/>
+            <Image src={wbLogo} style={{ maxHeight: 40, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
+            <Image src={wbSVG} alt="Water Beacon"/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,8 +35,8 @@ class PageNavHeader extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <div>
-          <Button> Get Involved</Button>
+        <div style={{ marginTop: 20 , marginRight: 10 }}>
+          <Button rounded outline> Subscribe</Button>
         </div>
       </section>
     )
