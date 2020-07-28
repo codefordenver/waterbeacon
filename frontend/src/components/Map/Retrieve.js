@@ -34,12 +34,23 @@ const Retrieve = () => {
   const [waterScoreData, setWSD] = useState(undefined);
   // this is the component that will hold the state information, along with min and max values
   const [stateWaterQualData, setWQD] = useState(undefined);
+  const [userLocation, setUL] = useState({
+    latitude: 39.734850,
+    longitude:-104.995900
+  });
   // holds the highest scoring three counties on initial render
   // data is sent to table on left pane
   // user can add and remove counties 
   const [countiesRanked, setCountyRanked] = useState([]);
   // holds the max score for all counties
   const [maxScore, setMax] = useState(0);
+
+  useEffect(() => {
+    setUL({
+      lat: 39.734850,
+      long:-104.995900
+    })
+  }, []);
 
   useEffect(()=>{
     // retrieve topo data
@@ -147,6 +158,7 @@ const Retrieve = () => {
       maxScore={maxScore}
       countiesRanked={countiesRanked}
       setCountyRanked={setCountyRanked}
+      userLocation={userLocation}
     />
   )
 }

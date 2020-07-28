@@ -15,6 +15,7 @@ const DefaultD3 = ({
   countiesRanked,
   stateWaterQualData,
   maxScore,
+  userLocation
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
   // todo: set first county as a "You are here"
@@ -83,6 +84,7 @@ const DefaultD3 = ({
           usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}
+          userLocation={userLocation}
         />
       </div>
     </div>
