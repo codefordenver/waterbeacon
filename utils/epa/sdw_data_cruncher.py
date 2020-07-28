@@ -50,11 +50,11 @@ class SDW_Data_Cruncher(object):
     def _calc_area_score(self, state):
         systems = rawdata_models.EpaWaterSystem.objects.filter(StateCode = state).values()
         facilities = rawdata_models.EpaFacilitySystem.objects.filter(FacState = state).values()
-        if systems.count() == 0:
+        if systems.count() == 0 or facilities.count() == 0:
             return pd.DataFrame([])
         
         systems_df = read_frame(systems)
-        systems_df = systems_df[['PWSId', 'FIPSCodes', 'Score']]
+        systems_df = systems_df[['PWSId', 'FIPSCodes', 'Viopaccr', 'Vioremain', 'PopulationServedCount', 'PWSTypeCode']]
         fac_df = read_frame(facilities)
         fac_df = fac_df[[
             'PWSId',
