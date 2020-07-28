@@ -42,12 +42,18 @@ export const MapRender = (props) => {
     usStates,
     areaInViewPort,
     centerState,
+    userLocation,
   } = props;
   //refs, we don't want a rerender when these change!
   const svg = useRef(null);
   const usCounties = useRef(null);
   const stateFacilityObj = useRef({});
   const g = useRef(null);
+
+  const defaultScale = d3.geoAlbersUsa().scale();
+  const projection = d3.geoAlbersUsa()
+    .translate([480, 300])
+    .scale(defaultScale * 600 / 500);
 
   // this hook builds the map and renders it
   useEffect(() => {
@@ -138,6 +144,27 @@ export const MapRender = (props) => {
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
+
+      // todo: zoom to state when clicking on point
+      // todo: lower z-index of point so you can click on counties and facilities
+      if (userLocation !== {}) {
+        const coordinates = projection([userLocation.long, userLocation.lat]);
+        console.log(coordinates);
+        g.current.append('g')
+          .attr('id', 'userLocation')
+          .selectAll('circle')
+          .data([userLocation])
+          .enter()
+          .append('circle')
+          .attr('cx', () => coordinates[0])
+          .attr('cy', () => coordinates[1])
+          .attr('r', 8)
+          .attr('fill', '#67bf5c')
+          .attr("fill-opacity", "0.9")
+          .attr('class', 'city-point')
+          .append('title')
+          .text(() => 'You Are Here');
+      }
     };
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
@@ -155,11 +182,6 @@ export const MapRender = (props) => {
       }
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
-        const defaultScale = d3.geoAlbersUsa().scale();
-        
-        const projection = d3.geoAlbersUsa()
-          .translate([480, 300])
-          .scale(defaultScale * 600 / 500);
 
         facilities.facArr.forEach((facility) => {
           const coordinates = projection([facility.long, facility.lat]);
@@ -205,10 +227,16 @@ export const MapRender = (props) => {
         const widthZoom = width / stateWidth;
         const heightZoom = height / stateHeight;
         k = .5 * Math.min(widthZoom, heightZoom);
+        g.current.select("#userLocation")
+          .selectAll('circle')
+          .attr('r', 4);
       } else {
         x = width / 2;
         y = height / 2;
         k = 1;
+        g.current.select("#userLocation")
+          .selectAll('circle')
+          .attr('r', 8);
       }
       g.current.select("#states")
         .selectAll('path')
