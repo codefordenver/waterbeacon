@@ -43,7 +43,7 @@ const DefaultD3 = ({
     }
   };
 
-  if(!topologyData || !waterScoreData ) return <Loader type="Oval" color="#111111" height={80} width={80} className="loader" />
+  if(!topologyData || !waterScoreData) return <div className="loader"><Loader type="Oval" color="#111111" height={80} width={80} /></div>
 
   //todo: make options class stay same width
   //todo: have CurrentSelection scroll when there are several counties
