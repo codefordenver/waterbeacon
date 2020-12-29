@@ -18,6 +18,13 @@
   min-width: 58%;
   max-width: 69.5%;
   margin-left: .5%;
+  position: relative;
+}
+
+.map .zoom-btn-grp {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .county-list .remove-county:hover,

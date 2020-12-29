@@ -5,7 +5,7 @@ import './DefaultD3.css';
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
-import { Table, Alert } from 'react-bootstrap';
+import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -20,6 +20,7 @@ const DefaultD3 = ({
   const [areaInViewPort, setAIVP] = useState(null);
   // todo: set first county as a "You are here"
   const [currentCounty, setCC] = useState(null)
+  const [zoom, setZoom] = useState(0.5);
   const usStates = useRef(null);
 
   // this function adds counties to the table on left
@@ -84,8 +85,16 @@ const DefaultD3 = ({
           usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}
+          setZoom={setZoom}
+          zoom={zoom}
           userLocation={userLocation}
         />
+        {areaInViewPort && (
+          <ButtonGroup className="zoom-btn-grp" vertical>
+            <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
+            <Button disabled={zoom <= 0.5} onClick={() => setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)}>-</Button>
+          </ButtonGroup>
+        )}
       </div>
     </div>
   )

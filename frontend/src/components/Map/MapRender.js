@@ -43,6 +43,8 @@ export const MapRender = (props) => {
     areaInViewPort,
     centerState,
     userLocation,
+    setZoom,
+    zoom,
   } = props;
   //refs, we don't want a rerender when these change!
   const svg = useRef(null);
@@ -171,15 +173,49 @@ export const MapRender = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
+  const adjustViewPort = (aivp, zoom = 0.5) => {
+    //create variables for centering the state
+    if (aivp) {
+      var centroid = path.centroid(aivp);
+      x = centroid[0];
+      y = centroid[1];
+      //calculate the zoom extent
+      const boundsArr = path.bounds(aivp);
+      const stateWidth = boundsArr[1][0] - boundsArr[0][0];
+      const stateHeight = boundsArr[1][1] - boundsArr[0][1];
+      const widthZoom = width / stateWidth;
+      const heightZoom = height / stateHeight;
+      k = zoom * Math.min(widthZoom, heightZoom);
+      g.current.select("#userLocation")
+        .selectAll('circle')
+        .attr('r', 4);
+    } else {
+      x = width / 2;
+      y = height / 2;
+      k = 1;
+      g.current.select("#userLocation")
+        .selectAll('circle')
+        .attr('r', 8);
+    }
+    g.current.select("#states")
+      .selectAll('path')
+      .attr("id", (d) => aivp && d === aivp ? `active` : `state-${d.id}`);
+    g.current.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
+  };
+
+  useEffect(() => {
+    adjustViewPort(areaInViewPort, zoom);
+  }, [areaInViewPort, zoom])
+
   // this hook is triggered when the user changes the zoom
   // it centers the map
   useEffect(() => {
     const addPoints = () => {
       // need to remove facilities from inactive states
-      if (g.current) {
-        g.current.select('#facilities')
-          .remove();
-      }
+      g.current.select('#facilities')
+        .remove();
       if (areaInViewPort) {
         const facilities = stateFacilityObj.current[areaInViewPort.id];
 
@@ -211,44 +247,13 @@ export const MapRender = (props) => {
           .attr('class', 'city-point')
           .append('title')
           .text((d) => d.areaName);
-      }
-    };
-
-    const adjustViewPort = () => {
-      //create variables for centering the state
-      if (areaInViewPort) {
-        var centroid = path.centroid(areaInViewPort);
-        x = centroid[0];
-        y = centroid[1];
-        //calculate the zoom extent
-        const boundsArr = path.bounds(areaInViewPort);
-        const stateWidth = boundsArr[1][0] - boundsArr[0][0];
-        const stateHeight = boundsArr[1][1] - boundsArr[0][1];
-        const widthZoom = width / stateWidth;
-        const heightZoom = height / stateHeight;
-        k = .5 * Math.min(widthZoom, heightZoom);
-        g.current.select("#userLocation")
-          .selectAll('circle')
-          .attr('r', 4);
       } else {
-        x = width / 2;
-        y = height / 2;
-        k = 1;
-        g.current.select("#userLocation")
-          .selectAll('circle')
-          .attr('r', 8);
+        setZoom(0.5);
       }
-      g.current.select("#states")
-        .selectAll('path')
-        .attr("id", (d) => areaInViewPort && d === areaInViewPort ? `active` : `state-${d.id}`);
-      g.current.transition()
-        .duration(750)
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
     };
 
     if (g.current) {
       addPoints();
-      adjustViewPort();
     }
   }, [areaInViewPort]);
 
