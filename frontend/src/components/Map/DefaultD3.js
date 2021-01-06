@@ -6,6 +6,7 @@ import './DefaultD3.css';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
+import ExpandIcon from '../../icons/ExpandIcon';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -91,6 +92,7 @@ const DefaultD3 = ({
         />
         {areaInViewPort && (
           <ButtonGroup className="zoom-btn-grp" vertical>
+            <Button onClick={() => setAIVP(null)} variant="danger" block><ExpandIcon /></Button>
             <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
             <Button disabled={zoom <= 0.5} onClick={() => setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)}>-</Button>
           </ButtonGroup>

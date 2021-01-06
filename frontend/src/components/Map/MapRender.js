@@ -174,6 +174,7 @@ export const MapRender = (props) => {
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
   const adjustViewPort = (aivp, zoom = 0.5) => {
+    if (!g.current) return;
     //create variables for centering the state
     if (aivp) {
       var centroid = path.centroid(aivp);
