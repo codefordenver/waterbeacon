@@ -5,11 +5,12 @@
   justify-content: space-between;
   background-color: #f8f9fa;
   padding: 1rem;
+  padding-bottom: 0px;
 }
 .nav-items {
   margin: 1rem;
 }
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
   .nav-items {
     margin: 0.3rem;
  }

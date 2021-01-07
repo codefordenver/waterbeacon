@@ -9,7 +9,7 @@
 .nav-items {
   margin: 1rem;
 }
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
   .nav-items {
     margin: 0.3rem;
  }

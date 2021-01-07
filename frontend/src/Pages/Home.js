@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import WbHeaderBsNav from '../components/WbHeaderBsNav';
 import Retrieve from '../components/Map/Retrieve';
 import PageNavHeader from '../components/PageNavHeader';
-import LiveData from '../components/LiveData';
+import OpenData from '../components/OpenData';
 import './styleHome.css';
 import WhyWB from '../components/WhyWB';
 import WorkShop from '../components/WorkShop';
@@ -18,10 +18,8 @@ class Home extends Component {
         <PageNavHeader />
         {/* <WbHeaderBsNav /> */}
         <Retrieve />
-        <Directions />
-        <LiveData />
         <WhyWB />
-        <Community />
+        <OpenData />
         <WorkShop />
         <Partners />
         <Foot />

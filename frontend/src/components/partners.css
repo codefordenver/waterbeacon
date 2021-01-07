@@ -1,7 +1,7 @@
 #partners {
   background-color: #198CFF;
   color: #f8f9fa;
-  height: 85vh;
+  height: 50vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -45,12 +45,12 @@
 .btn-img {
   height: 75px;
 }
-@media only screen and (max-width: 600px) { 
+@media only screen and (max-width: 600px) {
   .btn-img {
     height:50px
   }
   #EPA-btn {
-   padding-left: 0.5rem; 
+   padding-left: 0.5rem;
   }
   #EPA-btn h2 {
     margin-left: 0rem;
