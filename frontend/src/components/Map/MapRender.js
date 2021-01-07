@@ -151,7 +151,6 @@ export const MapRender = (props) => {
       // todo: lower z-index of point so you can click on counties and facilities
       if (userLocation !== {}) {
         const coordinates = projection([userLocation.long, userLocation.lat]);
-        console.log(coordinates);
         g.current.append('g')
           .attr('id', 'userLocation')
           .selectAll('circle')
