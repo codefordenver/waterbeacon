@@ -119,6 +119,7 @@ export const MapRender = (props) => {
         .on("mouseout", d => removeHover(`county-${d.id}`))
         // this is the hover overlay
         .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
+      
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
 
@@ -198,8 +199,13 @@ export const MapRender = (props) => {
         .attr('r', 8);
     }
     g.current.select("#states")
+      .style('stroke', 'black')
       .selectAll('path')
       .attr("id", (d) => aivp && d === aivp ? `active` : `state-${d.id}`);
+
+    g.current.select('#active')
+      .style('stroke', '#2d5e9e');
+
     g.current.transition()
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
