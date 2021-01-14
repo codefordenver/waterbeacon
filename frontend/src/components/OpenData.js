@@ -1,35 +1,28 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Image, ListGroup } from 'react-bootstrap';
-import waterBottle from '../images/clear-glass-h2o-bottle.jpg'
+import { Card, Container, Col, Image, Row } from 'react-bootstrap';
+import epaLogo from '../images/EPALogo.png'
+import ewgLogo from '../images/ewg-logo.gif'
+import twitterLogo from '../images/twitter-logo.jpg'
+import openData from '../images/openData.jpg'
 // !import data from to display to live data points
 
 export default function liveData () {
   return (
     <article id="open-data">
+    <Container>
+      <Row>
+        <Col>
+          <h1>Open Data</h1>
+          <p class="text-muted">Data collected for Water Beacon was collected using the EPA, Environmental Working Group, and Twitter.</p>
+        </Col>
+        <Col>
+          <Row>
 
-      <section id="shop-desc">
-        <h2>Try our Water Beacon work shop</h2>
-        <div>
-          <h5>Find in depth answers to questions like:</h5>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              Where does my water come from?
-            </ListGroup.Item>
-            <ListGroup.Item>
-              What is the history of treatment and regulation of water?
-            </ListGroup.Item>
-            <ListGroup.Item>
-              What is the future of water quality regulations and should I be concerned?
-            </ListGroup.Item>
-          </ListGroup>
-        </div>
-      </section>
-      <section id="shop-img">
-        <div >
-          <Image src={waterBottle} rounded/>
-        </div>
-      </section>
+          </Row>
+
+        </Col>
+      </Row>
+    </Container>
     </article>
   )
 }

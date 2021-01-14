@@ -1,33 +1,25 @@
 import React from 'react';
-import { Image, ListGroup } from 'react-bootstrap';
-import waterBottle from '../images/clear-glass-h2o-bottle.jpg'
+import { Image, Col, Row, Container } from 'react-bootstrap';
+import workshop from '../images/workshop.jpg'
+import stickyNotes from '../images/sticky-notes.jpg'
 import './WorkShop.css';
 
 export default function WorkShop() {
   return (
     <article id="workshop" className="reverse-flex">
-      <section id="shop-desc">
-        <h2>Try our Water Beacon work shop</h2>
-        <div>
-          <h5>Find in depth answers to questions like:</h5>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              Where does my water come from?
-            </ListGroup.Item>  
-            <ListGroup.Item>
-              What is the history of treatment and regulation of water?
-            </ListGroup.Item>  
-            <ListGroup.Item>
-              What is the future of water quality regulations and should I be concerned?
-            </ListGroup.Item>  
-          </ListGroup>
-        </div>
-      </section>
-      <section id="shop-img">
-        <div >
-          <Image src={waterBottle} rounded/>
-        </div>
-      </section>
+    <Container>
+      <Row>
+        <Col>
+
+        </Col>
+        <Col>
+          <h1>Workshop</h1>
+          <p class="text-muted">Our goal is to organize workshops. In the workshop, we will teach you the basics of water quality and how you
+          can navigate the wealth of data to find meaningful insights. Click to subscribe to our maillist find out about our
+          next workshop. </p>
+        </Col>
+      </Row>
+    </Container>
     </article>
   )
 }
