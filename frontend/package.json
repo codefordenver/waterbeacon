@@ -5,22 +5,19 @@
   "proxy": "http://localhost:8000",
   "homepage": "https://waterbeacon.org",
   "dependencies": {
-    "acorn-jsx": "^5.3.1",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "d3": "^5.16.0",
     "d3-scale-chromatic": "^1.5.0",
     "node-sass": "^4.14.1",
-    "queue": "^6.0.1",
     "ramda": "^0.27.1",
     "react": "^16.14.0",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.4.3",
     "react-bootstrap-typeahead": "^3.4.7",
     "react-dom": "^16.14.0",
     "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^1.2.2",
     "react-scripts": "^3.4.4",
-    "tar": "^4.4.13",
     "topojson": "^3.0.2"
   },
   "scripts": {
@@ -37,10 +34,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "acorn": "^6.4.2",
-    "jquery": "^3.5.1",
-    "typescript": "^3.9.7"
-  }
+  ]
 }
