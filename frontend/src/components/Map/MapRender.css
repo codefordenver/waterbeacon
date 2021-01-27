@@ -1,3 +1,7 @@
 .map-container {
   margin-top: 10px;
 }
+
+#active {
+  fill: none;
+}

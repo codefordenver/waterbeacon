@@ -108,9 +108,13 @@ const CurrentSelection = ({ currentCounty, setCC }) => (
     <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
     <p>Closest Major City: {currentCounty.major_city}</p>
     <p>Facilities in Violation</p>
-    <ul style={{textAlign:"left"}}>
+    <ul style={{ textAlign:"left" }}>
       {currentCounty.facilities.map(facility => (
-        <li key={facility.PWSId}>{facility.FacName}</li>
+        <li key={facility.PWSId}>
+          <a rel="noopener noreferrer" target="_blank" href={`https://echo.epa.gov/detailed-facility-report?fid=${facility.RegistryID}`}>
+            {facility.FacName}
+          </a>
+        </li>
       ))}
     </ul>
   </Alert>

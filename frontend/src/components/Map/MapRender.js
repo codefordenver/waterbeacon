@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
+import * as R from 'ramda';
 import { countyList } from '../utils/counties';
 import './MapRender.css';
 
@@ -48,8 +49,6 @@ export const MapRender = (props) => {
   } = props;
   //refs, we don't want a rerender when these change!
   const svg = useRef(null);
-  const usCounties = useRef(null);
-  const stateFacilityObj = useRef({});
   const g = useRef(null);
 
   const defaultScale = d3.geoAlbersUsa().scale();
@@ -70,19 +69,10 @@ export const MapRender = (props) => {
       for (let i = 0; i < waterScoreData.length; i += 1) {
         const countyWaterScore = waterScoreData[i];
         waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2) * 100);
-        const stateId = countyWaterScore.fips_state_id;
-        const { facilities } = countyWaterScore;
-        if (!stateFacilityObj.current[stateId]) {
-          stateFacilityObj.current[stateId] = { facArr: [] };
-        }
-        if (!facilities)
-          continue;
-        const { facArr } = stateFacilityObj.current[stateId];
-        facArr.push(...facilities);
-        stateFacilityObj.current[stateId].facArr = facArr;
       };
       //this is the color scheme and scale
-      const color = (score) => {
+      const color = ({ id }) => {
+        const score = waterScore.get(id);
         if ((maxScore - 10) < score) {
           return '#CE0A05';
         }
@@ -95,7 +85,7 @@ export const MapRender = (props) => {
         return noColor;
       };
       //this creates the data for the map
-      usCounties.current = topojson.feature(topologyData, topologyData.objects.counties);
+      const usCounties = topojson.feature(topologyData, topologyData.objects.counties);
       g.current = svg.current.append("g");
       //we append a new "g" element that will have all the county information
       g.current.append("g")
@@ -103,13 +93,13 @@ export const MapRender = (props) => {
         .attr("id", "counties")
         // with no path elements, the .data call will create them
         .selectAll("path")
-        .data(usCounties.current.features)
+        .data(usCounties.features)
         // enter goes into the recently selected elemnt
         .enter().append("path")
         .attr("d", path)
         .attr("id", d => `county-${d.id}`)
         // todo: make scores within .1 of maxScore #CE0A05
-        .attr("fill", d => waterScore.get(d.id) ? color(d.score = waterScore.get(d.id)) : noColor)
+        .attr("fill", d => color(d))
         .attr("class", "county-boundary")
         .style("stroke", "grey")
         // add county to list
@@ -199,12 +189,14 @@ export const MapRender = (props) => {
         .attr('r', 8);
     }
     g.current.select("#states")
-      .style('stroke', 'black')
       .selectAll('path')
-      .attr("id", (d) => aivp && d === aivp ? `active` : `state-${d.id}`);
+      .attr("id", (d) => aivp && d === aivp ? `active` : `state-${d.id}`)
+      .style('stroke', 'black')
+      .style("stroke-width", initSW + "px");
 
     g.current.select('#active')
-      .style('stroke', '#2d5e9e');
+      .style('stroke', '#2d5e9e')
+      .style("stroke-width", 4 * initSW + "px");
 
     g.current.transition()
       .duration(750)
@@ -223,9 +215,8 @@ export const MapRender = (props) => {
       g.current.select('#facilities')
         .remove();
       if (areaInViewPort) {
-        const facilities = stateFacilityObj.current[areaInViewPort.id];
-
-        facilities.facArr.forEach((facility) => {
+        const facilities = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fips_state_id', areaInViewPort.id)))(waterScoreData);
+        facilities.forEach((facility) => {
           const coordinates = projection([facility.long, facility.lat]);
           if (coordinates) {
             facility.coordinates = coordinates;
@@ -241,7 +232,7 @@ export const MapRender = (props) => {
         g.current.append('g')
           .attr('id', 'facilities')
           .selectAll('circle')
-          .data(facilities.facArr)
+          .data(facilities)
           .enter()
           .append('circle')
           .attr('cx', (d) => d.coordinates[0])
