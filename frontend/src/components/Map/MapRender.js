@@ -26,6 +26,26 @@ const removeHover = (identifier) => {
     .style("stroke-width", initSW + "px");
 };
 
+const defaultScale = d3.geoAlbersUsa().scale();
+const projection = d3.geoAlbersUsa()
+  .translate([480, 300])
+  .scale(defaultScale * 600 / 500);
+
+//this is the color scheme and scale
+const colorFun = (maxScore, waterScore) => ({ id }) => {
+  const score = waterScore.get(id);
+  if ((maxScore - 10) < score) {
+    return '#CE0A05';
+  }
+  if (maxScore / 3 < score) {
+    return '#FFAE43';
+  }
+  if (maxScore / 10 < score) {
+    return '#badee8';
+  }
+  return noColor;
+};
+
 // setting some boundaries
 let x = width / 2;
 let y = height / 2;
@@ -33,7 +53,7 @@ let k = 1;
 
 // this function's only goal is to keep the map rendered in the "view box"
 export const MapRender = (props) => {
-  const anchor = useRef('map-container');
+  const anchor = useRef();
   const { 
     topologyData,
     waterScoreData,
@@ -51,41 +71,28 @@ export const MapRender = (props) => {
   const svg = useRef(null);
   const g = useRef(null);
 
-  const defaultScale = d3.geoAlbersUsa().scale();
-  const projection = d3.geoAlbersUsa()
-    .translate([480, 300])
-    .scale(defaultScale * 600 / 500);
-
   // this hook builds the map and renders it
   useEffect(() => {
     const translateData = () => {
-      // todo: make map render (12/2)
       //set the svg to the anchor element
       svg.current = d3.select(anchor.current).append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`);
+
       //create an element d3 map
       const waterScore = d3.map();
+
       //go through each state in the unemploymentByState data and set the map
       for (let i = 0; i < waterScoreData.length; i += 1) {
         const countyWaterScore = waterScoreData[i];
-        waterScore.set(countyWaterScore.fips_county_id, +parseFloat(countyWaterScore.score).toFixed(2) * 100);
+        waterScore.set(countyWaterScore.fips_county_id, parseFloat(countyWaterScore.score).toFixed(2) * 100);
       };
-      //this is the color scheme and scale
-      const color = ({ id }) => {
-        const score = waterScore.get(id);
-        if ((maxScore - 10) < score) {
-          return '#CE0A05';
-        }
-        if (maxScore / 3 < score) {
-          return '#FFAE43';
-        }
-        if (maxScore / 10 < score) {
-          return '#badee8';
-        }
-        return noColor;
-      };
+
+      // returns a function that determines the color
+      const color = colorFun(maxScore, waterScore);
+
       //this creates the data for the map
       const usCounties = topojson.feature(topologyData, topologyData.objects.counties);
+
       g.current = svg.current.append("g");
       //we append a new "g" element that will have all the county information
       g.current.append("g")
@@ -192,11 +199,11 @@ export const MapRender = (props) => {
       .selectAll('path')
       .attr("id", (d) => aivp && d === aivp ? `active` : `state-${d.id}`)
       .style('stroke', 'black')
-      .style("stroke-width", initSW + "px");
+      .style("stroke-width", `${initSW}px`);
 
     g.current.select('#active')
       .style('stroke', '#2d5e9e')
-      .style("stroke-width", 4 * initSW + "px");
+      .style("stroke-width", `${4 * initSW}px`);
 
     g.current.transition()
       .duration(750)
@@ -215,19 +222,10 @@ export const MapRender = (props) => {
       g.current.select('#facilities')
         .remove();
       if (areaInViewPort) {
-        const facilities = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fips_state_id', areaInViewPort.id)))(waterScoreData);
-        facilities.forEach((facility) => {
-          const coordinates = projection([facility.long, facility.lat]);
-          if (coordinates) {
-            facility.coordinates = coordinates;
-          } else {
-            facility.coordinates = [0, 0];
-          }
-        })
+        const facilitiesRaw = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fips_state_id', areaInViewPort.id)))(waterScoreData);
+        const imbedCoordinates = R.converge(R.assoc('coordinates'), [R.compose(projection, R.props(['long', 'lat'])), R.identity])
+        const facilities = R.map(imbedCoordinates, facilitiesRaw);
 
-        // todo: onClick, send to facility page on ECHO in new page using RegistryID
-        // todo: color each dot based on severity of violation
-        // todo: give dots a black outline
         // redirect code is currently commented out
         g.current.append('g')
           .attr('id', 'facilities')
@@ -237,13 +235,11 @@ export const MapRender = (props) => {
           .append('circle')
           .attr('cx', (d) => d.coordinates[0])
           .attr('cy', (d) => d.coordinates[1])
-          // in future, the click funciton will send you to ECHO page for facility
-          // .on('click', (d) => reqRedirect(d))
           .attr('r', 2)
           .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')
-          .text((d) => d.areaName);
+          .text((d) => d.FacName);
       } else {
         setZoom(0.5);
       }
