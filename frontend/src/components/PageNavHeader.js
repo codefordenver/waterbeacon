@@ -14,7 +14,7 @@ class PageNavHeader extends React.Component {
       <section className="page-header shadow">
         <Navbar collapseOnSelect className="nav-bar" bg="light" style={{justifyContent: 'initial'}} expand="lg" >
           <Navbar.Brand>
-            <Image src={wbLogo} style={{ maxHeight: 55, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
+            <Image src={wbLogo} style={{ maxHeight: 45, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
             <Image src={wbSVG} style={{ paddingTop: 2 }} alt="Water Beacon Title"/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -23,12 +23,13 @@ class PageNavHeader extends React.Component {
               <NavHashLink to="/#why-wb" className="nav-items">
                 Why Water Beacon
               </NavHashLink>
+              <NavHashLink to="/#Open Data" className="nav-items">
+                Open Data
+              </NavHashLink>
               <NavHashLink to="/#workshop" className="nav-items">
                 Workshop
               </NavHashLink>
-              <NavHashLink to="/#community" className="nav-items">
-                Community
-              </NavHashLink>
+
               <NavHashLink to="/#partners" className="nav-items">
                 Partners
               </NavHashLink>
@@ -36,7 +37,7 @@ class PageNavHeader extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <div style={{ padding: 20 }}>
-          <Button> Get Involved</Button>
+          <Button> Subscribe</Button>
         </div>
       </section>
     )

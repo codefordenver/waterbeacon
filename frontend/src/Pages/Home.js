@@ -22,7 +22,6 @@ class Home extends Component {
         <OpenData />
         <WorkShop />
         <Partners />
-        <Foot />
       </div>
     );
   }

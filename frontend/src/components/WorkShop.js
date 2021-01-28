@@ -10,13 +10,15 @@ export default function WorkShop() {
     <Container>
       <Row>
         <Col>
-
+        <Row>
+          <Image height={ 350 }  src={workshop} alt="Workshop"/>
+        </Row>
         </Col>
-        <Col>
+        <Col >
           <h1>Workshop</h1>
           <p class="text-muted">Our goal is to organize workshops. In the workshop, we will teach you the basics of water quality and how you
-          can navigate the wealth of data to find meaningful insights. Click to subscribe to our maillist find out about our
-          next workshop. </p>
+          can navigate the wealth of data to find meaningful insights. Click to subscribe to our maillist to be notified of our
+          next workshop.</p>
         </Col>
       </Row>
     </Container>
