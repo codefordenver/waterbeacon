@@ -76,7 +76,10 @@ export const MapRender = (props) => {
     const translateData = () => {
       //set the svg to the anchor element
       svg.current = d3.select(anchor.current).append("svg")
-        .attr("viewBox", `0 0 ${width} ${height}`);
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMin meet")
+        .attr("height", "100%")
+        .attr("width", "100%");
 
       //create an element d3 map
       const waterScore = d3.map();
