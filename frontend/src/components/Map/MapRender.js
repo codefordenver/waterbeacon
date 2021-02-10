@@ -31,19 +31,17 @@ const projection = d3.geoAlbersUsa()
   .translate([480, 300])
   .scale(defaultScale * 600 / 500);
 
+export const colorScale = [
+  {color: '#CE0A05', test: (score, maxScore) => (maxScore - 10) < score},
+  {color: '#FFAE43', test: (score, maxScore) => maxScore / 3 < score},
+  {color: '#badee8', test: (score, maxScore) => maxScore / 10 < score},
+  {color: noColor, test: R.T},
+]
+
 //this is the color scheme and scale
 const colorFun = (maxScore, waterScore) => ({ id }) => {
   const score = waterScore.get(id);
-  if ((maxScore - 10) < score) {
-    return '#CE0A05';
-  }
-  if (maxScore / 3 < score) {
-    return '#FFAE43';
-  }
-  if (maxScore / 10 < score) {
-    return '#badee8';
-  }
-  return noColor;
+  return R.prop('color', R.find(({ test }) => test(score, maxScore), colorScale))
 };
 
 // setting some boundaries
