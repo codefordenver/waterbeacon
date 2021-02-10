@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import (status, generics, viewsets, filters, views)
 from rest_framework.decorators import api_view
 from django.db.models import Q
 from django.db.models import Count
@@ -9,6 +9,7 @@ from django.http import Http404
 from datetime import datetime, timedelta
 
 from app import models as app_models
+from subscribe import models as subscribe_models
 from news import models as news_models
 from rawdata import models as raw_models
 from django_pandas.io import read_frame
@@ -139,3 +140,8 @@ class locationData(APIView):
 
 
         return Response(response)
+
+
+class SubscribeView(generics.CreateAPIView):
+    queryset = models.Subscribe.objects.all()
+    serializer_class = serializers.SubscribeSerializer
