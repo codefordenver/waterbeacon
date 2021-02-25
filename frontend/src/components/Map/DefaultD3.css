@@ -47,6 +47,19 @@
   grid-column: 2;
 }
 
+.map .legend .gradient {
+  grid-column: 1 / span 2;
+}
+
+.map .legend .gradient.words span {
+  margin: auto 8px;
+}
+
+.map .legend svg.gradient rect {
+  stroke: black;
+  stroke-width: 1px;
+}
+
 .map .legend svg#minimize_legend:hover {
   cursor: pointer;
 }
