@@ -86,7 +86,7 @@ const Retrieve = () => {
         // could do an array find here, but there is potential that no county is returned
         // when there is no county returned, it will trigger error
         for (let i = 0; i < locCount; i ++) {
-          if (countyId === locations[i].fips_county_id) {
+          if (countyId === locations[i].fipsCounty) {
             return locations[i];
           }
         }
@@ -95,8 +95,8 @@ const Retrieve = () => {
         const county = countyList[countyId];
         return {
           county: county.Name,
-          fips_county_id: countyId,
-          fips_state_id: countyId.substring(0, 2),
+          fipsCounty: countyId,
+          fipsState: countyId.substring(0, 2),
           score: 0,
           facilities: [],
         }
@@ -109,7 +109,7 @@ const Retrieve = () => {
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
-        const stateId = fipsSpecific.fips_state_id;
+        const stateId = fipsSpecific.fipsState;
         const stateData = stateFipsId[stateId];
         stateData.count = stateData.count ? stateData.count + 1 : 1;
         // only need to go two spots past decimal

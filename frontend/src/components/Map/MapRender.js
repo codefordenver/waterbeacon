@@ -85,7 +85,7 @@ export const MapRender = (props) => {
       //go through each state in the unemploymentByState data and set the map
       for (let i = 0; i < waterScoreData.length; i += 1) {
         const countyWaterScore = waterScoreData[i];
-        waterScore.set(countyWaterScore.fips_county_id, parseFloat(countyWaterScore.score).toFixed(2) * 100);
+        waterScore.set(countyWaterScore.fipsCounty, parseFloat(countyWaterScore.score).toFixed(2) * 100);
       };
 
       // returns a function that determines the color
@@ -223,7 +223,7 @@ export const MapRender = (props) => {
       g.current.select('#facilities')
         .remove();
       if (areaInViewPort) {
-        const facilitiesRaw = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fips_state_id', areaInViewPort.id)))(waterScoreData);
+        const facilitiesRaw = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fipsState', areaInViewPort.id)))(waterScoreData);
         const imbedCoordinates = R.converge(R.assoc('coordinates'), [R.compose(projection, R.props(['long', 'lat'])), R.identity])
         const facilities = R.map(imbedCoordinates, facilitiesRaw);
 

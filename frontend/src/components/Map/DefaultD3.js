@@ -27,11 +27,11 @@ const DefaultD3 = ({
 
   // this function adds counties to the table on left
   const addCounty = (d) => {
-    const chosenOne = waterScoreData.find((county) => d.id === county.fips_county_id);
+    const chosenOne = waterScoreData.find((county) => d.id === county.fipsCounty);
     setCC(chosenOne);
 
     return chosenOne && setCountyRanked(tempCR => {
-      if (tempCR.find(({ fips_county_id }) => fips_county_id === d.id)) return tempCR;
+      if (tempCR.find(({ fipsCounty }) => fipsCounty === d.id)) return tempCR;
       return tempCR.concat(chosenOne).sort((a,b) => b.score-a.score);
     });
   };
@@ -108,7 +108,7 @@ const DefaultD3 = ({
 const CurrentSelection = ({ currentCounty, setCC }) => (
   <Alert dismissible variant="primary" onClose={() => setCC(null)}>
     <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
-    <p>Closest Major City: {currentCounty.major_city}</p>
+    <p>Closest Major City: {currentCounty.majorCity}</p>
     <p>Facilities in Violation</p>
     <ul style={{ textAlign:"left" }}>
       {currentCounty.facilities.map(facility => (
