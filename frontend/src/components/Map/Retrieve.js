@@ -63,18 +63,10 @@ const Retrieve = () => {
     }
 
     const getLocations = async () => {
-      // stores the location data in session storage
-      // speeds up rerenders in development
-      if (sessionStorage.getItem('locData')) {
-        const locData = sessionStorage.getItem('locData');
-        return JSON.parse(locData);
-      }
       // calls the server set up as proxy in package.json to retrieve data
-      const locationsSRC = "/v1/data/?sources=locations";
+      const locationsSRC = "/v1/data/?sources=locations&format=json";
       const locJSON = await fetch(locationsSRC);
       const locData = await locJSON.json();
-      // stores data retrieved in browser
-      sessionStorage.setItem('locData', JSON.stringify(locData));
       return locData;
     }
 

@@ -106,7 +106,6 @@ export const MapRender = (props) => {
         .enter().append("path")
         .attr("d", path)
         .attr("id", d => `county-${d.id}`)
-        // todo: make scores within .1 of maxScore #CE0A05
         .attr("fill", d => color(d))
         .attr("class", "county-boundary")
         .style("stroke", "grey")
