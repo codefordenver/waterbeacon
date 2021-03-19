@@ -15,7 +15,7 @@ django-celery==3.3.1
 django-celery-results==1.2.1
 django-localflavor==2.2
 django-pandas==0.6.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 fake-useragent==0.1.11
 feedparser==5.2.1
 gunicorn==19.9.0
