@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import DefaultD3 from './DefaultD3';
-import { countyList } from '../utils/counties';
+import * as R from 'ramda';
 
 const stateFipsId = {
   "56":{State:"WY",},"54":{State:"WV",},"55":{State:"WI",},
@@ -81,31 +81,16 @@ const Retrieve = () => {
 
     const getData = async () => {
       const locData = await getLocations();
-      const { locations, meta: { locations: locCount } } = locData;
-      const convLoc = Object.keys(countyList).map((countyId) => {
-        // could do an array find here, but there is potential that no county is returned
-        // when there is no county returned, it will trigger error
-        for (let i = 0; i < locCount; i ++) {
-          if (countyId === locations[i].fipsCounty) {
-            return locations[i];
-          }
-        }
+      const { locations } = locData;
+      setWSD(locations);
+      console.log(locations);
 
-        // if a county is not in our db, will need to establish data for the county
-        const county = countyList[countyId];
-        return {
-          county: county.Name,
-          fipsCounty: countyId,
-          fipsState: countyId.substring(0, 2),
-          score: 0,
-          facilities: [],
-        }
-      })
-      setWSD(convLoc);
+      const scoreList = R.pluck('score', locations);
+      const tempMaxScore = Math.max(...scoreList) * 100;
+      setMax(tempMaxScore);
       
       // two variables to hold data until we are ready to set state
       let topCountyScores = [];
-      let tempMaxScore = 0
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
@@ -122,8 +107,6 @@ const Retrieve = () => {
         stateData.min = stateData.min ? 
           Math.min(stateData.min, currScore) : 
           currScore;
-        // reset the tempMaxScore if currScore is larger
-        currScore > tempMaxScore && (tempMaxScore = currScore);
 
         // build the three-county table
         if(topCountyScores.length<3) {
@@ -140,7 +123,6 @@ const Retrieve = () => {
           currScore;
         stateFipsId[stateId]=stateData;
       });
-      setMax(tempMaxScore);
       setCountyRanked(topCountyScores);
       setWQD(stateFipsId);
     };

@@ -53,16 +53,17 @@ let k = 1;
 export const MapRender = (props) => {
   const anchor = useRef();
   const { 
-    topologyData,
-    waterScoreData,
-    stateWaterQualData,
     addCounty,
-    maxScore,
-    usStates,
     areaInViewPort,
     centerState,
-    userLocation,
+    facilitiesInViewPort,
+    maxScore,
     setZoom,
+    stateWaterQualData,
+    topologyData,
+    userLocation,
+    usStates,
+    waterScoreData,
     zoom,
   } = props;
   //refs, we don't want a rerender when these change!
@@ -221,10 +222,9 @@ export const MapRender = (props) => {
       // need to remove facilities from inactive states
       g.current.select('#facilities')
         .remove();
-      if (areaInViewPort) {
-        const facilitiesRaw = R.compose(R.flatten, R.pluck('facilities'), R.filter(R.propEq('fipsState', areaInViewPort.id)))(waterScoreData);
+      if (facilitiesInViewPort.length) {
         const imbedCoordinates = R.converge(R.assoc('coordinates'), [R.compose(projection, R.props(['long', 'lat'])), R.identity])
-        const facilities = R.map(imbedCoordinates, facilitiesRaw);
+        const facilities = R.o(R.filter(R.prop('coordinates')), R.map(imbedCoordinates))(facilitiesInViewPort);
 
         // redirect code is currently commented out
         g.current.append('g')
@@ -239,7 +239,7 @@ export const MapRender = (props) => {
           .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')
-          .text((d) => d.FacName);
+          .text((d) => d.facName);
       } else {
         setZoom(0.5);
       }
@@ -248,7 +248,7 @@ export const MapRender = (props) => {
     if (g.current) {
       addPoints();
     }
-  }, [areaInViewPort]);
+  }, [facilitiesInViewPort, setZoom]);
 
   return (<div className="map-container" ref={anchor} />);
 };

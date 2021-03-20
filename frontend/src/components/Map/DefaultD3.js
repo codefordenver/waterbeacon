@@ -91,17 +91,18 @@ const DefaultD3 = ({
       </div>
       <div className="map" >
         <MapRender
-          topologyData={topologyData}
-          waterScoreData={waterScoreData}
-          stateWaterQualData={stateWaterQualData}
           addCounty={addCounty}
-          maxScore={maxScore}
-          usStates={usStates}
           areaInViewPort={areaInViewPort}
           centerState={centerState}
+          facilitiesInViewPort={facilitiesInViewPort}
+          maxScore={maxScore}
           setZoom={setZoom}
-          zoom={zoom}
+          stateWaterQualData={stateWaterQualData}
+          topologyData={topologyData}
           userLocation={userLocation}
+          usStates={usStates}
+          waterScoreData={waterScoreData}
+          zoom={zoom}
         />
         {areaInViewPort && (
           <ButtonGroup className="zoom-btn-grp" vertical>
