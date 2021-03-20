@@ -1,6 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import Loader from 'react-loader-spinner';
 import './DefaultD3.css';
+import * as R from 'ramda';
 
 //import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
@@ -139,10 +140,7 @@ const CurrentSelection = ({ currentCounty, facilitiesInCounty, setCC }) => (
 
 const TopCounties = (props) => {
   const removeCounty = (index) => {
-    const tempCountyA = props.countiesRanked.slice(0,index);
-    const tempCountyB = props.countiesRanked.slice(index+1);
-    const tempCounty = tempCountyA.concat(tempCountyB);
-    props.setCountyRanked(tempCounty);
+    props.setCountyRanked(R.remove(index, 1));
   };
 
   return (
