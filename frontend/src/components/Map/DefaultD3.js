@@ -36,6 +36,7 @@ const DefaultD3 = ({
     const currId = currentCounty?.fipsCounty;
     return getFacilities(currId, utilities);
   }, [currentCounty, utilities]);
+  console.log(facilitiesInCounty);
 
   // this function adds counties to the table on left
   const addCounty = (d) => {
@@ -83,6 +84,7 @@ const DefaultD3 = ({
             {currentCounty &&
               <CurrentSelection
                 currentCounty={currentCounty}
+                facilitiesInCounty={facilitiesInCounty}
                 setCC={setCC}
               />
             }
@@ -118,16 +120,16 @@ const DefaultD3 = ({
 };
 
 // todo: add facility's score
-const CurrentSelection = ({ currentCounty, setCC }) => (
+const CurrentSelection = ({ currentCounty, facilitiesInCounty, setCC }) => (
   <Alert dismissible variant="primary" onClose={() => setCC(null)}>
     <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
     <p>Closest Major City: {currentCounty.majorCity}</p>
     <p>Facilities in Violation</p>
     <ul style={{ textAlign:"left" }}>
-      {currentCounty.facilities.map(facility => (
-        <li key={facility.PWSId}>
-          <a rel="noopener noreferrer" target="_blank" href={`https://echo.epa.gov/detailed-facility-report?fid=${facility.RegistryID}`}>
-            {facility.FacName}
+      {facilitiesInCounty.map(facility => (
+        <li key={facility.pwsId}>
+          <a rel="noopener noreferrer" target="_blank" href={`https://echo.epa.gov/detailed-facility-report?fid=${facility.registryId}`}>
+            {facility.facName}
           </a>
         </li>
       ))}

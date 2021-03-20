@@ -70,9 +70,13 @@ class locationData(APIView):
         # filter for utilities
         if "utilities" in sources or not len(sources):
             utilities_rd = (
-                raw_models.EpaFacilitySystem.objects.filter(Score__gt=0)
+                raw_models.EpaFacilitySystem.objects.filter(FacLat__isnull=False)
+                .filter(FacLong__isnull=False)
+                .filter(FacName__isnull=False)
+                .filter(Score__gt=0)
                 .filter(SDWASystemTypes="Community water system")
                 .values(
+                    facName=F("FacName"),
                     fipsCode=F("FacFIPSCode"),
                     lat=F("FacLat"),
                     long=F("FacLong"),
@@ -85,38 +89,5 @@ class locationData(APIView):
             response["meta"]["utilities"] = len(utilities_rd)
 
             response["utilities"] = utilities_rd
-
-            # queryset = Q()
-            # if request.query_params.get("violation"):
-            #     queryset &= Q(violation=str2bool(request.query_params.get("violation")))
-
-            # response["meta"]["utilities"] = news_models.utility.objects.filter(
-            #     queryset
-            # ).count()
-            # for utility in news_models.utility.objects.filter(queryset):
-
-            #     counties_served = []
-            #     for county in news_models.county_served.objects.filter(utility=utility):
-            #         counties_served.append(
-            #             {
-            #                 "fips_state_id": county.location.fips_state,
-            #                 "fips_county_id": county.location.fips_county,
-            #                 "name": county.location.name,
-            #             }
-            #         )
-
-            #     response["utilities"].append(
-            #         {
-            #             "name": utility.name,
-            #             "has_contaminats": utility.has_contaminats,
-            #             "url": utility.link,
-            #             "long": utility.position.x if utility.position else "",
-            #             "lat": utility.position.y if utility.position else "",
-            #             "violation": utility.violation,
-            #             "violation_points": utility.voilation_points,
-            #             "people_served": utility.people_served,
-            #             "counties_served": counties_served,
-            #         }
-            #     )
 
         return Response(response)
