@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import Loader from 'react-loader-spinner';
 import './DefaultD3.css';
 
@@ -8,6 +8,7 @@ import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
 import ExpandIcon from '../../icons/ExpandIcon';
 import Legend from './Legend';
+import { getFacilities } from '../utils/helpers';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -17,13 +18,24 @@ const DefaultD3 = ({
   countiesRanked,
   stateWaterQualData,
   maxScore,
-  userLocation
+  userLocation,
+  utilities,
 }) => {
   const [areaInViewPort, setAIVP] = useState(null);
   // todo: set first county as a "You are here"
   const [currentCounty, setCC] = useState(null)
   const [zoom, setZoom] = useState(0.5);
   const usStates = useRef(null);
+
+  const facilitiesInViewPort = useMemo(() => {
+    const currId = areaInViewPort?.id;
+    return getFacilities(currId, utilities);
+  }, [areaInViewPort, utilities]);
+
+  const facilitiesInCounty = useMemo(() => {
+    const currId = currentCounty?.fipsCounty;
+    return getFacilities(currId, utilities);
+  }, [currentCounty, utilities]);
 
   // this function adds counties to the table on left
   const addCounty = (d) => {

@@ -6,7 +6,6 @@ import { colorScale } from './MapRender';
 const maxScore = 100;
 const scoreRange = [10, 30, 50, 95];
 const getColor = (score, maxScore) => {
-  console.log(score, maxScore);
   return R.o(R.prop('color'), R.find(({ test }) => test(score, maxScore)))(colorScale);
 };
 

@@ -44,6 +44,7 @@ const Retrieve = () => {
   const [countiesRanked, setCountyRanked] = useState([]);
   // holds the max score for all counties
   const [maxScore, setMax] = useState(0);
+  const [utilities, setUtilities] = useState([]);
 
   useEffect(() => {
     setUL({
@@ -70,10 +71,17 @@ const Retrieve = () => {
       return locData;
     }
 
+    const getUtilities = async () => {
+      // calls the server set up as proxy in package.json to retrieve data
+      const utilitiesSRC = "/v1/data/?sources=utilities&format=json";
+      const utilitiesJSON = await fetch(utilitiesSRC);
+      const utilitiesData = await utilitiesJSON.json();
+      setUtilities(utilitiesData?.utilities);
+    }
+
     const getData = async () => {
       const locData = await getLocations();
-      const { locations } = locData;
-      const locCount = locations.length;
+      const { locations, meta: { locations: locCount } } = locData;
       const convLoc = Object.keys(countyList).map((countyId) => {
         // could do an array find here, but there is potential that no county is returned
         // when there is no county returned, it will trigger error
@@ -139,7 +147,10 @@ const Retrieve = () => {
 
     if (!topologyData) getTopoData();
 
-    if (!waterScoreData) getData();
+    if (!waterScoreData) {
+      getData();
+      getUtilities();
+    }
   }, []);
   
   return (
@@ -151,6 +162,7 @@ const Retrieve = () => {
       countiesRanked={countiesRanked}
       setCountyRanked={setCountyRanked}
       userLocation={userLocation}
+      utilities={utilities}
     />
   )
 }

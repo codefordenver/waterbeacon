@@ -69,7 +69,6 @@ class locationData(APIView):
         # TODO: Finish doing utilities, add query param
         # filter for utilities
         if "utilities" in sources or not len(sources):
-            print(sources)
             utilities_rd = (
                 raw_models.EpaFacilitySystem.objects.filter(Score__gt=0)
                 .filter(SDWASystemTypes="Community water system")
@@ -85,7 +84,7 @@ class locationData(APIView):
 
             response["meta"]["utilities"] = len(utilities_rd)
 
-            response["utilities"].append(utilities_rd)
+            response["utilities"] = utilities_rd
 
             # queryset = Q()
             # if request.query_params.get("violation"):
