@@ -7,6 +7,7 @@ from app import models as app_models
 from news import models as news_models
 from rawdata import models as raw_models
 from utils.utils import str2bool
+from django_pandas.io import read_frame
 
 
 class locationData(APIView):
@@ -69,25 +70,39 @@ class locationData(APIView):
         # TODO: Finish doing utilities, add query param
         # filter for utilities
         if "utilities" in sources or not len(sources):
-            utilities_rd = (
+            # maybe there is a better way to merge these two records than using pandas?
+            facility_rd = (
                 raw_models.EpaFacilitySystem.objects.filter(FacLat__isnull=False)
                 .filter(FacLong__isnull=False)
-                .filter(FacName__isnull=False)
-                .filter(Score__gt=0)
+                .filter(PWSId__isnull=False)
+                .filter(FacFIPSCode__isnull=False)
                 .filter(SDWASystemTypes="Community water system")
                 .values(
-                    facName=F("FacName"),
                     fipsCode=F("FacFIPSCode"),
                     lat=F("FacLat"),
                     long=F("FacLong"),
                     pwsId=F("PWSId"),
                     registryId=F("RegistryID"),
-                    score=F("Score"),
                 )
             )
+            facility_df = read_frame(facility_rd)
 
-            response["meta"]["utilities"] = len(utilities_rd)
+            watersystem_rd = (
+                raw_models.EpaWaterSystem.objects.filter(PWSId__isnull=False)
+                .filter(PWSTypeCode="CWS")
+                .filter(Vioremain__gte=1)
+                .values(
+                    pwsId=F("PWSId"),
+                    facName=F("PWSName"),
+                )
+            )
+            watersystem_df = read_frame(watersystem_rd)
 
-            response["utilities"] = utilities_rd
+            df = watersystem_df.merge(facility_df, how="left").dropna()
+
+            utilities = df.to_dict("records")
+            response["meta"]["utilities"] = len(utilities)
+
+            response["utilities"] = utilities
 
         return Response(response)
