@@ -38,7 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "jquery": "^3.4.0",
     "typescript": "^3.4.3"
   }
