@@ -8,6 +8,7 @@ from django.http import Http404
 
 from datetime import datetime, timedelta
 
+from . import serializers 
 from app import models as app_models
 from subscribe import models as subscribe_models
 from news import models as news_models
@@ -143,5 +144,5 @@ class locationData(APIView):
 
 
 class SubscribeView(generics.CreateAPIView):
-    queryset = models.Subscribe.objects.all()
+    queryset = subscribe_models.Subscribe.objects.all()
     serializer_class = serializers.SubscribeSerializer

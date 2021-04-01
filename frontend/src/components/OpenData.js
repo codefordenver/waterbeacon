@@ -14,7 +14,7 @@ export default function liveData () {
       <Row>
         <Col>
           <h1>Open Data</h1>
-          <p class="text-muted">We capture data from multiple platforms including the EPA used for sourcing the map, Twitter used for notifications.</p>
+          <p className="text-muted">We capture data from multiple platforms including the EPA used for sourcing the map, Twitter used for notifications.</p>
         </Col>
         <Col>
           <Row>
