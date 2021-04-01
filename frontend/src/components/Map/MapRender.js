@@ -48,6 +48,7 @@ const colorFun = (maxScore, waterScore) => ({ id }) => {
 let x = width / 2;
 let y = height / 2;
 let k = 1;
+const RADIUS = 4;
 
 // this function's only goal is to keep the map rendered in the "view box"
 export const MapRender = (props) => {
@@ -185,16 +186,16 @@ export const MapRender = (props) => {
       const widthZoom = width / stateWidth;
       const heightZoom = height / stateHeight;
       k = zoom * Math.min(widthZoom, heightZoom);
-      g.current.select("#userLocation")
-        .selectAll('circle')
-        .attr('r', 4);
+      const circleRadius = RADIUS / k > 1 ? RADIUS / k : 1;
+      g.current.selectAll('circle')
+        .attr('r', circleRadius);
     } else {
       x = width / 2;
       y = height / 2;
       k = 1;
       g.current.select("#userLocation")
         .selectAll('circle')
-        .attr('r', 8);
+        .attr('r', RADIUS);
     }
     g.current.select("#states")
       .selectAll('path')
@@ -215,8 +216,7 @@ export const MapRender = (props) => {
     adjustViewPort(areaInViewPort, zoom);
   }, [areaInViewPort, zoom])
 
-  // this hook is triggered when the user changes the zoom
-  // it centers the map
+  // this hook is triggered when the facilities are updated
   useEffect(() => {
     const addPoints = () => {
       // need to remove facilities from inactive states
@@ -235,7 +235,7 @@ export const MapRender = (props) => {
           .append('circle')
           .attr('cx', (d) => d.coordinates[0])
           .attr('cy', (d) => d.coordinates[1])
-          .attr('r', 2)
+          .attr('r', RADIUS / k)
           .attr('fill', '#E15659')
           .attr('class', 'city-point')
           .append('title')

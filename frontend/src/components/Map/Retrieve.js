@@ -83,7 +83,6 @@ const Retrieve = () => {
       const locData = await getLocations();
       const { locations } = locData;
       setWSD(locations);
-      console.log(locations);
 
       const scoreList = R.pluck('score', locations);
       const tempMaxScore = Math.max(...scoreList) * 100;

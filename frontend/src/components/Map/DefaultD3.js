@@ -37,7 +37,6 @@ const DefaultD3 = ({
     const currId = currentCounty?.fipsCounty;
     return getFacilities(currId, utilities);
   }, [currentCounty, utilities]);
-  console.log(facilitiesInCounty);
 
   // this function adds counties to the table on left
   const addCounty = (d) => {
@@ -167,7 +166,7 @@ const TopCounties = (props) => {
       <tbody>
         {props.countiesRanked.map((county, index)=>{
           return (
-            <tr key={county.county}>
+            <tr key={county.county + county.score}>
               <td>
                 {index+1}
               </td>
