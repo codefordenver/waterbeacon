@@ -10,6 +10,8 @@ import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
 import ExpandIcon from '../../icons/ExpandIcon';
 import Legend from './Legend';
 import { getFacilities } from '../utils/helpers';
+import ewgLogo from '../../icons/ewg-logo.png';
+import epaLogo from '../../icons/epa-logo.png';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
@@ -121,20 +123,27 @@ const DefaultD3 = ({
 
 // todo: add facility's score
 const CurrentSelection = ({ currentCounty, facilitiesInCounty, setCC }) => (
-  <Alert dismissible variant="primary" onClose={() => setCC(null)}>
-    <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
-    <p>Closest Major City: {currentCounty.majorCity}</p>
-    <p>Facilities in Violation</p>
-    <ul style={{ textAlign:"left" }}>
-      {facilitiesInCounty.map(facility => (
-        <li key={facility.pwsId}>
-          <a rel="noopener noreferrer" target="_blank" href={`https://echo.epa.gov/detailed-facility-report?fid=${facility.registryId}`}>
-            {facility.facName}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </Alert>
+  <div className="selection-alert">
+    <Alert dismissible variant="light" onClose={() => setCC(null)}>
+      <Alert.Heading>{currentCounty.county}, {currentCounty.state}</Alert.Heading>
+      <p>Closest Major City: {currentCounty.majorCity}</p>
+      <p>Facilities in Violation</p>
+      <ul style={{ textAlign:"left" }}>
+        {facilitiesInCounty.map(facility => (
+          <li key={facility.pwsId}>
+            {facility.facName}:&nbsp;
+            <a rel="noopener noreferrer" target="_blank" href={`https://echo.epa.gov/detailed-facility-report?fid=${facility.registryId}`}>
+              <img className="logos" src={epaLogo} alt="EPA Link" />
+            </a>
+            &nbsp;-&nbsp;
+            <a rel="noopener noreferrer" target="_blank" href={`https://www.ewg.org/tapwater/system.php?pws=${facility.pwsId}`}>
+              <img className="logos" src={ewgLogo} alt="EWG Link" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Alert>
+  </div>
 );
 
 const TopCounties = (props) => {

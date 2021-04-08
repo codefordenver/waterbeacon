@@ -106,3 +106,13 @@
 .info::-webkit-scrollbar {
   display: none;
 }
+
+.logos {
+  width: 25px;
+  margin: 2.5px;
+}
+
+.selection-alert {
+  border-radius: 0.25rem;
+  border: solid 2px #818189;
+}
