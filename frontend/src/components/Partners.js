@@ -10,10 +10,10 @@ export default function Partners() {
   return (
     <article id="partners" >
       <div id="sponsor-title-container">
-        <Image src={wbLogo} style={{ height: 150, marginRight:50 }} />
+        <Image src={wbLogo} style={{ height: 100, marginRight:50 }} />
         <div id="sponsors-title">
-          <h2>Water Beacon</h2>
-          <h2>is made possible by</h2>
+          <h3>Water Beacon</h3>
+          <h3>is made possible by</h3>
         </div>
       </div>
       <div id="sponsors">
@@ -30,8 +30,6 @@ export default function Partners() {
           </Button>
         </div>
       </div>
-      <section>
-      </section>
     </article>
   )
 }

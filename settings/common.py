@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'djcelery',
     'app',
     'news',
-    'rawdata'
+    'rawdata',
+    'subscribe'
 ]
 
 MIDDLEWARE = [

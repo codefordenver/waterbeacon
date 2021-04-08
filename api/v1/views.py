@@ -1,9 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.db.models import F, Q
+from rest_framework import (generics)
+from django.db.models import F
 
 
+from . import serializers 
 from app import models as app_models
+from subscribe import models as subscribe_models
 from news import models as news_models
 from rawdata import models as raw_models
 from utils.utils import str2bool
@@ -106,3 +109,8 @@ class locationData(APIView):
             response["utilities"] = utilities
 
         return Response(response)
+
+
+class SubscribeView(generics.CreateAPIView):
+    queryset = subscribe_models.Subscribe.objects.all()
+    serializer_class = serializers.SubscribeSerializer

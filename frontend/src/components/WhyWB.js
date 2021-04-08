@@ -8,16 +8,15 @@ export default function WhyWB() {
   return (
     <article id="why-wb" className="center-all">
       <div className="center-all">
-        <h1>Why Water Beacon?</h1>
-        <Image src={wbInfoLogo}/>
+        <h2 style={{ color: 'white'}}>Why Water Beacon?</h2>
+        <Image src={wbInfoLogo} style={{ maxHeight: 100, padding:10 }}/>
       </div>
-      <div className="center-all">
+      <div className="center-all" style={{ fontSize: 18, color: 'white' }}>
         <p>Water Beacon is to fill in the knowledge gap and lack of general awareness in the public. <br />
           Making information about water quality data available to the public for easy access.
         </p>
-        <p>For more in depth information check out our <NavHashLink to="/#workshop">Water Beacon Seminar</NavHashLink> below.</p>
       </div>
     </article>
   )
 }
-//  
+//

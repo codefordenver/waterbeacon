@@ -2,15 +2,15 @@
   color: #212529;
   text-decoration: none;
 }
-#live {
-  background: linear-gradient(180deg, #f8f9fa 0%, rgba(255, 255, 255, 0) 100%), #198CFF;
+#open-data {
+  background: white;
   display: flex;
   flex-flow: row nowrap;
-  min-height: 80vh;
+  min-height: 50vh;
   min-width: 90vw;
   height: 100%;
-  padding-top: 3rem;
-  margin-bottom: 5rem;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
   justify-content: center;
 }
 .live-titles {
@@ -33,12 +33,12 @@
 #feat-one {
   max-height: 40vh;
   width: 25vw;
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
 #feat-two {
   max-height: 50vh;
   width: 25vw;
-  margin-top: 5rem; 
+  margin-top: 5rem;
 }
 .reverse-flex {
   display: flex;
@@ -55,14 +55,14 @@
 #why-wb {
   height: 100%;
   padding:3rem;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  background-color: #198cff;
+
 }
 #why-wb div Img{
   height:25vh;
 }
 @media only screen and (max-width: 600px) {
-  #live {
+  #open-data {
     flex-flow: row wrap;
     margin: 0rem;
     padding: 0.5rem
