@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import DefaultD3 from './DefaultD3';
-import { countyList } from '../utils/counties';
+import * as R from 'ramda';
 
 const stateFipsId = {
   "56":{State:"WY",},"54":{State:"WV",},"55":{State:"WI",},
@@ -44,6 +44,7 @@ const Retrieve = () => {
   const [countiesRanked, setCountyRanked] = useState([]);
   // holds the max score for all counties
   const [maxScore, setMax] = useState(0);
+  const [utilities, setUtilities] = useState([]);
 
   useEffect(() => {
     setUL({
@@ -63,53 +64,36 @@ const Retrieve = () => {
     }
 
     const getLocations = async () => {
-      // stores the location data in session storage
-      // speeds up rerenders in development
-      if (sessionStorage.getItem('locData')) {
-        const locData = sessionStorage.getItem('locData');
-        return JSON.parse(locData);
-      }
       // calls the server set up as proxy in package.json to retrieve data
-      const locationsSRC = "/v1/data/?sources=locations";
+      const locationsSRC = "/v1/data/?sources=locations&format=json";
       const locJSON = await fetch(locationsSRC);
       const locData = await locJSON.json();
-      // stores data retrieved in browser
-      sessionStorage.setItem('locData', JSON.stringify(locData));
       return locData;
+    }
+
+    const getUtilities = async () => {
+      // calls the server set up as proxy in package.json to retrieve data
+      const utilitiesSRC = "/v1/data/?sources=utilities&format=json";
+      const utilitiesJSON = await fetch(utilitiesSRC);
+      const utilitiesData = await utilitiesJSON.json();
+      setUtilities(utilitiesData?.utilities);
     }
 
     const getData = async () => {
       const locData = await getLocations();
       const { locations } = locData;
-      const locCount = locations.length;
-      const convLoc = Object.keys(countyList).map((countyId) => {
-        // could do an array find here, but there is potential that no county is returned
-        // when there is no county returned, it will trigger error
-        for (let i = 0; i < locCount; i ++) {
-          if (countyId === locations[i].fips_county_id) {
-            return locations[i];
-          }
-        }
+      setWSD(locations);
 
-        // if a county is not in our db, will need to establish data for the county
-        const county = countyList[countyId];
-        return {
-          county: county.Name,
-          fips_county_id: countyId,
-          fips_state_id: countyId.substring(0, 2),
-          score: 0,
-          facilities: [],
-        }
-      })
-      setWSD(convLoc);
+      const scoreList = R.pluck('score', locations);
+      const tempMaxScore = Math.max(...scoreList) * 100;
+      setMax(tempMaxScore);
       
       // two variables to hold data until we are ready to set state
       let topCountyScores = [];
-      let tempMaxScore = 0
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
-        const stateId = fipsSpecific.fips_state_id;
+        const stateId = fipsSpecific.fipsState;
         const stateData = stateFipsId[stateId];
         stateData.count = stateData.count ? stateData.count + 1 : 1;
         // only need to go two spots past decimal
@@ -122,8 +106,6 @@ const Retrieve = () => {
         stateData.min = stateData.min ? 
           Math.min(stateData.min, currScore) : 
           currScore;
-        // reset the tempMaxScore if currScore is larger
-        currScore > tempMaxScore && (tempMaxScore = currScore);
 
         // build the three-county table
         if(topCountyScores.length<3) {
@@ -140,14 +122,16 @@ const Retrieve = () => {
           currScore;
         stateFipsId[stateId]=stateData;
       });
-      setMax(tempMaxScore);
       setCountyRanked(topCountyScores);
       setWQD(stateFipsId);
     };
 
     if (!topologyData) getTopoData();
 
-    if (!waterScoreData) getData();
+    if (!waterScoreData) {
+      getData();
+      getUtilities();
+    }
   }, []);
   
   return (
@@ -159,6 +143,7 @@ const Retrieve = () => {
       countiesRanked={countiesRanked}
       setCountyRanked={setCountyRanked}
       userLocation={userLocation}
+      utilities={utilities}
     />
   )
 }

@@ -18,6 +18,55 @@
   min-width: 58%;
   max-width: 69.5%;
   margin-left: .5%;
+  margin-top: 10px;
+  position: relative;
+}
+
+.map .zoom-btn-grp {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.map .legend {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-column-gap: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 8px;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
+  row-gap: 0.25rem;
+}
+
+.map .legend svg {
+  grid-column: 2;
+}
+
+.map .legend .gradient {
+  grid-column: 1 / span 2;
+}
+
+.map .legend .gradient.words span {
+  margin: auto 8px;
+}
+
+.map .legend svg.gradient rect {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.map .legend svg#minimize_legend:hover {
+  cursor: pointer;
+}
+
+.map .legend p {
+  margin-bottom: 0;
 }
 
 .county-list .remove-county:hover,
