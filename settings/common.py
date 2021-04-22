@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 from datetime import timedelta
 from dotenv import load_dotenv
+import dj_database_url
 
 from . import get_env_variable
 
