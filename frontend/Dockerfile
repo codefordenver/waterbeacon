@@ -1,6 +1,6 @@
 # REF: https://mherman.org/blog/dockerizing-a-react-app/
 # BUILD Environment
-FROM node:8
+FROM node:14
 
 WORKDIR  /app
 
