@@ -17,10 +17,6 @@ from dotenv import load_dotenv
 from . import get_env_variable
 
 
-import djcelery
-import dj_database_url
-djcelery.setup_loader()
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 dotenv_path = os.path.join(BASE_DIR, ".env")
@@ -50,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'django_celery_results',
-    'djcelery',
     'app',
     'news',
     'rawdata',
@@ -132,7 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 CELERY_RESULT_BACKEND = 'django-db'
-CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+#CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERY_BROKER_URL = get_env_variable('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'

@@ -20,7 +20,3 @@ ENVIRONMENT = "dev"
 USER = "Orange"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
-import djcelery
-
-djcelery.setup_loader()
