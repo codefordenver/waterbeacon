@@ -29,14 +29,17 @@ pandas==0.25.3
 pathlib-mate==1.0.0
 psycopg2-binary==2.8.5
 pycodestyle==2.5.0
+PySocks==1.7.1
 python-dateutil==2.8.1
 python-dotenv==0.14.0
 python-stdnum==1.13
 pytz==2019.3
 requests==2.24.0
+requests-oauthlib==1.3.0
 six==1.14.0
 SQLAlchemy==1.3.18
 sqlparse==0.3.0
+tweepy==3.10.0
 urllib3==1.25.10
 uszipcode==0.2.4
 vine==1.3.0
