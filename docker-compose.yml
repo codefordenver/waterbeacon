@@ -7,27 +7,9 @@ version: '3.7'
 
 services:
   redis:
-    image: "redis:alpine"
-    ports:
-      - 6379:6379
-    volumes:
-      - redis-data:/data
-
-  nginx:
-    build: ./nginx
-    ports:
-      - 1337:80
-
-  frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend:/app
-      - node-modules:/app/node_modules
-    ports:
-      - 80:3000
-    depends_on:
-      - backend
-      - nginx
+     image: "redis:alpine"
+     volumes:
+       - redis_data:/data
 
   backend:
     build: .
@@ -37,11 +19,11 @@ services:
       - ./.env
     volumes:
       - static_volume:/app/static
+      - media_volume:/app/media
     expose:
       - 8000
     depends_on:
       - redis
-      - nginx
 
   celery-worker:
     build: .
@@ -59,16 +41,33 @@ services:
     depends_on:
       - redis
 
-  flower:
-    image: mher/flower
-    env_file:
-      - ./.env
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - node-modules:/app/node_modules
+    expose:
+      - 3000
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build: nginx
+    restart: always
     ports:
-      - 8888:8888
+      - 80:80
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     depends_on:
-      - redis
+      - backend
+      - frontend
 
 volumes:
-  redis-data:
-  node-modules:
   static_volume:
+  media_volume:
+  html:
+  vhost:
+  redis_data:
