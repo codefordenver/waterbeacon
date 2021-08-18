@@ -45,7 +45,7 @@ services:
     build: ./frontend
     volumes:
       - ./frontend:/app
-      - node-modules:/app/node_modules
+      - node_modules:/app/node_modules
     expose:
       - 3000
 
@@ -71,3 +71,4 @@ volumes:
   html:
   vhost:
   redis_data:
+  node_modules:
