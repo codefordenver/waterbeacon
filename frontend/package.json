@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://waterbeacon.org",
+  "proxy": "http://fontend:8000",
   "homepage": "http://waterbeacon.org",
   "dependencies": {
     "axios": "^0.21.1",
