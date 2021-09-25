@@ -32,7 +32,7 @@ SECRET_KEY = 'r(*#1+d-n2vma&*bg6$knhjbiy#82-_5_2vz9z=&$#eh%y9en6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','waterbeacon.org','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','waterbeacon.org','127.0.0.1', 'backend:8000']
 
 
 # Application definition
