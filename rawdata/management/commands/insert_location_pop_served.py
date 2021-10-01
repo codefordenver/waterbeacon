@@ -4,6 +4,7 @@ from django.conf import settings
 from rawdata import models as rawdata_models
 from app import models as app_models
 from django.db.models import Sum
+from django_pandas.io import read_frame
 
 class Command(BaseCommand):
 
