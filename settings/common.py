@@ -14,14 +14,17 @@ import os
 from datetime import timedelta
 from dotenv import load_dotenv
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 from . import get_env_variable
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 dotenv_path = os.path.join(BASE_DIR, ".env")
 load_dotenv(dotenv_path)
+
+from utils.utils import ( str2bool )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -30,7 +33,7 @@ load_dotenv(dotenv_path)
 SECRET_KEY = 'r(*#1+d-n2vma&*bg6$knhjbiy#82-_5_2vz9z=&$#eh%y9en6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = str2bool(get_env_variable('DEBUG', True))
 
 ALLOWED_HOSTS = ['*']
 
