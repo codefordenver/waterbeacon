@@ -14,7 +14,7 @@ class EpaDataGetter(object):
     VALID_REQUEST_TYPES = (WATER_TYPE, FACILITY_TYPE)
 
     def __init__(self, requests_before_pause=3, pause_seconds=3):
-        self.hostname = 'https://ofmpub.epa.gov/echo'
+        self.hostname = 'https://echodata.epa.gov/echo'
 
         # the system rate limits and this is crude without a nice retry system
         self.requests_before_pause = requests_before_pause
@@ -207,7 +207,7 @@ class EpaWaterDataGetter(EpaDataGetter):
         self.query_url = '%s/sdw_rest_services.get_qid' % self.hostname
         # maybe we want to restrict the data in this case too but we can just store it all in the meantime
         # self.endpoint_metadata_url = '%s/sdw_rest_services.metadata?output=JSON' % self.hostname
-        # self.desired_columns = () 
+        # self.desired_columns = ()
         # self.columns_query_param = self.get_column_url_parameters_from_metadata()
         # for water locations, we also use the numeric codes that are typically reservations. probably unnecesary as the state should have duplicate info
         self.states.append(('01',  '02',  '03',  '04',  '05',
