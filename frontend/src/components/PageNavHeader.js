@@ -14,8 +14,12 @@ class PageNavHeader extends React.Component {
       <section className="page-header shadow">
         <Navbar collapseOnSelect className="nav-bar" bg="light" style={{justifyContent: 'initial'}} expand="lg" >
           <Navbar.Brand>
-            <Image src={wbLogo} style={{ maxHeight: 45, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
-            <Image src={wbSVG} style={{ paddingTop: 2 }} alt="Water Beacon Title"/>
+            <a href="/">
+              <Image src={wbLogo} style={{ maxHeight: 40, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
+            </a>
+            <a href="/">
+              <Image src={wbSVG} style={{ maxHeight: 40, paddingTop: 2 }} alt="Water Beacon Title"/>
+            </a>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
