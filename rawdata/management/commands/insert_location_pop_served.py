@@ -19,10 +19,13 @@ class Command(BaseCommand):
         fips_populations = lws_df.groupby(['FIPSCodes'])['PopulationServedCount'].sum()
 
         for location in app_models.location.objects.filter(population_served = 0):
-            if not location.fips_county:
+
+            fips_county = str(int(float(location.fips_county)))
+            if not location.fips_county or not fips_populations.get(fips_county, 0):
                 print('location: %s skip' % (location.pk))
                 continue
-            location.population_served = fips_populations[county_fips]['PopulationServedCount']
+
+            location.population_served = fips_populations[fips_county]
             location.save()
 
             completed +=1
