@@ -61,6 +61,14 @@ const DefaultD3 = ({
     }
   };
 
+  const handleZoomOut = () => {
+    if (zoom <= 0.5) {
+      return setAIVP(null)
+    }
+
+    return setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)
+  }
+
   if(!topologyData || !waterScoreData) return <div className="loader"><Loader type="Oval" color="#111111" height={80} width={80} /></div>
 
   //todo: make options class stay same width
@@ -110,9 +118,8 @@ const DefaultD3 = ({
         />
         {areaInViewPort && (
           <ButtonGroup className="zoom-btn-grp" vertical>
-            <Button onClick={() => setAIVP(null)} variant="danger" block><ExpandIcon /></Button>
             <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
-            <Button disabled={zoom <= 0.5} onClick={() => setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)}>-</Button>
+            <Button onClick={handleZoomOut}>-</Button>
           </ButtonGroup>
         )}
         <Legend />
