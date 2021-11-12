@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import * as topojson from 'topojson';
+import * as topojson from 'topojson-client';
 import * as R from 'ramda';
 import { countyList } from '../utils/counties';
 import './MapRender.css';
