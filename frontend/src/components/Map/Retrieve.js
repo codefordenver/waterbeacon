@@ -29,11 +29,13 @@ const stateFipsId = {
 // this component will retrieve the data from our database
 const Retrieve = () => {
   // this is the data used to build the map
-  const [topologyData, setTD] = useState(undefined);
+  const [topologyData, setTD] = useState(null);
   // this is the data used to color the map
-  const [waterScoreData, setWSD] = useState(undefined);
+  const [waterScoreData, setWSD] = useState(null);
   // this is the component that will hold the state information, along with min and max values
-  const [stateWaterQualData, setWQD] = useState(undefined);
+  const [stateWaterQualData, setWQD] = useState(null);
+  const [quarter, setQuarter] = useState(null);
+  const [year, setYear] = useState(null);
   const [userLocation, setUL] = useState({
     latitude: 39.734850,
     longitude:-104.995900
@@ -65,23 +67,18 @@ const Retrieve = () => {
 
     const getLocations = async () => {
       // calls the server set up as proxy in package.json to retrieve data
-      const locationsSRC = "/v1/data/?sources=locations&format=json";
-      const locJSON = await fetch(locationsSRC);
-      const locData = await locJSON.json();
-      return locData;
-    }
-
-    const getUtilities = async () => {
-      // calls the server set up as proxy in package.json to retrieve data
-      const utilitiesSRC = "/v1/data/?sources=utilities&format=json";
-      const utilitiesJSON = await fetch(utilitiesSRC);
-      const utilitiesData = await utilitiesJSON.json();
-      setUtilities(utilitiesData?.utilities);
+      const dataString = "/v1/data/?sources=locations,utilities&format=json";
+      const quarterString = quarter ? "&quarter=" + quarter : "";
+      const yearString = year ? "&year=" + year : "";
+      const dataSRC = dataString + quarterString + yearString;
+      const dataJSON = await fetch(dataSRC);
+      const data = await dataJSON.json();
+      setUtilities(data?.utilities);
+      return data?.locations;
     }
 
     const getData = async () => {
-      const locData = await getLocations();
-      const { locations } = locData;
+      const locations = await getLocations();
       setWSD(locations);
 
       const scoreList = R.pluck('score', locations);
@@ -126,13 +123,9 @@ const Retrieve = () => {
       setWQD(stateFipsId);
     };
 
-    if (!topologyData) getTopoData();
-
-    if (!waterScoreData) {
-      getData();
-      getUtilities();
-    }
-  }, []);
+    getTopoData();
+    getData();
+  }, [quarter, year]);
   
   return (
     <DefaultD3
