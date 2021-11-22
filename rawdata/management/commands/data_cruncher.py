@@ -7,9 +7,23 @@ from rawdata import models as raw_models
 from utils.log import log
 from django_pandas.io import read_frame
 import pandas as pd
+from django.utils import timezone
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+
+        now = timezone.now()
+        year = now.year
+        if now.month >= 11:
+            quarter = 'q4'
+        elif now.month >= 8:
+            quarter = 'q3'
+        elif now.month >= 5:
+            quarter = 'q2'
+        else:
+            quarter = 'q1'
+
+
         cruncher = SDW_Data_Cruncher()
 
         states = [
@@ -33,8 +47,10 @@ class Command(BaseCommand):
                 #     systems_df['in_violation'] = systems_df.apply(lambda x: x['CurrVioFlag']==1, axis=1)
                 #     systems_df = systems_df[['PWSId', 'FacName', 'FacLong', 'FacLat', 'in_violation']]
                 if area['score'] == 0:
-                    if not app_models.data.objects.filter(location = location, score = area['score']).exists():
+                    if not app_models.data.objects.filter(location = location, score = area['score'], quarter = quarter, year = year).exists():
                         data = app_models.data()
+                        data.year = year
+                        data.quarter = quarter
                         data.location = location
                         data.score = area['score']
                         try:
@@ -53,9 +69,11 @@ class Command(BaseCommand):
                         min_score = area['score'] - 0.05
                     max_score = area['score'] + 0.05
 
-                    if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score).exists():
+                    if not app_models.data.objects.filter(location = location, score__gte = min_score, score__lte = max_score, quarter = quarter, year = year).exists():
                         data = app_models.data()
                         # todo: need to insert facilities here
+                        data.location = location
+                        data.quarter = quarter
                         data.location = location
                         data.score = area['score']
                         try:

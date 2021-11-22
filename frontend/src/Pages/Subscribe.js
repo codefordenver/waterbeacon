@@ -10,7 +10,7 @@ class Subscribe extends Component {
       <div>
         <PageNavHeader />
         <Row className="justify-content-center">
-         <Col md={3}>
+         <Col md={4}>
             <p style={{ color: '#17a6ff'}}>Subscribe and recieve updates from our Water Beacon notifier. If there is any water quality related issues reported in your neighborhood on Twitter or by the EPA, we will let you know.</p>
             <SubscribeForm />
           </Col>

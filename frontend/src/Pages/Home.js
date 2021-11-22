@@ -4,6 +4,7 @@ import Retrieve from '../components/Map/Retrieve';
 import PageNavHeader from '../components/PageNavHeader';
 import OpenData from '../components/OpenData';
 import './styleHome.css';
+import Subscribe from '../components/Subscribe';
 import WhyWB from '../components/WhyWB';
 import WorkShop from '../components/WorkShop';
 import Partners from '../components/Partners';
@@ -21,6 +22,7 @@ class Home extends Component {
         <WhyWB />
         <OpenData />
         <WorkShop />
+        <Subscribe />
         <Partners />
       </div>
     );
