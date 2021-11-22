@@ -7,7 +7,6 @@ import * as R from 'ramda';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
-import ExpandIcon from '../../icons/ExpandIcon';
 import Legend from './Legend';
 import { getFacilities } from '../utils/helpers';
 import ewgLogo from '../../icons/ewg-logo.png';
