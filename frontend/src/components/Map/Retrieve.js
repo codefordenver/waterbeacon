@@ -42,7 +42,7 @@ const Retrieve = () => {
   });
   // holds the highest scoring three counties on initial render
   // data is sent to table on left pane
-  // user can add and remove counties 
+  // user can add and remove counties
   const [countiesRanked, setCountyRanked] = useState([]);
   // holds the max score for all counties
   const [maxScore, setMax] = useState(0);
@@ -84,7 +84,7 @@ const Retrieve = () => {
       const scoreList = R.pluck('score', locations);
       const tempMaxScore = Math.max(...scoreList) * 100;
       setMax(tempMaxScore);
-      
+     
       // two variables to hold data until we are ready to set state
       let topCountyScores = [];
       //for each fips specific data point, work on state data
@@ -96,12 +96,12 @@ const Retrieve = () => {
         // only need to go two spots past decimal
         const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
         // test to find the max county score for a state
-        stateData.max = stateData.max ? 
-          Math.max(stateData.max, currScore) : 
+        stateData.max = stateData.max ?
+        Math.max(stateData.max, currScore) :
           currScore;
         // test to find the min county score for a state
-        stateData.min = stateData.min ? 
-          Math.min(stateData.min, currScore) : 
+        stateData.min = stateData.min ?
+        Math.min(stateData.min, currScore) :
           currScore;
 
         // build the three-county table
@@ -114,8 +114,8 @@ const Retrieve = () => {
         }
         //!: average is not actually average
         //!: does not account for population
-        stateData.avg = stateData.avg ? 
-          ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) : 
+        stateData.avg = stateData.avg ?
+        ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) :
           currScore;
         stateFipsId[stateId]=stateData;
       });
@@ -126,7 +126,7 @@ const Retrieve = () => {
     getTopoData();
     getData();
   }, [quarter, year]);
-  
+ 
   return (
     <DefaultD3
       topologyData={topologyData}
