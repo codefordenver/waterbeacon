@@ -8,9 +8,9 @@ const Retrieve = () => {
   // this is the data used to build the map
   const [topologyData, setTD] = useState(null);
   // this is the data used to color the map
-  const [waterScoreData, setWSD] = useState(null);
+  const [waterScoreData, setWaterScoreData] = useState(null);
   // this is the component that will hold the state information, along with min and max values
-  const [stateWaterQualData, setWQD] = useState(null);
+  const [stateWaterQualData, setStateWaterQualityData] = useState(null);
   const [quarter, setQuarter] = useState(null);
   const [year, setYear] = useState(null);
   const [userLocation, setUL] = useState({
@@ -51,12 +51,10 @@ const Retrieve = () => {
       const dataSRC = dataString + quarterString + yearString;
       const dataJSON = await fetch(dataSRC);
       const data = await dataJSON.json();
-      setUtilities(data?.utilities);
-      if (data?.top_locations) {
-        setCountyRanked(data.top_locations)
-      }
-      setWQD(data?.states);
-      setWSD(data?.locations);
+      setUtilities(data?.utilities || []);
+      setCountyRanked(data?.top_locations || []);
+      setStateWaterQualityData(data?.states);
+      setWaterScoreData(data?.locations);
     }
 
     getTopoData();
