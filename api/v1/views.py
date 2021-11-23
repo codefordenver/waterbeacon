@@ -24,6 +24,7 @@ class locationData(APIView):
             "utilities": [],
             "cities": [],
             "quarters": [],
+            "top_locations": [],
         }
         quarters = app_models.data.objects.values("quarter", "year").distinct()
         response["quarters"] = quarters
@@ -61,6 +62,7 @@ class locationData(APIView):
                 populationServed=F("location__population_served"),
             )
             response["locations"] = data
+            response["top_locations"] = data.order_by("-score")[0:3]
             response["meta"]["locations"] = len(data)
 
         # filter for news

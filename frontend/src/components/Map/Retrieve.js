@@ -45,7 +45,8 @@ const Retrieve = () => {
   // user can add and remove counties
   const [countiesRanked, setCountyRanked] = useState([]);
   // holds the max score for all counties
-  const [maxScore, setMax] = useState(0);
+  const scoreList = R.pluck('score', countiesRanked);
+  const maxScore = Math.max(...scoreList, 0) * 100;
   const [utilities, setUtilities] = useState([]);
 
   useEffect(() => {
@@ -74,6 +75,9 @@ const Retrieve = () => {
       const dataJSON = await fetch(dataSRC);
       const data = await dataJSON.json();
       setUtilities(data?.utilities);
+      if (data?.top_locations) {
+        setCountyRanked(data.top_locations)
+      }
       return data?.locations;
     }
 
@@ -81,12 +85,6 @@ const Retrieve = () => {
       const locations = await getLocations();
       setWSD(locations);
 
-      const scoreList = R.pluck('score', locations);
-      const tempMaxScore = Math.max(...scoreList) * 100;
-      setMax(tempMaxScore);
-     
-      // two variables to hold data until we are ready to set state
-      let topCountyScores = [];
       //for each fips specific data point, work on state data
       locations.forEach((fipsSpecific)=>{
         // State FIPS ID is the first two characters of the county ID
@@ -104,14 +102,6 @@ const Retrieve = () => {
         Math.min(stateData.min, currScore) :
           currScore;
 
-        // build the three-county table
-        if(topCountyScores.length<3) {
-          topCountyScores.push(fipsSpecific)
-        } else {
-          topCountyScores.push(fipsSpecific);
-          topCountyScores.sort((a,b) => b.score-a.score)
-          topCountyScores.pop();
-        }
         //!: average is not actually average
         //!: does not account for population
         stateData.avg = stateData.avg ?
@@ -119,7 +109,6 @@ const Retrieve = () => {
           currScore;
         stateFipsId[stateId]=stateData;
       });
-      setCountyRanked(topCountyScores);
       setWQD(stateFipsId);
     };
 
