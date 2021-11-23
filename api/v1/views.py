@@ -27,7 +27,7 @@ class locationData(APIView):
             "top_locations": [],
         }
         quarters = app_models.data.objects.values("quarter", "year").distinct()
-        response["quarters"] = quarters
+        response["quarters"] = quarters.order_by("year", "quarter")[:8]
 
         # insert filter for quarter and year
         queryset = Q()

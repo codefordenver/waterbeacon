@@ -14,6 +14,9 @@ import epaLogo from '../../icons/epa-logo.png';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
+  chosenPeriod,
+  quartersAvailable,
+  updateChosenPeriod,
   topologyData,
   waterScoreData,
   setCountyRanked,
@@ -73,57 +76,75 @@ const DefaultD3 = ({
   //todo: make options class stay same width
   //todo: have CurrentSelection scroll when there are several counties
   return (
-    <div className="map-content">
-      <div className="options">
-        <ChooseZoom
-          areaInViewPort={areaInViewPort}
-          centerState={centerState}
-          usStates={usStates}
-          setAIVP={setAIVP}
-        />
-        <div className="info-panel">
-          <div className="info">
-            <TopCounties
-              countiesRanked={countiesRanked}
-              setCountyRanked={setCountyRanked}
-              setCC={setCC}
-            />
-          </div>
-          <div className="info">
-            {currentCounty &&
-              <CurrentSelection
-                currentCounty={currentCounty}
-                facilitiesInCounty={facilitiesInCounty}
+    <>
+      <div className="quarter-choice">
+        {quartersAvailable.map((quarterOption = {}) => {
+          const { quarter, year } = quarterOption;
+          const value = `${quarter.toUpperCase()}-${year}`
+          const variant = chosenPeriod === value ? 'primary' : 'secondary'
+          return (
+            <Button
+              variant={variant}
+              onClick={() => updateChosenPeriod(quarterOption)}
+              key={value}
+            >
+              {value}
+            </Button>
+          )
+        })}
+      </div>
+      <div className="map-content">
+        <div className="options">
+          <ChooseZoom
+            areaInViewPort={areaInViewPort}
+            centerState={centerState}
+            usStates={usStates}
+            setAIVP={setAIVP}
+          />
+          <div className="info-panel">
+            <div className="info">
+              <TopCounties
+                countiesRanked={countiesRanked}
+                setCountyRanked={setCountyRanked}
                 setCC={setCC}
               />
-            }
+            </div>
+            <div className="info">
+              {currentCounty &&
+                <CurrentSelection
+                  currentCounty={currentCounty}
+                  facilitiesInCounty={facilitiesInCounty}
+                  setCC={setCC}
+                />
+              }
+            </div>
           </div>
         </div>
+        <div className="map" >
+          <MapRender
+            addCounty={addCounty}
+            areaInViewPort={areaInViewPort}
+            centerState={centerState}
+            facilitiesInViewPort={facilitiesInViewPort}
+            maxScore={maxScore}
+            setZoom={setZoom}
+            stateWaterQualData={stateWaterQualData}
+            topologyData={topologyData}
+            userLocation={userLocation}
+            usStates={usStates}
+            waterScoreData={waterScoreData}
+            zoom={zoom}
+          />
+          {areaInViewPort && (
+            <ButtonGroup className="zoom-btn-grp" vertical>
+              <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
+              <Button onClick={handleZoomOut}>-</Button>
+            </ButtonGroup>
+          )}
+          <Legend />
+        </div>
       </div>
-      <div className="map" >
-        <MapRender
-          addCounty={addCounty}
-          areaInViewPort={areaInViewPort}
-          centerState={centerState}
-          facilitiesInViewPort={facilitiesInViewPort}
-          maxScore={maxScore}
-          setZoom={setZoom}
-          stateWaterQualData={stateWaterQualData}
-          topologyData={topologyData}
-          userLocation={userLocation}
-          usStates={usStates}
-          waterScoreData={waterScoreData}
-          zoom={zoom}
-        />
-        {areaInViewPort && (
-          <ButtonGroup className="zoom-btn-grp" vertical>
-            <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
-            <Button onClick={handleZoomOut}>-</Button>
-          </ButtonGroup>
-        )}
-        <Legend />
-      </div>
-    </div>
+    </>
   )
 };
 

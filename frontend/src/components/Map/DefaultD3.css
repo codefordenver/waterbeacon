@@ -116,3 +116,9 @@
   border-radius: 0.25rem;
   border: solid 2px #818189;
 }
+
+.quarter-choice {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}

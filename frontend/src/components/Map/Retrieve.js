@@ -11,8 +11,12 @@ const Retrieve = () => {
   const [waterScoreData, setWaterScoreData] = useState(null);
   // this is the component that will hold the state information, along with min and max values
   const [stateWaterQualData, setStateWaterQualityData] = useState(null);
-  const [quarter, setQuarter] = useState(null);
-  const [year, setYear] = useState(null);
+
+  const [quartersAvailable, setQuartersAvailable] = useState([]);
+  const [quarterIndex, setQuarterIndex] = useState(0);
+  const { quarter, year } = quartersAvailable[quarterIndex] ?? {}
+  const chosenPeriod = `${quarter?.toUpperCase()}-${year}`
+
   const [userLocation, setUL] = useState({
     latitude: 39.734850,
     longitude:-104.995900
@@ -44,22 +48,25 @@ const Retrieve = () => {
     }
 
     const getData = async () => {
+      const { quarter: quarterSelection, year: yearSelection } = quartersAvailable[quarterIndex] ?? {}
       // calls the server set up as proxy in package.json to retrieve data
       const dataString = "/v1/data/?sources=locations,utilities&format=json";
-      const quarterString = quarter ? "&quarter=" + quarter : "";
-      const yearString = year ? "&year=" + year : "";
+      const quarterString = quarterSelection ? "&quarter=" + quarterSelection : "";
+      const yearString = yearSelection ? "&year=" + yearSelection : "";
       const dataSRC = dataString + quarterString + yearString;
       const dataJSON = await fetch(dataSRC);
       const data = await dataJSON.json();
-      setUtilities(data?.utilities || []);
-      setCountyRanked(data?.top_locations || []);
-      setStateWaterQualityData(data?.states);
-      setWaterScoreData(data?.locations);
+      data?.quarters && setQuartersAvailable(data?.quarters);
+      data?.utilities && setUtilities(data?.utilities);
+      data?.top_locations && setCountyRanked(data?.top_locations);
+      data?.states && setStateWaterQualityData(data?.states);
+      data?.locations && setWaterScoreData(data?.locations);
     }
 
     getTopoData();
     getData();
-  }, [quarter, year]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quarterIndex]);
  
   return (
     <DefaultD3
@@ -68,6 +75,9 @@ const Retrieve = () => {
       stateWaterQualData={stateWaterQualData}
       maxScore={maxScore}
       countiesRanked={countiesRanked}
+      quartersAvailable={quartersAvailable}
+      updateChosenPeriod={setQuarterIndex}
+      chosenPeriod={chosenPeriod}
       setCountyRanked={setCountyRanked}
       userLocation={userLocation}
       utilities={utilities}
