@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import (generics)
+from rest_framework import generics
 from django.db.models import F, Q
 
 
@@ -22,22 +22,26 @@ class locationData(APIView):
             "locations": [],
             "utilities": [],
             "cities": [],
+            "quarters": [],
         }
+        response["quarters"] = app_models.data.objects.values(
+            "quarter", "year"
+        ).distinct()
 
         # insert filter for quarter and year
+        # todo: do an else that sends back latest quarter/year combo
         queryset = Q()
         if request.query_params.get("quarter"):
             queryset &= Q(quarter=request.query_params.get("quarter"))
 
         if request.query_params.get("year"):
-            queryset &= Q( year=request.query_params.get("year"))
+            queryset &= Q(year=request.query_params.get("year"))
 
         # filter for locations
         sources = request.query_params.get("sources", "").split(",")
         if "locations" in sources or not len(sources):
             data = app_models.data.objects.filter(
-                queryset
-                ,location__major_city__isnull=False
+                queryset, location__major_city__isnull=False
             ).values(
                 "score",
                 fipsState=F("location__fips_state"),
