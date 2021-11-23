@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import DefaultD3 from './DefaultD3';
 import * as R from 'ramda';
+import { getQuarterString } from '../utils/helpers';
 
 // this component will retrieve the data from our database
 const Retrieve = () => {
@@ -15,7 +16,7 @@ const Retrieve = () => {
   const [quartersAvailable, setQuartersAvailable] = useState([]);
   const [quarterIndex, setQuarterIndex] = useState(0);
   const { quarter, year } = quartersAvailable[quarterIndex] ?? {}
-  const chosenPeriod = `${quarter?.toUpperCase()}-${year}`
+  const chosenPeriod = getQuarterString({ quarter, year })
 
   const [userLocation, setUL] = useState({
     latitude: 39.734850,

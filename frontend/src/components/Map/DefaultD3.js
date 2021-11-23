@@ -8,7 +8,7 @@ import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
 import Legend from './Legend';
-import { getFacilities } from '../utils/helpers';
+import { getFacilities, getQuarterString } from '../utils/helpers';
 import ewgLogo from '../../icons/ewg-logo.png';
 import epaLogo from '../../icons/epa-logo.png';
 
@@ -80,7 +80,7 @@ const DefaultD3 = ({
       <div className="quarter-choice">
         {quartersAvailable.map((quarterOption = {}) => {
           const { quarter, year } = quarterOption
-          const value = `${quarter.toUpperCase()}-${year}`
+          const value = getQuarterString({ quarter, year })
           const isCurrentSelection = chosenPeriod === value
           const variant = isCurrentSelection ? '' : 'outline-'
           return (
