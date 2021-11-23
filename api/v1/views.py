@@ -11,6 +11,7 @@ from news import models as news_models
 from rawdata import models as raw_models
 from utils.utils import str2bool
 from django_pandas.io import read_frame
+from django.db.models import Max
 
 
 class locationData(APIView):
@@ -24,18 +25,25 @@ class locationData(APIView):
             "cities": [],
             "quarters": [],
         }
-        response["quarters"] = app_models.data.objects.values(
-            "quarter", "year"
-        ).distinct()
+        quarters = app_models.data.objects.values("quarter", "year").distinct()
+        response["quarters"] = quarters
 
         # insert filter for quarter and year
-        # todo: do an else that sends back latest quarter/year combo
         queryset = Q()
-        if request.query_params.get("quarter"):
-            queryset &= Q(quarter=request.query_params.get("quarter"))
+        has_specified_period = request.query_params.get(
+            "quarter"
+        ) and request.query_params.get("year")
 
-        if request.query_params.get("year"):
+        if has_specified_period:
+            queryset &= Q(quarter=request.query_params.get("quarter"))
             queryset &= Q(year=request.query_params.get("year"))
+        else:
+            max_year = quarters.aggregate(Max("year"))["year__max"]
+            max_quarter = quarters.filter(year=max_year).aggregate(Max("quarter"))[
+                "quarter__max"
+            ]
+            queryset &= Q(year=max_year)
+            queryset &= Q(quarter=max_quarter)
 
         # filter for locations
         sources = request.query_params.get("sources", "").split(",")
