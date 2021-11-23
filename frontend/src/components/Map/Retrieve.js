@@ -66,7 +66,7 @@ const Retrieve = () => {
       // setTD(topoLocation);
     }
 
-    const getLocations = async () => {
+    const getData = async () => {
       // calls the server set up as proxy in package.json to retrieve data
       const dataString = "/v1/data/?sources=locations,utilities&format=json";
       const quarterString = quarter ? "&quarter=" + quarter : "";
@@ -78,39 +78,9 @@ const Retrieve = () => {
       if (data?.top_locations) {
         setCountyRanked(data.top_locations)
       }
-      return data?.locations;
+      setWQD(data?.states);
+      setWSD(data?.locations);
     }
-
-    const getData = async () => {
-      const locations = await getLocations();
-      setWSD(locations);
-
-      //for each fips specific data point, work on state data
-      locations.forEach((fipsSpecific)=>{
-        // State FIPS ID is the first two characters of the county ID
-        const stateId = fipsSpecific.fipsState;
-        const stateData = stateFipsId[stateId];
-        stateData.count = stateData.count ? stateData.count + 1 : 1;
-        // only need to go two spots past decimal
-        const currScore = parseFloat(fipsSpecific.score).toFixed(2)*100;
-        // test to find the max county score for a state
-        stateData.max = stateData.max ?
-        Math.max(stateData.max, currScore) :
-          currScore;
-        // test to find the min county score for a state
-        stateData.min = stateData.min ?
-        Math.min(stateData.min, currScore) :
-          currScore;
-
-        //!: average is not actually average
-        //!: does not account for population
-        stateData.avg = stateData.avg ?
-        ((stateData.avg*(stateData.count-1)+currScore)/stateData.count).toFixed(2) :
-          currScore;
-        stateFipsId[stateId]=stateData;
-      });
-      setWQD(stateFipsId);
-    };
 
     getTopoData();
     getData();

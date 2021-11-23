@@ -11,7 +11,7 @@ from news import models as news_models
 from rawdata import models as raw_models
 from utils.utils import str2bool
 from django_pandas.io import read_frame
-from django.db.models import Max
+from django.db.models import Max, Min, Avg
 
 
 class locationData(APIView):
@@ -19,10 +19,10 @@ class locationData(APIView):
 
     def get(self, request):
         response = {
-            "meta": {"cities": 0, "utilities": 0, "locations": 0},
+            "meta": {"states": 0, "utilities": 0, "locations": 0},
             "locations": [],
             "utilities": [],
-            "cities": [],
+            "states": [],
             "quarters": [],
             "top_locations": [],
         }
@@ -64,6 +64,9 @@ class locationData(APIView):
             response["locations"] = data
             response["top_locations"] = data.order_by("-score")[0:3]
             response["meta"]["locations"] = len(data)
+            response["states"] = data.values("fipsState").annotate(
+                avg=Avg("score"), max=Max("score"), min=Min("score")
+            )
 
         # filter for news
         if "news" in sources or not len(sources):

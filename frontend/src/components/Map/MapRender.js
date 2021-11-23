@@ -73,6 +73,10 @@ export const MapRender = (props) => {
 
   // this hook builds the map and renders it
   useEffect(() => {
+    const getMinMaxAvg = ({id}) => {
+      const stateInfo = stateWaterQualData.find(({ fipsState }) => id === fipsState)
+      return `Min: ${stateInfo?.min ?? 0}, Max: ${stateInfo?.max ?? 0}, Avg: ${stateInfo?.avg.toFixed(2) ?? 0}`
+    }
     const translateData = () => {
       //set the svg to the anchor element
       svg.current = d3.select(anchor.current).append("svg")
@@ -145,7 +149,7 @@ export const MapRender = (props) => {
         .on("click", d => {removeHover(`state-${d.id}`); centerState(d);})
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
-        .append('title').text(d => `Min: ${stateWaterQualData[d.id].min}, Max: ${stateWaterQualData[d.id].max}, Avg: ${stateWaterQualData[d.id].avg}`);
+        .append('title').text(getMinMaxAvg);
 
       // todo: zoom to state when clicking on point
       // todo: lower z-index of point so you can click on counties and facilities
