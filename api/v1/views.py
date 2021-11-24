@@ -44,9 +44,10 @@ class locationData(APIView):
     # /v1/data/?sources=locations
     def get(self, request):
         response = {
-            "meta": {"states": 0, "utilities": 0, "locations": 0},
+            "meta": {"cities": 0, "utilities": 0, "locations": 0},
             "locations": [],
             "utilities": [],
+            "cities": [],
             "states": [],
             "quarters": [],
             "top_locations": [],
