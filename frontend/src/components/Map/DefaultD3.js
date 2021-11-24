@@ -79,13 +79,13 @@ const DefaultD3 = ({
     <>
       <div className="quarter-choice">
         {quartersAvailable.map((quarterOption = {}) => {
-          const { quarter, year } = quarterOption
+          const { quarter, year, existing } = quarterOption
           const value = getQuarterString({ quarter, year })
           const isCurrentSelection = chosenPeriod === value
           const variant = isCurrentSelection ? '' : 'outline-'
           return (
             <Button
-              disabled={isCurrentSelection}
+              disabled={isCurrentSelection || !existing}
               variant={variant + 'primary'}
               onClick={() => updateChosenPeriod(quarterOption)}
               key={value}

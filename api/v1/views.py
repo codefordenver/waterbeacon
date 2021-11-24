@@ -20,7 +20,7 @@ import math
 class locationData(APIView):
     def get_quarter_list(self, quarters):
         num_left = 8 - quarters.count()
-        initial_values = list(quarters.order_by("year", "quarter")[:8])
+        initial_values = list(quarters.order_by("-year", "-quarter")[:8])
         if num_left <= 0:
             return initial_values
 
@@ -31,17 +31,14 @@ class locationData(APIView):
         ]
         min_quarter_index = quarter_options.index(min_quarter)
 
-        for i in range(1, num_left):
+        num_left_index = num_left + 1
+        for i in range(1, num_left_index):
             quarter_diff = min_quarter_index - i
             year_diff = math.floor(quarter_diff / 4)
+            quarter_diff = quarter_diff - year_diff * 4
             quarter = quarter_options[quarter_diff]
             year = min_year + year_diff
-            print(quarter_diff, year_diff, quarter, year)
-            initial_values.insert(
-                0, {"quarter": quarter, "year": year, "existing": False}
-            )
-
-        print(initial_values, num_left, min_quarter_index)
+            initial_values.append({"quarter": quarter, "year": year, "existing": False})
         return initial_values
 
     # /v1/data/?sources=locations
