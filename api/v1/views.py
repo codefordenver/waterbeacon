@@ -18,7 +18,7 @@ import math
 
 
 class locationData(APIView):
-    def get_quarter_list(self, quarters):
+    def _get_quarter_list(self, quarters):
         num_left = 8 - quarters.count()
         initial_values = list(quarters.order_by("-year", "-quarter")[:8])
         if num_left <= 0:
@@ -61,7 +61,7 @@ class locationData(APIView):
             "quarter__max"
         ]
 
-        response["quarters"] = self.get_quarter_list(quarters)
+        response["quarters"] = self._get_quarter_list(quarters)
 
         # insert filter for quarter and year
         queryset = Q()
