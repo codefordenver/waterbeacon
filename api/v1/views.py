@@ -1,3 +1,5 @@
+from django.db.models.expressions import Value
+from django.db.models.fields import BooleanField
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
@@ -12,11 +14,37 @@ from rawdata import models as raw_models
 from utils.utils import str2bool
 from django_pandas.io import read_frame
 from django.db.models import Max, Min, Avg
+import math
 
 
 class locationData(APIView):
-    # /v1/data/?sources=locations
+    def get_quarter_list(self, quarters):
+        num_left = 8 - quarters.count()
+        initial_values = list(quarters.order_by("year", "quarter")[:8])
+        if num_left <= 0:
+            return initial_values
 
+        min_year = quarters.aggregate(Min("year"))["year__min"]
+        quarter_options = ["q1", "q2", "q3", "q4"]
+        min_quarter = quarters.filter(year=min_year).aggregate(Min("quarter"))[
+            "quarter__min"
+        ]
+        min_quarter_index = quarter_options.index(min_quarter)
+
+        for i in range(1, num_left):
+            quarter_diff = min_quarter_index - i
+            year_diff = math.floor(quarter_diff / 4)
+            quarter = quarter_options[quarter_diff]
+            year = min_year + year_diff
+            print(quarter_diff, year_diff, quarter, year)
+            initial_values.insert(
+                0, {"quarter": quarter, "year": year, "existing": False}
+            )
+
+        print(initial_values, num_left, min_quarter_index)
+        return initial_values
+
+    # /v1/data/?sources=locations
     def get(self, request):
         response = {
             "meta": {"states": 0, "utilities": 0, "locations": 0},
@@ -26,8 +54,17 @@ class locationData(APIView):
             "quarters": [],
             "top_locations": [],
         }
-        quarters = app_models.data.objects.values("quarter", "year").distinct()
-        response["quarters"] = quarters.order_by("year", "quarter")[:8]
+        quarters = (
+            app_models.data.objects.values("quarter", "year")
+            .annotate(existing=Value(True, output_field=BooleanField()))
+            .distinct()
+        )
+        max_year = quarters.aggregate(Max("year"))["year__max"]
+        max_quarter = quarters.filter(year=max_year).aggregate(Max("quarter"))[
+            "quarter__max"
+        ]
+
+        response["quarters"] = self.get_quarter_list(quarters)
 
         # insert filter for quarter and year
         queryset = Q()
@@ -39,10 +76,6 @@ class locationData(APIView):
             queryset &= Q(quarter=request.query_params.get("quarter"))
             queryset &= Q(year=request.query_params.get("year"))
         else:
-            max_year = quarters.aggregate(Max("year"))["year__max"]
-            max_quarter = quarters.filter(year=max_year).aggregate(Max("quarter"))[
-                "quarter__max"
-            ]
             queryset &= Q(year=max_year)
             queryset &= Q(quarter=max_quarter)
 
