@@ -19,8 +19,8 @@ const Retrieve = () => {
   const chosenPeriod = getQuarterString({ quarter, year })
 
   const [userLocation, setUL] = useState({
-    latitude: 39.734850,
-    longitude:-104.995900
+    latitude: 39.754850,
+    longitude:-105.995900
   });
   // holds the highest scoring three counties on initial render
   // data is sent to table on left pane
@@ -29,12 +29,13 @@ const Retrieve = () => {
   // holds the max score for all counties
   const scoreList = R.pluck('score', countiesRanked);
   const maxScore = Math.max(...scoreList, 0) * 100;
+
   const [utilities, setUtilities] = useState([]);
 
   useEffect(() => {
     setUL({
-      lat: 39.734850,
-      long:-104.995900
+      lat: 39.754850,
+      long:-105.995900
     })
   }, []);
 
