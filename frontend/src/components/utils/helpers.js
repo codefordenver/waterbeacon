@@ -5,3 +5,7 @@ export const getFacilities = (id, utilities) => {
   const facilities = R.filter(R.propSatisfies(R.startsWith(id), 'fipsCode'), utilities);
   return facilities;
 };
+
+export const getQuarterString = ({ quarter, year }) => (
+  `${quarter?.toUpperCase()}-${year}`
+);
