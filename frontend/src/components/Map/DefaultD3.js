@@ -7,14 +7,16 @@ import * as R from 'ramda';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
-import ExpandIcon from '../../icons/ExpandIcon';
 import Legend from './Legend';
-import { getFacilities } from '../utils/helpers';
+import { getFacilities, getQuarterString } from '../utils/helpers';
 import ewgLogo from '../../icons/ewg-logo.png';
 import epaLogo from '../../icons/epa-logo.png';
 
 // this component controls the logic that is shared between ChooseZoom and MapRender
 const DefaultD3 = ({
+  chosenPeriod,
+  quartersAvailable,
+  updateChosenPeriod,
   topologyData,
   waterScoreData,
   setCountyRanked,
@@ -61,63 +63,90 @@ const DefaultD3 = ({
     }
   };
 
+  const handleZoomOut = () => {
+    if (zoom <= 0.5) {
+      return setAIVP(null)
+    }
+
+    return setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)
+  }
+
   if(!topologyData || !waterScoreData) return <div className="loader"><Loader type="Oval" color="#111111" height={80} width={80} /></div>
 
   //todo: make options class stay same width
   //todo: have CurrentSelection scroll when there are several counties
   return (
-    <div className="map-content">
-      <div className="options">
-        <ChooseZoom
-          areaInViewPort={areaInViewPort}
-          centerState={centerState}
-          usStates={usStates}
-          setAIVP={setAIVP}
-        />
-        <div className="info-panel">
-          <div className="info">
-            <TopCounties
-              countiesRanked={countiesRanked}
-              setCountyRanked={setCountyRanked}
-              setCC={setCC}
-            />
-          </div>
-          <div className="info">
-            {currentCounty &&
-              <CurrentSelection
-                currentCounty={currentCounty}
-                facilitiesInCounty={facilitiesInCounty}
+    <>
+      <div className="quarter-choice">
+        {quartersAvailable.map((quarterOption = {}) => {
+          const { quarter, year, existing } = quarterOption
+          const value = getQuarterString({ quarter, year })
+          const isCurrentSelection = chosenPeriod === value
+          const variant = isCurrentSelection ? '' : 'outline-'
+          return (
+            <Button
+              disabled={isCurrentSelection || !existing}
+              variant={variant + 'primary'}
+              onClick={() => updateChosenPeriod(quarterOption)}
+              key={value}
+            >
+              {value}
+            </Button>
+          )
+        })}
+      </div>
+      <div className="map-content">
+        <div className="options">
+          <ChooseZoom
+            areaInViewPort={areaInViewPort}
+            centerState={centerState}
+            usStates={usStates}
+            setAIVP={setAIVP}
+          />
+          <div className="info-panel">
+            <div className="info">
+              <TopCounties
+                countiesRanked={countiesRanked}
+                setCountyRanked={setCountyRanked}
                 setCC={setCC}
               />
-            }
+            </div>
+            <div className="info">
+              {currentCounty &&
+                <CurrentSelection
+                  currentCounty={currentCounty}
+                  facilitiesInCounty={facilitiesInCounty}
+                  setCC={setCC}
+                />
+              }
+            </div>
           </div>
         </div>
+        <div className="map" >
+          <MapRender
+            addCounty={addCounty}
+            areaInViewPort={areaInViewPort}
+            centerState={centerState}
+            facilitiesInViewPort={facilitiesInViewPort}
+            maxScore={maxScore}
+            setZoom={setZoom}
+            stateWaterQualData={stateWaterQualData}
+            topologyData={topologyData}
+            userLocation={userLocation}
+            usStates={usStates}
+            waterScoreData={waterScoreData}
+            zoom={zoom}
+          />
+          {areaInViewPort && (
+            <ButtonGroup className="zoom-btn-grp" vertical>
+              <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
+              <Button onClick={handleZoomOut}>-</Button>
+            </ButtonGroup>
+          )}
+          <Legend />
+        </div>
       </div>
-      <div className="map" >
-        <MapRender
-          addCounty={addCounty}
-          areaInViewPort={areaInViewPort}
-          centerState={centerState}
-          facilitiesInViewPort={facilitiesInViewPort}
-          maxScore={maxScore}
-          setZoom={setZoom}
-          stateWaterQualData={stateWaterQualData}
-          topologyData={topologyData}
-          userLocation={userLocation}
-          usStates={usStates}
-          waterScoreData={waterScoreData}
-          zoom={zoom}
-        />
-        {areaInViewPort && (
-          <ButtonGroup className="zoom-btn-grp" vertical>
-            <Button onClick={() => setAIVP(null)} variant="danger" block><ExpandIcon /></Button>
-            <Button onClick={() => setZoom(z => z*1.5)}>+</Button>
-            <Button disabled={zoom <= 0.5} onClick={() => setZoom(z => z/1.5 > 0.5 ? z/1.5 : 0.5)}>-</Button>
-          </ButtonGroup>
-        )}
-        <Legend />
-      </div>
-    </div>
+    </>
   )
 };
 
