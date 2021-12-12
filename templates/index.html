@@ -71,9 +71,6 @@
     // get height
     var height = +svg.attr("height");
 
-    // creates an single input array for unemployment data
-    var unemployment = d3.map();
-
     // geoPath object converts geojson into svg path string
     var path = d3.geoPath();
 
@@ -102,28 +99,6 @@
 
     d3.queue()
         .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-/*
-        .defer(d3.json, "/static/geojson/esri_us_rivers.geo.json", function(json) {
-
-          // https://bl.ocks.org/andybarefoot/765c937c8599ef540e1e0b394ca89dc5
-          //riverGroup = svg.append("g").attr("id", "map");
-
-          riverGroup = g
-
-          // draw a path for each river
-          rivers = riverGroup
-            .selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("id", function(d, i) {
-              return d.properties.NAME.toLowerCase().split(' ').join('_');
-            }).attr("class", "river")
-
-        })
-*/
-        .defer(d3.tsv, "/static/unemployment.tsv", function(d) { unemployment.set(d.id, +d.rate); })
         .await(ready);
 
     function ready(error, us) {
@@ -133,9 +108,6 @@
           .attr("class", "counties")
         .selectAll("path")
         .data(topojson.feature(us, us.objects.counties).features)
-        .enter().append("path")
-          .attr("fill", function(d) { return color(d.rate = unemployment.get(d.id)); })
-          .attr("d", path)
         .append("title")
           .text(function(d) { return d.rate + "%"; });
 
