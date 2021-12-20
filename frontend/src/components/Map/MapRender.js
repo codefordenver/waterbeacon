@@ -53,7 +53,7 @@ const RADIUS = 4;
 // this function's only goal is to keep the map rendered in the "view box"
 export const MapRender = (props) => {
   const anchor = useRef();
-  const { 
+  const {
     addCounty,
     areaInViewPort,
     centerState,
@@ -88,7 +88,7 @@ export const MapRender = (props) => {
       //create an element d3 map
       const waterScore = d3.map();
 
-      //go through each state in the unemploymentByState data and set the map
+      //go through each state in the  data and set the map
       for (let i = 0; i < waterScoreData.length; i += 1) {
         const countyWaterScore = waterScoreData[i];
         waterScore.set(countyWaterScore.fipsCounty, parseFloat(countyWaterScore.score).toFixed(2) * 100);
@@ -122,7 +122,7 @@ export const MapRender = (props) => {
         .on("mouseout", d => removeHover(`county-${d.id}`))
         // this is the hover overlay
         .append("title").text(d => (countyList[d.id] ? countyList[d.id].Name : "Unknown") + ": " + (d.score ? d.score : 0) + "%");
-      
+
       //can't use "mesh" because we want to create a zoom on state boundary function
       usStates.current = topojson.feature(topologyData, topologyData.objects.states);
 
@@ -213,7 +213,7 @@ export const MapRender = (props) => {
 
     g.current.transition()
       .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");  
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
   };
 
   useEffect(() => {

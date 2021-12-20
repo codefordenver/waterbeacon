@@ -3,7 +3,6 @@ import Loader from 'react-loader-spinner';
 import './DefaultD3.css';
 import * as R from 'ramda';
 
-//import * as unemploymentTsv from './tempData/unemployment.tsv';
 import { ChooseZoom } from './ChooseZoom';
 import { MapRender } from './MapRender';
 import { Table, Alert, Button, ButtonGroup } from 'react-bootstrap';
