@@ -2,10 +2,6 @@ from .common import *
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-EMAIL_BACKEND = 'sgbackend.SendGridBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-SENDGRID_API_KEY = get_env_variable("SENDGRID_API_KEY",'')
-
 sentry_sdk.init(
     dsn=get_env_variable('SENTRY_DSN', ''),
     integrations=[DjangoIntegration()

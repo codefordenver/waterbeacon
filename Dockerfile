@@ -20,3 +20,4 @@ RUN pip install -r /app/requirements.txt
 RUN apt-get update
 RUN apt-get install -y nano
 RUN apt-get install -y binutils libproj-dev gdal-bin
+RUN python management.py collectstatic

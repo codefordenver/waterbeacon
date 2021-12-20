@@ -136,9 +136,25 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-EMAIL_FROM = 'info@waterbeacon.org'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email Configurations
 TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
+TEMPLATED_EMAIL_TEMPLATE_DIR = 'templated_email/' #use '' for top level template dir, ensure there is a trailing slash
+TEMPLATED_EMAIL_FILE_EXTENSION = 'email'
+EMAIL_FROM = get_env_variable('EMAIL_FROM','')
+SUPPORT_EMAIL = get_env_variable('SUPPORT_EMAIL','')
+
+if  get_env_variable('AWS_SES_ACCESS_KEY_ID', None):
+    EMAIL_BACKEND = 'django_ses.SESBackend'
+    AWS_SES_ACCESS_KEY_ID = get_env_variable('AWS_SES_ACCESS_KEY_ID')
+    AWS_SES_SECRET_ACCESS_KEY = get_env_variable('AWS_SES_SECRET_ACCESS_KEY')
+    AWS_SES_REGION_NAME=get_env_variable('AWS_SES_REGION_NAME')
+    AWS_SES_REGION_ENDPOINT = get_env_variable('AWS_SES_REGION_ENDPOINT')
+else:
+    TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 
 MAXIMUM_CHART_DAYS = timedelta(days=2)
 
