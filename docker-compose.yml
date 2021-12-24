@@ -18,8 +18,7 @@ services:
     env_file:
       - ./.env
     environment:
-      - VIRTUAL_HOST=8000
-
+      - VIRTUAL_PORT=8000
     volumes:
       - static_volume:/app/static
       - media_volume:/app/media
@@ -53,7 +52,7 @@ services:
       - ./frontend/.env
     environment:
       - DANGEROUSLY_DISABLE_HOST_CHECK=true
-      - VIRTUAL_HOST=3000
+      - VIRTUAL_PORT=3000
     expose:
       - 3000
 
