@@ -75,3 +75,28 @@ Navigate to the frontend directory where the react app is located and run instal
 - `npm install`
 
 After installation you can run `npm start` which will run the react app on localhost:3000 with "hot reload" enabled.
+
+### Server Installation Notes
+In primary folder create a .env file and place the following parameters:
+```
+DEBUG=
+DATABASE_URL=
+PG_USERNAME=
+PG_PASSWORD=
+ENVIRONMENT=
+DJANGO_SETTINGS_MODULE=
+CELERY_BROKER_URL=
+FLOWER_PORT=
+TWITTER_ACCESS_TOKEN_SECRET=
+TWITTER_ACCESS_TOKEN=
+TWITTER_CONSUMER_SECRET=
+TWITTER_CONSUMER_KEY=
+VIRTUAL_PORT=
+SENTRY_DSN=
+EMAIL_FROM=
+```
+
+Within ./frontend folder create a .env file and place the following parameters:
+```
+VIRTUAL_HOST=[domain]
+```
