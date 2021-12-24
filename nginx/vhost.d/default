@@ -1,5 +1,15 @@
+location /django-static/ {
+  alias /app/static/;
+  add_header Access-Control-Allow-Origin *;
+  proxy_pass http://backend:8000;
+}
 
 location /static/ {
   alias /app/static/;
   add_header Access-Control-Allow-Origin *;
+  proxy_pass http://frontend:3000;
+}
+
+location /admin/ {
+  proxy_pass http://backend:8000;
 }

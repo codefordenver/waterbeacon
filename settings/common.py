@@ -129,6 +129,7 @@ USER= get_env_variable('USER')
 
 STATIC_URL = '/django-static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = get_env_variable('CELERY_BROKER_URL')

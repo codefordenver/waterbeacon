@@ -17,6 +17,9 @@ services:
     container_name: app
     env_file:
       - ./.env
+    environment:
+      - VIRTUAL_HOST=8000
+
     volumes:
       - static_volume:/app/static
       - media_volume:/app/media
@@ -46,6 +49,11 @@ services:
     volumes:
       - ./frontend:/app
       - node_modules:/app/node_modules
+    env_file:
+      - ./frontend/.env
+    environment:
+      - DANGEROUSLY_DISABLE_HOST_CHECK=true
+      - VIRTUAL_HOST=3000
     expose:
       - 3000
 

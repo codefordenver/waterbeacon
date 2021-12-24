@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 # create root directory for our project in the container
 RUN mkdir /app
+RUN mkdir /app/static
 
 # Set the working directory to /app
 WORKDIR /app
