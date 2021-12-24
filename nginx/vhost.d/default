@@ -1,7 +1,6 @@
 location /django-static/ {
   alias /app/static/;
   add_header Access-Control-Allow-Origin *;
-  proxy_pass http://backend:8000;
 }
 
 location /static/ {
