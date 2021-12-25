@@ -76,24 +76,6 @@ const DefaultD3 = ({
   //todo: have CurrentSelection scroll when there are several counties
   return (
     <>
-      <div className="quarter-choice">
-        {quartersAvailable.map((quarterOption = {}) => {
-          const { quarter, year, existing } = quarterOption
-          const value = getQuarterString({ quarter, year })
-          const isCurrentSelection = chosenPeriod === value
-          const variant = isCurrentSelection ? '' : 'outline-'
-          return (
-            <Button
-              disabled={isCurrentSelection || !existing}
-              variant={variant + 'primary'}
-              onClick={() => updateChosenPeriod(quarterOption)}
-              key={value}
-            >
-              {value}
-            </Button>
-          )
-        })}
-      </div>
       <div className="map-content">
         <div className="options">
           <ChooseZoom
@@ -122,6 +104,26 @@ const DefaultD3 = ({
           </div>
         </div>
         <div className="map" >
+          <div className="quarter-choice">
+            {quartersAvailable.map((quarterOption = {}) => {
+              const { quarter, year, existing } = quarterOption
+              const value = getQuarterString({ quarter, year })
+              const isCurrentSelection = chosenPeriod === value
+              const variant = isCurrentSelection ? '' : 'outline-'
+              return (
+                <Button
+                  className={ 'rounded-0'}
+                  disabled={isCurrentSelection || !existing}
+                  variant={variant + 'primary'}
+                  onClick={() => updateChosenPeriod(quarterOption)}
+                  key={value}
+                >
+                  {value}
+                </Button>
+              )
+            })}
+          </div>
+
           <MapRender
             addCounty={addCounty}
             areaInViewPort={areaInViewPort}
