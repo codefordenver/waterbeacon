@@ -60,12 +60,14 @@ export const ChooseZoom = ({ areaInViewPort, usStates, centerState, setAIVP }) =
     <div className="zoomer">
       <Typeahead
         id="choose-state"
+        className= { "rounded-0" }
         onChange={selected => setSel(selected)}
         options={stateNames}
         placeholder="Choose a state!"
         selected={selected}
       />
       <Button
+        className={"rounded-0"}
         size="sm"
         variant="warning"
         disabled={selected.length === 0}
