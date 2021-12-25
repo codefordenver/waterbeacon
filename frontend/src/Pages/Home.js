@@ -15,7 +15,7 @@ import Foot from '../components/Footer';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="bg-white">
         <PageNavHeader />
         {/* <WbHeaderBsNav /> */}
         <Retrieve />

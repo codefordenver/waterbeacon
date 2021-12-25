@@ -10,7 +10,7 @@ export default function Partners() {
   return (
     <article id="partners" >
       <div id="sponsor-title-container">
-        <Image src={wbLogo} style={{ height: 100, marginRight:50 }} />
+        <Image src={wbLogo} style={{ height: 75, marginRight:50 }} />
         <div id="sponsors-title">
           <h3>Water Beacon</h3>
           <h3>is made possible by</h3>

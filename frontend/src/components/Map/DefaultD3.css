@@ -1,7 +1,7 @@
 .map-content {
   display: flex;
   flex-direction: row;
-  background-color: #fbfbfb;
+  background-color: white;
   justify-content: center;
   padding-bottom: 10px;
   padding-right: 10px;
