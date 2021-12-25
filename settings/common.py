@@ -128,7 +128,7 @@ USER= get_env_variable('USER')
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/django-static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'assets'),)
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 
 CELERY_RESULT_BACKEND = 'django-db'
