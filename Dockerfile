@@ -35,5 +35,5 @@ RUN apt-get install nano
 #RUN chmod +x /app/docker_entrypoint.sh
 #RUN chmod +x /app/scripts/update_wb_data.sh
 
-#RUN touch /var/log/cron.log
+RUN touch /var/log/cron.log
 #ENTRYPOINT /docker_entrypoint.sh && tail -f /var/log/cron.log
