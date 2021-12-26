@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'django_celery_results',
+    'django_celery_beat',
     'app',
     'news',
     'rawdata',
@@ -131,11 +132,13 @@ STATIC_URL = '/django-static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'assets'),)
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 
+# celery configuration
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = get_env_variable('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Denver'
 
 
 # Email Configurations

@@ -37,7 +37,7 @@ services:
 
   celery-beat:
     build: .
-    command: celery -A waterquality beat -l info
+    command: celery -A waterquality beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     env_file:
       - ./.env
     depends_on:
