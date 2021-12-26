@@ -27,7 +27,7 @@ class location(models.Model):
 	population_served = models.IntegerField( blank=True, null=True, default = 0)
 	created = models.DateTimeField( auto_now_add=True)
 
-    def __str__(self):
+	def __str__(self):
 		return '%s, %s' % ( self.major_city, self.state)
 
 class data(models.Model):
@@ -38,7 +38,7 @@ class data(models.Model):
 	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
 	objects = DataFrameManager()
 
-    def __str__(self):
+	def __str__(self):
 		return '%s - %s' % (self.location.fips_county, self.timestamp)
 
 	class Meta:
