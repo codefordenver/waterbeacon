@@ -83,7 +83,7 @@ class EpaWaterSystem(models.Model):
 
 	objects = DataFrameManager()
 
-    def __str__(self):
+	def __str__(self):
 		return '{} - {}'.format(self.PWSName, self.PWSId)
 
 class EpaFacilitySystem(models.Model):
@@ -130,5 +130,5 @@ class EpaFacilitySystem(models.Model):
 
 	objects = DataFrameManager()
 
-    def __str__(self):
+	def __str__(self):
 		return self.FacName
