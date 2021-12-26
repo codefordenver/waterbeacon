@@ -51,10 +51,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_results',
     'django_celery_beat',
+    'admincolors',
     'app',
     'news',
     'rawdata',
     'subscribe'
+]
+
+ADMIN_COLORS = [
+    ('Waterbeacon', "css/admin.css")
 ]
 
 MIDDLEWARE = [
@@ -80,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'admincolors.context_processors.admin_theme'
             ],
         },
     },

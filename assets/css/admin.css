@@ -1,0 +1,72 @@
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #fff;
+}
+
+#header {
+    background: linear-gradient(90deg, #39539d 7%, #19b3ef 86%);
+    color: #fff;
+}
+
+#header a:link, #header a:visited {
+    color: white;
+}
+
+div.breadcrumbs {
+    background: #f8f8f8;
+    color: #999;
+}
+
+div.breadcrumbs a {
+    color: #39539d;
+}
+
+div.breadcrumbs a.active {
+    color: #999;
+}
+
+div.breadcrumbs a:focus, div.breadcrumbs a:hover {
+    color: #999;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #39539d;
+    color: white;
+}
+
+h1 {
+    color: #39539d;
+}
+
+a:link, a:visited {
+    color: #39539d;
+    text-decoration: none;
+}
+
+a:link.active, a:visited.active {
+    color: #19b3ef;
+    text-decoration: none;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #19b3ef;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #19b3ef;
+}
+
+#nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+    color: white;
+    font-weight: bold;
+}
+
+.toggle-nav-sidebar {
+    background-color: #39539d;
+    color: white;
+    border-right: 1px solid #39539d;
+}
+
+.toggle-nav-sidebar:hover, .toggle-nav-sidebar:focus {
+    color: #39539d;
+    border-color:  #39539d;
+}
