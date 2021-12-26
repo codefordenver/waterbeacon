@@ -120,6 +120,5 @@
 .quarter-choice {
   display: flex;
   width: 100%;
-  justify-content: space-around;
-  flex-direction: row-reverse;
+  padding-left: 5%;
 }
