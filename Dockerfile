@@ -25,11 +25,10 @@ RUN apt-get install -y binutils libproj-dev gdal-bin
 RUN python /app/manage.py collectstatic --noinput
 
 # Add files
-ADD docker_entrypoint.sh /docker_entrypoint.sh
+#ADD docker_entrypoint.sh /docker_entrypoint.sh
 
-RUN chmod +x /app/docker_entrypoint.sh
-RUN chmod +x /app/scripts/update_wb_data.sh
+#RUN chmod +x /app/docker_entrypoint.sh
+#RUN chmod +x /app/scripts/update_wb_data.sh
 
-RUN touch /var/log/cron.log
-RUN chmod +x /app/docker_entrypoint.sh
-ENTRYPOINT /docker_entrypoint.sh && tail -f /var/log/cron.log
+#RUN touch /var/log/cron.log
+#ENTRYPOINT /docker_entrypoint.sh && tail -f /var/log/cron.log
