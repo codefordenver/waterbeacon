@@ -24,6 +24,11 @@ RUN apt-get install -y nano
 RUN apt-get install -y binutils libproj-dev gdal-bin
 RUN python /app/manage.py collectstatic --noinput
 
+# Install cron
+RUN apt-get update
+RUN apt-get install -y cron
+RUN apt-get install nano
+
 # Add files
 #ADD docker_entrypoint.sh /docker_entrypoint.sh
 
