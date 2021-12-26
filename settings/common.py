@@ -158,8 +158,6 @@ else:
     TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBackend'
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-
 MAXIMUM_CHART_DAYS = timedelta(days=2)
 
 # where the EPA data requests are stored in json files before being imported into the DB
