@@ -8,3 +8,7 @@ from utils.log import log
 @app.task
 def crawl_usgs_waterdata( daysago = 7):
 	pass
+
+@app.task
+def hello():
+	return 'hello world'
