@@ -83,6 +83,9 @@ class EpaWaterSystem(models.Model):
 
 	objects = DataFrameManager()
 
+    def __str__(self):
+		return '{} - {}'.format(self.PWSName, self.PWSId)
+
 class EpaFacilitySystem(models.Model):
 	in_violation = models.NullBooleanField()
 	FacName = models.CharField(max_length=255)
@@ -126,3 +129,6 @@ class EpaFacilitySystem(models.Model):
 	Score = models.DecimalField(max_digits=12, decimal_places=6)
 
 	objects = DataFrameManager()
+
+    def __str__(self):
+		return self.FacName

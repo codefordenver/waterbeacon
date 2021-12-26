@@ -27,15 +27,11 @@ class PageNavHeader extends React.Component {
               <NavHashLink to="/#why-wb" className="nav-items">
                 Why Water Beacon
               </NavHashLink>
-              <NavHashLink to="/#Open Data" className="nav-items">
+              <NavHashLink to="/#opendata" className="nav-items">
                 Open Data
               </NavHashLink>
               <NavHashLink to="/#workshop" className="nav-items">
                 Workshop
-              </NavHashLink>
-
-              <NavHashLink to="/#partners" className="nav-items">
-                Partners
               </NavHashLink>
             </Nav>
           </Navbar.Collapse>
