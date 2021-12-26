@@ -58,7 +58,9 @@ const Retrieve = () => {
       const dataSRC = dataString + quarterString + yearString;
       const dataJSON = await fetch(dataSRC);
       const data = await dataJSON.json();
-      data?.quarters && setQuartersAvailable(data?.quarters);
+      data?.quarters && setQuartersAvailable(data?.quarters.filter(function(item) {
+        return item.existing == true;
+      }));
       data?.utilities && setUtilities(data?.utilities);
       data?.top_locations && setCountyRanked(data?.top_locations);
       data?.states && setStateWaterQualityData(data?.states);
@@ -69,7 +71,7 @@ const Retrieve = () => {
     getData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quarterIndex]);
- 
+
   return (
     <DefaultD3
       topologyData={topologyData}
