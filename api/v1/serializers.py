@@ -2,6 +2,7 @@ from rest_framework import serializers
 from subscribe import models as subscribe_models
 from app import models as app_models
 from annoying.functions import get_object_or_None
+from django.contrib.auth import get_user_model
 
 class LocationSerializer(serializers.ModelSerializer):
 
@@ -20,10 +21,13 @@ class SubscribeSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        subscribe, created = subscribe_models.Subscribe.objects.get_or_create( email = validated_data.get('email') )
+        user, created =  get_user_model().objects.get_or_create( email = validated_data.get('email').lower(), username = validated_data.get('email').lower())
+        subscribe, created = subscribe_models.Subscribe.objects.get_or_create( user = user )
         subscribe.newsletter = validated_data.get('newsletter', False)
         subscribe.workshop = validated_data.get('workshop', False)
 
         subscribe.location = get_object_or_None(app_models.location, zipcode = validated_data.get('zipcode', None))
 
         subscribe.save()
+
+        return subscribe
