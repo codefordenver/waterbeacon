@@ -54,7 +54,8 @@ const SubscribeForm = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'X-CSRFToken': csrftoken
-        }, {
+        },
+        data: {
         'email': formData.email,
         'newsletter': ( formData.newsletter == 'on') ? true : false,
         'workshop': ( formData.workshop == 'on') ? true : false,
