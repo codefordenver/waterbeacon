@@ -20,7 +20,6 @@ class SubscribeSerializer(serializers.ModelSerializer):
         fields = ('is_active', 'zipcode', 'email', 'newsletter', 'locations', 'notifications', 'workshop', 'created')
 
     def create(self, validated_data):
-
         user, created =  get_user_model().objects.get_or_create( email = validated_data.get('email').lower(), username = validated_data.get('email').lower())
         subscribe, created = subscribe_models.Subscribe.objects.get_or_create( user = user )
         subscribe.newsletter = validated_data.get('newsletter', False)
