@@ -49,7 +49,7 @@ const SubscribeForm = () => {
 
       // create account
       var endpoint = '/v1/subscribe/'
-      axios.post(endpoint,
+      axios.post(endpoint,{
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const SubscribeForm = () => {
         'newsletter': ( formData.newsletter == 'on') ? true : false,
         'workshop': ( formData.workshop == 'on') ? true : false,
         'zipcode': formData.zipcode
-      })
+      }})
       .then( response => {
         // return to homepage and post notification
 
