@@ -60,7 +60,8 @@ const SubscribeForm = () => {
         'email': formData.email,
         'newsletter': ( formData.newsletter == 'on') ? true : false,
         'workshop': ( formData.workshop == 'on') ? true : false,
-        'zipcode': formData.zipcode
+        'zipcode': formData.zipcode,
+        'csrfmiddlewaretoken': csrftoken
       }})
       .then( response => {
         // return to homepage and post notification
