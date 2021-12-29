@@ -25,14 +25,36 @@ const SubscribeForm = () => {
 
   const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
+  const getCookie = (name) => {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+
   const handleSubmit = async (event) => {
+
+
     event.preventDefault();
     if ( validEmailRegex.test(formData.email) ) {
-      console.log(formData)
+      var csrftoken = getCookie('csrftoken');
 
       // create account
       var endpoint = '/v1/subscribe/'
-      axios.post(endpoint, {
+      axios.post(endpoint,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        }, {
         'email': formData.email,
         'newsletter': ( formData.newsletter == 'on') ? true : false,
         'workshop': ( formData.workshop == 'on') ? true : false,
