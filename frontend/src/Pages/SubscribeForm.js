@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 const SubscribeForm = () => {
@@ -11,8 +11,17 @@ const SubscribeForm = () => {
   });
 
   const [formData, updateFormData] = React.useState(initialFormData);
+  const [csrfToken, updateCSRFToken ] = React.useState('');
+
+  useEffect(() => {
+          var endpoint = '/csrf/'
+          axios.get(endpoint)
+          .then(response => {
+            updateCSRFToken(response.data.csrfToken)
+          })
 
 
+  }, [])
 
   const handleChange = (e) => {
       updateFormData({
@@ -25,44 +34,32 @@ const SubscribeForm = () => {
 
   const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
-  const getCookie = (name) => {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-          const cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-              const cookie = cookies[i].trim();
-              // Does this cookie string begin with the name we want?
-              if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                  break;
-              }
-          }
-      }
-      return cookieValue;
-  }
+
+
+
+
 
   const handleSubmit = async (event) => {
 
 
     event.preventDefault();
     if ( validEmailRegex.test(formData.email) ) {
-      var csrftoken = getCookie('csrftoken');
 
       // create account
       var endpoint = '/v1/subscribe/'
-      axios.post(endpoint,{
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrftoken
-        },
-        data: {
+      axios.post(endpoint,
+        {
         'email': formData.email,
         'newsletter': ( formData.newsletter == 'on') ? true : false,
         'workshop': ( formData.workshop == 'on') ? true : false,
-        'zipcode': formData.zipcode,
-        'csrfmiddlewaretoken': csrftoken
-      }})
+        'zipcode': formData.zipcode
+      },{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken
+        }
+      })
       .then( response => {
         // return to homepage and post notification
 

@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.shortcuts import render
 from django.template import RequestContext
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
 
 # Create your views here.
 def index(request):
@@ -12,3 +14,6 @@ def index(request):
 	}
 
 	return render(request, 'index.html' , resp_dic)
+
+def csrf(request):
+    return JsonResponse({'csrfToken': get_token(request)})
