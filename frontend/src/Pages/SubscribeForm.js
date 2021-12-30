@@ -62,6 +62,7 @@ const SubscribeForm = () => {
       })
       .then( response => {
         // return to homepage and post notification
+        window.location.reload(false);
 
       })
 

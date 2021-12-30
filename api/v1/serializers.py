@@ -13,7 +13,7 @@ class LocationSerializer(serializers.ModelSerializer):
 class SubscribeSerializer(serializers.ModelSerializer):
     email =  serializers.CharField(required = False)
     locations = LocationSerializer( many = True, read_only = True)
-    zipcode = serializers.CharField(required = False, write_only = True)
+    zipcode = serializers.CharField(required = False, write_only = True, allow_blank=True)
 
     class Meta:
         model = subscribe_models.Subscribe
@@ -25,8 +25,11 @@ class SubscribeSerializer(serializers.ModelSerializer):
         subscribe.newsletter = validated_data.get('newsletter', False)
         subscribe.workshop = validated_data.get('workshop', False)
 
-        subscribe.location = get_object_or_None(app_models.location, zipcode = validated_data.get('zipcode', None))
-
         subscribe.save()
+
+        location = get_object_or_None(app_models.location, zipcode = validated_data.get('zipcode', None))
+        if location:
+            subscribe.locations.add(location  )
+
 
         return subscribe
