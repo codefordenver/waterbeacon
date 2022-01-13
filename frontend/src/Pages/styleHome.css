@@ -59,8 +59,8 @@
 
 }
 #why-wb .center-all p {
-  font-size: 18;
-  color: 'white';
+  font-size: 18px;
+  color: white;
   width: 800;
 }
 
@@ -118,6 +118,14 @@
 
   #why-wb .center-all p {
     width: 90%;
+  }
+
+  .bg-white h2 {
+    size: 1.5rem;
+  }
+
+  .bg-white h3 {
+    size: 1.25rem;
   }
 }
 .background-off-white {
