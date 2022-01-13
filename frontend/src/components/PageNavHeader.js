@@ -36,11 +36,9 @@ class PageNavHeader extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <div style={{ padding: 20 }}>
-          <NavHashLink to="/subscribe/" className="btn btn-primary">
-            Subscribe
-          </NavHashLink>
-        </div>
+        <NavHashLink to="/subscribe/" className="btn btn-primary">
+          Subscribe
+        </NavHashLink>
       </section>
     )
   }
