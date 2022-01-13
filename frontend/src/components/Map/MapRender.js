@@ -75,7 +75,7 @@ export const MapRender = (props) => {
   useEffect(() => {
     const getMinMaxAvg = ({id}) => {
       const stateInfo = stateWaterQualData.find(({ fipsState }) => id === fipsState)
-      return `Min: ${stateInfo?.min.toFixed(2) * 100 ?? 0}, Max: ${stateInfo?.max.toFixed(2) * 100 ?? 0}, Avg: ${stateInfo?.avg.toFixed(2) * 100 ?? 0}`
+      return `Min: ${stateInfo?.min ?? 0}, Max: ${stateInfo?.max ?? 0}, Avg: ${stateInfo?.avg ?? 0}`
     }
     const translateData = () => {
       //set the svg to the anchor element
