@@ -18,13 +18,13 @@ export default function Partners() {
       </div>
       <div id="sponsors">
         <div>
-          <Button href="https://codefordenver.org/#/" variant="light" id="CFD-btn">
+          <Button href="https://codefordenver.org/#/" target="_blank" rel="noopener" variant="light" id="CFD-btn">
             <Image className="btn-img" src={cfd} alt="Code For Denver"/>
           </Button>
-          <Button href="https://www.codeforamerica.org/" variant="light" id="CFA-btn">
+          <Button href="https://www.codeforamerica.org/" target="_blank" rel="noopener" variant="light" id="CFA-btn">
             <Image className="btn-img" src={cfa} alt="Code for America"/>
           </Button>
-          <Button href="https://www.epa.gov/" variant="light" id="EPA-btn">
+          <Button href="https://www.epa.gov/" target="_blank" rel="noopener" variant="light" id="EPA-btn">
             <Image className="btn-img" src={epa} alt="The Environmental Protection Agency"/>
             <h2>The EPA</h2>
           </Button>
