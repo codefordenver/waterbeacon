@@ -122,3 +122,17 @@
   width: 100%;
   padding-left: 5%;
 }
+
+@media screen and (max-width: 600px) {
+  .map .legend {
+    display: none;
+  }
+
+  .map-content {
+    height: auto;
+  }
+
+  .options {
+    display: none;
+  }
+}
