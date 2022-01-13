@@ -182,7 +182,7 @@ const TopCounties = (props) => {
   };
 
   return (
-    <Table striped bordered hover variant="dark" size="sm" className="county-list">
+    <Table striped bordered hover variant="light" size="sm" className="county-list">
       <thead>
         <tr>
           <th>
@@ -215,7 +215,7 @@ const TopCounties = (props) => {
               <td>
                 {county.state}
               </td>
-              <td>
+              <td style={{textAlign: "center"}}>
                 {Math.floor(county.score * 100) + '%'}
               </td>
               <td className="remove-county" onClick={()=>removeCounty(index)}>
