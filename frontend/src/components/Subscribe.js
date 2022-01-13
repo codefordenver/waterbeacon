@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Col, Image, Row } from 'react-bootstrap';
+import { Container, Col, Image, Row } from 'react-bootstrap';
 import { NavHashLink } from 'react-router-hash-link';
 
 import subscribe from '../images/water-flowing.jpg'

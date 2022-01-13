@@ -1,8 +1,4 @@
 #workshop {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
   height: 100%;
   background-color: #e5e5e5;
 }
@@ -30,6 +26,5 @@
   }
   #workshop {
     margin: 0rem;
-    padding: 0rem;
   }
 }

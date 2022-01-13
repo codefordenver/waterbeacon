@@ -68,10 +68,23 @@
   max-height: 350px;
 }
 
+.bg-white article {
+  padding: 2rem 3rem;
+}
+
 @media only screen and (max-width: 600px) {
   .bg-white img {
     max-width: 100%;
   }
+
+  .bg-white article {
+    padding: 1rem;
+  }
+
+  .bg-white article .row {
+    flex-direction: column;
+  }
+
   #open-data {
     flex-flow: row wrap;
     margin: 0rem;
