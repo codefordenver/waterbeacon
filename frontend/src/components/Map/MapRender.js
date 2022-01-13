@@ -150,31 +150,33 @@ export const MapRender = (props) => {
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(getMinMaxAvg);
-
-      // todo: zoom to state when clicking on point
-      // todo: lower z-index of point so you can click on counties and facilities
-      if (userLocation !== {}) {
-        const coordinates = projection([userLocation.long, userLocation.lat]);
-        g.current.append('g')
-          .attr('id', 'userLocation')
-          .selectAll('circle')
-          .data([userLocation])
-          .enter()
-          .append('circle')
-          .attr('cx', () => coordinates[0])
-          .attr('cy', () => coordinates[1])
-          .attr('r', 8)
-          .attr('fill', '#67bf5c')
-          .attr("fill-opacity", "0.9")
-          .attr('class', 'city-point')
-          .append('title')
-          .text(() => 'You Are Here');
-      }
     };
 
     (topologyData && waterScoreData && stateWaterQualData) && translateData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topologyData, waterScoreData, stateWaterQualData]);
+
+  useEffect(() => {
+    // todo: zoom to state when clicking on point
+    // todo: lower z-index of point so you can click on counties and facilities
+    if (userLocation && userLocation !== {}) {
+      const coordinates = projection([userLocation.longitude, userLocation.latitude]);
+      g.current.append('g')
+        .attr('id', 'userLocation')
+        .selectAll('circle')
+        .data([userLocation])
+        .enter()
+        .append('circle')
+        .attr('cx', () => coordinates[0])
+        .attr('cy', () => coordinates[1])
+        .attr('r', 8)
+        .attr('fill', '#67bf5c')
+        .attr("fill-opacity", "0.9")
+        .attr('class', 'city-point')
+        .append('title')
+        .text(() => 'You Are Here');
+    }
+  }, [userLocation])
 
   const adjustViewPort = (aivp, zoom = 0.5) => {
     if (!g.current) return;

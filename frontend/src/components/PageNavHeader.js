@@ -12,7 +12,7 @@ class PageNavHeader extends React.Component {
       //! get involved button needs link to the page/section
 
       <section className="page-header shadow">
-        <Navbar collapseOnSelect className="nav-bar" bg="light" style={{justifyContent: 'initial'}} expand="lg" >
+        <Navbar collapseOnSelect className="nav-bar" bg="light" expand="lg" >
           <Navbar.Brand>
             <a href="/">
               <Image src={wbLogo} style={{ maxHeight: 40, marginRight: 5 }} fluid alt="Water Beacon Logo picture"/>
@@ -36,11 +36,9 @@ class PageNavHeader extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <div style={{ padding: 20 }}>
-          <NavHashLink to="/subscribe/" className="btn btn-primary">
-            Subscribe
-          </NavHashLink>
-        </div>
+        <NavHashLink to="/subscribe/" className="btn btn-primary">
+          Subscribe
+        </NavHashLink>
       </section>
     )
   }

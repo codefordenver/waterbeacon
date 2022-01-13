@@ -58,10 +58,33 @@
   background-color: #198cff;
 
 }
-#why-wb div Img{
-  height:25vh;
+#why-wb .center-all p {
+  font-size: 18px;
+  color: white;
+  width: 800;
 }
+
+.bg-white img {
+  max-height: 350px;
+}
+
+.bg-white article {
+  padding: 2rem 3rem;
+}
+
 @media only screen and (max-width: 600px) {
+  .bg-white img {
+    max-width: 100%;
+  }
+
+  .bg-white article {
+    padding: 1rem;
+  }
+
+  .bg-white article .row {
+    flex-direction: column;
+  }
+
   #open-data {
     flex-flow: row wrap;
     margin: 0rem;
@@ -91,6 +114,18 @@
     margin: 0rem;
     padding: 0.5rem;
     text-align: center;
+  }
+
+  #why-wb .center-all p {
+    width: 90%;
+  }
+
+  .bg-white h2 {
+    size: 1.5rem;
+  }
+
+  .bg-white h3 {
+    size: 1.25rem;
   }
 }
 .background-off-white {

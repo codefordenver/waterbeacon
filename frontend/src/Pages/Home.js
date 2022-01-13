@@ -8,25 +8,17 @@ import Subscribe from '../components/Subscribe';
 import WhyWB from '../components/WhyWB';
 import WorkShop from '../components/WorkShop';
 import Partners from '../components/Partners';
-import Directions from '../components/Directions';
-import Community from '../components/Community';
-import Foot from '../components/Footer';
 
-class Home extends Component {
-  render() {
-    return (
-      <div className="bg-white">
-        <PageNavHeader />
-        {/* <WbHeaderBsNav /> */}
-        <Retrieve />
-        <WhyWB />
-        <OpenData />
-        <WorkShop />
-        <Subscribe />
-        <Partners />
-      </div>
-    );
-  }
-}
+const Home = () => (
+  <div className="bg-white">
+    <PageNavHeader />
+    <Retrieve />
+    <WhyWB />
+    <OpenData />
+    <WorkShop />
+    <Subscribe />
+    <Partners />
+  </div>
+);
 
 export default Home;

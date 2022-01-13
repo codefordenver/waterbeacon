@@ -18,10 +18,7 @@ const Retrieve = () => {
   const { quarter, year } = quartersAvailable[quarterIndex] ?? {}
   const chosenPeriod = getQuarterString({ quarter, year })
 
-  const [userLocation, setUL] = useState({
-    latitude: 39.754850,
-    longitude:-105.995900
-  });
+  const [userLocation, setUL] = useState();
   // holds the highest scoring three counties on initial render
   // data is sent to table on left pane
   // user can add and remove counties
@@ -33,9 +30,10 @@ const Retrieve = () => {
   const [utilities, setUtilities] = useState([]);
 
   useEffect(() => {
-    setUL({
-      lat: 39.754850,
-      long:-105.995900
+    navigator?.geolocation?.getCurrentPosition(({ coords = {} }) => {
+      const { latitude, longitude } = coords;
+      const hasLocation = latitude && longitude
+      hasLocation && setUL({ latitude, longitude });
     })
   }, []);
 
