@@ -75,7 +75,7 @@ export const MapRender = (props) => {
   useEffect(() => {
     const getMinMaxAvg = ({id}) => {
       const stateInfo = stateWaterQualData.find(({ fipsState }) => id === fipsState)
-      return `Min: ${stateInfo?.min ?? 0}, Max: ${stateInfo?.max ?? 0}, Avg: ${stateInfo?.avg ?? 0}`
+      return `Min: ${stateInfo?.min ?? 0}, Max: ${stateInfo?.max ?? 0}, Avg: ${stateInfo?.avg.toFixed(2) ?? 0}`
     }
     const translateData = () => {
       //set the svg to the anchor element
@@ -157,26 +157,25 @@ export const MapRender = (props) => {
   }, [topologyData, waterScoreData, stateWaterQualData]);
 
   useEffect(() => {
-    console.log(userLocation)
-      // todo: zoom to state when clicking on point
-      // todo: lower z-index of point so you can click on counties and facilities
-      if (userLocation && userLocation !== {}) {
-        const coordinates = projection([userLocation.longitude, userLocation.latitude]);
-        g.current.append('g')
-          .attr('id', 'userLocation')
-          .selectAll('circle')
-          .data([userLocation])
-          .enter()
-          .append('circle')
-          .attr('cx', () => coordinates[0])
-          .attr('cy', () => coordinates[1])
-          .attr('r', 8)
-          .attr('fill', '#67bf5c')
-          .attr("fill-opacity", "0.9")
-          .attr('class', 'city-point')
-          .append('title')
-          .text(() => 'You Are Here');
-      }
+    // todo: zoom to state when clicking on point
+    // todo: lower z-index of point so you can click on counties and facilities
+    if (userLocation && userLocation !== {}) {
+      const coordinates = projection([userLocation.longitude, userLocation.latitude]);
+      g.current.append('g')
+        .attr('id', 'userLocation')
+        .selectAll('circle')
+        .data([userLocation])
+        .enter()
+        .append('circle')
+        .attr('cx', () => coordinates[0])
+        .attr('cy', () => coordinates[1])
+        .attr('r', 8)
+        .attr('fill', '#67bf5c')
+        .attr("fill-opacity", "0.9")
+        .attr('class', 'city-point')
+        .append('title')
+        .text(() => 'You Are Here');
+    }
   }, [userLocation])
 
   const adjustViewPort = (aivp, zoom = 0.5) => {
