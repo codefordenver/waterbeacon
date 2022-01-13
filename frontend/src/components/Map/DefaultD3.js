@@ -182,7 +182,7 @@ const TopCounties = (props) => {
   };
 
   return (
-    <Table striped bordered hover variant="light" size="sm" className="county-list">
+    <Table striped bordered hover size="sm" className="county-list">
       <thead>
         <tr>
           <th>
