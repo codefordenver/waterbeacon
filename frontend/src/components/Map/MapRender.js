@@ -150,11 +150,18 @@ export const MapRender = (props) => {
         .on("mouseover", d => handleHover(`state-${d.id}`))
         .on("mouseout", d => removeHover(`state-${d.id}`))
         .append('title').text(getMinMaxAvg);
+    };
 
+    (topologyData && waterScoreData && stateWaterQualData) && translateData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topologyData, waterScoreData, stateWaterQualData]);
+
+  useEffect(() => {
+    console.log(userLocation)
       // todo: zoom to state when clicking on point
       // todo: lower z-index of point so you can click on counties and facilities
-      if (userLocation !== {}) {
-        const coordinates = projection([userLocation.long, userLocation.lat]);
+      if (userLocation && userLocation !== {}) {
+        const coordinates = projection([userLocation.longitude, userLocation.latitude]);
         g.current.append('g')
           .attr('id', 'userLocation')
           .selectAll('circle')
@@ -170,11 +177,7 @@ export const MapRender = (props) => {
           .append('title')
           .text(() => 'You Are Here');
       }
-    };
-
-    (topologyData && waterScoreData && stateWaterQualData) && translateData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topologyData, waterScoreData, stateWaterQualData]);
+  }, [userLocation])
 
   const adjustViewPort = (aivp, zoom = 0.5) => {
     if (!g.current) return;
