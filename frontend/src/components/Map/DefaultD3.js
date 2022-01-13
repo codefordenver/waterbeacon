@@ -216,7 +216,7 @@ const TopCounties = (props) => {
                 {county.state}
               </td>
               <td>
-                {county.score}
+                {Math.floor(county.score * 100) + '%'}
               </td>
               <td className="remove-county" onClick={()=>removeCounty(index)}>
                 X
