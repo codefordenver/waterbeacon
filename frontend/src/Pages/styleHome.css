@@ -58,9 +58,16 @@
   background-color: #198cff;
 
 }
-#why-wb div Img{
-  height:25vh;
+#why-wb .center-all p {
+  font-size: 18;
+  color: 'white';
+  width: 800;
 }
+
+.bg-white img {
+  max-height: 350px;
+}
+
 @media only screen and (max-width: 600px) {
   .bg-white img {
     max-width: 100%;
@@ -94,6 +101,10 @@
     margin: 0rem;
     padding: 0.5rem;
     text-align: center;
+  }
+
+  #why-wb .center-all p {
+    width: 90%;
   }
 }
 .background-off-white {

@@ -15,7 +15,7 @@ export default function WorkShop() {
         </Col>
         <Col>
           <Row>
-            <Image height={ 350 }  src={workshop} alt="Workshop"/>
+            <Image src={workshop} alt="Workshop"/>
           </Row>
         </Col>
 
