@@ -76,7 +76,7 @@ const DefaultD3 = ({
   //todo: have CurrentSelection scroll when there are several counties
   return (
     <>
-      <div className="map-content">
+      <div className="map-content mt-4">
         <div className="options">
           <ChooseZoom
             areaInViewPort={areaInViewPort}
