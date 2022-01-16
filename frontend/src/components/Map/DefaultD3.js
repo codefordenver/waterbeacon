@@ -188,7 +188,7 @@ const TopCounties = (props) => {
       <thead>
         <tr>
           <th>
-            Number
+            Rank
           </th>
           <th>
             County

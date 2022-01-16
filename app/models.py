@@ -36,6 +36,7 @@ class data(models.Model):
 	year = models.IntegerField( blank=True, default = 0)
 	quarter = models.CharField(max_length=10, null=True, blank=True, choices = choice.QUARTER,default='')
 	score = models.DecimalField(max_digits=15, decimal_places=3, default=0.0)
+	rank = models.IntegerField( blank=True, default = 0)
 	objects = DataFrameManager()
 
 	def __str__(self):
