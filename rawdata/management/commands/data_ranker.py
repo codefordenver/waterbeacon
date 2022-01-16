@@ -1,5 +1,8 @@
 from app import models as app_models
 from django.utils import timezone
+from django.core.management.base import BaseCommand
+
+from utils.log import log
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -25,3 +28,4 @@ class Command(BaseCommand):
                 data.rank = rank
                 prior_score = data.score
             data.save()
+            log('%s, %s, %s, %s' % (data.location.major_city, data.location.state, data.score, data.rank), 'success')
