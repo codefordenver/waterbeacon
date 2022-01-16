@@ -78,12 +78,14 @@ const DefaultD3 = ({
     <>
       <div className="map-content mt-4">
         <div className="options">
+          {/*
           <ChooseZoom
             areaInViewPort={areaInViewPort}
             centerState={centerState}
             usStates={usStates}
             setAIVP={setAIVP}
-          />
+          />*/
+          }
           <div className="info-panel">
             <div className="info">
               <TopCounties
