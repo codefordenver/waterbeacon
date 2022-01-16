@@ -93,7 +93,7 @@ class locationData(APIView):
                 populationServed=F("location__population_served"),
             )
             response["locations"] = data
-            response["top_locations"] = data.order_by("-score")[0:3:-1]
+            response["top_locations"] = data.order_by("-score")[:3:-1]
             response["meta"]["locations"] = len(data)
             response["states"] = data.values("fipsState").annotate(
                 avg=Avg("score"), max=Max("score"), min=Min("score")
