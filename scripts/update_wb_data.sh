@@ -6,3 +6,6 @@
 
 # calculate score
 ./manage.py data_cruncher
+
+# calculate rank
+./manage.py data_ranker
