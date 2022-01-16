@@ -83,15 +83,3 @@ class Command(BaseCommand):
                             print(location)
                     else:
                         log('%s, %s [%s]' % (location.major_city, location.state, area['score']), 'info')
-
-            # save data rank
-            prior_score = 0
-            rank = 1
-            for  data in app_models.data.objects.filter(quarter = quarter, year = year).order_by('score'):
-                if data.score == prior_score:
-                    data.rank = rank
-                else:
-                    rank += 1
-                    data.rank = rank
-                    prior_score = data.score
-                data.save()
