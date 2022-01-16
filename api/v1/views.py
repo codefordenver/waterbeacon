@@ -83,6 +83,7 @@ class locationData(APIView):
             data = app_models.data.objects.filter(
                 queryset, location__major_city__isnull=False
             ).values(
+                "rank",
                 "score",
                 fipsState=F("location__fips_state"),
                 fipsCounty=F("location__fips_county"),

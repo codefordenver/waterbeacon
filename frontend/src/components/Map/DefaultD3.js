@@ -209,7 +209,7 @@ const TopCounties = (props) => {
           return (
             <tr key={county.county + county.score}>
               <td>
-                {index+1}
+                {county.rank}
               </td>
               <td className="county-selector" onClick={() => props.setCC(county)}>
                 {county.county}
