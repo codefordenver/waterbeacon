@@ -48,7 +48,7 @@ const DefaultD3 = ({
 
     return chosenOne && setCountyRanked(tempCR => {
       if (tempCR.find(({ fipsCounty }) => fipsCounty === d.id)) return tempCR;
-      return tempCR.concat(chosenOne).sort((a,b) => b.score-a.score);
+      return tempCR.concat(chosenOne).sort((a,b) => a.score-b.score);
     });
   };
 
