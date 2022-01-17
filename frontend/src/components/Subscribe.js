@@ -18,7 +18,7 @@ export default function subscribeView () {
           </Col>
 
           <Col>
-            <h1>Subscribe</h1>
+            <h2>Subscribe</h2>
             <p className="text-muted">Join a community that believes that water quality should be easy and assessable. Receive updates on notifications of any water quality issues within your neighborhood. Get the latest news from our blog.</p>
             <NavHashLink to="/subscribe/" className="btn btn-primary">
               Subscribe
