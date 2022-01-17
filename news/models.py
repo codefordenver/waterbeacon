@@ -32,14 +32,14 @@ class location(models.Model):
         self.geocode = 'longitude=%s, latitude=%s, radius=5' % (geoc.latitude, geoc.longitude )
         return super(location, self ).save(*args, **kwargs)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s,%s' % (self.city,  self.state)
 
 class advisory_feed(models.Model):
     source = models.CharField(max_length=255, null=True, blank=True,choices=SOURCE, default="")
     feed = models.CharField(max_length=255, null=True, blank=True,default='')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.feed
 
     class Meta:
@@ -50,7 +50,7 @@ class advisory_keyword(models.Model):
     source = models.CharField(max_length=255, null=True, blank=True,choices=SOURCE, default="")
     keyword = models.CharField(max_length=255, null=True, blank=True,default='')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.keyword
 
     class Meta:
@@ -68,7 +68,7 @@ class alert(models.Model):
     published = models.DateTimeField( null=True, blank = True )
     created = models.DateTimeField( null=True, auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.sourceId
 
 class url(models.Model):

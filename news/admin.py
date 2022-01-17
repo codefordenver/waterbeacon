@@ -1,5 +1,6 @@
 from django.contrib import admin
 from news import models
+from admin_auto_filters.filters import AutocompleteFilter
 
 # Register your models here.
 def register_admin(model):
@@ -8,6 +9,10 @@ def register_admin(model):
         admin.site.register(model, klass)
         return klass
     return wrapper
+
+class LocationFilter(AutocompleteFilter):
+    title = 'Location' # display title
+    field_name = 'city' # name of the foreign key field
 
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
@@ -60,7 +65,7 @@ class AlertAdmin(admin.ModelAdmin):
     inlines = [
     	URLInline,
     ]
-
+    list_filter = [LocationFilter]
     actions = [safe, notdrink, boil, notuse]
 
 class ServedInline(admin.TabularInline):
