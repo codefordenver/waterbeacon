@@ -12,7 +12,7 @@ def register_admin(model):
 
 class LocationFilter(AutocompleteFilter):
     title = 'Location' # display title
-    field_name = 'city' # name of the foreign key field
+    field_name = 'location' # name of the foreign key field
 
 @admin.register(models.location)
 class LocationAdmin(admin.ModelAdmin):
