@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_results',
     'django_celery_beat',
+    'admin_auto_filters',
     'app',
     'news',
     'rawdata',
