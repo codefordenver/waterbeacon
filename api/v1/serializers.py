@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from subscribe import models as subscribe_models
 from app import models as app_models
+from news import models as news_models
 from annoying.functions import get_object_or_None
 from django.contrib.auth import get_user_model
 
@@ -33,3 +34,18 @@ class SubscribeSerializer(serializers.ModelSerializer):
 
 
         return subscribe
+
+
+class LocationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        models = news_models.location
+        fields =('city', 'county', 'state', 'zipcode')
+
+class AlertSerializer(serializers.ModelSerializer):
+    location = LocationSerializer()
+
+
+    class Meta:
+        fields = ('id', 'location', 'source', 'text', 'published', 'status')
+        models = news_models.alert
