@@ -39,13 +39,12 @@ class SubscribeSerializer(serializers.ModelSerializer):
 class LocationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        models = news_models.location
+        model = news_models.location
         fields =('city', 'county', 'state', 'zipcode')
 
 class AlertSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
 
-
     class Meta:
-        fields = ('id', 'location', 'source', 'text', 'published', 'status')
-        models = news_models.alert
+        model = news_models.alert
+        fields = ('id', 'location' , 'source', 'text', 'published', 'status')

@@ -32,9 +32,8 @@ class locationAlerts(generics.ListAPIView):
 		qs &= Q(published__gte = now - timedelta( days = 30))
 		qs &= Q(ignore = False)
 
-		sources = self.request.query_params.get("sources", "").split(",")
-		if len(sources):
-			qs &= Q(source__in = sources)
+		if self.request.query_params.get("sources", None):
+			qs &= Q(source__in = self.request.query_params.get("sources").split(","))
 
 		return self.queryset.filter( qs )
 
