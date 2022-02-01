@@ -28,8 +28,13 @@ class locationAlerts(generics.ListAPIView):
 		now = timezone.now()
 
 		qs = ~Q(location = None)
-		qs &= ~Q(status = 'unknown')
+		qs &= ~Q(status__in = ['unknown', 'safe'])
 		qs &= Q(published__gte = now - timedelta( days = 30))
+		qs &= Q(ignore = False)
+
+		sources = self.request.query_params.get("sources", "").split(",")
+		if len(sources):
+			qs &= Q(source__in = sources)
 
 		return self.queryset.filter( qs )
 
