@@ -74,7 +74,7 @@ class locationData(APIView):
         }
         quarters = (
             app_models.data.objects.values("quarter", "year")
-            .annotate(existing=Value(True, output_field=BooleanField()))
+            .annotate(existing=Value(True, output_field=BooleanField())).order_by('year')
             .distinct()
         )
         max_year = quarters.aggregate(Max("year"))["year__max"]

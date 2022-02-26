@@ -114,7 +114,7 @@ const DefaultD3 = ({
               const variant = isCurrentSelection ? '' : 'outline-'
               return (
                 <Button
-                  className={ 'rounded-0'}
+                  className={ 'rounded-0 mr-10'}
                   disabled={isCurrentSelection || !existing}
                   variant={variant + 'primary'}
                   onClick={() => updateChosenPeriod(quarterOption)}

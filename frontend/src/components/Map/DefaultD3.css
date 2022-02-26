@@ -112,6 +112,10 @@
   margin: 2.5px;
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
 .selection-alert {
   border-radius: 0.25rem;
   border: solid 2px #818189;
