@@ -28,6 +28,7 @@ const Retrieve = () => {
   const maxScore = Math.max(...scoreList, 0) * 100;
 
   const [utilities, setUtilities] = useState([]);
+  const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
     navigator?.geolocation?.getCurrentPosition(({ coords = {} }) => {
@@ -52,7 +53,7 @@ const Retrieve = () => {
       const endpoint = "/v1/alerts/?sources=twitter&format=json";
       const results = await fetch(endpoint);
       const data = await results.json();
-      console.log('alerts', data)
+      setAlerts(data);
     }
 
 
