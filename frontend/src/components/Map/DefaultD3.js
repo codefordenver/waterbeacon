@@ -107,7 +107,7 @@ const DefaultD3 = ({
         </div>
         <div className="map" >
           <div className="quarter-choice">
-            {quartersAvailable.map((quarterOption = {}) => {
+            {quartersAvailable.map((quarterOption = {}, index) => {
               const { quarter, year, existing } = quarterOption
               const value = getQuarterString({ quarter, year })
               const isCurrentSelection = chosenPeriod === value
