@@ -47,14 +47,23 @@ const Retrieve = () => {
       // setTD(topoLocation);
     }
 
+    const getAlerts = async () => {
+
+      const endpoint = "/v1/alerts/?sources=twitter&format=json";
+      const results = await fetch(endpoint);
+      const data = await dataJSON.json();
+      console.log('alerts', data)
+    }
+
+
     const getData = async () => {
       const { quarter: quarterSelection, year: yearSelection } = quartersAvailable[quarterIndex] ?? {}
       // calls the server set up as proxy in package.json to retrieve data
       const dataString = "/v1/data/?sources=locations,utilities&format=json";
       const quarterString = quarterSelection ? "&quarter=" + quarterSelection : "";
       const yearString = yearSelection ? "&year=" + yearSelection : "";
-      const dataSRC = dataString + quarterString + yearString;
-      const dataJSON = await fetch(dataSRC);
+      const endpoint = dataString + quarterString + yearString;
+      const dataJSON = await fetch(endpoint);
       const data = await dataJSON.json();
       data?.quarters && setQuartersAvailable(data?.quarters.filter(function(item) {
         return item.existing == true;
