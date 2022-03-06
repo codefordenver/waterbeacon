@@ -65,7 +65,7 @@ class AlertAdmin(admin.ModelAdmin):
     inlines = [
     	URLInline,
     ]
-    list_filter = [LocationFilter]
+    #list_filter = [LocationFilter]
     actions = [safe, notdrink, boil, notuse]
 
 class ServedInline(admin.TabularInline):
