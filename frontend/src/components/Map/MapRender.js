@@ -79,6 +79,7 @@ export const MapRender = (props) => {
     }
     const translateData = () => {
       //set the svg to the anchor element
+      d3.select(anchor.current).selectAll('*').remove();
       svg.current = d3.select(anchor.current).append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMin meet")
