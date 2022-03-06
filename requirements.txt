@@ -5,7 +5,7 @@ asgiref==3.2.3
 attrs==19.3.0
 autopep8==1.5.1
 billiard==3.6.4.0
-celery==5.1.2
+celery==5.2.2
 certifi==2019.11.28
 chardet==3.0.4
 dj-database-url==0.5.0
