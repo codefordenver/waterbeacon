@@ -76,6 +76,7 @@ const Retrieve = () => {
 
     getTopoData();
     getData();
+    getAlerts();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quarterIndex]);
 
