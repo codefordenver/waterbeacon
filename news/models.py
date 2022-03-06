@@ -8,7 +8,7 @@ from .choice import (
 )
 from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField
-
+from geopy.geocoders import Nominatim
 
 # top us cities
 # https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population

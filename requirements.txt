@@ -20,6 +20,7 @@ django-ses==2.3.1
 djangorestframework==3.11.2
 fake-useragent==0.1.11
 feedparser==5.2.1
+geopy==2.2.0
 gunicorn==19.9.0
 idna==2.8
 importlib-metadata==1.6.0
