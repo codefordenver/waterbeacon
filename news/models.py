@@ -27,7 +27,7 @@ class location(models.Model):
     created = models.DateTimeField( null=True, auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        geolocator = Nominatim()
+        geolocator = Nominatim(user_agent="waterbeacon")
         geoc = geolocator.geocode("%s %s" % (self.city, self.state.lower() ), timeout=10)
         self.geocode = 'longitude=%s, latitude=%s, radius=5' % (geoc.latitude, geoc.longitude )
         return super(location, self ).save(*args, **kwargs)
