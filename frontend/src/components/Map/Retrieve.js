@@ -51,7 +51,7 @@ const Retrieve = () => {
 
       const endpoint = "/v1/alerts/?sources=twitter&format=json";
       const results = await fetch(endpoint);
-      const data = await dataJSON.json();
+      const data = await results.json();
       console.log('alerts', data)
     }
 
