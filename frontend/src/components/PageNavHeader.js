@@ -33,6 +33,9 @@ class PageNavHeader extends React.Component {
               <NavHashLink to="/#workshop" className="nav-items">
                 Workshop
               </NavHashLink>
+              <NavHashLink to={{pathname: "https://github.com/codefordenver/waterbeacon"}} className="nav-items" target="_blank">
+                Github Repository
+              </NavHashLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

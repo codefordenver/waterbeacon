@@ -12,7 +12,18 @@ export default function WhyWB() {
       </div>
       <div className="center-all">
         <p>
-          Imagine opening Google Maps and there there is a Water Quality layer as assessable as air quality. You could easily view which neighborhood has high water quality vs low water quality by an index rated by 0 - 100 or which river has bad water quality. You can use this index to easily understand how safe this water is to drink that is the vision of Water Beacon to make information about water quality easy to view and consume.
+             The vision of Water Beacon is to make drinking water quality data easy to understand.
+        </p>
+        <p>
+            Using EPA data, we created score to identify which counties have good versus bad drinking water.
+            Next, we use the score to rank each county. Counties ranked 1 have the best drinking water. The visualization is updated every quarter.
+        </p>
+        <p>
+            In addition, we use Twitter to identify counties that may report water quality alerts. If you subscribe and submit your zipcode, you will
+            recieve an notification if there are any water quality alerts within your county.
+        </p>
+        <p>
+            Water Beacon is completly open-source. Click Github-Repo to view the source code
         </p>
       </div>
     </article>
