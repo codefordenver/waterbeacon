@@ -1,5 +1,5 @@
-import { React from 'react';
-
+import React from 'react';
+import { NavLink } from "react-router-dom";
 import { Image, Navbar, Nav, Button } from 'react-bootstrap';
 import wbSVG from '../WaterBeacon.svg';
 import wbLogo from '../images/waterBeaconLogo.png';
