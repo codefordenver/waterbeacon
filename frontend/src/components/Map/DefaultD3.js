@@ -117,7 +117,7 @@ const DefaultD3 = ({
                   className={ 'rounded-0 mr-10'}
                   disabled={isCurrentSelection || !existing}
                   variant={variant + 'primary'}
-                  onClick={() => updateChosenPeriod(index)}
+                  onClick={() => updateChosenPeriod(quartersAvailable.length - index)}
                   key={value}
                 >
                   {value}
