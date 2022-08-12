@@ -21,7 +21,14 @@ export default function liveData () {
 
           <Col>
             <h2>Open Data</h2>
-            <p className="text-muted">The vision have to start somewhere. Presently, we collect data from the EPA and Twitter and the data is segmented by every US county. The EPA data produces the visualization. Explore the visualization. Zoom in to view the water quality within your county. Twitter data is to report any notification that a county may report on safety of drinking water within your city. As time progresses, and with your support, we will work towards the data getting more specific to the neighborhood level.</p>
+            <p>
+                Using EPA data, we created a score to identify which counties have good versus bad drinking water.
+                We use the score to rank each county. Counties ranked 1 have the best drinking water.
+            </p>
+            <p>
+                Moreover, we use Twitter to identify counties that may report water quality alerts. If you subscribe and submit your zipcode, you will
+                recieve a notification, if there are any water quality alerts within your county.
+            </p>
           </Col>
 
         </Row>
