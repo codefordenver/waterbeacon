@@ -11,7 +11,7 @@ export default function WorkShop() {
       <Row >
         <Col >
           <h2>Workshop</h2>
-          <p class="text-muted">We organize workshops to inform you the basics of water quality and how you can navigate the wealth of data and find meaningful revelations about the state of water quality where you live. We also discuss with you how we can make this vision a reality. Click to subscribe to our mailing to be notified of our next workshop.</p>
+          <p class="text-muted">We organize workshops to inform you the basics of water quality and how you can navigate the wealth of data and find meaningful revelations about the state of water quality where you live. Click to subscribe to our mailing to be notified of our next workshop.</p>
         </Col>
         <Col>
           <Row>
