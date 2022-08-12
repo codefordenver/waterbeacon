@@ -19,7 +19,7 @@ export default function liveData () {
 
           </Col>
 
-          <Col>
+          <Col className="vertical-center-all">
             <h2>Open Data</h2>
             <p>
                 Using EPA data, we created a score to identify which counties have good versus bad drinking water.

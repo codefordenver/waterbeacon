@@ -52,6 +52,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.vertical-center-all {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
 #why-wb {
   height: 100%;
   padding:3rem;
