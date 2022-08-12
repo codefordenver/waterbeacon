@@ -15,15 +15,12 @@ export default function WhyWB() {
              The vision of Water Beacon is to make drinking water quality data easy to understand.
         </p>
         <p>
-            Using EPA data, we created score to identify which counties have good versus bad drinking water.
-            Next, we use the score to rank each county. Counties ranked 1 have the best drinking water. The visualization is updated every quarter.
+            Using EPA data, we created a score to identify which counties have good versus bad drinking water.
+            We use the score to rank each county. Counties ranked 1 have the best drinking water.
         </p>
         <p>
-            In addition, we use Twitter to identify counties that may report water quality alerts. If you subscribe and submit your zipcode, you will
-            recieve an notification if there are any water quality alerts within your county.
-        </p>
-        <p>
-            Water Beacon is completly open-source. Click Github-Repo to view the source code
+            Moreover, we use Twitter to identify counties that may report water quality alerts. If you subscribe and submit your zipcode, you will
+            recieve a notification, if there are any water quality alerts within your county.
         </p>
       </div>
     </article>
