@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
+import { React, Link } from 'react';
+
 import { Image, Navbar, Nav, Button } from 'react-bootstrap';
 import wbSVG from '../WaterBeacon.svg';
 import wbLogo from '../images/waterBeaconLogo.png';
@@ -34,9 +34,9 @@ class PageNavHeader extends React.Component {
               <NavHashLink to="/#workshop" className="nav-items">
                 Workshop
               </NavHashLink>
-              <NavLink to="https://github.com/codefordenver/waterbeacon" className="nav-items" target="_blank">
+              <Link to="https://github.com/codefordenver/waterbeacon" className="nav-items" target="_blank">
                 Github Repository
-              </NavLink>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
