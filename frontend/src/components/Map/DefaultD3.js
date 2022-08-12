@@ -107,18 +107,17 @@ const DefaultD3 = ({
         </div>
         <div className="map" >
           <div className="quarter-choice">
-            {quartersAvailable.reverse().map((quarterOption = {}, index) => {
+            {quartersAvailable.map((quarterOption = {}, index) => {
               const { quarter, year, existing } = quarterOption
               const value = getQuarterString({ quarter, year })
               const isCurrentSelection = chosenPeriod === value
               const variant = isCurrentSelection ? '' : 'outline-'
-              const period = quartersAvailable.length - 1 - index;
               return (
                 <Button
                   className={ 'rounded-0 mr-10'}
                   disabled={isCurrentSelection || !existing}
                   variant={variant + 'primary'}
-                  onClick={() => updateChosenPeriod(period)}
+                  onClick={() => updateChosenPeriod(index)}
                   key={value}
                 >
                   {value}
